@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project1;
+namespace PHPMaker2025\project221825;
 
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentToken;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;

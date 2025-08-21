@@ -55,8 +55,8 @@
             'path' => '/api/login',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\JwtMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:login',
+                'middlewares' => 'PHPMaker2025\\project221825\\JwtMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -76,10 +76,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -98,10 +98,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -120,10 +120,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -142,10 +142,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -164,10 +164,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -187,8 +187,8 @@
             'path' => '/api/register',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:register',
+                'middlewares' => 'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -207,10 +207,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:file',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:file',
             ],
             'requirements' => [],
             'options' => [
@@ -229,10 +229,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:export',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:export',
             ],
             'requirements' => [],
             'options' => [
@@ -252,10 +252,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:upload',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:upload',
             ],
             'requirements' => [],
             'options' => [
@@ -273,8 +273,8 @@
             'path' => '/api/jupload',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:jupload',
+                'middlewares' => 'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:jupload',
             ],
             'requirements' => [],
             'options' => [
@@ -293,8 +293,8 @@
             'path' => '/api/session',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:session',
+                'middlewares' => 'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:session',
             ],
             'requirements' => [],
             'options' => [
@@ -313,10 +313,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:lookup',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:lookup',
             ],
             'requirements' => [],
             'options' => [
@@ -335,8 +335,8 @@
             'path' => '/api/chart[/{params:.*}]',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:exportchart',
+                'middlewares' => 'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:exportchart',
             ],
             'requirements' => [],
             'options' => [
@@ -355,10 +355,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:permissions',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:permissions',
             ],
             'requirements' => [],
             'options' => [
@@ -377,8 +377,8 @@
             'path' => '/api/push/{action}',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:push',
+                'middlewares' => 'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:push',
             ],
             'requirements' => [],
             'options' => [
@@ -398,10 +398,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:twofa',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:twofa',
             ],
             'requirements' => [],
             'options' => [
@@ -420,8 +420,8 @@
             'path' => '/api/metadata',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:metadata',
+                'middlewares' => 'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:metadata',
             ],
             'requirements' => [],
             'options' => [
@@ -439,10 +439,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project1\\JwtMiddleware',
+                    'PHPMaker2025\\project221825\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project221825\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ApiController:chat',
+                '_controller' => 'PHPMaker2025\\project221825\\ApiController:chat',
             ],
             'requirements' => [],
             'options' => [

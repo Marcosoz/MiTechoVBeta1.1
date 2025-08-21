@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project1;
+namespace PHPMaker2025\project221825;
 
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;

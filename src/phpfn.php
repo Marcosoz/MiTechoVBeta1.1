@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
 */
 
-namespace PHPMaker2025\project1;
+namespace PHPMaker2025\project221825;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -88,10 +88,10 @@ use Throwable;
 
 // Custom types
 Type::addType("timetz", "Doctrine\\DBAL\\Types\\VarDateTimeType"); // "timetz" type
-Type::addType("geometry", "PHPMaker2025\\project1\\GeometryType"); // "geometry" type
-Type::addType("geography", "PHPMaker2025\\project1\\GeographyType"); // "geography" type
-Type::addType("hierarchyid", "PHPMaker2025\\project1\\HierarchyIdType"); // "hierarchyid" type
-Type::addType("bytes", "PHPMaker2025\\project1\\BytesType"); // "bytes" type
+Type::addType("geometry", "PHPMaker2025\\project221825\\GeometryType"); // "geometry" type
+Type::addType("geography", "PHPMaker2025\\project221825\\GeographyType"); // "geography" type
+Type::addType("hierarchyid", "PHPMaker2025\\project221825\\HierarchyIdType"); // "hierarchyid" type
+Type::addType("bytes", "PHPMaker2025\\project221825\\BytesType"); // "bytes" type
 
 /**
  * Get environment variable

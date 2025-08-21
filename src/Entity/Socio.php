@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project1\Entity;
+namespace PHPMaker2025\project221825\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -15,17 +15,17 @@ use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use PHPMaker2025\project1\AdvancedUserInterface;
-use PHPMaker2025\project1\AbstractEntity;
-use PHPMaker2025\project1\AdvancedSecurity;
-use PHPMaker2025\project1\UserProfile;
-use PHPMaker2025\project1\UserRepository;
-use function PHPMaker2025\project1\Config;
-use function PHPMaker2025\project1\EntityManager;
-use function PHPMaker2025\project1\RemoveXss;
-use function PHPMaker2025\project1\HtmlDecode;
-use function PHPMaker2025\project1\HashPassword;
-use function PHPMaker2025\project1\Security;
+use PHPMaker2025\project221825\AdvancedUserInterface;
+use PHPMaker2025\project221825\AbstractEntity;
+use PHPMaker2025\project221825\AdvancedSecurity;
+use PHPMaker2025\project221825\UserProfile;
+use PHPMaker2025\project221825\UserRepository;
+use function PHPMaker2025\project221825\Config;
+use function PHPMaker2025\project221825\EntityManager;
+use function PHPMaker2025\project221825\RemoveXss;
+use function PHPMaker2025\project221825\HtmlDecode;
+use function PHPMaker2025\project221825\HashPassword;
+use function PHPMaker2025\project221825\Security;
 
 /**
  * Entity class for "socios" table

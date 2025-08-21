@@ -234,75 +234,75 @@
             ],
             'aliases' => [
                 [
-                    'PHPMaker2025\\project1\\ActividadLogController::list' => $o[70],
-                    'PHPMaker2025\\project1\\ActividadLogController::add' => $o[71],
-                    'PHPMaker2025\\project1\\ActividadLogController::view' => $o[72],
-                    'PHPMaker2025\\project1\\ActividadLogController::edit' => $o[73],
-                    'PHPMaker2025\\project1\\ActividadLogController::delete' => $o[74],
-                    'PHPMaker2025\\project1\\AportesLegalesController::list' => $o[75],
-                    'PHPMaker2025\\project1\\AportesLegalesController::add' => $o[76],
-                    'PHPMaker2025\\project1\\AportesLegalesController::view' => $o[77],
-                    'PHPMaker2025\\project1\\AportesLegalesController::edit' => $o[78],
-                    'PHPMaker2025\\project1\\AportesLegalesController::delete' => $o[79],
-                    'PHPMaker2025\\project1\\ComprasController::list' => $o[80],
-                    'PHPMaker2025\\project1\\ComprasController::add' => $o[81],
-                    'PHPMaker2025\\project1\\ComprasController::view' => $o[82],
-                    'PHPMaker2025\\project1\\ComprasController::edit' => $o[83],
-                    'PHPMaker2025\\project1\\ComprasController::delete' => $o[84],
-                    'PHPMaker2025\\project1\\CooperativasController::list' => $o[85],
-                    'PHPMaker2025\\project1\\CooperativasController::add' => $o[86],
-                    'PHPMaker2025\\project1\\CooperativasController::view' => $o[87],
-                    'PHPMaker2025\\project1\\CooperativasController::edit' => $o[88],
-                    'PHPMaker2025\\project1\\CooperativasController::delete' => $o[89],
-                    'PHPMaker2025\\project1\\HorasTrabajadasController::list' => $o[90],
-                    'PHPMaker2025\\project1\\HorasTrabajadasController::add' => $o[91],
-                    'PHPMaker2025\\project1\\HorasTrabajadasController::view' => $o[92],
-                    'PHPMaker2025\\project1\\HorasTrabajadasController::edit' => $o[93],
-                    'PHPMaker2025\\project1\\HorasTrabajadasController::delete' => $o[94],
-                    'PHPMaker2025\\project1\\IngresosController::list' => $o[95],
-                    'PHPMaker2025\\project1\\IngresosController::add' => $o[96],
-                    'PHPMaker2025\\project1\\IngresosController::view' => $o[97],
-                    'PHPMaker2025\\project1\\IngresosController::edit' => $o[98],
-                    'PHPMaker2025\\project1\\IngresosController::delete' => $o[99],
-                    'PHPMaker2025\\project1\\MovimientosStockController::list' => $o[100],
-                    'PHPMaker2025\\project1\\MovimientosStockController::add' => $o[101],
-                    'PHPMaker2025\\project1\\MovimientosStockController::view' => $o[102],
-                    'PHPMaker2025\\project1\\MovimientosStockController::edit' => $o[103],
-                    'PHPMaker2025\\project1\\MovimientosStockController::delete' => $o[104],
-                    'PHPMaker2025\\project1\\OthersController::personaldata' => $o[105],
-                    'PHPMaker2025\\project1\\OthersController::login' => $o[106],
-                    'PHPMaker2025\\project1\\OthersController::resetpassword' => $o[107],
-                    'PHPMaker2025\\project1\\OthersController::changepassword' => $o[108],
-                    'PHPMaker2025\\project1\\OthersController::register' => $o[109],
-                    'PHPMaker2025\\project1\\OthersController::loginCheck' => $o[110],
-                    'PHPMaker2025\\project1\\OthersController::logout' => $o[111],
-                    'PHPMaker2025\\project1\\OthersController::swagger' => $o[112],
-                    'PHPMaker2025\\project1\\OthersController::index' => $o[113],
-                    'PHPMaker2025\\project1\\PagosSociosController::list' => $o[114],
-                    'PHPMaker2025\\project1\\PagosSociosController::add' => $o[115],
-                    'PHPMaker2025\\project1\\PagosSociosController::view' => $o[116],
-                    'PHPMaker2025\\project1\\PagosSociosController::edit' => $o[117],
-                    'PHPMaker2025\\project1\\PagosSociosController::delete' => $o[118],
-                    'PHPMaker2025\\project1\\ProveedoresController::list' => $o[119],
-                    'PHPMaker2025\\project1\\ProveedoresController::add' => $o[120],
-                    'PHPMaker2025\\project1\\ProveedoresController::view' => $o[121],
-                    'PHPMaker2025\\project1\\ProveedoresController::edit' => $o[122],
-                    'PHPMaker2025\\project1\\ProveedoresController::delete' => $o[123],
-                    'PHPMaker2025\\project1\\SociosController::list' => $o[124],
-                    'PHPMaker2025\\project1\\SociosController::add' => $o[125],
-                    'PHPMaker2025\\project1\\SociosController::view' => $o[126],
-                    'PHPMaker2025\\project1\\SociosController::edit' => $o[127],
-                    'PHPMaker2025\\project1\\SociosController::delete' => $o[128],
-                    'PHPMaker2025\\project1\\StockController::list' => $o[129],
-                    'PHPMaker2025\\project1\\StockController::add' => $o[130],
-                    'PHPMaker2025\\project1\\StockController::view' => $o[131],
-                    'PHPMaker2025\\project1\\StockController::edit' => $o[132],
-                    'PHPMaker2025\\project1\\StockController::delete' => $o[133],
-                    'PHPMaker2025\\project1\\UsuariosController::list' => $o[134],
-                    'PHPMaker2025\\project1\\UsuariosController::add' => $o[135],
-                    'PHPMaker2025\\project1\\UsuariosController::view' => $o[136],
-                    'PHPMaker2025\\project1\\UsuariosController::edit' => $o[137],
-                    'PHPMaker2025\\project1\\UsuariosController::delete' => $o[138],
+                    'PHPMaker2025\\project221825\\ActividadLogController::list' => $o[70],
+                    'PHPMaker2025\\project221825\\ActividadLogController::add' => $o[71],
+                    'PHPMaker2025\\project221825\\ActividadLogController::view' => $o[72],
+                    'PHPMaker2025\\project221825\\ActividadLogController::edit' => $o[73],
+                    'PHPMaker2025\\project221825\\ActividadLogController::delete' => $o[74],
+                    'PHPMaker2025\\project221825\\AportesLegalesController::list' => $o[75],
+                    'PHPMaker2025\\project221825\\AportesLegalesController::add' => $o[76],
+                    'PHPMaker2025\\project221825\\AportesLegalesController::view' => $o[77],
+                    'PHPMaker2025\\project221825\\AportesLegalesController::edit' => $o[78],
+                    'PHPMaker2025\\project221825\\AportesLegalesController::delete' => $o[79],
+                    'PHPMaker2025\\project221825\\ComprasController::list' => $o[80],
+                    'PHPMaker2025\\project221825\\ComprasController::add' => $o[81],
+                    'PHPMaker2025\\project221825\\ComprasController::view' => $o[82],
+                    'PHPMaker2025\\project221825\\ComprasController::edit' => $o[83],
+                    'PHPMaker2025\\project221825\\ComprasController::delete' => $o[84],
+                    'PHPMaker2025\\project221825\\CooperativasController::list' => $o[85],
+                    'PHPMaker2025\\project221825\\CooperativasController::add' => $o[86],
+                    'PHPMaker2025\\project221825\\CooperativasController::view' => $o[87],
+                    'PHPMaker2025\\project221825\\CooperativasController::edit' => $o[88],
+                    'PHPMaker2025\\project221825\\CooperativasController::delete' => $o[89],
+                    'PHPMaker2025\\project221825\\HorasTrabajadasController::list' => $o[90],
+                    'PHPMaker2025\\project221825\\HorasTrabajadasController::add' => $o[91],
+                    'PHPMaker2025\\project221825\\HorasTrabajadasController::view' => $o[92],
+                    'PHPMaker2025\\project221825\\HorasTrabajadasController::edit' => $o[93],
+                    'PHPMaker2025\\project221825\\HorasTrabajadasController::delete' => $o[94],
+                    'PHPMaker2025\\project221825\\IngresosController::list' => $o[95],
+                    'PHPMaker2025\\project221825\\IngresosController::add' => $o[96],
+                    'PHPMaker2025\\project221825\\IngresosController::view' => $o[97],
+                    'PHPMaker2025\\project221825\\IngresosController::edit' => $o[98],
+                    'PHPMaker2025\\project221825\\IngresosController::delete' => $o[99],
+                    'PHPMaker2025\\project221825\\MovimientosStockController::list' => $o[100],
+                    'PHPMaker2025\\project221825\\MovimientosStockController::add' => $o[101],
+                    'PHPMaker2025\\project221825\\MovimientosStockController::view' => $o[102],
+                    'PHPMaker2025\\project221825\\MovimientosStockController::edit' => $o[103],
+                    'PHPMaker2025\\project221825\\MovimientosStockController::delete' => $o[104],
+                    'PHPMaker2025\\project221825\\OthersController::personaldata' => $o[105],
+                    'PHPMaker2025\\project221825\\OthersController::login' => $o[106],
+                    'PHPMaker2025\\project221825\\OthersController::resetpassword' => $o[107],
+                    'PHPMaker2025\\project221825\\OthersController::changepassword' => $o[108],
+                    'PHPMaker2025\\project221825\\OthersController::register' => $o[109],
+                    'PHPMaker2025\\project221825\\OthersController::loginCheck' => $o[110],
+                    'PHPMaker2025\\project221825\\OthersController::logout' => $o[111],
+                    'PHPMaker2025\\project221825\\OthersController::swagger' => $o[112],
+                    'PHPMaker2025\\project221825\\OthersController::index' => $o[113],
+                    'PHPMaker2025\\project221825\\PagosSociosController::list' => $o[114],
+                    'PHPMaker2025\\project221825\\PagosSociosController::add' => $o[115],
+                    'PHPMaker2025\\project221825\\PagosSociosController::view' => $o[116],
+                    'PHPMaker2025\\project221825\\PagosSociosController::edit' => $o[117],
+                    'PHPMaker2025\\project221825\\PagosSociosController::delete' => $o[118],
+                    'PHPMaker2025\\project221825\\ProveedoresController::list' => $o[119],
+                    'PHPMaker2025\\project221825\\ProveedoresController::add' => $o[120],
+                    'PHPMaker2025\\project221825\\ProveedoresController::view' => $o[121],
+                    'PHPMaker2025\\project221825\\ProveedoresController::edit' => $o[122],
+                    'PHPMaker2025\\project221825\\ProveedoresController::delete' => $o[123],
+                    'PHPMaker2025\\project221825\\SociosController::list' => $o[124],
+                    'PHPMaker2025\\project221825\\SociosController::add' => $o[125],
+                    'PHPMaker2025\\project221825\\SociosController::view' => $o[126],
+                    'PHPMaker2025\\project221825\\SociosController::edit' => $o[127],
+                    'PHPMaker2025\\project221825\\SociosController::delete' => $o[128],
+                    'PHPMaker2025\\project221825\\StockController::list' => $o[129],
+                    'PHPMaker2025\\project221825\\StockController::add' => $o[130],
+                    'PHPMaker2025\\project221825\\StockController::view' => $o[131],
+                    'PHPMaker2025\\project221825\\StockController::edit' => $o[132],
+                    'PHPMaker2025\\project221825\\StockController::delete' => $o[133],
+                    'PHPMaker2025\\project221825\\UsuariosController::list' => $o[134],
+                    'PHPMaker2025\\project221825\\UsuariosController::add' => $o[135],
+                    'PHPMaker2025\\project221825\\UsuariosController::view' => $o[136],
+                    'PHPMaker2025\\project221825\\UsuariosController::edit' => $o[137],
+                    'PHPMaker2025\\project221825\\UsuariosController::delete' => $o[138],
                 ],
             ],
             'resources' => [
@@ -434,10 +434,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ActividadLogController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\ActividadLogController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -457,10 +457,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ActividadLogController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\ActividadLogController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -480,10 +480,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ActividadLogController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\ActividadLogController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -503,10 +503,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ActividadLogController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\ActividadLogController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -526,10 +526,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ActividadLogController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\ActividadLogController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -549,10 +549,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\AportesLegalesController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\AportesLegalesController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -572,10 +572,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\AportesLegalesController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\AportesLegalesController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -595,10 +595,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\AportesLegalesController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\AportesLegalesController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -618,10 +618,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\AportesLegalesController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\AportesLegalesController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -641,10 +641,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\AportesLegalesController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\AportesLegalesController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -664,10 +664,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ComprasController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\ComprasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -687,10 +687,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ComprasController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\ComprasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -710,10 +710,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ComprasController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\ComprasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -733,10 +733,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ComprasController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\ComprasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -756,10 +756,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ComprasController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\ComprasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -779,10 +779,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\CooperativasController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\CooperativasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -802,10 +802,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\CooperativasController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\CooperativasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -825,10 +825,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\CooperativasController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\CooperativasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -848,10 +848,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\CooperativasController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\CooperativasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -871,10 +871,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\CooperativasController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\CooperativasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -894,10 +894,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\HorasTrabajadasController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\HorasTrabajadasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -917,10 +917,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\HorasTrabajadasController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\HorasTrabajadasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -940,10 +940,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\HorasTrabajadasController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\HorasTrabajadasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -963,10 +963,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\HorasTrabajadasController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\HorasTrabajadasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -986,10 +986,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\HorasTrabajadasController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\HorasTrabajadasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1009,10 +1009,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\IngresosController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\IngresosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1032,10 +1032,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\IngresosController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\IngresosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1055,10 +1055,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\IngresosController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\IngresosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1078,10 +1078,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\IngresosController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\IngresosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1101,10 +1101,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\IngresosController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\IngresosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1124,10 +1124,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\MovimientosStockController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\MovimientosStockController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1147,10 +1147,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\MovimientosStockController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\MovimientosStockController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1170,10 +1170,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\MovimientosStockController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\MovimientosStockController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1193,10 +1193,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\MovimientosStockController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\MovimientosStockController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1216,10 +1216,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\MovimientosStockController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\MovimientosStockController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1239,10 +1239,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:personaldata',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:personaldata',
             ],
             'requirements' => [],
             'options' => [
@@ -1262,10 +1262,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:login',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -1285,10 +1285,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:resetpassword',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:resetpassword',
             ],
             'requirements' => [],
             'options' => [
@@ -1308,10 +1308,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:changepassword',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:changepassword',
             ],
             'requirements' => [],
             'options' => [
@@ -1331,10 +1331,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:register',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -1353,8 +1353,8 @@
             'path' => '/login_check',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\AuthenticationMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:loginCheck',
+                'middlewares' => 'PHPMaker2025\\project221825\\AuthenticationMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:loginCheck',
             ],
             'requirements' => [],
             'options' => [
@@ -1373,8 +1373,8 @@
             'path' => '/logout',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project1\\AuthenticationMiddleware',
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:logout',
+                'middlewares' => 'PHPMaker2025\\project221825\\AuthenticationMiddleware',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:logout',
             ],
             'requirements' => [],
             'options' => [
@@ -1393,7 +1393,7 @@
             'path' => '/swagger/swagger',
             'host' => '',
             'defaults' => [
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:swagger',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:swagger',
             ],
             'requirements' => [],
             'options' => [
@@ -1411,10 +1411,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\OthersController:index',
+                '_controller' => 'PHPMaker2025\\project221825\\OthersController:index',
             ],
             'requirements' => [],
             'options' => [
@@ -1432,10 +1432,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\PagosSociosController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\PagosSociosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1455,10 +1455,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\PagosSociosController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\PagosSociosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1478,10 +1478,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\PagosSociosController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\PagosSociosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1501,10 +1501,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\PagosSociosController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\PagosSociosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1524,10 +1524,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\PagosSociosController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\PagosSociosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1547,10 +1547,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ProveedoresController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\ProveedoresController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1570,10 +1570,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ProveedoresController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\ProveedoresController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1593,10 +1593,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ProveedoresController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\ProveedoresController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1616,10 +1616,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ProveedoresController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\ProveedoresController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1639,10 +1639,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\ProveedoresController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\ProveedoresController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1662,10 +1662,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\SociosController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\SociosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1685,10 +1685,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\SociosController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\SociosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1708,10 +1708,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\SociosController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\SociosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1731,10 +1731,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\SociosController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\SociosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1754,10 +1754,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\SociosController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\SociosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1777,10 +1777,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\StockController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\StockController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1800,10 +1800,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\StockController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\StockController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1823,10 +1823,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\StockController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\StockController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1846,10 +1846,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\StockController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\StockController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1869,10 +1869,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\StockController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\StockController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1892,10 +1892,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\UsuariosController:list',
+                '_controller' => 'PHPMaker2025\\project221825\\UsuariosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1915,10 +1915,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\UsuariosController:add',
+                '_controller' => 'PHPMaker2025\\project221825\\UsuariosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1938,10 +1938,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\UsuariosController:view',
+                '_controller' => 'PHPMaker2025\\project221825\\UsuariosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1961,10 +1961,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\UsuariosController:edit',
+                '_controller' => 'PHPMaker2025\\project221825\\UsuariosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1984,10 +1984,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project1\\PermissionMiddleware',
-                    'PHPMaker2025\\project1\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project221825\\PermissionMiddleware',
+                    'PHPMaker2025\\project221825\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project1\\UsuariosController:delete',
+                '_controller' => 'PHPMaker2025\\project221825\\UsuariosController:delete',
             ],
             'requirements' => [],
             'options' => [

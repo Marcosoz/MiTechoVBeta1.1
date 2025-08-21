@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project1;
+namespace PHPMaker2025\project221825;
 
 use Psr\Container\ContainerInterface;
 use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
