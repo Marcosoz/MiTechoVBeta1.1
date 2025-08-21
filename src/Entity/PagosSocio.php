@@ -49,6 +49,9 @@ class PagosSocio extends AbstractEntity
     #[Column(name: "fecha", type: "date")]
     private DateTime $Fecha;
 
+    #[Column(name: "comprobante", type: "blob")]
+    private mixed $Comprobante;
+
     #[Column(name: "created_at", type: "datetime", nullable: true)]
     private ?DateTime $CreatedAt;
 
@@ -107,6 +110,17 @@ class PagosSocio extends AbstractEntity
     public function setFecha(DateTime $value): static
     {
         $this->Fecha = $value;
+        return $this;
+    }
+
+    public function getComprobante(): mixed
+    {
+        return $this->Comprobante;
+    }
+
+    public function setComprobante(mixed $value): static
+    {
+        $this->Comprobante = $value;
         return $this;
     }
 

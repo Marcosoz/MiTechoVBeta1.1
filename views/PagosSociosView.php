@@ -106,6 +106,18 @@ loadjs.ready("head", function () {
 </td>
     </tr>
 <?php } ?>
+<?php if ($Page->comprobante->Visible) { // comprobante ?>
+    <tr id="r_comprobante"<?= $Page->comprobante->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_pagos_socios_comprobante"><?= $Page->comprobante->caption() ?></span></td>
+        <td data-name="comprobante"<?= $Page->comprobante->cellAttributes() ?>>
+<span id="el_pagos_socios_comprobante">
+<span<?= $Page->comprobante->viewAttributes() ?>>
+<?= GetFileViewTag($Page->comprobante, $Page->comprobante->getViewValue(), false) ?>
+</span>
+</span>
+</td>
+    </tr>
+<?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
     <tr id="r_created_at"<?= $Page->created_at->rowAttributes() ?>>
         <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_pagos_socios_created_at"><?= $Page->created_at->caption() ?></span></td>

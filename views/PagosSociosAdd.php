@@ -26,6 +26,7 @@ loadjs.ready(["wrapper", "head"], function () {
             ["monto", [fields.monto.visible && fields.monto.required ? ew.Validators.required(fields.monto.caption) : null, ew.Validators.float], fields.monto.isInvalid],
             ["concepto", [fields.concepto.visible && fields.concepto.required ? ew.Validators.required(fields.concepto.caption) : null], fields.concepto.isInvalid],
             ["fecha", [fields.fecha.visible && fields.fecha.required ? ew.Validators.required(fields.fecha.caption) : null, ew.Validators.datetime(fields.fecha.clientFormatPattern)], fields.fecha.isInvalid],
+            ["comprobante", [fields.comprobante.visible && fields.comprobante.required ? ew.Validators.fileRequired(fields.comprobante.caption) : null], fields.comprobante.isInvalid],
             ["created_at", [fields.created_at.visible && fields.created_at.required ? ew.Validators.required(fields.created_at.caption) : null, ew.Validators.datetime(fields.created_at.clientFormatPattern)], fields.created_at.isInvalid],
             ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null, ew.Validators.integer], fields.cooperativa_id.isInvalid]
         ])
@@ -150,6 +151,41 @@ loadjs.ready(["fpagos_sociosadd", "datetimepicker"], function () {
 });
 </script>
 <?php } ?>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->comprobante->Visible) { // comprobante ?>
+    <div id="r_comprobante"<?= $Page->comprobante->rowAttributes() ?>>
+        <label id="elh_pagos_socios_comprobante" class="<?= $Page->LeftColumnClass ?>"><?= $Page->comprobante->caption() ?><?= $Page->comprobante->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->comprobante->cellAttributes() ?>>
+<span id="el_pagos_socios_comprobante">
+<div id="fd_x_comprobante" class="fileinput-button ew-file-drop-zone">
+    <input
+        type="file"
+        id="x_comprobante"
+        name="x_comprobante"
+        class="form-control ew-file-input"
+        title="<?= $Page->comprobante->title() ?>"
+        lang="<?= CurrentLanguageID() ?>"
+        data-table="pagos_socios"
+        data-field="x_comprobante"
+        data-size="65535"
+        data-accept-file-types="<?= $Page->comprobante->acceptFileTypes() ?>"
+        data-max-file-size="<?= $Page->comprobante->UploadMaxFileSize ?>"
+        data-max-number-of-files="null"
+        data-disable-image-crop="<?= $Page->comprobante->ImageCropper ? 0 : 1 ?>"
+        aria-describedby="x_comprobante_help"
+        <?= ($Page->comprobante->ReadOnly || $Page->comprobante->Disabled) ? " disabled" : "" ?>
+        <?= $Page->comprobante->editAttributes() ?>
+    >
+    <div class="text-body-secondary ew-file-text"><?= $Language->phrase("ChooseFile") ?></div>
+    <?= $Page->comprobante->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->comprobante->getErrorMessage() ?></div>
+</div>
+<input type="hidden" name="fn_x_comprobante" id= "fn_x_comprobante" value="<?= $Page->comprobante->Upload->FileName ?>">
+<input type="hidden" name="fa_x_comprobante" id= "fa_x_comprobante" value="0">
+<table id="ft_x_comprobante" class="table table-sm float-start ew-upload-table"><tbody class="files"></tbody></table>
 </span>
 </div></div>
     </div>

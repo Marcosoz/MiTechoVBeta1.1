@@ -137,9 +137,9 @@
             'dev_requirement' => false,
         ),
         'doctrine/persistence' => array(
-            'pretty_version' => '4.0.0',
-            'version' => '4.0.0.0',
-            'reference' => '45004aca79189474f113cbe3a53847c2115a55fa',
+            'pretty_version' => '4.0.1',
+            'version' => '4.0.1.0',
+            'reference' => '275afd6b2cbb1c8249d2c3af3d19054fc52f5dfd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/persistence',
             'aliases' => array(),

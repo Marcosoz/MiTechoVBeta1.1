@@ -138,6 +138,7 @@ class PagosSociosDelete extends PagosSocios
         $this->monto->setVisibility();
         $this->concepto->setVisibility();
         $this->fecha->setVisibility();
+        $this->comprobante->Visible = false;
         $this->created_at->setVisibility();
         $this->cooperativa_id->setVisibility();
     }
@@ -572,6 +573,10 @@ class PagosSociosDelete extends PagosSocios
         $this->monto->setDbValue($row['monto']);
         $this->concepto->setDbValue($row['concepto']);
         $this->fecha->setDbValue($row['fecha']);
+        $this->comprobante->Upload->DbValue = $row['comprobante'];
+        if (is_resource($this->comprobante->Upload->DbValue) && get_resource_type($this->comprobante->Upload->DbValue) == "stream") { // Byte array
+            $this->comprobante->Upload->DbValue = stream_get_contents($this->comprobante->Upload->DbValue);
+        }
         $this->created_at->setDbValue($row['created_at']);
         $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
@@ -585,6 +590,7 @@ class PagosSociosDelete extends PagosSocios
         $row['monto'] = $this->monto->DefaultValue;
         $row['concepto'] = $this->concepto->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
+        $row['comprobante'] = $this->comprobante->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
@@ -611,6 +617,8 @@ class PagosSociosDelete extends PagosSocios
         // concepto
 
         // fecha
+
+        // comprobante
 
         // created_at
 

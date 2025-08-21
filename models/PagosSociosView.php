@@ -156,6 +156,7 @@ class PagosSociosView extends PagosSocios
         $this->monto->setVisibility();
         $this->concepto->setVisibility();
         $this->fecha->setVisibility();
+        $this->comprobante->setVisibility();
         $this->created_at->setVisibility();
         $this->cooperativa_id->setVisibility();
     }
@@ -715,6 +716,10 @@ class PagosSociosView extends PagosSocios
         $this->monto->setDbValue($row['monto']);
         $this->concepto->setDbValue($row['concepto']);
         $this->fecha->setDbValue($row['fecha']);
+        $this->comprobante->Upload->DbValue = $row['comprobante'];
+        if (is_resource($this->comprobante->Upload->DbValue) && get_resource_type($this->comprobante->Upload->DbValue) == "stream") { // Byte array
+            $this->comprobante->Upload->DbValue = stream_get_contents($this->comprobante->Upload->DbValue);
+        }
         $this->created_at->setDbValue($row['created_at']);
         $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
@@ -728,6 +733,7 @@ class PagosSociosView extends PagosSocios
         $row['monto'] = $this->monto->DefaultValue;
         $row['concepto'] = $this->concepto->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
+        $row['comprobante'] = $this->comprobante->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
@@ -761,6 +767,8 @@ class PagosSociosView extends PagosSocios
 
         // fecha
 
+        // comprobante
+
         // created_at
 
         // cooperativa_id
@@ -784,6 +792,14 @@ class PagosSociosView extends PagosSocios
             // fecha
             $this->fecha->ViewValue = $this->fecha->CurrentValue;
             $this->fecha->ViewValue = FormatDateTime($this->fecha->ViewValue, $this->fecha->formatPattern());
+
+            // comprobante
+            if (!IsEmpty($this->comprobante->Upload->DbValue)) {
+                $this->comprobante->ViewValue = $this->id->CurrentValue;
+                $this->comprobante->IsBlobImage = IsImageFile(ContentExtension($this->comprobante->Upload->DbValue));
+            } else {
+                $this->comprobante->ViewValue = "";
+            }
 
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
@@ -812,6 +828,22 @@ class PagosSociosView extends PagosSocios
             // fecha
             $this->fecha->HrefValue = "";
             $this->fecha->TooltipValue = "";
+
+            // comprobante
+            if (!empty($this->comprobante->Upload->DbValue)) {
+                $this->comprobante->HrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
+                $this->comprobante->LinkAttrs["target"] = "";
+                if ($this->comprobante->IsBlobImage && empty($this->comprobante->LinkAttrs["target"])) {
+                    $this->comprobante->LinkAttrs["target"] = "_blank";
+                }
+                if ($this->isExport()) {
+                    $this->comprobante->HrefValue = FullUrl($this->comprobante->HrefValue, "href");
+                }
+            } else {
+                $this->comprobante->HrefValue = "";
+            }
+            $this->comprobante->ExportHrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
+            $this->comprobante->TooltipValue = "";
 
             // created_at
             $this->created_at->HrefValue = "";

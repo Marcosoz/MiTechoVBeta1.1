@@ -68,6 +68,7 @@ class PagosSocios extends DbTable implements LookupTableInterface
     public DbField $monto;
     public DbField $concepto;
     public DbField $fecha;
+    public DbField $comprobante;
     public DbField $created_at;
     public DbField $cooperativa_id;
 
@@ -236,6 +237,32 @@ class PagosSocios extends DbTable implements LookupTableInterface
         $this->fecha->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $this->language->phrase("IncorrectDate"));
         $this->fecha->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['fecha'] = &$this->fecha;
+
+        // comprobante
+        $this->comprobante = new DbField(
+            $this, // Table
+            'x_comprobante', // Variable name
+            'comprobante', // Name
+            '`comprobante`', // Expression
+            '`comprobante`', // Basic search expression
+            204, // Type
+            65535, // Size
+            -1, // Date/Time format
+            true, // Is upload field
+            '`comprobante`', // Virtual expression
+            false, // Is virtual
+            false, // Force selection
+            false, // Is Virtual search
+            'FORMATTED TEXT', // View Tag
+            'FILE' // Edit Tag
+        );
+        $this->comprobante->InputTextType = "text";
+        $this->comprobante->Raw = true;
+        $this->comprobante->Nullable = false; // NOT NULL field
+        $this->comprobante->Required = true; // Required field
+        $this->comprobante->Sortable = false; // Allow sort
+        $this->comprobante->SearchOperators = ["=", "<>"];
+        $this->Fields['comprobante'] = &$this->comprobante;
 
         // created_at
         $this->created_at = new DbField(
@@ -833,6 +860,7 @@ class PagosSocios extends DbTable implements LookupTableInterface
         $this->monto->DbValue = $row['monto'];
         $this->concepto->DbValue = $row['concepto'];
         $this->fecha->DbValue = $row['fecha'];
+        $this->comprobante->Upload->DbValue = $row['comprobante'];
         $this->created_at->DbValue = $row['created_at'];
         $this->cooperativa_id->DbValue = $row['cooperativa_id'];
     }
@@ -1195,6 +1223,7 @@ class PagosSocios extends DbTable implements LookupTableInterface
         $this->monto->setDbValue($row['monto']);
         $this->concepto->setDbValue($row['concepto']);
         $this->fecha->setDbValue($row['fecha']);
+        $this->comprobante->Upload->DbValue = $row['comprobante'];
         $this->created_at->setDbValue($row['created_at']);
         $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
@@ -1238,6 +1267,8 @@ class PagosSocios extends DbTable implements LookupTableInterface
 
         // fecha
 
+        // comprobante
+
         // created_at
 
         // cooperativa_id
@@ -1259,6 +1290,14 @@ class PagosSocios extends DbTable implements LookupTableInterface
         // fecha
         $this->fecha->ViewValue = $this->fecha->CurrentValue;
         $this->fecha->ViewValue = FormatDateTime($this->fecha->ViewValue, $this->fecha->formatPattern());
+
+        // comprobante
+        if (!IsEmpty($this->comprobante->Upload->DbValue)) {
+            $this->comprobante->ViewValue = $this->id->CurrentValue;
+            $this->comprobante->IsBlobImage = IsImageFile(ContentExtension($this->comprobante->Upload->DbValue));
+        } else {
+            $this->comprobante->ViewValue = "";
+        }
 
         // created_at
         $this->created_at->ViewValue = $this->created_at->CurrentValue;
@@ -1287,6 +1326,22 @@ class PagosSocios extends DbTable implements LookupTableInterface
         // fecha
         $this->fecha->HrefValue = "";
         $this->fecha->TooltipValue = "";
+
+        // comprobante
+        if (!empty($this->comprobante->Upload->DbValue)) {
+            $this->comprobante->HrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
+            $this->comprobante->LinkAttrs["target"] = "";
+            if ($this->comprobante->IsBlobImage && empty($this->comprobante->LinkAttrs["target"])) {
+                $this->comprobante->LinkAttrs["target"] = "_blank";
+            }
+            if ($this->isExport()) {
+                $this->comprobante->HrefValue = FullUrl($this->comprobante->HrefValue, "href");
+            }
+        } else {
+            $this->comprobante->HrefValue = "";
+        }
+        $this->comprobante->ExportHrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
+        $this->comprobante->TooltipValue = "";
 
         // created_at
         $this->created_at->HrefValue = "";
@@ -1332,6 +1387,7 @@ class PagosSocios extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->monto);
                     $doc->exportCaption($this->concepto);
                     $doc->exportCaption($this->fecha);
+                    $doc->exportCaption($this->comprobante);
                     $doc->exportCaption($this->created_at);
                     $doc->exportCaption($this->cooperativa_id);
                 } else {
@@ -1373,6 +1429,7 @@ class PagosSocios extends DbTable implements LookupTableInterface
                         $doc->exportField($this->monto);
                         $doc->exportField($this->concepto);
                         $doc->exportField($this->fecha);
+                        $doc->exportField($this->comprobante);
                         $doc->exportField($this->created_at);
                         $doc->exportField($this->cooperativa_id);
                     } else {
@@ -1416,8 +1473,122 @@ class PagosSocios extends DbTable implements LookupTableInterface
     public function getFileData(string $fldparm, string $key, bool $resize, int $width = 0, int $height = 0, array $plugins = []): Response
     {
         global $DownloadFileName;
+        $width = ($width > 0) ? $width : Config("THUMBNAIL_DEFAULT_WIDTH");
+        $height = ($height > 0) ? $height : Config("THUMBNAIL_DEFAULT_HEIGHT");
 
-        // No binary fields
+        // Set up field name / file name field / file type field
+        $fldName = "";
+        $fileNameFld = "";
+        $fileTypeFld = "";
+        if ($fldparm == 'comprobante') {
+            $fldName = "comprobante";
+        } else {
+            throw new InvalidArgumentException("Incorrect field '" . $fldparm . "'"); // Incorrect field
+        }
+
+        // Set up key values
+        $ar = explode(Config("COMPOSITE_KEY_SEPARATOR"), $key);
+        if (count($ar) == 1) {
+            $this->id->CurrentValue = $ar[0];
+        } else {
+            throw new InvalidArgumentException("Incorrect key '" . $key . "'"); // Incorrect key
+        }
+
+        // Set up filter (WHERE Clause)
+        $filter = $this->getRecordFilter();
+        $this->CurrentFilter = $filter;
+        $sql = $this->getCurrentSql();
+        $conn = $this->getConnection();
+        $dbtype = GetConnectionType($this->Dbid);
+        $response = ResponseFactory()->createResponse();
+        if ($row = $conn->fetchAssociative($sql)) {
+            $val = $row[$fldName];
+            if (!IsEmpty($val)) {
+                $fld = $this->Fields[$fldName];
+
+                // Binary data
+                if ($fld->DataType == DataType::BLOB) {
+                    if ($dbtype != "MYSQL") {
+                        if (is_resource($val) && get_resource_type($val) == "stream") { // Byte array
+                            $val = stream_get_contents($val);
+                        }
+                    }
+                    if ($resize) {
+                        ResizeBinary($val, $width, $height, plugins: $plugins);
+                    }
+
+                    // Write file type
+                    if ($fileTypeFld != "" && !IsEmpty($row[$fileTypeFld])) {
+                        $response = $response->withHeader("Content-type", $row[$fileTypeFld]);
+                    } else {
+                        $response = $response->withHeader("Content-type", ContentType($val));
+                    }
+
+                    // Write file name
+                    $downloadPdf = !Config("EMBED_PDF") && Config("DOWNLOAD_PDF_FILE");
+                    if ($fileNameFld != "" && !IsEmpty($row[$fileNameFld])) {
+                        $fileName = $row[$fileNameFld];
+                        $pathinfo = pathinfo($fileName);
+                        $ext = strtolower($pathinfo["extension"] ?? "");
+                        $isPdf = SameText($ext, "pdf");
+                        if ($downloadPdf || !$isPdf) { // Skip header if not download PDF
+                            $response = $response->withHeader("Content-Disposition", "attachment; filename=\"" . $fileName . "\"");
+                        }
+                    } else {
+                        $ext = ContentExtension($val);
+                        $isPdf = SameText($ext, ".pdf");
+                        if ($isPdf && $downloadPdf) { // Add header if download PDF
+                            $response = $response->withHeader("Content-Disposition", "attachment" . ($DownloadFileName ? "; filename=\"" . $DownloadFileName . "\"" : ""));
+                        }
+                    }
+
+                    // Write file data
+                    if (
+                        StartsString("PK", $val)
+                        && ContainsString($val, "[Content_Types].xml")
+                        && ContainsString($val, "_rels")
+                        && ContainsString($val, "docProps")
+                    ) { // Fix Office 2007 documents
+                        if (!EndsString("\0\0\0", $val)) { // Not ends with 3 or 4 \0
+                            $val .= "\0\0\0\0";
+                        }
+                    }
+
+                    // Clear any debug message
+                    if (ob_get_length()) {
+                        ob_end_clean();
+                    }
+
+                    // Write binary data
+                    $response = $response->write($val);
+
+                // Upload to folder
+                } else {
+                    if ($fld->UploadMultiple) {
+                        $files = explode(Config("MULTIPLE_UPLOAD_SEPARATOR"), $val);
+                    } else {
+                        $files = [$val];
+                    }
+                    $data = [];
+                    $ar = [];
+                    if ($fld->hasMethod("getUploadPath")) { // Check field level upload path
+                        $fld->UploadPath = $fld->getUploadPath();
+                    }
+                    foreach ($files as $file) {
+                        if (!IsEmpty($file)) {
+                            if (Config("ENCRYPT_FILE_PATH")) {
+                                $ar[$file] = FullUrl(GetApiUrl(Config("API_FILE_ACTION") .
+                                    "/" . $this->TableVar . "/" . Encrypt($fld->uploadPath() . $file)));
+                            } else {
+                                $ar[$file] = FullUrl($fld->hrefPath() . $file);
+                            }
+                        }
+                    }
+                    $data[$fld->Param] = $ar;
+                    $response = $response->withJson($data);
+                }
+            }
+        }
         return $response;
     }
 

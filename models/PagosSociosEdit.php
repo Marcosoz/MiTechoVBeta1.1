@@ -139,6 +139,7 @@ class PagosSociosEdit extends PagosSocios
         $this->monto->setVisibility();
         $this->concepto->setVisibility();
         $this->fecha->setVisibility();
+        $this->comprobante->setVisibility();
         $this->created_at->setVisibility();
         $this->cooperativa_id->setVisibility();
     }
@@ -664,6 +665,8 @@ class PagosSociosEdit extends PagosSocios
     // Get upload files
     protected function getUploadFiles(): void
     {
+        $this->comprobante->Upload->Index = $this->FormIndex;
+        $this->comprobante->Upload->uploadFile();
     }
 
     // Load form values
@@ -738,6 +741,7 @@ class PagosSociosEdit extends PagosSocios
                 $this->cooperativa_id->setFormValue($val, true, $validate);
             }
         }
+        $this->getUploadFiles(); // Get upload files
     }
 
     // Restore form values
@@ -796,6 +800,10 @@ class PagosSociosEdit extends PagosSocios
         $this->monto->setDbValue($row['monto']);
         $this->concepto->setDbValue($row['concepto']);
         $this->fecha->setDbValue($row['fecha']);
+        $this->comprobante->Upload->DbValue = $row['comprobante'];
+        if (is_resource($this->comprobante->Upload->DbValue) && get_resource_type($this->comprobante->Upload->DbValue) == "stream") { // Byte array
+            $this->comprobante->Upload->DbValue = stream_get_contents($this->comprobante->Upload->DbValue);
+        }
         $this->created_at->setDbValue($row['created_at']);
         $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
@@ -809,6 +817,7 @@ class PagosSociosEdit extends PagosSocios
         $row['monto'] = $this->monto->DefaultValue;
         $row['concepto'] = $this->concepto->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
+        $row['comprobante'] = $this->comprobante->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
@@ -860,6 +869,9 @@ class PagosSociosEdit extends PagosSocios
         // fecha
         $this->fecha->RowCssClass = "row";
 
+        // comprobante
+        $this->comprobante->RowCssClass = "row";
+
         // created_at
         $this->created_at->RowCssClass = "row";
 
@@ -886,6 +898,14 @@ class PagosSociosEdit extends PagosSocios
             $this->fecha->ViewValue = $this->fecha->CurrentValue;
             $this->fecha->ViewValue = FormatDateTime($this->fecha->ViewValue, $this->fecha->formatPattern());
 
+            // comprobante
+            if (!IsEmpty($this->comprobante->Upload->DbValue)) {
+                $this->comprobante->ViewValue = $this->id->CurrentValue;
+                $this->comprobante->IsBlobImage = IsImageFile(ContentExtension($this->comprobante->Upload->DbValue));
+            } else {
+                $this->comprobante->ViewValue = "";
+            }
+
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
@@ -908,6 +928,21 @@ class PagosSociosEdit extends PagosSocios
 
             // fecha
             $this->fecha->HrefValue = "";
+
+            // comprobante
+            if (!empty($this->comprobante->Upload->DbValue)) {
+                $this->comprobante->HrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
+                $this->comprobante->LinkAttrs["target"] = "";
+                if ($this->comprobante->IsBlobImage && empty($this->comprobante->LinkAttrs["target"])) {
+                    $this->comprobante->LinkAttrs["target"] = "_blank";
+                }
+                if ($this->isExport()) {
+                    $this->comprobante->HrefValue = FullUrl($this->comprobante->HrefValue, "href");
+                }
+            } else {
+                $this->comprobante->HrefValue = "";
+            }
+            $this->comprobante->ExportHrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
 
             // created_at
             $this->created_at->HrefValue = "";
@@ -945,6 +980,18 @@ class PagosSociosEdit extends PagosSocios
             $this->fecha->EditValue = FormatDateTime($this->fecha->CurrentValue, $this->fecha->formatPattern());
             $this->fecha->PlaceHolder = RemoveHtml($this->fecha->caption());
 
+            // comprobante
+            $this->comprobante->setupEditAttributes();
+            if (!IsEmpty($this->comprobante->Upload->DbValue)) {
+                $this->comprobante->EditValue = $this->id->CurrentValue;
+                $this->comprobante->IsBlobImage = IsImageFile(ContentExtension($this->comprobante->Upload->DbValue));
+            } else {
+                $this->comprobante->EditValue = "";
+            }
+            if ($this->isShow()) {
+                $this->comprobante->Upload->setupTempDirectory();
+            }
+
             // created_at
             $this->created_at->setupEditAttributes();
             $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
@@ -974,6 +1021,21 @@ class PagosSociosEdit extends PagosSocios
 
             // fecha
             $this->fecha->HrefValue = "";
+
+            // comprobante
+            if (!empty($this->comprobante->Upload->DbValue)) {
+                $this->comprobante->HrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
+                $this->comprobante->LinkAttrs["target"] = "";
+                if ($this->comprobante->IsBlobImage && empty($this->comprobante->LinkAttrs["target"])) {
+                    $this->comprobante->LinkAttrs["target"] = "_blank";
+                }
+                if ($this->isExport()) {
+                    $this->comprobante->HrefValue = FullUrl($this->comprobante->HrefValue, "href");
+                }
+            } else {
+                $this->comprobante->HrefValue = "";
+            }
+            $this->comprobante->ExportHrefValue = GetFileUploadUrl($this->comprobante, $this->id->CurrentValue);
 
             // created_at
             $this->created_at->HrefValue = "";
@@ -1032,6 +1094,11 @@ class PagosSociosEdit extends PagosSocios
             }
             if (!CheckDate($this->fecha->FormValue, $this->fecha->formatPattern())) {
                 $this->fecha->addErrorMessage($this->fecha->getErrorMessage(false));
+            }
+            if ($this->comprobante->Visible && $this->comprobante->Required) {
+                if ($this->comprobante->Upload->FileName == "" && !$this->comprobante->Upload->KeepFile) {
+                    $this->comprobante->addErrorMessage(str_replace("%s", $this->comprobante->caption(), $this->comprobante->RequiredErrorMessage));
+                }
             }
             if ($this->created_at->Visible && $this->created_at->Required) {
                 if (!$this->created_at->IsDetailKey && IsEmpty($this->created_at->FormValue)) {
@@ -1148,6 +1215,15 @@ class PagosSociosEdit extends PagosSocios
         // fecha
         $this->fecha->setDbValueDef($newRow, UnFormatDateTime($this->fecha->CurrentValue, $this->fecha->formatPattern()), $this->fecha->ReadOnly);
 
+        // comprobante
+        if ($this->comprobante->Visible && !$this->comprobante->ReadOnly && !$this->comprobante->Upload->KeepFile) {
+            if ($this->comprobante->Upload->Value === null) {
+                $newRow['comprobante'] = null;
+            } else {
+                $newRow['comprobante'] = $this->comprobante->Upload->Value;
+            }
+        }
+
         // created_at
         $this->created_at->setDbValueDef($newRow, UnFormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern()), $this->created_at->ReadOnly);
 
@@ -1173,6 +1249,9 @@ class PagosSociosEdit extends PagosSocios
         }
         if (isset($row['fecha'])) { // fecha
             $this->fecha->CurrentValue = $row['fecha'];
+        }
+        if (isset($row['comprobante'])) { // comprobante
+            $this->comprobante->CurrentValue = $row['comprobante'];
         }
         if (isset($row['created_at'])) { // created_at
             $this->created_at->CurrentValue = $row['created_at'];

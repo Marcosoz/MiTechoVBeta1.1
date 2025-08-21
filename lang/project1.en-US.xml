@@ -1,4 +1,4 @@
-<ew-language date="2025/8/20" id="en-US" author="e.World Technology Limited">
+<ew-language date="2025/8/21" id="en-US" author="e.World Technology Limited">
   <project>
     <phrase id="footertext" value="FloridabIT. All rights reserved." />
     <menu id="1">
@@ -220,6 +220,9 @@
       </field>
       <field id="fecha">
         <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="comprobante">
+        <phrase id="fldcaption" value="comprobante" />
       </field>
       <field id="created_at">
         <phrase id="fldcaption" value="created at" />
