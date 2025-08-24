@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use LightSaml\State\Sso\SsoState;
 use LightSaml\Store\Sso\SsoStateStoreInterface;

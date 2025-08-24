@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -758,6 +758,15 @@ class ComprasAdd extends Compras
             $res = true;
             $this->loadRowValues($row); // Load row values
         }
+
+        // Check if valid User ID
+        if ($res) {
+            $res = $this->showOptionLink("add");
+            if (!$res) {
+                $userIdMsg = DeniedMessage();
+                $this->setFailureMessage($userIdMsg);
+            }
+        }
         return $res;
     }
 
@@ -947,10 +956,16 @@ class ComprasAdd extends Compras
 
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
-            $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
-            if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
-                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
+            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
+                $this->cooperativa_id->CurrentValue = CurrentUserID();
+                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, $this->cooperativa_id->formatPattern());
+            } else {
+                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+                if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
+                    $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
+                }
             }
 
             // Add refer script
@@ -1068,6 +1083,17 @@ class ComprasAdd extends Compras
 
         // Update current values
         $this->Fields->setCurrentValues($newRow);
+
+        // Check if valid User ID
+        if (
+            !IsEmpty($this->security->currentUserID())
+            && !$this->security->canAccess() // No access permission
+            && !$this->security->isValidUserID($this->cooperativa_id->CurrentValue)
+        ) {
+            $userIdMsg = sprintf($this->language->phrase("UnauthorizedUserID"), CurrentUserID(), strval($this->cooperativa_id->CurrentValue));
+            $this->setFailureMessage($userIdMsg);
+            return false;
+        }
         $conn = $this->getConnection();
 
         // Load db values from old row
@@ -1136,6 +1162,15 @@ class ComprasAdd extends Compras
         // cooperativa_id
         $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
         return $newRow;
+    }
+
+    // Show link optionally based on User ID
+    protected function showOptionLink(string $id = ""): bool
+    {
+        if ($this->security->isLoggedIn() && !$this->security->canAccess() && !$this->userIDAllow($id)) { // No access permission
+            return $this->security->isValidUserID($this->cooperativa_id->CurrentValue);
+        }
+        return true;
     }
 
     // Set up Breadcrumb

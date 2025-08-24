@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 // Page object
 $SociosEdit = &$Page;
@@ -97,6 +97,11 @@ loadjs.ready("head", function () {
     <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
         <label id="elh_socios_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
+<?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("edit")) { // No access permission ?>
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<span class="form-control-plaintext"><?= $Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()) ?></span></span>
+<input type="hidden" data-table="socios" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
+<?php } else { ?>
 <span id="el_socios_cooperativa_id">
 <?php
 if (IsRTL()) {
@@ -115,6 +120,7 @@ loadjs.ready("fsociosedit", function() {
 });
 </script>
 </span>
+<?php } ?>
 </div></div>
     </div>
 <?php } ?>

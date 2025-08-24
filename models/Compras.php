@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -108,7 +108,6 @@ class Compras extends DbTable implements LookupTableInterface
         $this->GridAddRowCount = 5;
         $this->AllowAddDeleteRow = true; // Allow add/delete row
         $this->UseAjaxActions = $this->UseAjaxActions || Config("USE_AJAX_ACTIONS");
-        $this->UserIDPermission = Config("DEFAULT_USER_ID_PERMISSION"); // Default User ID permission
         $this->BasicSearch = new BasicSearch($this, Session(), $this->language);
 
         // id
@@ -517,6 +516,10 @@ class Compras extends DbTable implements LookupTableInterface
     // Apply User ID filters
     public function applyUserIDFilters(string $filter, string $id = ""): string
     {
+        // Add User ID filter
+        if ($this->security->currentUserID() != "" && !$this->security->canAccess()) { // No access permission
+            $filter = $this->addUserIDFilter($filter, $id);
+        }
         return $filter;
     }
 
@@ -1454,6 +1457,49 @@ class Compras extends DbTable implements LookupTableInterface
         return $value;
     }
 
+    // Add User ID filter
+    public function addUserIDFilter(string $filter = "", string $id = ""): string
+    {
+        $filterWrk = "";
+        if ($id == "") {
+            $id = CurrentPageID() == "list" ? strval($this->CurrentAction) : CurrentPageID();
+        }
+        if (!$this->userIDAllow($id) && !$this->security->canAccess()) {
+            $filterWrk = $this->security->userIdList();
+            if ($filterWrk != "") {
+                $filterWrk = '`cooperativa_id` IN (' . $filterWrk . ')';
+            }
+        }
+
+        // Call User ID Filtering event
+        $this->userIdFiltering($filterWrk);
+        AddFilter($filter, $filterWrk);
+        return $filter;
+    }
+
+    // User ID subquery
+    public function getUserIDSubquery(DbField &$fld, DbField &$masterfld): string
+    {
+        $wrk = "";
+        $sql = "SELECT " . $masterfld->Expression . " FROM compras";
+        $filter = $this->addUserIDFilter("");
+        if ($filter != "") {
+            $sql .= " WHERE " . $filter;
+        }
+
+        // List all values
+        $conn = Conn($this->Dbid);
+        if ($rows = $conn->executeCacheQuery($sql, [], [], $this->cacheProfile)->fetchAllNumeric()) {
+            $wrk = implode(",", array_map(fn($row) => QuotedValue($row[0], $masterfld->DataType, $this->Dbid), $rows));
+        }
+        if ($wrk != "") {
+            $wrk = $fld->Expression . " IN (" . $wrk . ")";
+        } else { // No User ID value found
+            $wrk = "0=1";
+        }
+        return $wrk;
+    }
+
     // Get file data
     public function getFileData(string $fldparm, string $key, bool $resize, int $width = 0, int $height = 0, array $plugins = []): Response
     {
@@ -1474,7 +1520,12 @@ class Compras extends DbTable implements LookupTableInterface
     // Records Selecting event
     public function recordsSelecting(string &$filter): void
     {
-        // Enter your code here
+    // Restringir registros por cooperativa
+    if (CurrentUserLevel() != -1) { // -1 = Administrador general
+        $cooperativaId = CurrentUserInfo("cooperativa_id");
+        $filter = "cooperativa_id = " . intval($cooperativaId);
+        AddFilter($filter, $filter);
+    }
     }
 
     // Records Selected event

@@ -4,7 +4,7 @@
  * PHPMaker configuration file
  */
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Notifier\Channel\EmailChannel;
@@ -142,7 +142,7 @@ $CONFIG = [
 
     // General
     "UNFORMAT_YEAR" => 50, // Unformat year
-    "PROJECT_STYLESHEET_FILENAME" => "css/project221825.css", // Project stylesheet file name
+    "PROJECT_STYLESHEET_FILENAME" => "css/project240825.css", // Project stylesheet file name
     "USE_COMPRESSED_STYLESHEET" => true, // Compressed stylesheet
     "FONT_AWESOME_STYLESHEET" => "plugins/fontawesome-free/css/all.min.css", // Font Awesome Free stylesheet
     "EXPORT_TABLE_CELL_STYLES" => ["border" => "1px solid #dddddd", "padding" => "5px"], // Export table cell CSS styles, use inline style for Gmail
@@ -369,7 +369,7 @@ $CONFIG = [
     "AUDIT_TRAIL_FIELD_NAME_NEWVALUE" => "", // New Value field name
 
     // Export Log
-    "EXPORT_PATH" => "export-4163245c-1e47-494b-853a-fa85d801b9ec", // Export folder
+    "EXPORT_PATH" => "export-91e0aa9a-3464-44a0-84fe-f7d207fcd4c4", // Export folder
     "EXPORT_LOG_DBID" => "DB", // DB ID
     "EXPORT_LOG_TABLE_NAME" => "", // Table name
     "EXPORT_LOG_TABLE_VAR" => "", // Table var
@@ -416,7 +416,7 @@ $CONFIG = [
     "LOGIN_USERNAME_FIELD_NAME" => "cedula",
     "LOGIN_USERNAME_PROPERTY_NAME" => "Cedula",
     "LOGIN_PASSWORD_FIELD_NAME" => "contraseña",
-    "USER_ID_FIELD_NAME" => "",
+    "USER_ID_FIELD_NAME" => "cooperativa_id",
     "PARENT_USER_ID_FIELD_NAME" => "",
     "USER_LEVEL_FIELD_NAME" => "nivel_usuario",
     "USER_PROFILE_FIELD_NAME" => "",

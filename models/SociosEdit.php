@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -829,6 +829,15 @@ class SociosEdit extends Socios
             $res = true;
             $this->loadRowValues($row); // Load row values
         }
+
+        // Check if valid User ID
+        if ($res) {
+            $res = $this->showOptionLink("edit");
+            if (!$res) {
+                $userIdMsg = DeniedMessage();
+                $this->setFailureMessage($userIdMsg);
+            }
+        }
         return $res;
     }
 
@@ -1027,9 +1036,14 @@ class SociosEdit extends Socios
 
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
-            $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->EditValue = RemoveHtml($this->cooperativa_id->EditValue);
-            $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("edit")) { // No access permission
+                $this->cooperativa_id->CurrentValue = CurrentUserID();
+                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+            } else {
+                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+                $this->cooperativa_id->EditValue = RemoveHtml($this->cooperativa_id->EditValue);
+                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+            }
 
             // nombre_completo
             $this->nombre_completo->setupEditAttributes();
@@ -1368,6 +1382,15 @@ class SociosEdit extends Socios
         if (isset($row['nivel_usuario'])) { // nivel_usuario
             $this->nivel_usuario->CurrentValue = $row['nivel_usuario'];
         }
+    }
+
+    // Show link optionally based on User ID
+    protected function showOptionLink(string $id = ""): bool
+    {
+        if ($this->security->isLoggedIn() && !$this->security->canAccess() && !$this->userIDAllow($id)) { // No access permission
+            return $this->security->isValidUserID($this->cooperativa_id->CurrentValue);
+        }
+        return true;
     }
 
     // Set up Breadcrumb

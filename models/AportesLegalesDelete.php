@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -402,6 +402,25 @@ class AportesLegalesDelete extends AportesLegales
         // Set up filter (WHERE Clause)
         $this->CurrentFilter = $filter;
 
+        // Check if valid User ID
+        $conn = $this->getConnection();
+        $sql = $this->getSql($this->CurrentFilter);
+        $rows = $conn->fetchAllAssociative($sql);
+        $res = true;
+        foreach ($rows as $row) {
+            $this->loadRowValues($row);
+            if (!$this->showOptionLink("delete")) {
+                $userIdMsg = $this->language->phrase("NoDeletePermission");
+                $this->setFailureMessage($userIdMsg);
+                $res = false;
+                break;
+            }
+        }
+        if (!$res) {
+            $this->terminate("AportesLegalesList"); // Return to list
+            return;
+        }
+
         // Get action
         if (IsApi()) {
             $this->CurrentAction = "delete"; // Delete record directly
@@ -778,6 +797,15 @@ class AportesLegalesDelete extends AportesLegales
             WriteJson(["success" => true, "action" => Config("API_DELETE_ACTION"), $table => $rows]);
         }
         return $deleteRows;
+    }
+
+    // Show link optionally based on User ID
+    protected function showOptionLink(string $id = ""): bool
+    {
+        if ($this->security->isLoggedIn() && !$this->security->canAccess() && !$this->userIDAllow($id)) { // No access permission
+            return $this->security->isValidUserID($this->cooperativa_id->CurrentValue);
+        }
+        return true;
     }
 
     // Set up Breadcrumb

@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
 */
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use Hybridauth\Adapter\OAuth2;
 use Hybridauth\Exception\UnexpectedApiResponseException;

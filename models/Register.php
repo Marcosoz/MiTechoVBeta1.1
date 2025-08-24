@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -999,6 +999,17 @@ class Register extends Socios
 
         // Update current values
         $this->Fields->setCurrentValues($newRow);
+
+        // Check if valid User ID
+        if (
+            !IsEmpty($this->security->currentUserID())
+            && !$this->security->canAccess() // No access permission
+            && !$this->security->isValidUserID($this->cooperativa_id->CurrentValue)
+        ) {
+            $userIdMsg = sprintf($this->language->phrase("UnauthorizedUserID"), CurrentUserID(), strval($this->cooperativa_id->CurrentValue));
+            $this->setFailureMessage($userIdMsg);
+            return false;
+        }
         $conn = $this->getConnection();
 
         // Load db values from old row

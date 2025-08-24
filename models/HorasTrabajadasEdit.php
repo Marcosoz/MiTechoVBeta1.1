@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -776,6 +776,15 @@ class HorasTrabajadasEdit extends HorasTrabajadas
             $res = true;
             $this->loadRowValues($row); // Load row values
         }
+
+        // Check if valid User ID
+        if ($res) {
+            $res = $this->showOptionLink("edit");
+            if (!$res) {
+                $userIdMsg = DeniedMessage();
+                $this->setFailureMessage($userIdMsg);
+            }
+        }
         return $res;
     }
 
@@ -952,10 +961,16 @@ class HorasTrabajadasEdit extends HorasTrabajadas
 
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
-            $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
-            if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
-                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
+            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("edit")) { // No access permission
+                $this->cooperativa_id->CurrentValue = CurrentUserID();
+                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, $this->cooperativa_id->formatPattern());
+            } else {
+                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+                if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
+                    $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
+                }
             }
 
             // Edit refer script
@@ -1180,6 +1195,15 @@ class HorasTrabajadasEdit extends HorasTrabajadas
         if (isset($row['cooperativa_id'])) { // cooperativa_id
             $this->cooperativa_id->CurrentValue = $row['cooperativa_id'];
         }
+    }
+
+    // Show link optionally based on User ID
+    protected function showOptionLink(string $id = ""): bool
+    {
+        if ($this->security->isLoggedIn() && !$this->security->canAccess() && !$this->userIDAllow($id)) { // No access permission
+            return $this->security->isValidUserID($this->cooperativa_id->CurrentValue);
+        }
+        return true;
     }
 
     // Set up Breadcrumb

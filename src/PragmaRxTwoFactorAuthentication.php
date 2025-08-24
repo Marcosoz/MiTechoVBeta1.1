@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use PragmaRX\Google2FA\Google2FA;
 use Com\Tecnick\Barcode\Barcode;

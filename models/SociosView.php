@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -651,7 +651,7 @@ class SociosView extends Socios
         } else {
             $item->Body = "<a class=\"ew-action ew-edit\" title=\"" . $editcaption . "\" data-caption=\"" . $editcaption . "\" href=\"" . HtmlEncode(GetUrl($this->EditUrl)) . "\">" . $this->language->phrase("ViewPageEditLink") . "</a>";
         }
-        $item->Visible = $this->EditUrl != "" && $this->security->canEdit();
+        $item->Visible = $this->EditUrl != "" && $this->security->canEdit() && $this->showOptionLink("edit");
 
         // Copy
         $item = &$option->add("copy");
@@ -661,7 +661,7 @@ class SociosView extends Socios
         } else {
             $item->Body = "<a class=\"ew-action ew-copy\" title=\"" . $copycaption . "\" data-caption=\"" . $copycaption . "\" href=\"" . HtmlEncode(GetUrl($this->CopyUrl)) . "\">" . $this->language->phrase("ViewPageCopyLink") . "</a>";
         }
-        $item->Visible = $this->CopyUrl != "" && $this->security->canAdd();
+        $item->Visible = $this->CopyUrl != "" && $this->security->canAdd() && $this->showOptionLink("add");
 
         // Delete
         $item = &$option->add("delete");
@@ -670,7 +670,7 @@ class SociosView extends Socios
             ($this->InlineDelete || $this->IsModal ? " data-ew-action=\"inline-delete\"" : "") .
             " title=\"" . HtmlTitle($this->language->phrase("ViewPageDeleteLink")) . "\" data-caption=\"" . HtmlTitle($this->language->phrase("ViewPageDeleteLink")) .
             "\" href=\"" . HtmlEncode($url) . "\">" . $this->language->phrase("ViewPageDeleteLink") . "</a>";
-        $item->Visible = $this->DeleteUrl != "" && $this->security->canDelete();
+        $item->Visible = $this->DeleteUrl != "" && $this->security->canDelete() && $this->showOptionLink("delete");
 
         // Set up action default
         $option = $options["action"];
@@ -888,6 +888,15 @@ class SociosView extends Socios
         if ($this->RowType != RowType::AGGREGATEINIT) {
             $this->rowRendered();
         }
+    }
+
+    // Show link optionally based on User ID
+    protected function showOptionLink(string $id = ""): bool
+    {
+        if ($this->security->isLoggedIn() && !$this->security->canAccess() && !$this->userIDAllow($id)) { // No access permission
+            return $this->security->isValidUserID($this->cooperativa_id->CurrentValue);
+        }
+        return true;
     }
 
     // Set up Breadcrumb

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -1366,7 +1366,7 @@ class IngresosList extends Ingresos
             // "view"
             $opt = $this->ListOptions["view"];
             $viewcaption = HtmlTitle($this->language->phrase("ViewLink"));
-            if ($this->security->canView()) {
+            if ($this->security->canView() && $this->showOptionLink("view")) {
                 if ($this->ModalView && !IsMobile()) {
                     $opt->Body = "<a class=\"ew-row-link ew-view\" title=\"" . $viewcaption . "\" data-table=\"ingresos\" data-caption=\"" . $viewcaption . "\" data-ew-action=\"modal\" data-action=\"view\" data-ajax=\"" . ($this->UseAjaxActions ? "true" : "false") . "\" data-url=\"" . HtmlEncode(GetUrl($this->ViewUrl)) . "\" data-btn=\"null\">" . $this->language->phrase("ViewLink") . "</a>";
                 } else {
@@ -1379,7 +1379,7 @@ class IngresosList extends Ingresos
             // "edit"
             $opt = $this->ListOptions["edit"];
             $editcaption = HtmlTitle($this->language->phrase("EditLink"));
-            if ($this->security->canEdit()) {
+            if ($this->security->canEdit() && $this->showOptionLink("edit")) {
                 if ($this->ModalEdit && !IsMobile()) {
                     $opt->Body = "<a class=\"ew-row-link ew-edit\" title=\"" . $editcaption . "\" data-table=\"ingresos\" data-caption=\"" . $editcaption . "\" data-ew-action=\"modal\" data-action=\"edit\" data-ajax=\"" . ($this->UseAjaxActions ? "true" : "false") . "\" data-url=\"" . HtmlEncode(GetUrl($this->EditUrl)) . "\" data-btn=\"SaveBtn\">" . $this->language->phrase("EditLink") . "</a>";
                 } else {
@@ -1392,7 +1392,7 @@ class IngresosList extends Ingresos
             // "copy"
             $opt = $this->ListOptions["copy"];
             $copycaption = HtmlTitle($this->language->phrase("CopyLink"));
-            if ($this->security->canAdd()) {
+            if ($this->security->canAdd() && $this->showOptionLink("add")) {
                 if ($this->ModalAdd && !IsMobile()) {
                     $opt->Body = "<a class=\"ew-row-link ew-copy\" title=\"" . $copycaption . "\" data-table=\"ingresos\" data-caption=\"" . $copycaption . "\" data-ew-action=\"modal\" data-action=\"add\" data-ajax=\"" . ($this->UseAjaxActions ? "true" : "false") . "\" data-url=\"" . HtmlEncode(GetUrl($this->CopyUrl)) . "\" data-btn=\"AddBtn\">" . $this->language->phrase("CopyLink") . "</a>";
                 } else {
@@ -1404,7 +1404,7 @@ class IngresosList extends Ingresos
 
             // "delete"
             $opt = $this->ListOptions["delete"];
-            if ($this->security->canDelete()) {
+            if ($this->security->canDelete() && $this->showOptionLink("delete")) {
                 $deleteCaption = $this->language->phrase("DeleteLink");
                 $deleteTitle = HtmlTitle($deleteCaption);
                 if ($this->UseAjaxActions) {
@@ -2131,6 +2131,15 @@ class IngresosList extends Ingresos
         if (!$this->hasSearchFields() && $this->SearchOptions["searchtoggle"]) {
             $this->SearchOptions["searchtoggle"]->Visible = false;
         }
+    }
+
+    // Show link optionally based on User ID
+    protected function showOptionLink(string $id = ""): bool
+    {
+        if ($this->security->isLoggedIn() && !$this->security->canAccess() && !$this->userIDAllow($id)) { // No access permission
+            return $this->security->isValidUserID($this->cooperativa_id->CurrentValue);
+        }
+        return true;
     }
 
     // Set up Breadcrumb

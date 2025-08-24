@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use Symfony\Component\Security\Core\User\InMemoryUser;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -1217,6 +1217,10 @@ class AdvancedSecurity
             $isAdmin = in_array((string)self::ADMIN_USER_LEVEL_ID, explode(Config("MULTIPLE_OPTION_SEPARATOR"), strval($this->CurrentUserLevelID)))
                 || $this->hasUserLevelID(self::ADMIN_USER_LEVEL_ID) || $this->canAdmin();
         }
+        if (!$isAdmin) {
+            $isAdmin = SameString($this->CurrentUserID, self::ADMIN_USER_LEVEL_ID)
+                || count(array_filter($this->UserIDs, fn($id) => SameString($id, self::ADMIN_USER_LEVEL_ID))) > 0;
+        }
         return $isAdmin;
     }
 
@@ -1252,6 +1256,91 @@ class AdvancedSecurity
             return LoadUserByIdentifier($this->currentUserName())?->get($fldname);
         }
         return null;
+    }
+
+    // Get User ID by user name
+    public function getUserIDByUserName(string $userName): mixed
+    {
+        return LoadUserByIdentifier($userName)?->get(Config("USER_ID_FIELD_NAME")) ?? "";
+    }
+
+    // Load User ID
+    public function loadUserID(): void
+    {
+        $this->UserIDs = [];
+        if (strval($this->CurrentUserID) == "") {
+            // Handle empty User ID here
+        } elseif ($this->CurrentUserID != self::ADMIN_USER_LEVEL_ID) {
+            // Get first level
+            $this->addUserID($this->CurrentUserID);
+            $userTable = UserTable();
+            $filter = "";
+            if (method_exists($userTable, "getUserIDFilter")) {
+                $filter = $userTable->getUserIDFilter($this->CurrentUserID);
+            }
+            $sql = $userTable->getSql($filter);
+            $rows = Conn($userTable->Dbid)->executeQuery($sql)->fetchAllAssociative();
+            foreach ($rows as $row) {
+                $this->addUserID($row[Config("USER_ID_FIELD_NAME")]);
+            }
+        }
+    }
+
+    // Add user name
+    public function addUserName(string $userName): void
+    {
+        $this->addUserID($this->getUserIDByUserName($userName));
+    }
+
+    // Add User ID
+    public function addUserID(mixed $userId): void
+    {
+        if (strval($userId) == "") {
+            return;
+        }
+        if (!is_numeric($userId)) {
+            return;
+        }
+        $userId = trim($userId);
+        if (!in_array($userId, $this->UserIDs)) {
+            $this->UserIDs[] = $userId;
+        }
+    }
+
+    // Delete user name
+    public function deleteUserName(string $userName): void
+    {
+        $this->deleteUserID($this->getUserIDByUserName($userName));
+    }
+
+    // Delete User ID
+    public function deleteUserID(mixed $userId): void
+    {
+        if (strval($userId) == "") {
+            return;
+        }
+        if (!is_numeric($userId)) {
+            return;
+        }
+        $cnt = count($this->UserIDs);
+        for ($i = 0; $i < $cnt; $i++) {
+            if (SameString($this->UserIDs[$i], $userId)) {
+                unset($this->UserIDs[$i]);
+                break;
+            }
+        }
+    }
+
+    // User ID list
+    public function userIDList(): string
+    {
+        return implode(", ", array_map(fn($userId) => QuotedValue($userId, DataType::NUMBER, Config("USER_TABLE_DBID")), $this->UserIDs));
+    }
+
+    // List of allowed User IDs for this user
+    public function isValidUserID(mixed $userId): bool
+    {
+        return strval($userId) !== "" && in_array(trim($userId), $this->UserIDs);
     }
 
     // Activate account based on user

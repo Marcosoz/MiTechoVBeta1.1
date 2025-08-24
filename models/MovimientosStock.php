@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -1438,7 +1438,12 @@ class MovimientosStock extends DbTable implements LookupTableInterface
     // Records Selecting event
     public function recordsSelecting(string &$filter): void
     {
-        // Enter your code here
+    // Restringir registros por cooperativa
+    if (CurrentUserLevel() != -1) { // -1 = Administrador general
+        $cooperativaId = CurrentUserInfo("cooperativa_id");
+        $filter = "cooperativa_id = " . intval($cooperativaId);
+        AddFilter($filter, $filter);
+    }
     }
 
     // Records Selected event

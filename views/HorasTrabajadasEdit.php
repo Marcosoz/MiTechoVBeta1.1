@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825;
+namespace PHPMaker2025\project240825;
 
 // Page object
 $HorasTrabajadasEdit = &$Page;
@@ -218,11 +218,17 @@ loadjs.ready(["fhoras_trabajadasedit", "datetimepicker"], function () {
     <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
         <label id="elh_horas_trabajadas_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
+<?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("edit")) { // No access permission ?>
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<input type="text" readonly class="form-control-plaintext" value="<?= HtmlEncode(RemoveHtml($Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()))) ?>"></span>
+<input type="hidden" data-table="horas_trabajadas" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
+<?php } else { ?>
 <span id="el_horas_trabajadas_cooperativa_id">
 <input type="<?= $Page->cooperativa_id->getInputTextType() ?>" name="x_cooperativa_id" id="x_cooperativa_id" data-table="horas_trabajadas" data-field="x_cooperativa_id" value="<?= $Page->cooperativa_id->getEditValue() ?>" size="30" placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->cooperativa_id->formatPattern()) ?>"<?= $Page->cooperativa_id->editAttributes() ?> aria-describedby="x_cooperativa_id_help">
 <?= $Page->cooperativa_id->getCustomMessage() ?>
 <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
 </span>
+<?php } ?>
 </div></div>
     </div>
 <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project221825\Entity;
+namespace PHPMaker2025\project240825\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project221825\AdvancedUserInterface;
-use PHPMaker2025\project221825\AbstractEntity;
-use PHPMaker2025\project221825\AdvancedSecurity;
-use PHPMaker2025\project221825\UserProfile;
-use PHPMaker2025\project221825\UserRepository;
-use function PHPMaker2025\project221825\Config;
-use function PHPMaker2025\project221825\EntityManager;
-use function PHPMaker2025\project221825\RemoveXss;
-use function PHPMaker2025\project221825\HtmlDecode;
-use function PHPMaker2025\project221825\HashPassword;
-use function PHPMaker2025\project221825\Security;
+use PHPMaker2025\project240825\AdvancedUserInterface;
+use PHPMaker2025\project240825\AbstractEntity;
+use PHPMaker2025\project240825\AdvancedSecurity;
+use PHPMaker2025\project240825\UserProfile;
+use PHPMaker2025\project240825\UserRepository;
+use function PHPMaker2025\project240825\Config;
+use function PHPMaker2025\project240825\EntityManager;
+use function PHPMaker2025\project240825\RemoveXss;
+use function PHPMaker2025\project240825\HtmlDecode;
+use function PHPMaker2025\project240825\HashPassword;
+use function PHPMaker2025\project240825\Security;
 
 /**
  * Entity class for "ingresos" table
