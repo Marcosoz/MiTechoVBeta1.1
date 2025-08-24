@@ -77,7 +77,7 @@ return array(
     'PhpMiddleware\\PhpDebugBar\\' => array($vendorDir . '/hkvstore/php-debug-bar/src'),
     'ParagonIE\\ConstantTime\\' => array($vendorDir . '/paragonie/constant_time_encoding/src'),
     'ParagonIE\\CSPBuilder\\' => array($vendorDir . '/paragonie/csp-builder/src'),
-    'PHPMaker2025\\project240825\\' => array($baseDir . '/src', $baseDir . '/models', $baseDir . '/controllers'),
+    'PHPMaker2025\\project240825SeleccionarManualCoop\\' => array($baseDir . '/src', $baseDir . '/models', $baseDir . '/controllers'),
     'Opis\\Uri\\' => array($vendorDir . '/opis/uri/src'),
     'Opis\\String\\' => array($vendorDir . '/opis/string/src'),
     'Opis\\JsonSchema\\' => array($vendorDir . '/opis/json-schema/src'),

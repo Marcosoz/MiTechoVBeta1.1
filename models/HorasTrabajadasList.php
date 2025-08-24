@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -156,12 +156,12 @@ class HorasTrabajadasList extends HorasTrabajadas
     public function setVisibility(): void
     {
         $this->id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->socio_id->setVisibility();
         $this->fecha->setVisibility();
         $this->horas->setVisibility();
         $this->tarea->setVisibility();
         $this->created_at->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -668,6 +668,9 @@ class HorasTrabajadasList extends HorasTrabajadas
         // Setup other options
         $this->setupOtherOptions();
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Update form name to avoid conflict
         if ($this->IsModal) {
             $this->FormName = "fhoras_trabajadasgrid";
@@ -1005,12 +1008,12 @@ class HorasTrabajadasList extends HorasTrabajadas
         $filterList = "";
         $savedFilterList = "";
         $filterList = Concat($filterList, $this->id->AdvancedSearch->toJson(), ","); // Field id
+        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         $filterList = Concat($filterList, $this->socio_id->AdvancedSearch->toJson(), ","); // Field socio_id
         $filterList = Concat($filterList, $this->fecha->AdvancedSearch->toJson(), ","); // Field fecha
         $filterList = Concat($filterList, $this->horas->AdvancedSearch->toJson(), ","); // Field horas
         $filterList = Concat($filterList, $this->tarea->AdvancedSearch->toJson(), ","); // Field tarea
         $filterList = Concat($filterList, $this->created_at->AdvancedSearch->toJson(), ","); // Field created_at
-        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1058,6 +1061,14 @@ class HorasTrabajadasList extends HorasTrabajadas
         $this->id->AdvancedSearch->SearchOperator2 = $filter["w_id"] ?? "";
         $this->id->AdvancedSearch->save();
 
+        // Field cooperativa_id
+        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->save();
+
         // Field socio_id
         $this->socio_id->AdvancedSearch->SearchValue = $filter["x_socio_id"] ?? "";
         $this->socio_id->AdvancedSearch->SearchOperator = $filter["z_socio_id"] ?? "";
@@ -1097,14 +1108,6 @@ class HorasTrabajadasList extends HorasTrabajadas
         $this->created_at->AdvancedSearch->SearchValue2 = $filter["y_created_at"] ?? "";
         $this->created_at->AdvancedSearch->SearchOperator2 = $filter["w_created_at"] ?? "";
         $this->created_at->AdvancedSearch->save();
-
-        // Field cooperativa_id
-        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1218,12 +1221,12 @@ class HorasTrabajadasList extends HorasTrabajadas
             $this->CurrentOrder = Get("order");
             $this->CurrentOrderType = Get("ordertype", "");
             $this->updateSort($this->id); // id
+            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->updateSort($this->socio_id); // socio_id
             $this->updateSort($this->fecha); // fecha
             $this->updateSort($this->horas); // horas
             $this->updateSort($this->tarea); // tarea
             $this->updateSort($this->created_at); // created_at
-            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1249,12 +1252,12 @@ class HorasTrabajadasList extends HorasTrabajadas
                 $orderBy = "";
                 $this->setSessionOrderBy($orderBy);
                 $this->id->setSort("");
+                $this->cooperativa_id->setSort("");
                 $this->socio_id->setSort("");
                 $this->fecha->setSort("");
                 $this->horas->setSort("");
                 $this->tarea->setSort("");
                 $this->created_at->setSort("");
-                $this->cooperativa_id->setSort("");
             }
 
             // Reset start position
@@ -1473,12 +1476,12 @@ class HorasTrabajadasList extends HorasTrabajadas
             $item->Body = "";
             $item->Visible = $this->UseColumnVisibility;
             $this->createColumnOption($option, "id");
+            $this->createColumnOption($option, "cooperativa_id");
             $this->createColumnOption($option, "socio_id");
             $this->createColumnOption($option, "fecha");
             $this->createColumnOption($option, "horas");
             $this->createColumnOption($option, "tarea");
             $this->createColumnOption($option, "created_at");
-            $this->createColumnOption($option, "cooperativa_id");
         }
 
         // Set up custom actions
@@ -1911,12 +1914,12 @@ class HorasTrabajadasList extends HorasTrabajadas
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->socio_id->setDbValue($row['socio_id']);
         $this->fecha->setDbValue($row['fecha']);
         $this->horas->setDbValue($row['horas']);
         $this->tarea->setDbValue($row['tarea']);
         $this->created_at->setDbValue($row['created_at']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -1924,12 +1927,12 @@ class HorasTrabajadasList extends HorasTrabajadas
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['socio_id'] = $this->socio_id->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['horas'] = $this->horas->DefaultValue;
         $row['tarea'] = $this->tarea->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -1972,6 +1975,8 @@ class HorasTrabajadasList extends HorasTrabajadas
 
         // id
 
+        // cooperativa_id
+
         // socio_id
 
         // fecha
@@ -1982,12 +1987,34 @@ class HorasTrabajadasList extends HorasTrabajadas
 
         // created_at
 
-        // cooperativa_id
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // socio_id
             $this->socio_id->ViewValue = $this->socio_id->CurrentValue;
@@ -2008,13 +2035,13 @@ class HorasTrabajadasList extends HorasTrabajadas
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
-            // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // socio_id
             $this->socio_id->HrefValue = "";
@@ -2035,10 +2062,6 @@ class HorasTrabajadasList extends HorasTrabajadas
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
-            $this->cooperativa_id->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -2133,6 +2156,8 @@ class HorasTrabajadasList extends HorasTrabajadas
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

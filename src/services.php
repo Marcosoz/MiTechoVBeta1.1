@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\NullAdapter;

@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
  */
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use Hybridauth\Exception\Exception;
 use Hybridauth\User;

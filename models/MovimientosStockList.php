@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -156,7 +156,7 @@ class MovimientosStockList extends MovimientosStock
     public function setVisibility(): void
     {
         $this->id->setVisibility();
-        $this->stock_id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->tipo_movimiento->setVisibility();
         $this->cantidad->setVisibility();
         $this->motivo->setVisibility();
@@ -669,6 +669,7 @@ class MovimientosStockList extends MovimientosStock
         $this->setupOtherOptions();
 
         // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
         $this->setupLookupOptions($this->tipo_movimiento);
 
         // Update form name to avoid conflict
@@ -1008,7 +1009,7 @@ class MovimientosStockList extends MovimientosStock
         $filterList = "";
         $savedFilterList = "";
         $filterList = Concat($filterList, $this->id->AdvancedSearch->toJson(), ","); // Field id
-        $filterList = Concat($filterList, $this->stock_id->AdvancedSearch->toJson(), ","); // Field stock_id
+        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         $filterList = Concat($filterList, $this->tipo_movimiento->AdvancedSearch->toJson(), ","); // Field tipo_movimiento
         $filterList = Concat($filterList, $this->cantidad->AdvancedSearch->toJson(), ","); // Field cantidad
         $filterList = Concat($filterList, $this->motivo->AdvancedSearch->toJson(), ","); // Field motivo
@@ -1061,13 +1062,13 @@ class MovimientosStockList extends MovimientosStock
         $this->id->AdvancedSearch->SearchOperator2 = $filter["w_id"] ?? "";
         $this->id->AdvancedSearch->save();
 
-        // Field stock_id
-        $this->stock_id->AdvancedSearch->SearchValue = $filter["x_stock_id"] ?? "";
-        $this->stock_id->AdvancedSearch->SearchOperator = $filter["z_stock_id"] ?? "";
-        $this->stock_id->AdvancedSearch->SearchCondition = $filter["v_stock_id"] ?? "";
-        $this->stock_id->AdvancedSearch->SearchValue2 = $filter["y_stock_id"] ?? "";
-        $this->stock_id->AdvancedSearch->SearchOperator2 = $filter["w_stock_id"] ?? "";
-        $this->stock_id->AdvancedSearch->save();
+        // Field cooperativa_id
+        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->save();
 
         // Field tipo_movimiento
         $this->tipo_movimiento->AdvancedSearch->SearchValue = $filter["x_tipo_movimiento"] ?? "";
@@ -1221,7 +1222,7 @@ class MovimientosStockList extends MovimientosStock
             $this->CurrentOrder = Get("order");
             $this->CurrentOrderType = Get("ordertype", "");
             $this->updateSort($this->id); // id
-            $this->updateSort($this->stock_id); // stock_id
+            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->updateSort($this->tipo_movimiento); // tipo_movimiento
             $this->updateSort($this->cantidad); // cantidad
             $this->updateSort($this->motivo); // motivo
@@ -1252,7 +1253,7 @@ class MovimientosStockList extends MovimientosStock
                 $orderBy = "";
                 $this->setSessionOrderBy($orderBy);
                 $this->id->setSort("");
-                $this->stock_id->setSort("");
+                $this->cooperativa_id->setSort("");
                 $this->tipo_movimiento->setSort("");
                 $this->cantidad->setSort("");
                 $this->motivo->setSort("");
@@ -1476,7 +1477,7 @@ class MovimientosStockList extends MovimientosStock
             $item->Body = "";
             $item->Visible = $this->UseColumnVisibility;
             $this->createColumnOption($option, "id");
-            $this->createColumnOption($option, "stock_id");
+            $this->createColumnOption($option, "cooperativa_id");
             $this->createColumnOption($option, "tipo_movimiento");
             $this->createColumnOption($option, "cantidad");
             $this->createColumnOption($option, "motivo");
@@ -1914,7 +1915,7 @@ class MovimientosStockList extends MovimientosStock
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
-        $this->stock_id->setDbValue($row['stock_id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->tipo_movimiento->setDbValue($row['tipo_movimiento']);
         $this->cantidad->setDbValue($row['cantidad']);
         $this->motivo->setDbValue($row['motivo']);
@@ -1927,7 +1928,7 @@ class MovimientosStockList extends MovimientosStock
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
-        $row['stock_id'] = $this->stock_id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['tipo_movimiento'] = $this->tipo_movimiento->DefaultValue;
         $row['cantidad'] = $this->cantidad->DefaultValue;
         $row['motivo'] = $this->motivo->DefaultValue;
@@ -1975,7 +1976,7 @@ class MovimientosStockList extends MovimientosStock
 
         // id
 
-        // stock_id
+        // cooperativa_id
 
         // tipo_movimiento
 
@@ -1992,9 +1993,29 @@ class MovimientosStockList extends MovimientosStock
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
 
-            // stock_id
-            $this->stock_id->ViewValue = $this->stock_id->CurrentValue;
-            $this->stock_id->ViewValue = FormatNumber($this->stock_id->ViewValue, $this->stock_id->formatPattern());
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // tipo_movimiento
             if (strval($this->tipo_movimiento->CurrentValue) != "") {
@@ -2022,9 +2043,9 @@ class MovimientosStockList extends MovimientosStock
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
 
-            // stock_id
-            $this->stock_id->HrefValue = "";
-            $this->stock_id->TooltipValue = "";
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // tipo_movimiento
             $this->tipo_movimiento->HrefValue = "";
@@ -2130,6 +2151,8 @@ class MovimientosStockList extends MovimientosStock
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 case "x_tipo_movimiento":
                     break;
                 default:

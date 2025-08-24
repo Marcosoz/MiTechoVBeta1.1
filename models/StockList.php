@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -156,11 +156,11 @@ class StockList extends Stock
     public function setVisibility(): void
     {
         $this->id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->nombre_material->setVisibility();
         $this->unidad->setVisibility();
         $this->cantidad->setVisibility();
         $this->descripcion->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -667,6 +667,9 @@ class StockList extends Stock
         // Setup other options
         $this->setupOtherOptions();
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Update form name to avoid conflict
         if ($this->IsModal) {
             $this->FormName = "fstockgrid";
@@ -1004,11 +1007,11 @@ class StockList extends Stock
         $filterList = "";
         $savedFilterList = "";
         $filterList = Concat($filterList, $this->id->AdvancedSearch->toJson(), ","); // Field id
+        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         $filterList = Concat($filterList, $this->nombre_material->AdvancedSearch->toJson(), ","); // Field nombre_material
         $filterList = Concat($filterList, $this->unidad->AdvancedSearch->toJson(), ","); // Field unidad
         $filterList = Concat($filterList, $this->cantidad->AdvancedSearch->toJson(), ","); // Field cantidad
         $filterList = Concat($filterList, $this->descripcion->AdvancedSearch->toJson(), ","); // Field descripcion
-        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1056,6 +1059,14 @@ class StockList extends Stock
         $this->id->AdvancedSearch->SearchOperator2 = $filter["w_id"] ?? "";
         $this->id->AdvancedSearch->save();
 
+        // Field cooperativa_id
+        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->save();
+
         // Field nombre_material
         $this->nombre_material->AdvancedSearch->SearchValue = $filter["x_nombre_material"] ?? "";
         $this->nombre_material->AdvancedSearch->SearchOperator = $filter["z_nombre_material"] ?? "";
@@ -1087,14 +1098,6 @@ class StockList extends Stock
         $this->descripcion->AdvancedSearch->SearchValue2 = $filter["y_descripcion"] ?? "";
         $this->descripcion->AdvancedSearch->SearchOperator2 = $filter["w_descripcion"] ?? "";
         $this->descripcion->AdvancedSearch->save();
-
-        // Field cooperativa_id
-        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1210,11 +1213,11 @@ class StockList extends Stock
             $this->CurrentOrder = Get("order");
             $this->CurrentOrderType = Get("ordertype", "");
             $this->updateSort($this->id); // id
+            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->updateSort($this->nombre_material); // nombre_material
             $this->updateSort($this->unidad); // unidad
             $this->updateSort($this->cantidad); // cantidad
             $this->updateSort($this->descripcion); // descripcion
-            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1240,11 +1243,11 @@ class StockList extends Stock
                 $orderBy = "";
                 $this->setSessionOrderBy($orderBy);
                 $this->id->setSort("");
+                $this->cooperativa_id->setSort("");
                 $this->nombre_material->setSort("");
                 $this->unidad->setSort("");
                 $this->cantidad->setSort("");
                 $this->descripcion->setSort("");
-                $this->cooperativa_id->setSort("");
             }
 
             // Reset start position
@@ -1463,11 +1466,11 @@ class StockList extends Stock
             $item->Body = "";
             $item->Visible = $this->UseColumnVisibility;
             $this->createColumnOption($option, "id");
+            $this->createColumnOption($option, "cooperativa_id");
             $this->createColumnOption($option, "nombre_material");
             $this->createColumnOption($option, "unidad");
             $this->createColumnOption($option, "cantidad");
             $this->createColumnOption($option, "descripcion");
-            $this->createColumnOption($option, "cooperativa_id");
         }
 
         // Set up custom actions
@@ -1900,11 +1903,11 @@ class StockList extends Stock
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->nombre_material->setDbValue($row['nombre_material']);
         $this->unidad->setDbValue($row['unidad']);
         $this->cantidad->setDbValue($row['cantidad']);
         $this->descripcion->setDbValue($row['descripcion']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -1912,11 +1915,11 @@ class StockList extends Stock
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['nombre_material'] = $this->nombre_material->DefaultValue;
         $row['unidad'] = $this->unidad->DefaultValue;
         $row['cantidad'] = $this->cantidad->DefaultValue;
         $row['descripcion'] = $this->descripcion->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -1959,6 +1962,8 @@ class StockList extends Stock
 
         // id
 
+        // cooperativa_id
+
         // nombre_material
 
         // unidad
@@ -1967,12 +1972,34 @@ class StockList extends Stock
 
         // descripcion
 
-        // cooperativa_id
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre_material
             $this->nombre_material->ViewValue = $this->nombre_material->CurrentValue;
@@ -1987,13 +2014,13 @@ class StockList extends Stock
             // descripcion
             $this->descripcion->ViewValue = $this->descripcion->CurrentValue;
 
-            // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // nombre_material
             $this->nombre_material->HrefValue = "";
@@ -2010,10 +2037,6 @@ class StockList extends Stock
             // descripcion
             $this->descripcion->HrefValue = "";
             $this->descripcion->TooltipValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
-            $this->cooperativa_id->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -2108,6 +2131,8 @@ class StockList extends Stock
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

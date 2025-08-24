@@ -4,7 +4,7 @@
  * PHPMaker constants
  */
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 /**
  * Constants
@@ -19,8 +19,8 @@ define(PROJECT_NAMESPACE . "PATH_DELIMITER", IS_WINDOWS ? "\\" : "/"); // Physic
 define(PROJECT_NAMESPACE . "PRODUCT_VERSION", "25.12.0");
 
 // Project
-define(PROJECT_NAMESPACE . "PROJECT_NAME", "project240825"); // Project name
-define(PROJECT_NAMESPACE . "PROJECT_ID", "{91E0AA9A-3464-44A0-84FE-F7D207FCD4C4}"); // Project ID
+define(PROJECT_NAMESPACE . "PROJECT_NAME", "project240825SeleccionarManualCoop"); // Project name
+define(PROJECT_NAMESPACE . "PROJECT_ID", "{B7BE75E3-663E-4081-9EE1-23CDCEE47BA8}"); // Project ID
 
 // Character encoding (utf-8)
 define(PROJECT_NAMESPACE . "PROJECT_CHARSET", "utf-8"); // Charset

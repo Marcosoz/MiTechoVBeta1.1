@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -622,7 +622,7 @@ class Register extends Socios
             if (IsApi() && $val === null) {
                 $this->cooperativa_id->Visible = false; // Disable update for API request
             } else {
-                $this->cooperativa_id->setFormValue($val, true, $validate);
+                $this->cooperativa_id->setFormValue($val);
             }
         }
 
@@ -803,7 +803,28 @@ class Register extends Socios
             $this->id->ViewValue = $this->id->CurrentValue;
 
             // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre_completo
             $this->nombre_completo->ViewValue = $this->nombre_completo->CurrentValue;
@@ -875,8 +896,34 @@ class Register extends Socios
 
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
-            $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->EditValue = RemoveHtml($this->cooperativa_id->EditValue);
+            $curVal = trim(strval($this->cooperativa_id->CurrentValue));
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+            } else {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->Lookup !== null && is_array($this->cooperativa_id->lookupOptions()) && count($this->cooperativa_id->lookupOptions()) > 0 ? $curVal : null;
+            }
+            if ($this->cooperativa_id->ViewValue !== null) { // Load from cache
+                $this->cooperativa_id->EditValue = array_values($this->cooperativa_id->lookupOptions());
+            } else { // Lookup from database
+                if ($curVal == "") {
+                    $filterWrk = "0=1";
+                } else {
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $this->cooperativa_id->CurrentValue, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                }
+                $sqlWrk = $this->cooperativa_id->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                $rows = [];
+                if ($ari > 0) { // Lookup values found
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                    }
+                } else {
+                    $this->cooperativa_id->ViewValue = $this->language->phrase("PleaseSelect");
+                }
+                $this->cooperativa_id->EditValue = $rows;
+            }
             $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
 
             // nombre_completo
@@ -948,9 +995,6 @@ class Register extends Socios
                 if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
                     $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
                 }
-            }
-            if (!CheckInteger($this->cooperativa_id->FormValue)) {
-                $this->cooperativa_id->addErrorMessage($this->cooperativa_id->getErrorMessage(false));
             }
             if ($this->nombre_completo->Visible && $this->nombre_completo->Required) {
                 if (!$this->nombre_completo->IsDetailKey && IsEmpty($this->nombre_completo->FormValue)) {

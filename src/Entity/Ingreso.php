@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825\Entity;
+namespace PHPMaker2025\project240825SeleccionarManualCoop\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project240825\AdvancedUserInterface;
-use PHPMaker2025\project240825\AbstractEntity;
-use PHPMaker2025\project240825\AdvancedSecurity;
-use PHPMaker2025\project240825\UserProfile;
-use PHPMaker2025\project240825\UserRepository;
-use function PHPMaker2025\project240825\Config;
-use function PHPMaker2025\project240825\EntityManager;
-use function PHPMaker2025\project240825\RemoveXss;
-use function PHPMaker2025\project240825\HtmlDecode;
-use function PHPMaker2025\project240825\HashPassword;
-use function PHPMaker2025\project240825\Security;
+use PHPMaker2025\project240825SeleccionarManualCoop\AdvancedUserInterface;
+use PHPMaker2025\project240825SeleccionarManualCoop\AbstractEntity;
+use PHPMaker2025\project240825SeleccionarManualCoop\AdvancedSecurity;
+use PHPMaker2025\project240825SeleccionarManualCoop\UserProfile;
+use PHPMaker2025\project240825SeleccionarManualCoop\UserRepository;
+use function PHPMaker2025\project240825SeleccionarManualCoop\Config;
+use function PHPMaker2025\project240825SeleccionarManualCoop\EntityManager;
+use function PHPMaker2025\project240825SeleccionarManualCoop\RemoveXss;
+use function PHPMaker2025\project240825SeleccionarManualCoop\HtmlDecode;
+use function PHPMaker2025\project240825SeleccionarManualCoop\HashPassword;
+use function PHPMaker2025\project240825SeleccionarManualCoop\Security;
 
 /**
  * Entity class for "ingresos" table
@@ -36,6 +36,9 @@ class Ingreso extends AbstractEntity
     #[Column(name: "id", type: "integer", unique: true)]
     #[GeneratedValue]
     private int $Id;
+
+    #[Column(name: "cooperativa_id", type: "integer", nullable: true)]
+    private ?int $CooperativaId;
 
     #[Column(name: "socio_id", type: "integer")]
     private int $SocioId;
@@ -55,9 +58,6 @@ class Ingreso extends AbstractEntity
     #[Column(name: "created_at", type: "datetime", nullable: true)]
     private ?DateTime $CreatedAt;
 
-    #[Column(name: "cooperativa_id", type: "integer", nullable: true)]
-    private ?int $CooperativaId;
-
     public function getId(): int
     {
         return $this->Id;
@@ -66,6 +66,17 @@ class Ingreso extends AbstractEntity
     public function setId(int $value): static
     {
         $this->Id = $value;
+        return $this;
+    }
+
+    public function getCooperativaId(): ?int
+    {
+        return $this->CooperativaId;
+    }
+
+    public function setCooperativaId(?int $value): static
+    {
+        $this->CooperativaId = $value;
         return $this;
     }
 
@@ -135,17 +146,6 @@ class Ingreso extends AbstractEntity
     public function setCreatedAt(?DateTime $value): static
     {
         $this->CreatedAt = $value;
-        return $this;
-    }
-
-    public function getCooperativaId(): ?int
-    {
-        return $this->CooperativaId;
-    }
-
-    public function setCooperativaId(?int $value): static
-    {
-        $this->CooperativaId = $value;
         return $this;
     }
 }

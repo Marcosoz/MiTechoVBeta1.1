@@ -121,7 +121,7 @@ class ComposerStaticInitbd16047974e11023547e4c5b14c56f11
             'PhpMiddleware\\PhpDebugBar\\' => 26,
             'ParagonIE\\ConstantTime\\' => 23,
             'ParagonIE\\CSPBuilder\\' => 21,
-            'PHPMaker2025\\project240825\\' => 27,
+            'PHPMaker2025\\project240825SeleccionarManualCoop\\' => 48,
         ),
         'O' => 
         array (
@@ -498,7 +498,7 @@ class ComposerStaticInitbd16047974e11023547e4c5b14c56f11
         array (
             0 => __DIR__ . '/..' . '/paragonie/csp-builder/src',
         ),
-        'PHPMaker2025\\project240825\\' => 
+        'PHPMaker2025\\project240825SeleccionarManualCoop\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/models',

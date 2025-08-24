@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $MovimientosStockAdd = &$Page;
@@ -22,7 +22,7 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Add fields
         .setFields([
-            ["stock_id", [fields.stock_id.visible && fields.stock_id.required ? ew.Validators.required(fields.stock_id.caption) : null, ew.Validators.integer], fields.stock_id.isInvalid],
+            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null], fields.cooperativa_id.isInvalid],
             ["tipo_movimiento", [fields.tipo_movimiento.visible && fields.tipo_movimiento.required ? ew.Validators.required(fields.tipo_movimiento.caption) : null], fields.tipo_movimiento.isInvalid],
             ["cantidad", [fields.cantidad.visible && fields.cantidad.required ? ew.Validators.required(fields.cantidad.caption) : null, ew.Validators.float], fields.cantidad.isInvalid],
             ["motivo", [fields.motivo.visible && fields.motivo.required ? ew.Validators.required(fields.motivo.caption) : null], fields.motivo.isInvalid],
@@ -43,6 +43,7 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
+            "cooperativa_id": <?= $Page->cooperativa_id->toClientList($Page) ?>,
             "tipo_movimiento": <?= $Page->tipo_movimiento->toClientList($Page) ?>,
         })
         .build();
@@ -73,14 +74,48 @@ $Page->showMessage();
 <?php } ?>
 <input type="hidden" name="<?= $Page->getFormOldKeyName() ?>" value="<?= $Page->OldKey ?>">
 <div class="ew-add-div"><!-- page* -->
-<?php if ($Page->stock_id->Visible) { // stock_id ?>
-    <div id="r_stock_id"<?= $Page->stock_id->rowAttributes() ?>>
-        <label id="elh_movimientos_stock_stock_id" for="x_stock_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->stock_id->caption() ?><?= $Page->stock_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->stock_id->cellAttributes() ?>>
-<span id="el_movimientos_stock_stock_id">
-<input type="<?= $Page->stock_id->getInputTextType() ?>" name="x_stock_id" id="x_stock_id" data-table="movimientos_stock" data-field="x_stock_id" value="<?= $Page->stock_id->getEditValue() ?>" size="30" placeholder="<?= HtmlEncode($Page->stock_id->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->stock_id->formatPattern()) ?>"<?= $Page->stock_id->editAttributes() ?> aria-describedby="x_stock_id_help">
-<?= $Page->stock_id->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->stock_id->getErrorMessage() ?></div>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+    <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
+        <label id="elh_movimientos_stock_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="el_movimientos_stock_cooperativa_id">
+    <select
+        id="x_cooperativa_id"
+        name="x_cooperativa_id"
+        class="form-select ew-select<?= $Page->cooperativa_id->isInvalidClass() ?>"
+        <?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+        data-select2-id="fmovimientos_stockadd_x_cooperativa_id"
+        <?php } ?>
+        data-table="movimientos_stock"
+        data-field="x_cooperativa_id"
+        data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>"
+        <?= $Page->cooperativa_id->editAttributes() ?>>
+        <?= $Page->cooperativa_id->selectOptionListHtml("x_cooperativa_id") ?>
+    </select>
+    <?= $Page->cooperativa_id->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+<?= $Page->cooperativa_id->Lookup->getParamTag($Page, "p_x_cooperativa_id") ?>
+<?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready("fmovimientos_stockadd", function() {
+    var options = { name: "x_cooperativa_id", selectId: "fmovimientos_stockadd_x_cooperativa_id" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fmovimientos_stockadd.lists.cooperativa_id?.lookupOptions.length) {
+        options.data = { id: "x_cooperativa_id", form: "fmovimientos_stockadd" };
+    } else {
+        options.ajax = { id: "x_cooperativa_id", form: "fmovimientos_stockadd", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.movimientos_stock.fields.cooperativa_id.selectOptions);
+    ew.createSelect(options);
+});
+</script>
+<?php } ?>
 </span>
 </div></div>
     </div>

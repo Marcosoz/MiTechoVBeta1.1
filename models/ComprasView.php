@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -152,13 +152,13 @@ class ComprasView extends Compras
     public function setVisibility(): void
     {
         $this->id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->proveedor_id->setVisibility();
         $this->fecha->setVisibility();
         $this->descripcion->setVisibility();
         $this->monto->setVisibility();
         $this->saldo_pendiente->setVisibility();
         $this->created_at->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -516,6 +516,9 @@ class ComprasView extends Compras
             $this->InlineDelete = true;
         }
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Check modal
         if ($this->IsModal) {
             $SkipHeaderFooter = true;
@@ -712,13 +715,13 @@ class ComprasView extends Compras
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->proveedor_id->setDbValue($row['proveedor_id']);
         $this->fecha->setDbValue($row['fecha']);
         $this->descripcion->setDbValue($row['descripcion']);
         $this->monto->setDbValue($row['monto']);
         $this->saldo_pendiente->setDbValue($row['saldo_pendiente']);
         $this->created_at->setDbValue($row['created_at']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -726,13 +729,13 @@ class ComprasView extends Compras
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['proveedor_id'] = $this->proveedor_id->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['descripcion'] = $this->descripcion->DefaultValue;
         $row['monto'] = $this->monto->DefaultValue;
         $row['saldo_pendiente'] = $this->saldo_pendiente->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -756,6 +759,8 @@ class ComprasView extends Compras
 
         // id
 
+        // cooperativa_id
+
         // proveedor_id
 
         // fecha
@@ -768,12 +773,34 @@ class ComprasView extends Compras
 
         // created_at
 
-        // cooperativa_id
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // proveedor_id
             $this->proveedor_id->ViewValue = $this->proveedor_id->CurrentValue;
@@ -798,13 +825,13 @@ class ComprasView extends Compras
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
-            // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // proveedor_id
             $this->proveedor_id->HrefValue = "";
@@ -829,10 +856,6 @@ class ComprasView extends Compras
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
-            $this->cooperativa_id->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -873,6 +896,8 @@ class ComprasView extends Compras
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

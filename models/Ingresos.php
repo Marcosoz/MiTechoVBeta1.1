@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -64,13 +64,13 @@ class Ingresos extends DbTable implements LookupTableInterface
 
     // Fields
     public DbField $id;
+    public DbField $cooperativa_id;
     public DbField $socio_id;
     public DbField $tipo_ingreso;
     public DbField $descripcion;
     public DbField $monto;
     public DbField $fecha;
     public DbField $created_at;
-    public DbField $cooperativa_id;
 
     // Page ID
     public string $PageID = ""; // To be set by subclass
@@ -136,6 +136,34 @@ class Ingresos extends DbTable implements LookupTableInterface
         $this->id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
         $this->id->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['id'] = &$this->id;
+
+        // cooperativa_id
+        $this->cooperativa_id = new DbField(
+            $this, // Table
+            'x_cooperativa_id', // Variable name
+            'cooperativa_id', // Name
+            '`cooperativa_id`', // Expression
+            '`cooperativa_id`', // Basic search expression
+            3, // Type
+            11, // Size
+            -1, // Date/Time format
+            false, // Is upload field
+            '`cooperativa_id`', // Virtual expression
+            false, // Is virtual
+            false, // Force selection
+            false, // Is Virtual search
+            'FORMATTED TEXT', // View Tag
+            'SELECT' // Edit Tag
+        );
+        $this->cooperativa_id->InputTextType = "text";
+        $this->cooperativa_id->Raw = true;
+        $this->cooperativa_id->setSelectMultiple(false); // Select one
+        $this->cooperativa_id->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->cooperativa_id->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        $this->cooperativa_id->Lookup = new Lookup($this->cooperativa_id, 'cooperativas', false, 'id', ["nombre","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nombre`");
+        $this->cooperativa_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
+        $this->cooperativa_id->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
+        $this->Fields['cooperativa_id'] = &$this->cooperativa_id;
 
         // socio_id
         $this->socio_id = new DbField(
@@ -287,30 +315,6 @@ class Ingresos extends DbTable implements LookupTableInterface
         $this->created_at->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $this->language->phrase("IncorrectDate"));
         $this->created_at->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
         $this->Fields['created_at'] = &$this->created_at;
-
-        // cooperativa_id
-        $this->cooperativa_id = new DbField(
-            $this, // Table
-            'x_cooperativa_id', // Variable name
-            'cooperativa_id', // Name
-            '`cooperativa_id`', // Expression
-            '`cooperativa_id`', // Basic search expression
-            3, // Type
-            11, // Size
-            -1, // Date/Time format
-            false, // Is upload field
-            '`cooperativa_id`', // Virtual expression
-            false, // Is virtual
-            false, // Force selection
-            false, // Is Virtual search
-            'FORMATTED TEXT', // View Tag
-            'TEXT' // Edit Tag
-        );
-        $this->cooperativa_id->InputTextType = "text";
-        $this->cooperativa_id->Raw = true;
-        $this->cooperativa_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
-        $this->cooperativa_id->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
-        $this->Fields['cooperativa_id'] = &$this->cooperativa_id;
 
         // Cache profile
         $this->cacheProfile = new QueryCacheProfile(0, $this->TableVar, Container("result.cache"));
@@ -860,13 +864,13 @@ class Ingresos extends DbTable implements LookupTableInterface
             return;
         }
         $this->id->DbValue = $row['id'];
+        $this->cooperativa_id->DbValue = $row['cooperativa_id'];
         $this->socio_id->DbValue = $row['socio_id'];
         $this->tipo_ingreso->DbValue = $row['tipo_ingreso'];
         $this->descripcion->DbValue = $row['descripcion'];
         $this->monto->DbValue = $row['monto'];
         $this->fecha->DbValue = $row['fecha'];
         $this->created_at->DbValue = $row['created_at'];
-        $this->cooperativa_id->DbValue = $row['cooperativa_id'];
     }
 
     // Delete uploaded files
@@ -1223,13 +1227,13 @@ class Ingresos extends DbTable implements LookupTableInterface
     public function loadListRowValues(array &$row)
     {
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->socio_id->setDbValue($row['socio_id']);
         $this->tipo_ingreso->setDbValue($row['tipo_ingreso']);
         $this->descripcion->setDbValue($row['descripcion']);
         $this->monto->setDbValue($row['monto']);
         $this->fecha->setDbValue($row['fecha']);
         $this->created_at->setDbValue($row['created_at']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Render list content
@@ -1263,6 +1267,8 @@ class Ingresos extends DbTable implements LookupTableInterface
 
         // id
 
+        // cooperativa_id
+
         // socio_id
 
         // tipo_ingreso
@@ -1275,10 +1281,32 @@ class Ingresos extends DbTable implements LookupTableInterface
 
         // created_at
 
-        // cooperativa_id
-
         // id
         $this->id->ViewValue = $this->id->CurrentValue;
+
+        // cooperativa_id
+        $curVal = strval($this->cooperativa_id->CurrentValue);
+        if ($curVal != "") {
+            $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+            if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                if ($ari > 0) { // Lookup values found
+                    $rows = [];
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                    }
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                } else {
+                    $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                }
+            }
+        } else {
+            $this->cooperativa_id->ViewValue = null;
+        }
 
         // socio_id
         $this->socio_id->ViewValue = $this->socio_id->CurrentValue;
@@ -1306,13 +1334,13 @@ class Ingresos extends DbTable implements LookupTableInterface
         $this->created_at->ViewValue = $this->created_at->CurrentValue;
         $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
-        // cooperativa_id
-        $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
         // id
         $this->id->HrefValue = "";
         $this->id->TooltipValue = "";
+
+        // cooperativa_id
+        $this->cooperativa_id->HrefValue = "";
+        $this->cooperativa_id->TooltipValue = "";
 
         // socio_id
         $this->socio_id->HrefValue = "";
@@ -1337,10 +1365,6 @@ class Ingresos extends DbTable implements LookupTableInterface
         // created_at
         $this->created_at->HrefValue = "";
         $this->created_at->TooltipValue = "";
-
-        // cooperativa_id
-        $this->cooperativa_id->HrefValue = "";
-        $this->cooperativa_id->TooltipValue = "";
 
         // Call Row Rendered event
         $this->rowRendered();
@@ -1374,22 +1398,22 @@ class Ingresos extends DbTable implements LookupTableInterface
                 $doc->beginExportRow();
                 if ($exportPageType == "view") {
                     $doc->exportCaption($this->id);
+                    $doc->exportCaption($this->cooperativa_id);
                     $doc->exportCaption($this->socio_id);
                     $doc->exportCaption($this->tipo_ingreso);
                     $doc->exportCaption($this->descripcion);
                     $doc->exportCaption($this->monto);
                     $doc->exportCaption($this->fecha);
                     $doc->exportCaption($this->created_at);
-                    $doc->exportCaption($this->cooperativa_id);
                 } else {
                     $doc->exportCaption($this->id);
+                    $doc->exportCaption($this->cooperativa_id);
                     $doc->exportCaption($this->socio_id);
                     $doc->exportCaption($this->tipo_ingreso);
                     $doc->exportCaption($this->descripcion);
                     $doc->exportCaption($this->monto);
                     $doc->exportCaption($this->fecha);
                     $doc->exportCaption($this->created_at);
-                    $doc->exportCaption($this->cooperativa_id);
                 }
                 $doc->endExportRow();
             }
@@ -1417,22 +1441,22 @@ class Ingresos extends DbTable implements LookupTableInterface
                     $doc->beginExportRow($rowCnt); // Allow CSS styles if enabled
                     if ($exportPageType == "view") {
                         $doc->exportField($this->id);
+                        $doc->exportField($this->cooperativa_id);
                         $doc->exportField($this->socio_id);
                         $doc->exportField($this->tipo_ingreso);
                         $doc->exportField($this->descripcion);
                         $doc->exportField($this->monto);
                         $doc->exportField($this->fecha);
                         $doc->exportField($this->created_at);
-                        $doc->exportField($this->cooperativa_id);
                     } else {
                         $doc->exportField($this->id);
+                        $doc->exportField($this->cooperativa_id);
                         $doc->exportField($this->socio_id);
                         $doc->exportField($this->tipo_ingreso);
                         $doc->exportField($this->descripcion);
                         $doc->exportField($this->monto);
                         $doc->exportField($this->fecha);
                         $doc->exportField($this->created_at);
-                        $doc->exportField($this->cooperativa_id);
                     }
                     $doc->endExportRow($rowCnt);
                 }

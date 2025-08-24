@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Doctrine\DBAL\Query\QueryBuilder;

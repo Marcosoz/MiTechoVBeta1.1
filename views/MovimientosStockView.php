@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $MovimientosStockView = &$Page;
@@ -62,13 +62,13 @@ loadjs.ready("head", function () {
 </td>
     </tr>
 <?php } ?>
-<?php if ($Page->stock_id->Visible) { // stock_id ?>
-    <tr id="r_stock_id"<?= $Page->stock_id->rowAttributes() ?>>
-        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_movimientos_stock_stock_id"><?= $Page->stock_id->caption() ?></span></td>
-        <td data-name="stock_id"<?= $Page->stock_id->cellAttributes() ?>>
-<span id="el_movimientos_stock_stock_id">
-<span<?= $Page->stock_id->viewAttributes() ?>>
-<?= $Page->stock_id->getViewValue() ?></span>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+    <tr id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_movimientos_stock_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></td>
+        <td data-name="cooperativa_id"<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="el_movimientos_stock_cooperativa_id">
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
     </tr>

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -135,12 +135,12 @@ class ProveedoresAdd extends Proveedores
     public function setVisibility(): void
     {
         $this->id->Visible = false;
+        $this->cooperativa_id->setVisibility();
         $this->nombre->setVisibility();
         $this->contacto->setVisibility();
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->direccion->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -488,6 +488,9 @@ class ProveedoresAdd extends Proveedores
             $this->InlineDelete = true;
         }
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Load default values for add
         $this->loadDefaultValues();
 
@@ -643,6 +646,16 @@ class ProveedoresAdd extends Proveedores
     {
         $validate = !Config("SERVER_VALIDATE");
 
+        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
+        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
+        if (!$this->cooperativa_id->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->cooperativa_id->Visible = false; // Disable update for API request
+            } else {
+                $this->cooperativa_id->setFormValue($val);
+            }
+        }
+
         // Check field name 'nombre' before field var 'x_nombre'
         $val = $this->getFormValue("nombre", null) ?? $this->getFormValue("x_nombre", null);
         if (!$this->nombre->IsDetailKey) {
@@ -693,16 +706,6 @@ class ProveedoresAdd extends Proveedores
             }
         }
 
-        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
-        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
-        if (!$this->cooperativa_id->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->cooperativa_id->Visible = false; // Disable update for API request
-            } else {
-                $this->cooperativa_id->setFormValue($val, true, $validate);
-            }
-        }
-
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -710,12 +713,12 @@ class ProveedoresAdd extends Proveedores
     // Restore form values
     public function restoreFormValues(): void
     {
+        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
         $this->nombre->CurrentValue = $this->nombre->FormValue;
         $this->contacto->CurrentValue = $this->contacto->FormValue;
         $this->telefono->CurrentValue = $this->telefono->FormValue;
         $this->email->CurrentValue = $this->email->FormValue;
         $this->direccion->CurrentValue = $this->direccion->FormValue;
-        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
     }
 
     /**
@@ -765,12 +768,12 @@ class ProveedoresAdd extends Proveedores
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->nombre->setDbValue($row['nombre']);
         $this->contacto->setDbValue($row['contacto']);
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->direccion->setDbValue($row['direccion']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -778,12 +781,12 @@ class ProveedoresAdd extends Proveedores
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['nombre'] = $this->nombre->DefaultValue;
         $row['contacto'] = $this->contacto->DefaultValue;
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['direccion'] = $this->direccion->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -821,6 +824,9 @@ class ProveedoresAdd extends Proveedores
         // id
         $this->id->RowCssClass = "row";
 
+        // cooperativa_id
+        $this->cooperativa_id->RowCssClass = "row";
+
         // nombre
         $this->nombre->RowCssClass = "row";
 
@@ -836,13 +842,34 @@ class ProveedoresAdd extends Proveedores
         // direccion
         $this->direccion->RowCssClass = "row";
 
-        // cooperativa_id
-        $this->cooperativa_id->RowCssClass = "row";
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre
             $this->nombre->ViewValue = $this->nombre->CurrentValue;
@@ -860,8 +887,7 @@ class ProveedoresAdd extends Proveedores
             $this->direccion->ViewValue = $this->direccion->CurrentValue;
 
             // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
+            $this->cooperativa_id->HrefValue = "";
 
             // nombre
             $this->nombre->HrefValue = "";
@@ -877,10 +903,65 @@ class ProveedoresAdd extends Proveedores
 
             // direccion
             $this->direccion->HrefValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
+            // cooperativa_id
+            $this->cooperativa_id->setupEditAttributes();
+            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
+                $this->cooperativa_id->CurrentValue = CurrentUserID();
+                $curVal = strval($this->cooperativa_id->CurrentValue);
+                if ($curVal != "") {
+                    $this->cooperativa_id->EditValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                    if ($this->cooperativa_id->EditValue === null) { // Lookup from database
+                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                        $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                        $conn = Conn();
+                        $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                        $ari = count($rswrk);
+                        if ($ari > 0) { // Lookup values found
+                            $rows = [];
+                            foreach ($rswrk as $row) {
+                                $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                            }
+                            $this->cooperativa_id->EditValue = $this->cooperativa_id->displayValue($rows[0]);
+                        } else {
+                            $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                        }
+                    }
+                } else {
+                    $this->cooperativa_id->EditValue = null;
+                }
+            } else {
+                $curVal = trim(strval($this->cooperativa_id->CurrentValue));
+                if ($curVal != "") {
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                } else {
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->Lookup !== null && is_array($this->cooperativa_id->lookupOptions()) && count($this->cooperativa_id->lookupOptions()) > 0 ? $curVal : null;
+                }
+                if ($this->cooperativa_id->ViewValue !== null) { // Load from cache
+                    $this->cooperativa_id->EditValue = array_values($this->cooperativa_id->lookupOptions());
+                } else { // Lookup from database
+                    if ($curVal == "") {
+                        $filterWrk = "0=1";
+                    } else {
+                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $this->cooperativa_id->CurrentValue, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    }
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    $rows = [];
+                    if ($ari > 0) { // Lookup values found
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                    } else {
+                        $this->cooperativa_id->ViewValue = $this->language->phrase("PleaseSelect");
+                    }
+                    $this->cooperativa_id->EditValue = $rows;
+                }
+                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+            }
+
             // nombre
             $this->nombre->setupEditAttributes();
             $this->nombre->EditValue = !$this->nombre->Raw ? HtmlDecode($this->nombre->CurrentValue) : $this->nombre->CurrentValue;
@@ -906,21 +987,10 @@ class ProveedoresAdd extends Proveedores
             $this->direccion->EditValue = !$this->direccion->Raw ? HtmlDecode($this->direccion->CurrentValue) : $this->direccion->CurrentValue;
             $this->direccion->PlaceHolder = RemoveHtml($this->direccion->caption());
 
-            // cooperativa_id
-            $this->cooperativa_id->setupEditAttributes();
-            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
-                $this->cooperativa_id->CurrentValue = CurrentUserID();
-                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, $this->cooperativa_id->formatPattern());
-            } else {
-                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
-                if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
-                    $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
-                }
-            }
-
             // Add refer script
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
 
             // nombre
             $this->nombre->HrefValue = "";
@@ -936,9 +1006,6 @@ class ProveedoresAdd extends Proveedores
 
             // direccion
             $this->direccion->HrefValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -958,6 +1025,11 @@ class ProveedoresAdd extends Proveedores
             return true;
         }
         $validateForm = true;
+            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
+                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
+                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
+                }
+            }
             if ($this->nombre->Visible && $this->nombre->Required) {
                 if (!$this->nombre->IsDetailKey && IsEmpty($this->nombre->FormValue)) {
                     $this->nombre->addErrorMessage(str_replace("%s", $this->nombre->caption(), $this->nombre->RequiredErrorMessage));
@@ -982,14 +1054,6 @@ class ProveedoresAdd extends Proveedores
                 if (!$this->direccion->IsDetailKey && IsEmpty($this->direccion->FormValue)) {
                     $this->direccion->addErrorMessage(str_replace("%s", $this->direccion->caption(), $this->direccion->RequiredErrorMessage));
                 }
-            }
-            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
-                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
-                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
-                }
-            }
-            if (!CheckInteger($this->cooperativa_id->FormValue)) {
-                $this->cooperativa_id->addErrorMessage($this->cooperativa_id->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1070,6 +1134,9 @@ class ProveedoresAdd extends Proveedores
     {
         $newRow = [];
 
+        // cooperativa_id
+        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
+
         // nombre
         $this->nombre->setDbValueDef($newRow, $this->nombre->CurrentValue, false);
 
@@ -1084,9 +1151,6 @@ class ProveedoresAdd extends Proveedores
 
         // direccion
         $this->direccion->setDbValueDef($newRow, $this->direccion->CurrentValue, false);
-
-        // cooperativa_id
-        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
         return $newRow;
     }
 
@@ -1122,6 +1186,8 @@ class ProveedoresAdd extends Proveedores
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

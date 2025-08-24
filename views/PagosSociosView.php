@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $PagosSociosView = &$Page;
@@ -58,6 +58,17 @@ loadjs.ready("head", function () {
 <span id="el_pagos_socios_id">
 <span<?= $Page->id->viewAttributes() ?>>
 <?= $Page->id->getViewValue() ?></span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+    <tr id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_pagos_socios_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></td>
+        <td data-name="cooperativa_id"<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="el_pagos_socios_cooperativa_id">
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
     </tr>
@@ -125,17 +136,6 @@ loadjs.ready("head", function () {
 <span id="el_pagos_socios_created_at">
 <span<?= $Page->created_at->viewAttributes() ?>>
 <?= $Page->created_at->getViewValue() ?></span>
-</span>
-</td>
-    </tr>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-    <tr id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
-        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_pagos_socios_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></td>
-        <td data-name="cooperativa_id"<?= $Page->cooperativa_id->cellAttributes() ?>>
-<span id="el_pagos_socios_cooperativa_id">
-<span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
     </tr>

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -134,11 +134,11 @@ class StockDelete extends Stock
     public function setVisibility(): void
     {
         $this->id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->nombre_material->setVisibility();
         $this->unidad->setVisibility();
         $this->cantidad->setVisibility();
         $this->descripcion->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -387,6 +387,9 @@ class StockDelete extends Stock
             $this->InlineDelete = true;
         }
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Set up Breadcrumb
         $this->setupBreadcrumb();
 
@@ -586,11 +589,11 @@ class StockDelete extends Stock
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->nombre_material->setDbValue($row['nombre_material']);
         $this->unidad->setDbValue($row['unidad']);
         $this->cantidad->setDbValue($row['cantidad']);
         $this->descripcion->setDbValue($row['descripcion']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -598,11 +601,11 @@ class StockDelete extends Stock
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['nombre_material'] = $this->nombre_material->DefaultValue;
         $row['unidad'] = $this->unidad->DefaultValue;
         $row['cantidad'] = $this->cantidad->DefaultValue;
         $row['descripcion'] = $this->descripcion->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -620,6 +623,8 @@ class StockDelete extends Stock
 
         // id
 
+        // cooperativa_id
+
         // nombre_material
 
         // unidad
@@ -628,12 +633,34 @@ class StockDelete extends Stock
 
         // descripcion
 
-        // cooperativa_id
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre_material
             $this->nombre_material->ViewValue = $this->nombre_material->CurrentValue;
@@ -648,13 +675,13 @@ class StockDelete extends Stock
             // descripcion
             $this->descripcion->ViewValue = $this->descripcion->CurrentValue;
 
-            // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // nombre_material
             $this->nombre_material->HrefValue = "";
@@ -671,10 +698,6 @@ class StockDelete extends Stock
             // descripcion
             $this->descripcion->HrefValue = "";
             $this->descripcion->TooltipValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
-            $this->cooperativa_id->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -821,6 +844,8 @@ class StockDelete extends Stock
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

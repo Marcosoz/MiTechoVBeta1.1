@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825\Entity;
+namespace PHPMaker2025\project240825SeleccionarManualCoop\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project240825\AdvancedUserInterface;
-use PHPMaker2025\project240825\AbstractEntity;
-use PHPMaker2025\project240825\AdvancedSecurity;
-use PHPMaker2025\project240825\UserProfile;
-use PHPMaker2025\project240825\UserRepository;
-use function PHPMaker2025\project240825\Config;
-use function PHPMaker2025\project240825\EntityManager;
-use function PHPMaker2025\project240825\RemoveXss;
-use function PHPMaker2025\project240825\HtmlDecode;
-use function PHPMaker2025\project240825\HashPassword;
-use function PHPMaker2025\project240825\Security;
+use PHPMaker2025\project240825SeleccionarManualCoop\AdvancedUserInterface;
+use PHPMaker2025\project240825SeleccionarManualCoop\AbstractEntity;
+use PHPMaker2025\project240825SeleccionarManualCoop\AdvancedSecurity;
+use PHPMaker2025\project240825SeleccionarManualCoop\UserProfile;
+use PHPMaker2025\project240825SeleccionarManualCoop\UserRepository;
+use function PHPMaker2025\project240825SeleccionarManualCoop\Config;
+use function PHPMaker2025\project240825SeleccionarManualCoop\EntityManager;
+use function PHPMaker2025\project240825SeleccionarManualCoop\RemoveXss;
+use function PHPMaker2025\project240825SeleccionarManualCoop\HtmlDecode;
+use function PHPMaker2025\project240825SeleccionarManualCoop\HashPassword;
+use function PHPMaker2025\project240825SeleccionarManualCoop\Security;
 
 /**
  * Entity class for "movimientos_stock" table
@@ -37,8 +37,8 @@ class MovimientosStock extends AbstractEntity
     #[GeneratedValue]
     private int $Id;
 
-    #[Column(name: "stock_id", type: "integer")]
-    private int $StockId;
+    #[Column(name: "cooperativa_id", type: "integer")]
+    private int $CooperativaId;
 
     #[Column(name: "tipo_movimiento", type: "string")]
     private string $TipoMovimiento;
@@ -66,14 +66,14 @@ class MovimientosStock extends AbstractEntity
         return $this;
     }
 
-    public function getStockId(): int
+    public function getCooperativaId(): int
     {
-        return $this->StockId;
+        return $this->CooperativaId;
     }
 
-    public function setStockId(int $value): static
+    public function setCooperativaId(int $value): static
     {
-        $this->StockId = $value;
+        $this->CooperativaId = $value;
         return $this;
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $HorasTrabajadasDelete = &$Page;
@@ -53,6 +53,9 @@ $Page->showMessage();
 <?php if ($Page->id->Visible) { // id ?>
         <th class="<?= $Page->id->headerCellClass() ?>"><span id="elh_horas_trabajadas_id" class="horas_trabajadas_id"><?= $Page->id->caption() ?></span></th>
 <?php } ?>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <th class="<?= $Page->cooperativa_id->headerCellClass() ?>"><span id="elh_horas_trabajadas_cooperativa_id" class="horas_trabajadas_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></th>
+<?php } ?>
 <?php if ($Page->socio_id->Visible) { // socio_id ?>
         <th class="<?= $Page->socio_id->headerCellClass() ?>"><span id="elh_horas_trabajadas_socio_id" class="horas_trabajadas_socio_id"><?= $Page->socio_id->caption() ?></span></th>
 <?php } ?>
@@ -67,9 +70,6 @@ $Page->showMessage();
 <?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
         <th class="<?= $Page->created_at->headerCellClass() ?>"><span id="elh_horas_trabajadas_created_at" class="horas_trabajadas_created_at"><?= $Page->created_at->caption() ?></span></th>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-        <th class="<?= $Page->cooperativa_id->headerCellClass() ?>"><span id="elh_horas_trabajadas_cooperativa_id" class="horas_trabajadas_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></th>
 <?php } ?>
     </tr>
     </thead>
@@ -97,6 +97,14 @@ while ($Page->fetch()) {
 <span id="">
 <span<?= $Page->id->viewAttributes() ?>>
 <?= $Page->id->getViewValue() ?></span>
+</span>
+</td>
+<?php } ?>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <td<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="">
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>
@@ -137,14 +145,6 @@ while ($Page->fetch()) {
 <span id="">
 <span<?= $Page->created_at->viewAttributes() ?>>
 <?= $Page->created_at->getViewValue() ?></span>
-</span>
-</td>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-        <td<?= $Page->cooperativa_id->cellAttributes() ?>>
-<span id="">
-<span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>

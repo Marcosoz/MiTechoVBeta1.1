@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $HorasTrabajadasAdd = &$Page;
@@ -22,12 +22,12 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Add fields
         .setFields([
+            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null], fields.cooperativa_id.isInvalid],
             ["socio_id", [fields.socio_id.visible && fields.socio_id.required ? ew.Validators.required(fields.socio_id.caption) : null, ew.Validators.integer], fields.socio_id.isInvalid],
             ["fecha", [fields.fecha.visible && fields.fecha.required ? ew.Validators.required(fields.fecha.caption) : null, ew.Validators.datetime(fields.fecha.clientFormatPattern)], fields.fecha.isInvalid],
             ["horas", [fields.horas.visible && fields.horas.required ? ew.Validators.required(fields.horas.caption) : null, ew.Validators.float], fields.horas.isInvalid],
             ["tarea", [fields.tarea.visible && fields.tarea.required ? ew.Validators.required(fields.tarea.caption) : null], fields.tarea.isInvalid],
-            ["created_at", [fields.created_at.visible && fields.created_at.required ? ew.Validators.required(fields.created_at.caption) : null, ew.Validators.datetime(fields.created_at.clientFormatPattern)], fields.created_at.isInvalid],
-            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null, ew.Validators.integer], fields.cooperativa_id.isInvalid]
+            ["created_at", [fields.created_at.visible && fields.created_at.required ? ew.Validators.required(fields.created_at.caption) : null, ew.Validators.datetime(fields.created_at.clientFormatPattern)], fields.created_at.isInvalid]
         ])
 
         // Form_CustomValidate
@@ -43,6 +43,7 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
+            "cooperativa_id": <?= $Page->cooperativa_id->toClientList($Page) ?>,
         })
         .build();
     window[form.id] = form;
@@ -72,6 +73,58 @@ $Page->showMessage();
 <?php } ?>
 <input type="hidden" name="<?= $Page->getFormOldKeyName() ?>" value="<?= $Page->OldKey ?>">
 <div class="ew-add-div"><!-- page* -->
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+    <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
+        <label id="elh_horas_trabajadas_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
+<?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("add")) { // No access permission ?>
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<span class="form-control-plaintext"><?= $Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()) ?></span></span>
+<input type="hidden" data-table="horas_trabajadas" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
+<?php } else { ?>
+<span id="el_horas_trabajadas_cooperativa_id">
+    <select
+        id="x_cooperativa_id"
+        name="x_cooperativa_id"
+        class="form-select ew-select<?= $Page->cooperativa_id->isInvalidClass() ?>"
+        <?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+        data-select2-id="fhoras_trabajadasadd_x_cooperativa_id"
+        <?php } ?>
+        data-table="horas_trabajadas"
+        data-field="x_cooperativa_id"
+        data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>"
+        <?= $Page->cooperativa_id->editAttributes() ?>>
+        <?= $Page->cooperativa_id->selectOptionListHtml("x_cooperativa_id") ?>
+    </select>
+    <?= $Page->cooperativa_id->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+<?= $Page->cooperativa_id->Lookup->getParamTag($Page, "p_x_cooperativa_id") ?>
+<?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready("fhoras_trabajadasadd", function() {
+    var options = { name: "x_cooperativa_id", selectId: "fhoras_trabajadasadd_x_cooperativa_id" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fhoras_trabajadasadd.lists.cooperativa_id?.lookupOptions.length) {
+        options.data = { id: "x_cooperativa_id", form: "fhoras_trabajadasadd" };
+    } else {
+        options.ajax = { id: "x_cooperativa_id", form: "fhoras_trabajadasadd", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.horas_trabajadas.fields.cooperativa_id.selectOptions);
+    ew.createSelect(options);
+});
+</script>
+<?php } ?>
+</span>
+<?php } ?>
+</div></div>
+    </div>
+<?php } ?>
 <?php if ($Page->socio_id->Visible) { // socio_id ?>
     <div id="r_socio_id"<?= $Page->socio_id->rowAttributes() ?>>
         <label id="elh_horas_trabajadas_socio_id" for="x_socio_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->socio_id->caption() ?><?= $Page->socio_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
@@ -197,24 +250,6 @@ loadjs.ready(["fhoras_trabajadasadd", "datetimepicker"], function () {
 </script>
 <?php } ?>
 </span>
-</div></div>
-    </div>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-    <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
-        <label id="elh_horas_trabajadas_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
-<?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("add")) { // No access permission ?>
-<span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<input type="text" readonly class="form-control-plaintext" value="<?= HtmlEncode(RemoveHtml($Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()))) ?>"></span>
-<input type="hidden" data-table="horas_trabajadas" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
-<?php } else { ?>
-<span id="el_horas_trabajadas_cooperativa_id">
-<input type="<?= $Page->cooperativa_id->getInputTextType() ?>" name="x_cooperativa_id" id="x_cooperativa_id" data-table="horas_trabajadas" data-field="x_cooperativa_id" value="<?= $Page->cooperativa_id->getEditValue() ?>" size="30" placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->cooperativa_id->formatPattern()) ?>"<?= $Page->cooperativa_id->editAttributes() ?> aria-describedby="x_cooperativa_id_help">
-<?= $Page->cooperativa_id->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
-</span>
-<?php } ?>
 </div></div>
     </div>
 <?php } ?>

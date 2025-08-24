@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -135,13 +135,13 @@ class PagosSociosAdd extends PagosSocios
     public function setVisibility(): void
     {
         $this->id->Visible = false;
+        $this->cooperativa_id->setVisibility();
         $this->socio_id->setVisibility();
         $this->monto->setVisibility();
         $this->concepto->setVisibility();
         $this->fecha->setVisibility();
         $this->comprobante->setVisibility();
         $this->created_at->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -489,6 +489,9 @@ class PagosSociosAdd extends PagosSocios
             $this->InlineDelete = true;
         }
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Load default values for add
         $this->loadDefaultValues();
 
@@ -646,6 +649,16 @@ class PagosSociosAdd extends PagosSocios
     {
         $validate = !Config("SERVER_VALIDATE");
 
+        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
+        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
+        if (!$this->cooperativa_id->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->cooperativa_id->Visible = false; // Disable update for API request
+            } else {
+                $this->cooperativa_id->setFormValue($val);
+            }
+        }
+
         // Check field name 'socio_id' before field var 'x_socio_id'
         $val = $this->getFormValue("socio_id", null) ?? $this->getFormValue("x_socio_id", null);
         if (!$this->socio_id->IsDetailKey) {
@@ -698,16 +711,6 @@ class PagosSociosAdd extends PagosSocios
             $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         }
 
-        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
-        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
-        if (!$this->cooperativa_id->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->cooperativa_id->Visible = false; // Disable update for API request
-            } else {
-                $this->cooperativa_id->setFormValue($val, true, $validate);
-            }
-        }
-
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
         $this->getUploadFiles(); // Get upload files
@@ -716,6 +719,7 @@ class PagosSociosAdd extends PagosSocios
     // Restore form values
     public function restoreFormValues(): void
     {
+        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
         $this->socio_id->CurrentValue = $this->socio_id->FormValue;
         $this->monto->CurrentValue = $this->monto->FormValue;
         $this->concepto->CurrentValue = $this->concepto->FormValue;
@@ -723,7 +727,6 @@ class PagosSociosAdd extends PagosSocios
         $this->fecha->CurrentValue = UnformatDateTime($this->fecha->CurrentValue, $this->fecha->formatPattern());
         $this->created_at->CurrentValue = $this->created_at->FormValue;
         $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
-        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
     }
 
     /**
@@ -773,6 +776,7 @@ class PagosSociosAdd extends PagosSocios
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->socio_id->setDbValue($row['socio_id']);
         $this->monto->setDbValue($row['monto']);
         $this->concepto->setDbValue($row['concepto']);
@@ -782,7 +786,6 @@ class PagosSociosAdd extends PagosSocios
             $this->comprobante->Upload->DbValue = stream_get_contents($this->comprobante->Upload->DbValue);
         }
         $this->created_at->setDbValue($row['created_at']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -790,13 +793,13 @@ class PagosSociosAdd extends PagosSocios
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['socio_id'] = $this->socio_id->DefaultValue;
         $row['monto'] = $this->monto->DefaultValue;
         $row['concepto'] = $this->concepto->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['comprobante'] = $this->comprobante->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -834,6 +837,9 @@ class PagosSociosAdd extends PagosSocios
         // id
         $this->id->RowCssClass = "row";
 
+        // cooperativa_id
+        $this->cooperativa_id->RowCssClass = "row";
+
         // socio_id
         $this->socio_id->RowCssClass = "row";
 
@@ -852,13 +858,34 @@ class PagosSociosAdd extends PagosSocios
         // created_at
         $this->created_at->RowCssClass = "row";
 
-        // cooperativa_id
-        $this->cooperativa_id->RowCssClass = "row";
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // socio_id
             $this->socio_id->ViewValue = $this->socio_id->CurrentValue;
@@ -888,8 +915,7 @@ class PagosSociosAdd extends PagosSocios
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
             // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
+            $this->cooperativa_id->HrefValue = "";
 
             // socio_id
             $this->socio_id->HrefValue = "";
@@ -920,10 +946,65 @@ class PagosSociosAdd extends PagosSocios
 
             // created_at
             $this->created_at->HrefValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
+            // cooperativa_id
+            $this->cooperativa_id->setupEditAttributes();
+            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
+                $this->cooperativa_id->CurrentValue = CurrentUserID();
+                $curVal = strval($this->cooperativa_id->CurrentValue);
+                if ($curVal != "") {
+                    $this->cooperativa_id->EditValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                    if ($this->cooperativa_id->EditValue === null) { // Lookup from database
+                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                        $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                        $conn = Conn();
+                        $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                        $ari = count($rswrk);
+                        if ($ari > 0) { // Lookup values found
+                            $rows = [];
+                            foreach ($rswrk as $row) {
+                                $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                            }
+                            $this->cooperativa_id->EditValue = $this->cooperativa_id->displayValue($rows[0]);
+                        } else {
+                            $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                        }
+                    }
+                } else {
+                    $this->cooperativa_id->EditValue = null;
+                }
+            } else {
+                $curVal = trim(strval($this->cooperativa_id->CurrentValue));
+                if ($curVal != "") {
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                } else {
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->Lookup !== null && is_array($this->cooperativa_id->lookupOptions()) && count($this->cooperativa_id->lookupOptions()) > 0 ? $curVal : null;
+                }
+                if ($this->cooperativa_id->ViewValue !== null) { // Load from cache
+                    $this->cooperativa_id->EditValue = array_values($this->cooperativa_id->lookupOptions());
+                } else { // Lookup from database
+                    if ($curVal == "") {
+                        $filterWrk = "0=1";
+                    } else {
+                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $this->cooperativa_id->CurrentValue, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    }
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    $rows = [];
+                    if ($ari > 0) { // Lookup values found
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                    } else {
+                        $this->cooperativa_id->ViewValue = $this->language->phrase("PleaseSelect");
+                    }
+                    $this->cooperativa_id->EditValue = $rows;
+                }
+                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+            }
+
             // socio_id
             $this->socio_id->setupEditAttributes();
             $this->socio_id->EditValue = $this->socio_id->CurrentValue;
@@ -970,21 +1051,10 @@ class PagosSociosAdd extends PagosSocios
             $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
             $this->created_at->PlaceHolder = RemoveHtml($this->created_at->caption());
 
-            // cooperativa_id
-            $this->cooperativa_id->setupEditAttributes();
-            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
-                $this->cooperativa_id->CurrentValue = CurrentUserID();
-                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, $this->cooperativa_id->formatPattern());
-            } else {
-                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
-                if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
-                    $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
-                }
-            }
-
             // Add refer script
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
 
             // socio_id
             $this->socio_id->HrefValue = "";
@@ -1015,9 +1085,6 @@ class PagosSociosAdd extends PagosSocios
 
             // created_at
             $this->created_at->HrefValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1037,6 +1104,11 @@ class PagosSociosAdd extends PagosSocios
             return true;
         }
         $validateForm = true;
+            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
+                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
+                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
+                }
+            }
             if ($this->socio_id->Visible && $this->socio_id->Required) {
                 if (!$this->socio_id->IsDetailKey && IsEmpty($this->socio_id->FormValue)) {
                     $this->socio_id->addErrorMessage(str_replace("%s", $this->socio_id->caption(), $this->socio_id->RequiredErrorMessage));
@@ -1078,14 +1150,6 @@ class PagosSociosAdd extends PagosSocios
             }
             if (!CheckDate($this->created_at->FormValue, $this->created_at->formatPattern())) {
                 $this->created_at->addErrorMessage($this->created_at->getErrorMessage(false));
-            }
-            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
-                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
-                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
-                }
-            }
-            if (!CheckInteger($this->cooperativa_id->FormValue)) {
-                $this->cooperativa_id->addErrorMessage($this->cooperativa_id->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1166,6 +1230,9 @@ class PagosSociosAdd extends PagosSocios
     {
         $newRow = [];
 
+        // cooperativa_id
+        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
+
         // socio_id
         $this->socio_id->setDbValueDef($newRow, $this->socio_id->CurrentValue, false);
 
@@ -1189,9 +1256,6 @@ class PagosSociosAdd extends PagosSocios
 
         // created_at
         $this->created_at->setDbValueDef($newRow, UnFormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern()), false);
-
-        // cooperativa_id
-        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
         return $newRow;
     }
 
@@ -1227,6 +1291,8 @@ class PagosSociosAdd extends PagosSocios
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

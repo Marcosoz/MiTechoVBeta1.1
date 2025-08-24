@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -64,7 +64,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
 
     // Fields
     public DbField $id;
-    public DbField $stock_id;
+    public DbField $cooperativa_id;
     public DbField $tipo_movimiento;
     public DbField $cantidad;
     public DbField $motivo;
@@ -137,31 +137,35 @@ class MovimientosStock extends DbTable implements LookupTableInterface
         $this->id->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['id'] = &$this->id;
 
-        // stock_id
-        $this->stock_id = new DbField(
+        // cooperativa_id
+        $this->cooperativa_id = new DbField(
             $this, // Table
-            'x_stock_id', // Variable name
-            'stock_id', // Name
-            '`stock_id`', // Expression
-            '`stock_id`', // Basic search expression
+            'x_cooperativa_id', // Variable name
+            'cooperativa_id', // Name
+            '`cooperativa_id`', // Expression
+            '`cooperativa_id`', // Basic search expression
             3, // Type
             11, // Size
             -1, // Date/Time format
             false, // Is upload field
-            '`stock_id`', // Virtual expression
+            '`cooperativa_id`', // Virtual expression
             false, // Is virtual
             false, // Force selection
             false, // Is Virtual search
             'FORMATTED TEXT', // View Tag
-            'TEXT' // Edit Tag
+            'SELECT' // Edit Tag
         );
-        $this->stock_id->InputTextType = "text";
-        $this->stock_id->Raw = true;
-        $this->stock_id->Nullable = false; // NOT NULL field
-        $this->stock_id->Required = true; // Required field
-        $this->stock_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
-        $this->stock_id->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
-        $this->Fields['stock_id'] = &$this->stock_id;
+        $this->cooperativa_id->InputTextType = "text";
+        $this->cooperativa_id->Raw = true;
+        $this->cooperativa_id->Nullable = false; // NOT NULL field
+        $this->cooperativa_id->Required = true; // Required field
+        $this->cooperativa_id->setSelectMultiple(false); // Select one
+        $this->cooperativa_id->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->cooperativa_id->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        $this->cooperativa_id->Lookup = new Lookup($this->cooperativa_id, 'cooperativas', false, 'id', ["nombre","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nombre`");
+        $this->cooperativa_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
+        $this->cooperativa_id->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
+        $this->Fields['cooperativa_id'] = &$this->cooperativa_id;
 
         // tipo_movimiento
         $this->tipo_movimiento = new DbField(
@@ -832,7 +836,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
             return;
         }
         $this->id->DbValue = $row['id'];
-        $this->stock_id->DbValue = $row['stock_id'];
+        $this->cooperativa_id->DbValue = $row['cooperativa_id'];
         $this->tipo_movimiento->DbValue = $row['tipo_movimiento'];
         $this->cantidad->DbValue = $row['cantidad'];
         $this->motivo->DbValue = $row['motivo'];
@@ -1194,7 +1198,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
     public function loadListRowValues(array &$row)
     {
         $this->id->setDbValue($row['id']);
-        $this->stock_id->setDbValue($row['stock_id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->tipo_movimiento->setDbValue($row['tipo_movimiento']);
         $this->cantidad->setDbValue($row['cantidad']);
         $this->motivo->setDbValue($row['motivo']);
@@ -1233,7 +1237,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
 
         // id
 
-        // stock_id
+        // cooperativa_id
 
         // tipo_movimiento
 
@@ -1248,9 +1252,29 @@ class MovimientosStock extends DbTable implements LookupTableInterface
         // id
         $this->id->ViewValue = $this->id->CurrentValue;
 
-        // stock_id
-        $this->stock_id->ViewValue = $this->stock_id->CurrentValue;
-        $this->stock_id->ViewValue = FormatNumber($this->stock_id->ViewValue, $this->stock_id->formatPattern());
+        // cooperativa_id
+        $curVal = strval($this->cooperativa_id->CurrentValue);
+        if ($curVal != "") {
+            $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+            if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                if ($ari > 0) { // Lookup values found
+                    $rows = [];
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                    }
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                } else {
+                    $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                }
+            }
+        } else {
+            $this->cooperativa_id->ViewValue = null;
+        }
 
         // tipo_movimiento
         if (strval($this->tipo_movimiento->CurrentValue) != "") {
@@ -1278,9 +1302,9 @@ class MovimientosStock extends DbTable implements LookupTableInterface
         $this->id->HrefValue = "";
         $this->id->TooltipValue = "";
 
-        // stock_id
-        $this->stock_id->HrefValue = "";
-        $this->stock_id->TooltipValue = "";
+        // cooperativa_id
+        $this->cooperativa_id->HrefValue = "";
+        $this->cooperativa_id->TooltipValue = "";
 
         // tipo_movimiento
         $this->tipo_movimiento->HrefValue = "";
@@ -1334,7 +1358,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
                 $doc->beginExportRow();
                 if ($exportPageType == "view") {
                     $doc->exportCaption($this->id);
-                    $doc->exportCaption($this->stock_id);
+                    $doc->exportCaption($this->cooperativa_id);
                     $doc->exportCaption($this->tipo_movimiento);
                     $doc->exportCaption($this->cantidad);
                     $doc->exportCaption($this->motivo);
@@ -1342,7 +1366,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->created_at);
                 } else {
                     $doc->exportCaption($this->id);
-                    $doc->exportCaption($this->stock_id);
+                    $doc->exportCaption($this->cooperativa_id);
                     $doc->exportCaption($this->tipo_movimiento);
                     $doc->exportCaption($this->cantidad);
                     $doc->exportCaption($this->motivo);
@@ -1375,7 +1399,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
                     $doc->beginExportRow($rowCnt); // Allow CSS styles if enabled
                     if ($exportPageType == "view") {
                         $doc->exportField($this->id);
-                        $doc->exportField($this->stock_id);
+                        $doc->exportField($this->cooperativa_id);
                         $doc->exportField($this->tipo_movimiento);
                         $doc->exportField($this->cantidad);
                         $doc->exportField($this->motivo);
@@ -1383,7 +1407,7 @@ class MovimientosStock extends DbTable implements LookupTableInterface
                         $doc->exportField($this->created_at);
                     } else {
                         $doc->exportField($this->id);
-                        $doc->exportField($this->stock_id);
+                        $doc->exportField($this->cooperativa_id);
                         $doc->exportField($this->tipo_movimiento);
                         $doc->exportField($this->cantidad);
                         $doc->exportField($this->motivo);

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $AportesLegalesAdd = &$Page;
@@ -22,7 +22,7 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Add fields
         .setFields([
-            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null, ew.Validators.integer], fields.cooperativa_id.isInvalid],
+            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null], fields.cooperativa_id.isInvalid],
             ["concepto", [fields.concepto.visible && fields.concepto.required ? ew.Validators.required(fields.concepto.caption) : null], fields.concepto.isInvalid],
             ["monto", [fields.monto.visible && fields.monto.required ? ew.Validators.required(fields.monto.caption) : null, ew.Validators.float], fields.monto.isInvalid],
             ["archivo", [fields.archivo.visible && fields.archivo.required ? ew.Validators.fileRequired(fields.archivo.caption) : null], fields.archivo.isInvalid],
@@ -43,6 +43,7 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
+            "cooperativa_id": <?= $Page->cooperativa_id->toClientList($Page) ?>,
         })
         .build();
     window[form.id] = form;
@@ -78,13 +79,47 @@ $Page->showMessage();
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
 <?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("add")) { // No access permission ?>
 <span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<input type="text" readonly class="form-control-plaintext" value="<?= HtmlEncode(RemoveHtml($Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()))) ?>"></span>
+<span class="form-control-plaintext"><?= $Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()) ?></span></span>
 <input type="hidden" data-table="aportes_legales" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
 <?php } else { ?>
 <span id="el_aportes_legales_cooperativa_id">
-<input type="<?= $Page->cooperativa_id->getInputTextType() ?>" name="x_cooperativa_id" id="x_cooperativa_id" data-table="aportes_legales" data-field="x_cooperativa_id" value="<?= $Page->cooperativa_id->getEditValue() ?>" size="30" placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->cooperativa_id->formatPattern()) ?>"<?= $Page->cooperativa_id->editAttributes() ?> aria-describedby="x_cooperativa_id_help">
-<?= $Page->cooperativa_id->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+    <select
+        id="x_cooperativa_id"
+        name="x_cooperativa_id"
+        class="form-select ew-select<?= $Page->cooperativa_id->isInvalidClass() ?>"
+        <?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+        data-select2-id="faportes_legalesadd_x_cooperativa_id"
+        <?php } ?>
+        data-table="aportes_legales"
+        data-field="x_cooperativa_id"
+        data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>"
+        <?= $Page->cooperativa_id->editAttributes() ?>>
+        <?= $Page->cooperativa_id->selectOptionListHtml("x_cooperativa_id") ?>
+    </select>
+    <?= $Page->cooperativa_id->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+<?= $Page->cooperativa_id->Lookup->getParamTag($Page, "p_x_cooperativa_id") ?>
+<?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready("faportes_legalesadd", function() {
+    var options = { name: "x_cooperativa_id", selectId: "faportes_legalesadd_x_cooperativa_id" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (faportes_legalesadd.lists.cooperativa_id?.lookupOptions.length) {
+        options.data = { id: "x_cooperativa_id", form: "faportes_legalesadd" };
+    } else {
+        options.ajax = { id: "x_cooperativa_id", form: "faportes_legalesadd", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.aportes_legales.fields.cooperativa_id.selectOptions);
+    ew.createSelect(options);
+});
+</script>
+<?php } ?>
 </span>
 <?php } ?>
 </div></div>

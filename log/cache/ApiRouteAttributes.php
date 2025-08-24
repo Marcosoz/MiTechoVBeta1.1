@@ -55,8 +55,8 @@
             'path' => '/api/login',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\JwtMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:login',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -76,10 +76,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:list',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -98,10 +98,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:view',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -120,10 +120,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:add',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -142,10 +142,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:edit',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -164,10 +164,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:delete',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -187,8 +187,8 @@
             'path' => '/api/register',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:register',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -207,10 +207,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:file',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:file',
             ],
             'requirements' => [],
             'options' => [
@@ -229,10 +229,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:export',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:export',
             ],
             'requirements' => [],
             'options' => [
@@ -252,10 +252,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:upload',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:upload',
             ],
             'requirements' => [],
             'options' => [
@@ -273,8 +273,8 @@
             'path' => '/api/jupload',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:jupload',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:jupload',
             ],
             'requirements' => [],
             'options' => [
@@ -293,8 +293,8 @@
             'path' => '/api/session',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:session',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:session',
             ],
             'requirements' => [],
             'options' => [
@@ -313,10 +313,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:lookup',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:lookup',
             ],
             'requirements' => [],
             'options' => [
@@ -335,8 +335,8 @@
             'path' => '/api/chart[/{params:.*}]',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:exportchart',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:exportchart',
             ],
             'requirements' => [],
             'options' => [
@@ -355,10 +355,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:permissions',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:permissions',
             ],
             'requirements' => [],
             'options' => [
@@ -377,8 +377,8 @@
             'path' => '/api/push/{action}',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:push',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:push',
             ],
             'requirements' => [],
             'options' => [
@@ -398,10 +398,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:twofa',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:twofa',
             ],
             'requirements' => [],
             'options' => [
@@ -420,8 +420,8 @@
             'path' => '/api/metadata',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:metadata',
+                'middlewares' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:metadata',
             ],
             'requirements' => [],
             'options' => [
@@ -439,10 +439,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project240825\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project240825\\JwtMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project240825SeleccionarManualCoop\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project240825\\ApiController:chat',
+                '_controller' => 'PHPMaker2025\\project240825SeleccionarManualCoop\\ApiController:chat',
             ],
             'requirements' => [],
             'options' => [

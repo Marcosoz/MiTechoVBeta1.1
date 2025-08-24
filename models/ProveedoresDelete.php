@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -134,12 +134,12 @@ class ProveedoresDelete extends Proveedores
     public function setVisibility(): void
     {
         $this->id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->nombre->setVisibility();
         $this->contacto->setVisibility();
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->direccion->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -388,6 +388,9 @@ class ProveedoresDelete extends Proveedores
             $this->InlineDelete = true;
         }
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Set up Breadcrumb
         $this->setupBreadcrumb();
 
@@ -587,12 +590,12 @@ class ProveedoresDelete extends Proveedores
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->nombre->setDbValue($row['nombre']);
         $this->contacto->setDbValue($row['contacto']);
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->direccion->setDbValue($row['direccion']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -600,12 +603,12 @@ class ProveedoresDelete extends Proveedores
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['nombre'] = $this->nombre->DefaultValue;
         $row['contacto'] = $this->contacto->DefaultValue;
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['direccion'] = $this->direccion->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -623,6 +626,8 @@ class ProveedoresDelete extends Proveedores
 
         // id
 
+        // cooperativa_id
+
         // nombre
 
         // contacto
@@ -633,12 +638,34 @@ class ProveedoresDelete extends Proveedores
 
         // direccion
 
-        // cooperativa_id
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre
             $this->nombre->ViewValue = $this->nombre->CurrentValue;
@@ -655,13 +682,13 @@ class ProveedoresDelete extends Proveedores
             // direccion
             $this->direccion->ViewValue = $this->direccion->CurrentValue;
 
-            // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // nombre
             $this->nombre->HrefValue = "";
@@ -682,10 +709,6 @@ class ProveedoresDelete extends Proveedores
             // direccion
             $this->direccion->HrefValue = "";
             $this->direccion->TooltipValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
-            $this->cooperativa_id->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -832,6 +855,8 @@ class ProveedoresDelete extends Proveedores
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

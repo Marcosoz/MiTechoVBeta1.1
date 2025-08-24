@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -156,16 +156,18 @@ class Socios extends DbTable implements LookupTableInterface
             false, // Force selection
             false, // Is Virtual search
             'FORMATTED TEXT', // View Tag
-            'TEXT' // Edit Tag
+            'SELECT' // Edit Tag
         );
         $this->cooperativa_id->InputTextType = "text";
         $this->cooperativa_id->Raw = true;
         $this->cooperativa_id->Nullable = false; // NOT NULL field
         $this->cooperativa_id->Required = true; // Required field
-        $this->cooperativa_id->Lookup = new Lookup($this->cooperativa_id, 'socios', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
-        $this->cooperativa_id->OptionCount = 1;
+        $this->cooperativa_id->setSelectMultiple(false); // Select one
+        $this->cooperativa_id->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->cooperativa_id->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        $this->cooperativa_id->Lookup = new Lookup($this->cooperativa_id, 'cooperativas', false, 'id', ["nombre","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nombre`");
         $this->cooperativa_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
-        $this->cooperativa_id->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
+        $this->cooperativa_id->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['cooperativa_id'] = &$this->cooperativa_id;
 
         // nombre_completo
@@ -1382,7 +1384,28 @@ class Socios extends DbTable implements LookupTableInterface
         $this->id->ViewValue = $this->id->CurrentValue;
 
         // cooperativa_id
-        $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
+        $curVal = strval($this->cooperativa_id->CurrentValue);
+        if ($curVal != "") {
+            $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+            if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                if ($ari > 0) { // Lookup values found
+                    $rows = [];
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                    }
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                } else {
+                    $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                }
+            }
+        } else {
+            $this->cooperativa_id->ViewValue = null;
+        }
 
         // nombre_completo
         $this->nombre_completo->ViewValue = $this->nombre_completo->CurrentValue;

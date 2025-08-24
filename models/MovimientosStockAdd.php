@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -135,7 +135,7 @@ class MovimientosStockAdd extends MovimientosStock
     public function setVisibility(): void
     {
         $this->id->Visible = false;
-        $this->stock_id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->tipo_movimiento->setVisibility();
         $this->cantidad->setVisibility();
         $this->motivo->setVisibility();
@@ -489,6 +489,7 @@ class MovimientosStockAdd extends MovimientosStock
         }
 
         // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
         $this->setupLookupOptions($this->tipo_movimiento);
 
         // Load default values for add
@@ -646,13 +647,13 @@ class MovimientosStockAdd extends MovimientosStock
     {
         $validate = !Config("SERVER_VALIDATE");
 
-        // Check field name 'stock_id' before field var 'x_stock_id'
-        $val = $this->getFormValue("stock_id", null) ?? $this->getFormValue("x_stock_id", null);
-        if (!$this->stock_id->IsDetailKey) {
+        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
+        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
+        if (!$this->cooperativa_id->IsDetailKey) {
             if (IsApi() && $val === null) {
-                $this->stock_id->Visible = false; // Disable update for API request
+                $this->cooperativa_id->Visible = false; // Disable update for API request
             } else {
-                $this->stock_id->setFormValue($val, true, $validate);
+                $this->cooperativa_id->setFormValue($val);
             }
         }
 
@@ -715,7 +716,7 @@ class MovimientosStockAdd extends MovimientosStock
     // Restore form values
     public function restoreFormValues(): void
     {
-        $this->stock_id->CurrentValue = $this->stock_id->FormValue;
+        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
         $this->tipo_movimiento->CurrentValue = $this->tipo_movimiento->FormValue;
         $this->cantidad->CurrentValue = $this->cantidad->FormValue;
         $this->motivo->CurrentValue = $this->motivo->FormValue;
@@ -763,7 +764,7 @@ class MovimientosStockAdd extends MovimientosStock
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
-        $this->stock_id->setDbValue($row['stock_id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->tipo_movimiento->setDbValue($row['tipo_movimiento']);
         $this->cantidad->setDbValue($row['cantidad']);
         $this->motivo->setDbValue($row['motivo']);
@@ -776,7 +777,7 @@ class MovimientosStockAdd extends MovimientosStock
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
-        $row['stock_id'] = $this->stock_id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['tipo_movimiento'] = $this->tipo_movimiento->DefaultValue;
         $row['cantidad'] = $this->cantidad->DefaultValue;
         $row['motivo'] = $this->motivo->DefaultValue;
@@ -819,8 +820,8 @@ class MovimientosStockAdd extends MovimientosStock
         // id
         $this->id->RowCssClass = "row";
 
-        // stock_id
-        $this->stock_id->RowCssClass = "row";
+        // cooperativa_id
+        $this->cooperativa_id->RowCssClass = "row";
 
         // tipo_movimiento
         $this->tipo_movimiento->RowCssClass = "row";
@@ -842,9 +843,29 @@ class MovimientosStockAdd extends MovimientosStock
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
 
-            // stock_id
-            $this->stock_id->ViewValue = $this->stock_id->CurrentValue;
-            $this->stock_id->ViewValue = FormatNumber($this->stock_id->ViewValue, $this->stock_id->formatPattern());
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // tipo_movimiento
             if (strval($this->tipo_movimiento->CurrentValue) != "") {
@@ -868,8 +889,8 @@ class MovimientosStockAdd extends MovimientosStock
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
-            // stock_id
-            $this->stock_id->HrefValue = "";
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
 
             // tipo_movimiento
             $this->tipo_movimiento->HrefValue = "";
@@ -886,13 +907,37 @@ class MovimientosStockAdd extends MovimientosStock
             // created_at
             $this->created_at->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
-            // stock_id
-            $this->stock_id->setupEditAttributes();
-            $this->stock_id->EditValue = $this->stock_id->CurrentValue;
-            $this->stock_id->PlaceHolder = RemoveHtml($this->stock_id->caption());
-            if (strval($this->stock_id->EditValue) != "" && is_numeric($this->stock_id->EditValue)) {
-                $this->stock_id->EditValue = FormatNumber($this->stock_id->EditValue, null);
+            // cooperativa_id
+            $this->cooperativa_id->setupEditAttributes();
+            $curVal = trim(strval($this->cooperativa_id->CurrentValue));
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+            } else {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->Lookup !== null && is_array($this->cooperativa_id->lookupOptions()) && count($this->cooperativa_id->lookupOptions()) > 0 ? $curVal : null;
             }
+            if ($this->cooperativa_id->ViewValue !== null) { // Load from cache
+                $this->cooperativa_id->EditValue = array_values($this->cooperativa_id->lookupOptions());
+            } else { // Lookup from database
+                if ($curVal == "") {
+                    $filterWrk = "0=1";
+                } else {
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $this->cooperativa_id->CurrentValue, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                }
+                $sqlWrk = $this->cooperativa_id->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                $rows = [];
+                if ($ari > 0) { // Lookup values found
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                    }
+                } else {
+                    $this->cooperativa_id->ViewValue = $this->language->phrase("PleaseSelect");
+                }
+                $this->cooperativa_id->EditValue = $rows;
+            }
+            $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
 
             // tipo_movimiento
             $this->tipo_movimiento->EditValue = $this->tipo_movimiento->options(false);
@@ -923,8 +968,8 @@ class MovimientosStockAdd extends MovimientosStock
 
             // Add refer script
 
-            // stock_id
-            $this->stock_id->HrefValue = "";
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
 
             // tipo_movimiento
             $this->tipo_movimiento->HrefValue = "";
@@ -959,13 +1004,10 @@ class MovimientosStockAdd extends MovimientosStock
             return true;
         }
         $validateForm = true;
-            if ($this->stock_id->Visible && $this->stock_id->Required) {
-                if (!$this->stock_id->IsDetailKey && IsEmpty($this->stock_id->FormValue)) {
-                    $this->stock_id->addErrorMessage(str_replace("%s", $this->stock_id->caption(), $this->stock_id->RequiredErrorMessage));
+            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
+                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
+                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
                 }
-            }
-            if (!CheckInteger($this->stock_id->FormValue)) {
-                $this->stock_id->addErrorMessage($this->stock_id->getErrorMessage(false));
             }
             if ($this->tipo_movimiento->Visible && $this->tipo_movimiento->Required) {
                 if ($this->tipo_movimiento->FormValue == "") {
@@ -1069,8 +1111,8 @@ class MovimientosStockAdd extends MovimientosStock
     {
         $newRow = [];
 
-        // stock_id
-        $this->stock_id->setDbValueDef($newRow, $this->stock_id->CurrentValue, false);
+        // cooperativa_id
+        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
 
         // tipo_movimiento
         $this->tipo_movimiento->setDbValueDef($newRow, $this->tipo_movimiento->CurrentValue, false);
@@ -1112,6 +1154,8 @@ class MovimientosStockAdd extends MovimientosStock
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 case "x_tipo_movimiento":
                     break;
                 default:

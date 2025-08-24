@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -156,13 +156,13 @@ class IngresosList extends Ingresos
     public function setVisibility(): void
     {
         $this->id->setVisibility();
+        $this->cooperativa_id->setVisibility();
         $this->socio_id->setVisibility();
         $this->tipo_ingreso->setVisibility();
         $this->descripcion->setVisibility();
         $this->monto->setVisibility();
         $this->fecha->setVisibility();
         $this->created_at->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -670,6 +670,7 @@ class IngresosList extends Ingresos
         $this->setupOtherOptions();
 
         // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
         $this->setupLookupOptions($this->tipo_ingreso);
 
         // Update form name to avoid conflict
@@ -1009,13 +1010,13 @@ class IngresosList extends Ingresos
         $filterList = "";
         $savedFilterList = "";
         $filterList = Concat($filterList, $this->id->AdvancedSearch->toJson(), ","); // Field id
+        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         $filterList = Concat($filterList, $this->socio_id->AdvancedSearch->toJson(), ","); // Field socio_id
         $filterList = Concat($filterList, $this->tipo_ingreso->AdvancedSearch->toJson(), ","); // Field tipo_ingreso
         $filterList = Concat($filterList, $this->descripcion->AdvancedSearch->toJson(), ","); // Field descripcion
         $filterList = Concat($filterList, $this->monto->AdvancedSearch->toJson(), ","); // Field monto
         $filterList = Concat($filterList, $this->fecha->AdvancedSearch->toJson(), ","); // Field fecha
         $filterList = Concat($filterList, $this->created_at->AdvancedSearch->toJson(), ","); // Field created_at
-        $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1062,6 +1063,14 @@ class IngresosList extends Ingresos
         $this->id->AdvancedSearch->SearchValue2 = $filter["y_id"] ?? "";
         $this->id->AdvancedSearch->SearchOperator2 = $filter["w_id"] ?? "";
         $this->id->AdvancedSearch->save();
+
+        // Field cooperativa_id
+        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
+        $this->cooperativa_id->AdvancedSearch->save();
 
         // Field socio_id
         $this->socio_id->AdvancedSearch->SearchValue = $filter["x_socio_id"] ?? "";
@@ -1110,14 +1119,6 @@ class IngresosList extends Ingresos
         $this->created_at->AdvancedSearch->SearchValue2 = $filter["y_created_at"] ?? "";
         $this->created_at->AdvancedSearch->SearchOperator2 = $filter["w_created_at"] ?? "";
         $this->created_at->AdvancedSearch->save();
-
-        // Field cooperativa_id
-        $this->cooperativa_id->AdvancedSearch->SearchValue = $filter["x_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchOperator = $filter["z_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchCondition = $filter["v_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchValue2 = $filter["y_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->SearchOperator2 = $filter["w_cooperativa_id"] ?? "";
-        $this->cooperativa_id->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1231,13 +1232,13 @@ class IngresosList extends Ingresos
             $this->CurrentOrder = Get("order");
             $this->CurrentOrderType = Get("ordertype", "");
             $this->updateSort($this->id); // id
+            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->updateSort($this->socio_id); // socio_id
             $this->updateSort($this->tipo_ingreso); // tipo_ingreso
             $this->updateSort($this->descripcion); // descripcion
             $this->updateSort($this->monto); // monto
             $this->updateSort($this->fecha); // fecha
             $this->updateSort($this->created_at); // created_at
-            $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1263,13 +1264,13 @@ class IngresosList extends Ingresos
                 $orderBy = "";
                 $this->setSessionOrderBy($orderBy);
                 $this->id->setSort("");
+                $this->cooperativa_id->setSort("");
                 $this->socio_id->setSort("");
                 $this->tipo_ingreso->setSort("");
                 $this->descripcion->setSort("");
                 $this->monto->setSort("");
                 $this->fecha->setSort("");
                 $this->created_at->setSort("");
-                $this->cooperativa_id->setSort("");
             }
 
             // Reset start position
@@ -1488,13 +1489,13 @@ class IngresosList extends Ingresos
             $item->Body = "";
             $item->Visible = $this->UseColumnVisibility;
             $this->createColumnOption($option, "id");
+            $this->createColumnOption($option, "cooperativa_id");
             $this->createColumnOption($option, "socio_id");
             $this->createColumnOption($option, "tipo_ingreso");
             $this->createColumnOption($option, "descripcion");
             $this->createColumnOption($option, "monto");
             $this->createColumnOption($option, "fecha");
             $this->createColumnOption($option, "created_at");
-            $this->createColumnOption($option, "cooperativa_id");
         }
 
         // Set up custom actions
@@ -1927,13 +1928,13 @@ class IngresosList extends Ingresos
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->socio_id->setDbValue($row['socio_id']);
         $this->tipo_ingreso->setDbValue($row['tipo_ingreso']);
         $this->descripcion->setDbValue($row['descripcion']);
         $this->monto->setDbValue($row['monto']);
         $this->fecha->setDbValue($row['fecha']);
         $this->created_at->setDbValue($row['created_at']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -1941,13 +1942,13 @@ class IngresosList extends Ingresos
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['socio_id'] = $this->socio_id->DefaultValue;
         $row['tipo_ingreso'] = $this->tipo_ingreso->DefaultValue;
         $row['descripcion'] = $this->descripcion->DefaultValue;
         $row['monto'] = $this->monto->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -1990,6 +1991,8 @@ class IngresosList extends Ingresos
 
         // id
 
+        // cooperativa_id
+
         // socio_id
 
         // tipo_ingreso
@@ -2002,12 +2005,34 @@ class IngresosList extends Ingresos
 
         // created_at
 
-        // cooperativa_id
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // socio_id
             $this->socio_id->ViewValue = $this->socio_id->CurrentValue;
@@ -2035,13 +2060,13 @@ class IngresosList extends Ingresos
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
-            // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
-
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
+            $this->cooperativa_id->TooltipValue = "";
 
             // socio_id
             $this->socio_id->HrefValue = "";
@@ -2066,10 +2091,6 @@ class IngresosList extends Ingresos
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
-            $this->cooperativa_id->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -2164,6 +2185,8 @@ class IngresosList extends Ingresos
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 case "x_tipo_ingreso":
                     break;
                 default:

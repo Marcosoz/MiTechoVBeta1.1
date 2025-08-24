@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $MovimientosStockDelete = &$Page;
@@ -53,8 +53,8 @@ $Page->showMessage();
 <?php if ($Page->id->Visible) { // id ?>
         <th class="<?= $Page->id->headerCellClass() ?>"><span id="elh_movimientos_stock_id" class="movimientos_stock_id"><?= $Page->id->caption() ?></span></th>
 <?php } ?>
-<?php if ($Page->stock_id->Visible) { // stock_id ?>
-        <th class="<?= $Page->stock_id->headerCellClass() ?>"><span id="elh_movimientos_stock_stock_id" class="movimientos_stock_stock_id"><?= $Page->stock_id->caption() ?></span></th>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <th class="<?= $Page->cooperativa_id->headerCellClass() ?>"><span id="elh_movimientos_stock_cooperativa_id" class="movimientos_stock_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></th>
 <?php } ?>
 <?php if ($Page->tipo_movimiento->Visible) { // tipo_movimiento ?>
         <th class="<?= $Page->tipo_movimiento->headerCellClass() ?>"><span id="elh_movimientos_stock_tipo_movimiento" class="movimientos_stock_tipo_movimiento"><?= $Page->tipo_movimiento->caption() ?></span></th>
@@ -100,11 +100,11 @@ while ($Page->fetch()) {
 </span>
 </td>
 <?php } ?>
-<?php if ($Page->stock_id->Visible) { // stock_id ?>
-        <td<?= $Page->stock_id->cellAttributes() ?>>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <td<?= $Page->cooperativa_id->cellAttributes() ?>>
 <span id="">
-<span<?= $Page->stock_id->viewAttributes() ?>>
-<?= $Page->stock_id->getViewValue() ?></span>
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>

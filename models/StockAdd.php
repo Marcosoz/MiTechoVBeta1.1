@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -135,11 +135,11 @@ class StockAdd extends Stock
     public function setVisibility(): void
     {
         $this->id->Visible = false;
+        $this->cooperativa_id->setVisibility();
         $this->nombre_material->setVisibility();
         $this->unidad->setVisibility();
         $this->cantidad->setVisibility();
         $this->descripcion->setVisibility();
-        $this->cooperativa_id->setVisibility();
     }
 
     // Constructor
@@ -487,6 +487,9 @@ class StockAdd extends Stock
             $this->InlineDelete = true;
         }
 
+        // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
+
         // Load default values for add
         $this->loadDefaultValues();
 
@@ -644,6 +647,16 @@ class StockAdd extends Stock
     {
         $validate = !Config("SERVER_VALIDATE");
 
+        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
+        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
+        if (!$this->cooperativa_id->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->cooperativa_id->Visible = false; // Disable update for API request
+            } else {
+                $this->cooperativa_id->setFormValue($val);
+            }
+        }
+
         // Check field name 'nombre_material' before field var 'x_nombre_material'
         $val = $this->getFormValue("nombre_material", null) ?? $this->getFormValue("x_nombre_material", null);
         if (!$this->nombre_material->IsDetailKey) {
@@ -684,16 +697,6 @@ class StockAdd extends Stock
             }
         }
 
-        // Check field name 'cooperativa_id' before field var 'x_cooperativa_id'
-        $val = $this->getFormValue("cooperativa_id", null) ?? $this->getFormValue("x_cooperativa_id", null);
-        if (!$this->cooperativa_id->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->cooperativa_id->Visible = false; // Disable update for API request
-            } else {
-                $this->cooperativa_id->setFormValue($val, true, $validate);
-            }
-        }
-
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -701,11 +704,11 @@ class StockAdd extends Stock
     // Restore form values
     public function restoreFormValues(): void
     {
+        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
         $this->nombre_material->CurrentValue = $this->nombre_material->FormValue;
         $this->unidad->CurrentValue = $this->unidad->FormValue;
         $this->cantidad->CurrentValue = $this->cantidad->FormValue;
         $this->descripcion->CurrentValue = $this->descripcion->FormValue;
-        $this->cooperativa_id->CurrentValue = $this->cooperativa_id->FormValue;
     }
 
     /**
@@ -755,11 +758,11 @@ class StockAdd extends Stock
         // Call Row Selected event
         $this->rowSelected($row);
         $this->id->setDbValue($row['id']);
+        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->nombre_material->setDbValue($row['nombre_material']);
         $this->unidad->setDbValue($row['unidad']);
         $this->cantidad->setDbValue($row['cantidad']);
         $this->descripcion->setDbValue($row['descripcion']);
-        $this->cooperativa_id->setDbValue($row['cooperativa_id']);
     }
 
     // Return a row with default values
@@ -767,11 +770,11 @@ class StockAdd extends Stock
     {
         $row = [];
         $row['id'] = $this->id->DefaultValue;
+        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['nombre_material'] = $this->nombre_material->DefaultValue;
         $row['unidad'] = $this->unidad->DefaultValue;
         $row['cantidad'] = $this->cantidad->DefaultValue;
         $row['descripcion'] = $this->descripcion->DefaultValue;
-        $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         return $row;
     }
 
@@ -809,6 +812,9 @@ class StockAdd extends Stock
         // id
         $this->id->RowCssClass = "row";
 
+        // cooperativa_id
+        $this->cooperativa_id->RowCssClass = "row";
+
         // nombre_material
         $this->nombre_material->RowCssClass = "row";
 
@@ -821,13 +827,34 @@ class StockAdd extends Stock
         // descripcion
         $this->descripcion->RowCssClass = "row";
 
-        // cooperativa_id
-        $this->cooperativa_id->RowCssClass = "row";
-
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
+
+            // cooperativa_id
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre_material
             $this->nombre_material->ViewValue = $this->nombre_material->CurrentValue;
@@ -843,8 +870,7 @@ class StockAdd extends Stock
             $this->descripcion->ViewValue = $this->descripcion->CurrentValue;
 
             // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
+            $this->cooperativa_id->HrefValue = "";
 
             // nombre_material
             $this->nombre_material->HrefValue = "";
@@ -857,10 +883,65 @@ class StockAdd extends Stock
 
             // descripcion
             $this->descripcion->HrefValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
+            // cooperativa_id
+            $this->cooperativa_id->setupEditAttributes();
+            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
+                $this->cooperativa_id->CurrentValue = CurrentUserID();
+                $curVal = strval($this->cooperativa_id->CurrentValue);
+                if ($curVal != "") {
+                    $this->cooperativa_id->EditValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                    if ($this->cooperativa_id->EditValue === null) { // Lookup from database
+                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                        $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                        $conn = Conn();
+                        $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                        $ari = count($rswrk);
+                        if ($ari > 0) { // Lookup values found
+                            $rows = [];
+                            foreach ($rswrk as $row) {
+                                $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                            }
+                            $this->cooperativa_id->EditValue = $this->cooperativa_id->displayValue($rows[0]);
+                        } else {
+                            $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                        }
+                    }
+                } else {
+                    $this->cooperativa_id->EditValue = null;
+                }
+            } else {
+                $curVal = trim(strval($this->cooperativa_id->CurrentValue));
+                if ($curVal != "") {
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                } else {
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->Lookup !== null && is_array($this->cooperativa_id->lookupOptions()) && count($this->cooperativa_id->lookupOptions()) > 0 ? $curVal : null;
+                }
+                if ($this->cooperativa_id->ViewValue !== null) { // Load from cache
+                    $this->cooperativa_id->EditValue = array_values($this->cooperativa_id->lookupOptions());
+                } else { // Lookup from database
+                    if ($curVal == "") {
+                        $filterWrk = "0=1";
+                    } else {
+                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $this->cooperativa_id->CurrentValue, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    }
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(true, $filterWrk, "", $this, false, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    $rows = [];
+                    if ($ari > 0) { // Lookup values found
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                    } else {
+                        $this->cooperativa_id->ViewValue = $this->language->phrase("PleaseSelect");
+                    }
+                    $this->cooperativa_id->EditValue = $rows;
+                }
+                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+            }
+
             // nombre_material
             $this->nombre_material->setupEditAttributes();
             $this->nombre_material->EditValue = !$this->nombre_material->Raw ? HtmlDecode($this->nombre_material->CurrentValue) : $this->nombre_material->CurrentValue;
@@ -884,21 +965,10 @@ class StockAdd extends Stock
             $this->descripcion->EditValue = !$this->descripcion->Raw ? HtmlDecode($this->descripcion->CurrentValue) : $this->descripcion->CurrentValue;
             $this->descripcion->PlaceHolder = RemoveHtml($this->descripcion->caption());
 
-            // cooperativa_id
-            $this->cooperativa_id->setupEditAttributes();
-            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
-                $this->cooperativa_id->CurrentValue = CurrentUserID();
-                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, $this->cooperativa_id->formatPattern());
-            } else {
-                $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
-                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
-                if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
-                    $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
-                }
-            }
-
             // Add refer script
+
+            // cooperativa_id
+            $this->cooperativa_id->HrefValue = "";
 
             // nombre_material
             $this->nombre_material->HrefValue = "";
@@ -911,9 +981,6 @@ class StockAdd extends Stock
 
             // descripcion
             $this->descripcion->HrefValue = "";
-
-            // cooperativa_id
-            $this->cooperativa_id->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -933,6 +1000,11 @@ class StockAdd extends Stock
             return true;
         }
         $validateForm = true;
+            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
+                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
+                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
+                }
+            }
             if ($this->nombre_material->Visible && $this->nombre_material->Required) {
                 if (!$this->nombre_material->IsDetailKey && IsEmpty($this->nombre_material->FormValue)) {
                     $this->nombre_material->addErrorMessage(str_replace("%s", $this->nombre_material->caption(), $this->nombre_material->RequiredErrorMessage));
@@ -955,14 +1027,6 @@ class StockAdd extends Stock
                 if (!$this->descripcion->IsDetailKey && IsEmpty($this->descripcion->FormValue)) {
                     $this->descripcion->addErrorMessage(str_replace("%s", $this->descripcion->caption(), $this->descripcion->RequiredErrorMessage));
                 }
-            }
-            if ($this->cooperativa_id->Visible && $this->cooperativa_id->Required) {
-                if (!$this->cooperativa_id->IsDetailKey && IsEmpty($this->cooperativa_id->FormValue)) {
-                    $this->cooperativa_id->addErrorMessage(str_replace("%s", $this->cooperativa_id->caption(), $this->cooperativa_id->RequiredErrorMessage));
-                }
-            }
-            if (!CheckInteger($this->cooperativa_id->FormValue)) {
-                $this->cooperativa_id->addErrorMessage($this->cooperativa_id->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1043,6 +1107,9 @@ class StockAdd extends Stock
     {
         $newRow = [];
 
+        // cooperativa_id
+        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
+
         // nombre_material
         $this->nombre_material->setDbValueDef($newRow, $this->nombre_material->CurrentValue, false);
 
@@ -1054,9 +1121,6 @@ class StockAdd extends Stock
 
         // descripcion
         $this->descripcion->setDbValueDef($newRow, $this->descripcion->CurrentValue, false);
-
-        // cooperativa_id
-        $this->cooperativa_id->setDbValueDef($newRow, $this->cooperativa_id->CurrentValue, false);
         return $newRow;
     }
 
@@ -1092,6 +1156,8 @@ class StockAdd extends Stock
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 default:
                     $lookupFilter = "";
                     break;

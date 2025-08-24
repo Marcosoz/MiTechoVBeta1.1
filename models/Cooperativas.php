@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -1428,6 +1428,11 @@ class Cooperativas extends DbTable implements LookupTableInterface
     public function renderLookupForView(string $name, mixed $value): mixed
     {
         $this->RowType = RowType::VIEW;
+        if ($name == "nombre") {
+            $clone = $this->nombre->getClone()->setViewValue($value);
+            $clone->ViewValue = $clone->CurrentValue;
+            return $clone->getViewValue();
+        }
         return $value;
     }
 

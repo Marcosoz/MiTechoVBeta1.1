@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $MovimientosStockList = &$Page;
@@ -150,8 +150,8 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->id->Visible) { // id ?>
         <th data-name="id" class="<?= $Page->id->headerCellClass() ?>"><div id="elh_movimientos_stock_id" class="movimientos_stock_id"><?= $Page->renderFieldHeader($Page->id) ?></div></th>
 <?php } ?>
-<?php if ($Page->stock_id->Visible) { // stock_id ?>
-        <th data-name="stock_id" class="<?= $Page->stock_id->headerCellClass() ?>"><div id="elh_movimientos_stock_stock_id" class="movimientos_stock_stock_id"><?= $Page->renderFieldHeader($Page->stock_id) ?></div></th>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <th data-name="cooperativa_id" class="<?= $Page->cooperativa_id->headerCellClass() ?>"><div id="elh_movimientos_stock_cooperativa_id" class="movimientos_stock_cooperativa_id"><?= $Page->renderFieldHeader($Page->cooperativa_id) ?></div></th>
 <?php } ?>
 <?php if ($Page->tipo_movimiento->Visible) { // tipo_movimiento ?>
         <th data-name="tipo_movimiento" class="<?= $Page->tipo_movimiento->headerCellClass() ?>"><div id="elh_movimientos_stock_tipo_movimiento" class="movimientos_stock_tipo_movimiento"><?= $Page->renderFieldHeader($Page->tipo_movimiento) ?></div></th>
@@ -204,11 +204,11 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 </span>
 </td>
     <?php } ?>
-    <?php if ($Page->stock_id->Visible) { // stock_id ?>
-        <td data-name="stock_id"<?= $Page->stock_id->cellAttributes() ?>>
-<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_movimientos_stock_stock_id" class="el_movimientos_stock_stock_id">
-<span<?= $Page->stock_id->viewAttributes() ?>>
-<?= $Page->stock_id->getViewValue() ?></span>
+    <?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <td data-name="cooperativa_id"<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_movimientos_stock_cooperativa_id" class="el_movimientos_stock_cooperativa_id">
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>

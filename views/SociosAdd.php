@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $SociosAdd = &$Page;
@@ -22,7 +22,7 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Add fields
         .setFields([
-            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null, ew.Validators.integer], fields.cooperativa_id.isInvalid],
+            ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null], fields.cooperativa_id.isInvalid],
             ["nombre_completo", [fields.nombre_completo.visible && fields.nombre_completo.required ? ew.Validators.required(fields.nombre_completo.caption) : null], fields.nombre_completo.isInvalid],
             ["cedula", [fields.cedula.visible && fields.cedula.required ? ew.Validators.required(fields.cedula.caption) : null], fields.cedula.isInvalid],
             ["telefono", [fields.telefono.visible && fields.telefono.required ? ew.Validators.required(fields.telefono.caption) : null], fields.telefono.isInvalid],
@@ -81,7 +81,7 @@ $Page->showMessage();
 <div class="ew-add-div"><!-- page* -->
 <?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
     <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
-        <label id="elh_socios_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <label id="elh_socios_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
 <?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("add")) { // No access permission ?>
 <span<?= $Page->cooperativa_id->viewAttributes() ?>>
@@ -89,22 +89,43 @@ $Page->showMessage();
 <input type="hidden" data-table="socios" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
 <?php } else { ?>
 <span id="el_socios_cooperativa_id">
-<?php
-if (IsRTL()) {
-    $Page->cooperativa_id->EditAttrs["dir"] = "rtl";
-}
-?>
-<span id="as_x_cooperativa_id" class="ew-auto-suggest">
-    <input type="<?= $Page->cooperativa_id->getInputTextType() ?>" class="form-control" name="sv_x_cooperativa_id" id="sv_x_cooperativa_id" value="<?= $Page->cooperativa_id->getEditValue() ?>" autocomplete="off" size="30" placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>" data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->cooperativa_id->formatPattern()) ?>"<?= $Page->cooperativa_id->editAttributes() ?> aria-describedby="x_cooperativa_id_help">
-</span>
-<selection-list hidden class="form-control" data-table="socios" data-field="x_cooperativa_id" data-input="sv_x_cooperativa_id" data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>"></selection-list>
-<?= $Page->cooperativa_id->getCustomMessage() ?>
-<div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+    <select
+        id="x_cooperativa_id"
+        name="x_cooperativa_id"
+        class="form-select ew-select<?= $Page->cooperativa_id->isInvalidClass() ?>"
+        <?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+        data-select2-id="fsociosadd_x_cooperativa_id"
+        <?php } ?>
+        data-table="socios"
+        data-field="x_cooperativa_id"
+        data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>"
+        <?= $Page->cooperativa_id->editAttributes() ?>>
+        <?= $Page->cooperativa_id->selectOptionListHtml("x_cooperativa_id") ?>
+    </select>
+    <?= $Page->cooperativa_id->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+<?= $Page->cooperativa_id->Lookup->getParamTag($Page, "p_x_cooperativa_id") ?>
+<?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
 <script<?= Nonce() ?>>
 loadjs.ready("fsociosadd", function() {
-    fsociosadd.createAutoSuggest(Object.assign({"id":"x_cooperativa_id","forceSelect":false}, { lookupAllDisplayFields: <?= $Page->cooperativa_id->Lookup->LookupAllDisplayFields ? "true" : "false" ?> }, ew.vars.tables.socios.fields.cooperativa_id.autoSuggestOptions));
+    var options = { name: "x_cooperativa_id", selectId: "fsociosadd_x_cooperativa_id" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fsociosadd.lists.cooperativa_id?.lookupOptions.length) {
+        options.data = { id: "x_cooperativa_id", form: "fsociosadd" };
+    } else {
+        options.ajax = { id: "x_cooperativa_id", form: "fsociosadd", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.socios.fields.cooperativa_id.selectOptions);
+    ew.createSelect(options);
 });
 </script>
+<?php } ?>
 </span>
 <?php } ?>
 </div></div>

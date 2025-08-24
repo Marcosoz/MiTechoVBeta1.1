@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use Slim\Routing\RouteContext;
 use Slim\Exception\HttpBadRequestException;

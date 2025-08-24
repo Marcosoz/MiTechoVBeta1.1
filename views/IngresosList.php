@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $IngresosList = &$Page;
@@ -150,6 +150,9 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->id->Visible) { // id ?>
         <th data-name="id" class="<?= $Page->id->headerCellClass() ?>"><div id="elh_ingresos_id" class="ingresos_id"><?= $Page->renderFieldHeader($Page->id) ?></div></th>
 <?php } ?>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <th data-name="cooperativa_id" class="<?= $Page->cooperativa_id->headerCellClass() ?>"><div id="elh_ingresos_cooperativa_id" class="ingresos_cooperativa_id"><?= $Page->renderFieldHeader($Page->cooperativa_id) ?></div></th>
+<?php } ?>
 <?php if ($Page->socio_id->Visible) { // socio_id ?>
         <th data-name="socio_id" class="<?= $Page->socio_id->headerCellClass() ?>"><div id="elh_ingresos_socio_id" class="ingresos_socio_id"><?= $Page->renderFieldHeader($Page->socio_id) ?></div></th>
 <?php } ?>
@@ -167,9 +170,6 @@ $Page->ListOptions->render("header", "left");
 <?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
         <th data-name="created_at" class="<?= $Page->created_at->headerCellClass() ?>"><div id="elh_ingresos_created_at" class="ingresos_created_at"><?= $Page->renderFieldHeader($Page->created_at) ?></div></th>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-        <th data-name="cooperativa_id" class="<?= $Page->cooperativa_id->headerCellClass() ?>"><div id="elh_ingresos_cooperativa_id" class="ingresos_cooperativa_id"><?= $Page->renderFieldHeader($Page->cooperativa_id) ?></div></th>
 <?php } ?>
 <?php
 // Render list options (header, right)
@@ -204,6 +204,14 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_ingresos_id" class="el_ingresos_id">
 <span<?= $Page->id->viewAttributes() ?>>
 <?= $Page->id->getViewValue() ?></span>
+</span>
+</td>
+    <?php } ?>
+    <?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <td data-name="cooperativa_id"<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_ingresos_cooperativa_id" class="el_ingresos_cooperativa_id">
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>
@@ -252,14 +260,6 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_ingresos_created_at" class="el_ingresos_created_at">
 <span<?= $Page->created_at->viewAttributes() ?>>
 <?= $Page->created_at->getViewValue() ?></span>
-</span>
-</td>
-    <?php } ?>
-    <?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-        <td data-name="cooperativa_id"<?= $Page->cooperativa_id->cellAttributes() ?>>
-<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_ingresos_cooperativa_id" class="el_ingresos_cooperativa_id">
-<span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>

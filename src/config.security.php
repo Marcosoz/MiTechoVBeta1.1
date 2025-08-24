@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 use Symfony\Component\Security\Core\User\InMemoryUser;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -40,7 +40,7 @@ return [
                 'memory' => [
                     'users' => [
                         'admin' => [
-                            'password' => '$2y$15$nvCXMP8jXgyPUsgRI1t.f.i79CSFtJ56HNrAphhyB7uPNpSBNemc6',
+                            'password' => '$2y$15$N6w3T9i46wwG9dzI1R3smeInxaALfb7/ieVhrvTNlBLs8/eLEe7yG',
                             'roles' => [
                                 'ROLE_SUPER_ADMIN'
                             ],

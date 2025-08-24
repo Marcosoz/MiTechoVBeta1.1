@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825;
+namespace PHPMaker2025\project240825SeleccionarManualCoop;
 
 // Page object
 $ProveedoresDelete = &$Page;
@@ -53,6 +53,9 @@ $Page->showMessage();
 <?php if ($Page->id->Visible) { // id ?>
         <th class="<?= $Page->id->headerCellClass() ?>"><span id="elh_proveedores_id" class="proveedores_id"><?= $Page->id->caption() ?></span></th>
 <?php } ?>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <th class="<?= $Page->cooperativa_id->headerCellClass() ?>"><span id="elh_proveedores_cooperativa_id" class="proveedores_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></th>
+<?php } ?>
 <?php if ($Page->nombre->Visible) { // nombre ?>
         <th class="<?= $Page->nombre->headerCellClass() ?>"><span id="elh_proveedores_nombre" class="proveedores_nombre"><?= $Page->nombre->caption() ?></span></th>
 <?php } ?>
@@ -67,9 +70,6 @@ $Page->showMessage();
 <?php } ?>
 <?php if ($Page->direccion->Visible) { // direccion ?>
         <th class="<?= $Page->direccion->headerCellClass() ?>"><span id="elh_proveedores_direccion" class="proveedores_direccion"><?= $Page->direccion->caption() ?></span></th>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-        <th class="<?= $Page->cooperativa_id->headerCellClass() ?>"><span id="elh_proveedores_cooperativa_id" class="proveedores_cooperativa_id"><?= $Page->cooperativa_id->caption() ?></span></th>
 <?php } ?>
     </tr>
     </thead>
@@ -97,6 +97,14 @@ while ($Page->fetch()) {
 <span id="">
 <span<?= $Page->id->viewAttributes() ?>>
 <?= $Page->id->getViewValue() ?></span>
+</span>
+</td>
+<?php } ?>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+        <td<?= $Page->cooperativa_id->cellAttributes() ?>>
+<span id="">
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>
@@ -137,14 +145,6 @@ while ($Page->fetch()) {
 <span id="">
 <span<?= $Page->direccion->viewAttributes() ?>>
 <?= $Page->direccion->getViewValue() ?></span>
-</span>
-</td>
-<?php } ?>
-<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
-        <td<?= $Page->cooperativa_id->cellAttributes() ?>>
-<span id="">
-<span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<?= $Page->cooperativa_id->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>
