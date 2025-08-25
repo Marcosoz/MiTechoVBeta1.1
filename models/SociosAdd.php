@@ -493,7 +493,6 @@ class SociosAdd extends Socios
         }
 
         // Set up lookup cache
-        $this->setupLookupOptions($this->cooperativa_id);
         $this->setupLookupOptions($this->activo);
         $this->setupLookupOptions($this->nivel_usuario);
 
@@ -924,28 +923,8 @@ class SociosAdd extends Socios
             $this->id->ViewValue = $this->id->CurrentValue;
 
             // cooperativa_id
-            $curVal = strval($this->cooperativa_id->CurrentValue);
-            if ($curVal != "") {
-                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
-                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
-                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
-                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
-                    $conn = Conn();
-                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
-                    $ari = count($rswrk);
-                    if ($ari > 0) { // Lookup values found
-                        $rows = [];
-                        foreach ($rswrk as $row) {
-                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
-                        }
-                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
-                    } else {
-                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
-                    }
-                }
-            } else {
-                $this->cooperativa_id->ViewValue = null;
-            }
+            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
+            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
 
             // nombre_completo
             $this->nombre_completo->ViewValue = $this->nombre_completo->CurrentValue;
@@ -1020,60 +999,10 @@ class SociosAdd extends Socios
         } elseif ($this->RowType == RowType::ADD) {
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
-            if (!$this->security->canAccess() && $this->security->isLoggedIn() && !$this->userIDAllow("add")) { // No access permission
-                $this->cooperativa_id->CurrentValue = CurrentUserID();
-                $curVal = strval($this->cooperativa_id->CurrentValue);
-                if ($curVal != "") {
-                    $this->cooperativa_id->EditValue = $this->cooperativa_id->lookupCacheOption($curVal);
-                    if ($this->cooperativa_id->EditValue === null) { // Lookup from database
-                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
-                        $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
-                        $conn = Conn();
-                        $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
-                        $ari = count($rswrk);
-                        if ($ari > 0) { // Lookup values found
-                            $rows = [];
-                            foreach ($rswrk as $row) {
-                                $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
-                            }
-                            $this->cooperativa_id->EditValue = $this->cooperativa_id->displayValue($rows[0]);
-                        } else {
-                            $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
-                        }
-                    }
-                } else {
-                    $this->cooperativa_id->EditValue = null;
-                }
-            } else {
-                $curVal = trim(strval($this->cooperativa_id->CurrentValue));
-                if ($curVal != "") {
-                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
-                } else {
-                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->Lookup !== null && is_array($this->cooperativa_id->lookupOptions()) && count($this->cooperativa_id->lookupOptions()) > 0 ? $curVal : null;
-                }
-                if ($this->cooperativa_id->ViewValue !== null) { // Load from cache
-                    $this->cooperativa_id->EditValue = array_values($this->cooperativa_id->lookupOptions());
-                } else { // Lookup from database
-                    if ($curVal == "") {
-                        $filterWrk = "0=1";
-                    } else {
-                        $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $this->cooperativa_id->CurrentValue, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
-                    }
-                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(true, $filterWrk, "", $this, false, true);
-                    $conn = Conn();
-                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
-                    $ari = count($rswrk);
-                    $rows = [];
-                    if ($ari > 0) { // Lookup values found
-                        foreach ($rswrk as $row) {
-                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
-                        }
-                    } else {
-                        $this->cooperativa_id->ViewValue = $this->language->phrase("PleaseSelect");
-                    }
-                    $this->cooperativa_id->EditValue = $rows;
-                }
-                $this->cooperativa_id->PlaceHolder = RemoveHtml($this->cooperativa_id->caption());
+            $this->cooperativa_id->CurrentValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+            $this->cooperativa_id->EditValue = $this->cooperativa_id->CurrentValue;
+            if (strval($this->cooperativa_id->EditValue) != "" && is_numeric($this->cooperativa_id->EditValue)) {
+                $this->cooperativa_id->EditValue = FormatNumber($this->cooperativa_id->EditValue, null);
             }
 
             // nombre_completo
@@ -1386,8 +1315,6 @@ class SociosAdd extends Socios
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
-                case "x_cooperativa_id":
-                    break;
                 case "x_activo":
                     break;
                 case "x_nivel_usuario":

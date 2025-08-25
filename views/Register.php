@@ -44,7 +44,6 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
-            "cooperativa_id": <?= $Page->cooperativa_id->toClientList($Page) ?>,
         })
         .build();
     window[form.id] = form;
@@ -77,52 +76,14 @@ $Page->showMessage();
 <div class="ew-register-div"><!-- page* -->
 <?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
     <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
-        <label id="elh_socios_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <label id="elh_socios_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
         <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
 <?php if (!$Page->isConfirm()) { ?>
 <span id="el_socios_cooperativa_id">
-    <select
-        id="x_cooperativa_id"
-        name="x_cooperativa_id"
-        class="form-select ew-select<?= $Page->cooperativa_id->isInvalidClass() ?>"
-        <?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
-        data-select2-id="fregister_x_cooperativa_id"
-        <?php } ?>
-        data-table="socios"
-        data-field="x_cooperativa_id"
-        data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>"
-        data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>"
-        <?= $Page->cooperativa_id->editAttributes() ?>>
-        <?= $Page->cooperativa_id->selectOptionListHtml("x_cooperativa_id") ?>
-    </select>
-    <?= $Page->cooperativa_id->getCustomMessage() ?>
-    <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
-<?= $Page->cooperativa_id->Lookup->getParamTag($Page, "p_x_cooperativa_id") ?>
-<?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
-<script<?= Nonce() ?>>
-loadjs.ready("fregister", function() {
-    var options = { name: "x_cooperativa_id", selectId: "fregister_x_cooperativa_id" },
-        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
-    if (!el)
-        return;
-    options.closeOnSelect = !options.multiple;
-    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
-    if (fregister.lists.cooperativa_id?.lookupOptions.length) {
-        options.data = { id: "x_cooperativa_id", form: "fregister" };
-    } else {
-        options.ajax = { id: "x_cooperativa_id", form: "fregister", limit: ew.LOOKUP_PAGE_SIZE };
-    }
-    options.minimumResultsForSearch = Infinity;
-    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.socios.fields.cooperativa_id.selectOptions);
-    ew.createSelect(options);
-});
-</script>
-<?php } ?>
+<input type="hidden" data-table="socios" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
 </span>
 <?php } else { ?>
 <span id="el_socios_cooperativa_id">
-<span<?= $Page->cooperativa_id->viewAttributes() ?>>
-<span class="form-control-plaintext"><?= $Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->ViewValue) ?></span></span>
 <input type="hidden" data-table="socios" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->FormValue) ?>">
 </span>
 <?php } ?>

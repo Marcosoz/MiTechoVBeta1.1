@@ -156,18 +156,13 @@ class Socios extends DbTable implements LookupTableInterface
             false, // Force selection
             false, // Is Virtual search
             'FORMATTED TEXT', // View Tag
-            'SELECT' // Edit Tag
+            'HIDDEN' // Edit Tag
         );
         $this->cooperativa_id->InputTextType = "text";
         $this->cooperativa_id->Raw = true;
         $this->cooperativa_id->Nullable = false; // NOT NULL field
-        $this->cooperativa_id->Required = true; // Required field
-        $this->cooperativa_id->setSelectMultiple(false); // Select one
-        $this->cooperativa_id->UsePleaseSelect = true; // Use PleaseSelect by default
-        $this->cooperativa_id->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
-        $this->cooperativa_id->Lookup = new Lookup($this->cooperativa_id, 'cooperativas', false, 'id', ["nombre","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nombre`");
         $this->cooperativa_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
-        $this->cooperativa_id->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
+        $this->cooperativa_id->SearchOperators = ["=", "<>"];
         $this->Fields['cooperativa_id'] = &$this->cooperativa_id;
 
         // nombre_completo
@@ -1384,28 +1379,8 @@ class Socios extends DbTable implements LookupTableInterface
         $this->id->ViewValue = $this->id->CurrentValue;
 
         // cooperativa_id
-        $curVal = strval($this->cooperativa_id->CurrentValue);
-        if ($curVal != "") {
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
-            if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
-                $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
-                $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
-                $conn = Conn();
-                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
-                $ari = count($rswrk);
-                if ($ari > 0) { // Lookup values found
-                    $rows = [];
-                    foreach ($rswrk as $row) {
-                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
-                    }
-                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
-                } else {
-                    $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
-                }
-            }
-        } else {
-            $this->cooperativa_id->ViewValue = null;
-        }
+        $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
+        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
 
         // nombre_completo
         $this->nombre_completo->ViewValue = $this->nombre_completo->CurrentValue;
@@ -1798,9 +1773,10 @@ class Socios extends DbTable implements LookupTableInterface
     // Row Inserting event
     public function rowInserting(?array $oldRow, array &$newRow): ?bool
     {
-        // Enter your code here
-        // To cancel, set return value to false
-        // To skip for grid insert/update, set return value to null
+        // Verifica si el usuario No es administrador gral.
+        if (CurrentUserLevel() != -1) {
+            $newRow["cooperativa_id"] = CurrentUserInfo("cooperativa_id");
+            }
         return true;
     }
 
