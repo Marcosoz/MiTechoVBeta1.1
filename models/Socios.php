@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -1777,6 +1777,70 @@ class Socios extends DbTable implements LookupTableInterface
         if (CurrentUserLevel() != -1) {
             $newRow["cooperativa_id"] = CurrentUserInfo("cooperativa_id");
             }
+        return true;
+
+    //Verificacion de cedula, en caso de existir registro no deja ingresar el usuario.
+        // 1. Documento ingresado
+        $documento = $rsnew["cedula"];
+
+        // 2. Conexión a la base
+        $conn = $this->getConnection();
+
+        // 3. Consulta para buscar si ya existe este documento en cualquier cooperativa
+        $sql = "SELECT nombre_completo, cooperativa_id
+                FROM socios
+                WHERE cedula = '" . AdjustSql($documento) . "'";
+        $rschk = $conn->fetchAssoc($sql);
+
+        // 4. Si encontró coincidencia
+        if ($rschk) {
+            // Obtener datos del socio existente
+            $nombreExistente = $rschk["nombre_completo"];
+            $coopExistente = $rschk["cooperativa_id"];
+
+            // Mensaje personalizado
+            $this->setFailureMessage(
+                "El documento ya está registrado por: " . $nombreExistente . 
+                " (Cooperativa ID: " . $coopExistente . ")."
+            );
+
+            // Bloquear inserción
+            return false;
+        }
+
+        // 5. Si no existe, permitir insertar
+        return true;
+
+    //Verificacion de email, en caso de existir registro no deja ingresar el usuario.
+        // 1. email ingresado
+        $email = $rsnew["email"];
+
+        // 2. Conexión a la base
+        $conn = $this->getConnection();
+
+        // 3. Consulta para buscar si ya existe este documento en cualquier cooperativa
+        $sql = "SELECT nombre_completo, cooperativa_id
+                FROM socios
+                WHERE email = '" . AdjustSql($email) . "'";
+        $rschk = $conn->fetchAssoc($sql);
+
+        // 4. Si encontró coincidencia
+        if ($rschk) {
+            // Obtener datos del socio existente
+            $nombreExistente = $rschk["nombre_completo"];
+            $coopExistente = $rschk["cooperativa_id"];
+
+            // Mensaje personalizado
+            $this->setFailureMessage(
+                "El email ya está registrado por: " . $nombreExistente . 
+                " (Cooperativa ID: " . $coopExistente . ")."
+            );
+
+            // Bloquear inserción
+            return false;
+        }
+
+        // 5. Si no existe, permitir insertar
         return true;
     }
 

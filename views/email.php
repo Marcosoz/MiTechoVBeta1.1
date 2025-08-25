@@ -1,4 +1,4 @@
-<?php namespace PHPMaker2025\project240825SeleccionarManualCoop; ?>
+<?php namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios; ?>
 <!-- email dialog -->
 <div id="ew-email-dialog" class="modal" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-fullscreen-sm-down">

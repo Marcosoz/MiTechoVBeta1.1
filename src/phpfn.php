@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
 */
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -88,10 +88,10 @@ use Throwable;
 
 // Custom types
 Type::addType("timetz", "Doctrine\\DBAL\\Types\\VarDateTimeType"); // "timetz" type
-Type::addType("geometry", "PHPMaker2025\\project240825SeleccionarManualCoop\\GeometryType"); // "geometry" type
-Type::addType("geography", "PHPMaker2025\\project240825SeleccionarManualCoop\\GeographyType"); // "geography" type
-Type::addType("hierarchyid", "PHPMaker2025\\project240825SeleccionarManualCoop\\HierarchyIdType"); // "hierarchyid" type
-Type::addType("bytes", "PHPMaker2025\\project240825SeleccionarManualCoop\\BytesType"); // "bytes" type
+Type::addType("geometry", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\GeometryType"); // "geometry" type
+Type::addType("geography", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\GeographyType"); // "geography" type
+Type::addType("hierarchyid", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\HierarchyIdType"); // "hierarchyid" type
+Type::addType("bytes", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\BytesType"); // "bytes" type
 
 /**
  * Get environment variable

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -1009,6 +1009,24 @@ class Register extends Socios
             $userIdMsg = sprintf($this->language->phrase("UnauthorizedUserID"), CurrentUserID(), strval($this->cooperativa_id->CurrentValue));
             $this->setFailureMessage($userIdMsg);
             return false;
+        }
+        if ($this->cedula->CurrentValue != "") { // Check field with unique index
+            $filter = "(`cedula` = '" . AdjustSql($this->cedula->CurrentValue) . "')";
+            $rsChk = $this->loadRecords($filter)->fetchAssociative();
+            if ($rsChk !== false) {
+                $idxErrMsg = sprintf($this->language->phrase("DuplicateIndex"), $this->cedula->CurrentValue, $this->cedula->caption());
+                $this->setFailureMessage($idxErrMsg);
+                return false;
+            }
+        }
+        if ($this->email->CurrentValue != "") { // Check field with unique index
+            $filter = "(`email` = '" . AdjustSql($this->email->CurrentValue) . "')";
+            $rsChk = $this->loadRecords($filter)->fetchAssociative();
+            if ($rsChk !== false) {
+                $idxErrMsg = sprintf($this->language->phrase("DuplicateIndex"), $this->email->CurrentValue, $this->email->caption());
+                $this->setFailureMessage($idxErrMsg);
+                return false;
+            }
         }
         $conn = $this->getConnection();
 

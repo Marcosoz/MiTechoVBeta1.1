@@ -1,7 +1,7 @@
 {
-    "name": "project240825-seleccionar-manual-coop",
+    "name": "project250825-asignacion-automatica-coop-a-socios",
     "version": "25.12.0",
-    "description": "project240825 seleccionar manual coop",
+    "description": "project250825 asignacion automatica coop a socios",
     "license": "SEE LICENSE IN LICENSE.md",
     "private": true,
     "dependencies": {},

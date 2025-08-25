@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
  */
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
 use LightSaml\Model\Metadata\EntityDescriptor as BaseEntityDescriptor;
 use LightSaml\Model\Context\DeserializationContext;

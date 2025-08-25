@@ -1,4 +1,4 @@
-<?php namespace PHPMaker2025\project240825SeleccionarManualCoop; ?>
+<?php namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios; ?>
 <div class="error-page">
     <?php if (@$Error["statusCode"] > 200) { ?>
     <h2 class="headline <?= @$Error["error"]["class"] ?>"><?= $Error["statusCode"] ?></h2>

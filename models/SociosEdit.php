@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -1250,6 +1250,40 @@ class SociosEdit extends Socios
 
         // Update current values
         $this->Fields->setCurrentValues($newRow);
+
+        // Check field with unique index (cedula)
+        if ($this->cedula->CurrentValue != "") {
+            $filterChk = "(`cedula` = '" . AdjustSql($this->cedula->CurrentValue) . "')";
+            $filterChk .= " AND NOT (" . $filter . ")";
+            $this->CurrentFilter = $filterChk;
+            $sqlChk = $this->getCurrentSql();
+            $rsChk = $conn->executeQuery($sqlChk);
+            if (!$rsChk) {
+                return false;
+            }
+            if ($rsChk->fetchAssociative()) {
+                $idxErrMsg = sprintf($this->language->phrase("DuplicateIndex"), $this->cedula->CurrentValue, $this->cedula->caption());
+                $this->setFailureMessage($idxErrMsg);
+                return false;
+            }
+        }
+
+        // Check field with unique index (email)
+        if ($this->email->CurrentValue != "") {
+            $filterChk = "(`email` = '" . AdjustSql($this->email->CurrentValue) . "')";
+            $filterChk .= " AND NOT (" . $filter . ")";
+            $this->CurrentFilter = $filterChk;
+            $sqlChk = $this->getCurrentSql();
+            $rsChk = $conn->executeQuery($sqlChk);
+            if (!$rsChk) {
+                return false;
+            }
+            if ($rsChk->fetchAssociative()) {
+                $idxErrMsg = sprintf($this->language->phrase("DuplicateIndex"), $this->email->CurrentValue, $this->email->caption());
+                $this->setFailureMessage($idxErrMsg);
+                return false;
+            }
+        }
 
         // Call Row Updating event
         $updateRow = $this->rowUpdating($oldRow, $newRow);

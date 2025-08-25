@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory as BaseHttpFoundationFactory;
 use Psr\Http\Message\ServerRequestInterface as ServerRequestInterface;

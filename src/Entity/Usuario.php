@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop\Entity;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project240825SeleccionarManualCoop\AdvancedUserInterface;
-use PHPMaker2025\project240825SeleccionarManualCoop\AbstractEntity;
-use PHPMaker2025\project240825SeleccionarManualCoop\AdvancedSecurity;
-use PHPMaker2025\project240825SeleccionarManualCoop\UserProfile;
-use PHPMaker2025\project240825SeleccionarManualCoop\UserRepository;
-use function PHPMaker2025\project240825SeleccionarManualCoop\Config;
-use function PHPMaker2025\project240825SeleccionarManualCoop\EntityManager;
-use function PHPMaker2025\project240825SeleccionarManualCoop\RemoveXss;
-use function PHPMaker2025\project240825SeleccionarManualCoop\HtmlDecode;
-use function PHPMaker2025\project240825SeleccionarManualCoop\HashPassword;
-use function PHPMaker2025\project240825SeleccionarManualCoop\Security;
+use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedUserInterface;
+use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AbstractEntity;
+use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedSecurity;
+use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserProfile;
+use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserRepository;
+use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Config;
+use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\EntityManager;
+use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\RemoveXss;
+use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HtmlDecode;
+use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HashPassword;
+use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Security;
 
 /**
  * Entity class for "usuarios" table

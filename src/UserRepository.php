@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPMaker2025\project240825SeleccionarManualCoop;
+namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
 
-use PHPMaker2025\project240825SeleccionarManualCoop\Entity\Socio;
+use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Entity\Socio;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
