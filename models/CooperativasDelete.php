@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,6 +141,7 @@ class CooperativasDelete extends Cooperativas
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -576,6 +577,7 @@ class CooperativasDelete extends Cooperativas
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -590,6 +592,7 @@ class CooperativasDelete extends Cooperativas
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -621,6 +624,8 @@ class CooperativasDelete extends Cooperativas
 
         // created_at
 
+        // updated_at
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -647,6 +652,10 @@ class CooperativasDelete extends Cooperativas
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
+
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
 
             // id
             $this->id->HrefValue = "";
@@ -679,6 +688,10 @@ class CooperativasDelete extends Cooperativas
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
 
         // Call Row Rendered event

@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
 */
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use Hybridauth\Adapter\OAuth2;
 use Hybridauth\Exception\UnexpectedApiResponseException;

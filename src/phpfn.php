@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
 */
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -88,10 +88,10 @@ use Throwable;
 
 // Custom types
 Type::addType("timetz", "Doctrine\\DBAL\\Types\\VarDateTimeType"); // "timetz" type
-Type::addType("geometry", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\GeometryType"); // "geometry" type
-Type::addType("geography", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\GeographyType"); // "geography" type
-Type::addType("hierarchyid", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\HierarchyIdType"); // "hierarchyid" type
-Type::addType("bytes", "PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\BytesType"); // "bytes" type
+Type::addType("geometry", "PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\GeometryType"); // "geometry" type
+Type::addType("geography", "PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\GeographyType"); // "geography" type
+Type::addType("hierarchyid", "PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HierarchyIdType"); // "hierarchyid" type
+Type::addType("bytes", "PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\BytesType"); // "bytes" type
 
 /**
  * Get environment variable

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,6 +141,8 @@ class ProveedoresAdd extends Proveedores
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->direccion->setVisibility();
+        $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -706,6 +708,28 @@ class ProveedoresAdd extends Proveedores
             }
         }
 
+        // Check field name 'created_at' before field var 'x_created_at'
+        $val = $this->getFormValue("created_at", null) ?? $this->getFormValue("x_created_at", null);
+        if (!$this->created_at->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->created_at->Visible = false; // Disable update for API request
+            } else {
+                $this->created_at->setFormValue($val, true, $validate);
+            }
+            $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+        }
+
+        // Check field name 'updated_at' before field var 'x_updated_at'
+        $val = $this->getFormValue("updated_at", null) ?? $this->getFormValue("x_updated_at", null);
+        if (!$this->updated_at->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->updated_at->Visible = false; // Disable update for API request
+            } else {
+                $this->updated_at->setFormValue($val, true, $validate);
+            }
+            $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+        }
+
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -719,6 +743,10 @@ class ProveedoresAdd extends Proveedores
         $this->telefono->CurrentValue = $this->telefono->FormValue;
         $this->email->CurrentValue = $this->email->FormValue;
         $this->direccion->CurrentValue = $this->direccion->FormValue;
+        $this->created_at->CurrentValue = $this->created_at->FormValue;
+        $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+        $this->updated_at->CurrentValue = $this->updated_at->FormValue;
+        $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
     }
 
     /**
@@ -774,6 +802,8 @@ class ProveedoresAdd extends Proveedores
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->direccion->setDbValue($row['direccion']);
+        $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -787,6 +817,8 @@ class ProveedoresAdd extends Proveedores
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['direccion'] = $this->direccion->DefaultValue;
+        $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -842,6 +874,12 @@ class ProveedoresAdd extends Proveedores
         // direccion
         $this->direccion->RowCssClass = "row";
 
+        // created_at
+        $this->created_at->RowCssClass = "row";
+
+        // updated_at
+        $this->updated_at->RowCssClass = "row";
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -886,6 +924,14 @@ class ProveedoresAdd extends Proveedores
             // direccion
             $this->direccion->ViewValue = $this->direccion->CurrentValue;
 
+            // created_at
+            $this->created_at->ViewValue = $this->created_at->CurrentValue;
+            $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
+
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // cooperativa_id
             $this->cooperativa_id->HrefValue = "";
 
@@ -903,6 +949,12 @@ class ProveedoresAdd extends Proveedores
 
             // direccion
             $this->direccion->HrefValue = "";
+
+            // created_at
+            $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
@@ -987,6 +1039,16 @@ class ProveedoresAdd extends Proveedores
             $this->direccion->EditValue = !$this->direccion->Raw ? HtmlDecode($this->direccion->CurrentValue) : $this->direccion->CurrentValue;
             $this->direccion->PlaceHolder = RemoveHtml($this->direccion->caption());
 
+            // created_at
+            $this->created_at->setupEditAttributes();
+            $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+            $this->created_at->PlaceHolder = RemoveHtml($this->created_at->caption());
+
+            // updated_at
+            $this->updated_at->setupEditAttributes();
+            $this->updated_at->EditValue = FormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+            $this->updated_at->PlaceHolder = RemoveHtml($this->updated_at->caption());
+
             // Add refer script
 
             // cooperativa_id
@@ -1006,6 +1068,12 @@ class ProveedoresAdd extends Proveedores
 
             // direccion
             $this->direccion->HrefValue = "";
+
+            // created_at
+            $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1054,6 +1122,22 @@ class ProveedoresAdd extends Proveedores
                 if (!$this->direccion->IsDetailKey && IsEmpty($this->direccion->FormValue)) {
                     $this->direccion->addErrorMessage(str_replace("%s", $this->direccion->caption(), $this->direccion->RequiredErrorMessage));
                 }
+            }
+            if ($this->created_at->Visible && $this->created_at->Required) {
+                if (!$this->created_at->IsDetailKey && IsEmpty($this->created_at->FormValue)) {
+                    $this->created_at->addErrorMessage(str_replace("%s", $this->created_at->caption(), $this->created_at->RequiredErrorMessage));
+                }
+            }
+            if (!CheckDate($this->created_at->FormValue, $this->created_at->formatPattern())) {
+                $this->created_at->addErrorMessage($this->created_at->getErrorMessage(false));
+            }
+            if ($this->updated_at->Visible && $this->updated_at->Required) {
+                if (!$this->updated_at->IsDetailKey && IsEmpty($this->updated_at->FormValue)) {
+                    $this->updated_at->addErrorMessage(str_replace("%s", $this->updated_at->caption(), $this->updated_at->RequiredErrorMessage));
+                }
+            }
+            if (!CheckDate($this->updated_at->FormValue, $this->updated_at->formatPattern())) {
+                $this->updated_at->addErrorMessage($this->updated_at->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1151,6 +1235,12 @@ class ProveedoresAdd extends Proveedores
 
         // direccion
         $this->direccion->setDbValueDef($newRow, $this->direccion->CurrentValue, false);
+
+        // created_at
+        $this->created_at->setDbValueDef($newRow, UnFormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern()), false);
+
+        // updated_at
+        $this->updated_at->setDbValueDef($newRow, UnFormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern()), false);
         return $newRow;
     }
 

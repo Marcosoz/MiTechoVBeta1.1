@@ -55,8 +55,8 @@
             'path' => '/api/login',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:login',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -76,10 +76,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:list',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -98,10 +98,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:view',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -120,10 +120,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:add',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -142,10 +142,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:edit',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -164,10 +164,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:delete',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -187,8 +187,8 @@
             'path' => '/api/register',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:register',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -207,10 +207,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:file',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:file',
             ],
             'requirements' => [],
             'options' => [
@@ -229,10 +229,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:export',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:export',
             ],
             'requirements' => [],
             'options' => [
@@ -252,10 +252,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:upload',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:upload',
             ],
             'requirements' => [],
             'options' => [
@@ -273,8 +273,8 @@
             'path' => '/api/jupload',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:jupload',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:jupload',
             ],
             'requirements' => [],
             'options' => [
@@ -293,8 +293,8 @@
             'path' => '/api/session',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:session',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:session',
             ],
             'requirements' => [],
             'options' => [
@@ -313,10 +313,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:lookup',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:lookup',
             ],
             'requirements' => [],
             'options' => [
@@ -335,8 +335,8 @@
             'path' => '/api/chart[/{params:.*}]',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:exportchart',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:exportchart',
             ],
             'requirements' => [],
             'options' => [
@@ -355,10 +355,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:permissions',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:permissions',
             ],
             'requirements' => [],
             'options' => [
@@ -377,8 +377,8 @@
             'path' => '/api/push/{action}',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:push',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:push',
             ],
             'requirements' => [],
             'options' => [
@@ -398,10 +398,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:twofa',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:twofa',
             ],
             'requirements' => [],
             'options' => [
@@ -420,8 +420,8 @@
             'path' => '/api/metadata',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:metadata',
+                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:metadata',
             ],
             'requirements' => [],
             'options' => [
@@ -439,10 +439,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\JwtMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825AsignacionAutomaticaCoopASocios\\ApiController:chat',
+                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ApiController:chat',
             ],
             'requirements' => [],
             'options' => [

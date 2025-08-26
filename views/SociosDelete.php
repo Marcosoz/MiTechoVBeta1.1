@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 // Page object
 $SociosDelete = &$Page;
@@ -82,6 +82,9 @@ $Page->showMessage();
 <?php } ?>
 <?php if ($Page->nivel_usuario->Visible) { // nivel_usuario ?>
         <th class="<?= $Page->nivel_usuario->headerCellClass() ?>"><span id="elh_socios_nivel_usuario" class="socios_nivel_usuario"><?= $Page->nivel_usuario->caption() ?></span></th>
+<?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+        <th class="<?= $Page->updated_at->headerCellClass() ?>"><span id="elh_socios_updated_at" class="socios_updated_at"><?= $Page->updated_at->caption() ?></span></th>
 <?php } ?>
     </tr>
     </thead>
@@ -190,6 +193,14 @@ while ($Page->fetch()) {
 <span id="">
 <span<?= $Page->nivel_usuario->viewAttributes() ?>>
 <?= $Page->nivel_usuario->getViewValue() ?></span>
+</span>
+</td>
+<?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+        <td<?= $Page->updated_at->cellAttributes() ?>>
+<span id="">
+<span<?= $Page->updated_at->viewAttributes() ?>>
+<?= $Page->updated_at->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>

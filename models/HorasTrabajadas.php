@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -70,6 +70,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
     public DbField $horas;
     public DbField $tarea;
     public DbField $created_at;
+    public DbField $updated_at;
 
     // Page ID
     public string $PageID = ""; // To be set by subclass
@@ -284,9 +285,37 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
         );
         $this->created_at->InputTextType = "text";
         $this->created_at->Raw = true;
+        $this->created_at->Nullable = false; // NOT NULL field
+        $this->created_at->Required = true; // Required field
         $this->created_at->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $this->language->phrase("IncorrectDate"));
-        $this->created_at->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
+        $this->created_at->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['created_at'] = &$this->created_at;
+
+        // updated_at
+        $this->updated_at = new DbField(
+            $this, // Table
+            'x_updated_at', // Variable name
+            'updated_at', // Name
+            '`updated_at`', // Expression
+            CastDateFieldForLike("`updated_at`", 0, "DB"), // Basic search expression
+            135, // Type
+            19, // Size
+            0, // Date/Time format
+            false, // Is upload field
+            '`updated_at`', // Virtual expression
+            false, // Is virtual
+            false, // Force selection
+            false, // Is Virtual search
+            'FORMATTED TEXT', // View Tag
+            'TEXT' // Edit Tag
+        );
+        $this->updated_at->InputTextType = "text";
+        $this->updated_at->Raw = true;
+        $this->updated_at->Nullable = false; // NOT NULL field
+        $this->updated_at->Required = true; // Required field
+        $this->updated_at->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $this->language->phrase("IncorrectDate"));
+        $this->updated_at->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
+        $this->Fields['updated_at'] = &$this->updated_at;
 
         // Cache profile
         $this->cacheProfile = new QueryCacheProfile(0, $this->TableVar, Container("result.cache"));
@@ -842,6 +871,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
         $this->horas->DbValue = $row['horas'];
         $this->tarea->DbValue = $row['tarea'];
         $this->created_at->DbValue = $row['created_at'];
+        $this->updated_at->DbValue = $row['updated_at'];
     }
 
     // Delete uploaded files
@@ -1204,6 +1234,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
         $this->horas->setDbValue($row['horas']);
         $this->tarea->setDbValue($row['tarea']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Render list content
@@ -1248,6 +1279,8 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
         // tarea
 
         // created_at
+
+        // updated_at
 
         // id
         $this->id->ViewValue = $this->id->CurrentValue;
@@ -1295,6 +1328,10 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
         $this->created_at->ViewValue = $this->created_at->CurrentValue;
         $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+        // updated_at
+        $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+        $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
         // id
         $this->id->HrefValue = "";
         $this->id->TooltipValue = "";
@@ -1322,6 +1359,10 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
         // created_at
         $this->created_at->HrefValue = "";
         $this->created_at->TooltipValue = "";
+
+        // updated_at
+        $this->updated_at->HrefValue = "";
+        $this->updated_at->TooltipValue = "";
 
         // Call Row Rendered event
         $this->rowRendered();
@@ -1361,6 +1402,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->horas);
                     $doc->exportCaption($this->tarea);
                     $doc->exportCaption($this->created_at);
+                    $doc->exportCaption($this->updated_at);
                 } else {
                     $doc->exportCaption($this->id);
                     $doc->exportCaption($this->cooperativa_id);
@@ -1369,6 +1411,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->horas);
                     $doc->exportCaption($this->tarea);
                     $doc->exportCaption($this->created_at);
+                    $doc->exportCaption($this->updated_at);
                 }
                 $doc->endExportRow();
             }
@@ -1402,6 +1445,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
                         $doc->exportField($this->horas);
                         $doc->exportField($this->tarea);
                         $doc->exportField($this->created_at);
+                        $doc->exportField($this->updated_at);
                     } else {
                         $doc->exportField($this->id);
                         $doc->exportField($this->cooperativa_id);
@@ -1410,6 +1454,7 @@ class HorasTrabajadas extends DbTable implements LookupTableInterface
                         $doc->exportField($this->horas);
                         $doc->exportField($this->tarea);
                         $doc->exportField($this->created_at);
+                        $doc->exportField($this->updated_at);
                     }
                     $doc->endExportRow($rowCnt);
                 }

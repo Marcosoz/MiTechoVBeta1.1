@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\AccessToken\AccessTokenExtractorInterface;

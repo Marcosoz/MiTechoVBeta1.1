@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -158,6 +158,7 @@ class MovimientosStockView extends MovimientosStock
         $this->motivo->setVisibility();
         $this->fecha->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -721,6 +722,7 @@ class MovimientosStockView extends MovimientosStock
         $this->motivo->setDbValue($row['motivo']);
         $this->fecha->setDbValue($row['fecha']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -734,6 +736,7 @@ class MovimientosStockView extends MovimientosStock
         $row['motivo'] = $this->motivo->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -768,6 +771,8 @@ class MovimientosStockView extends MovimientosStock
         // fecha
 
         // created_at
+
+        // updated_at
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -820,6 +825,10 @@ class MovimientosStockView extends MovimientosStock
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
@@ -847,6 +856,10 @@ class MovimientosStockView extends MovimientosStock
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
 
         // Call Row Rendered event

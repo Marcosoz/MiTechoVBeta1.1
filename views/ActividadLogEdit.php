@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 // Page object
 $ActividadLogEdit = &$Page;
@@ -33,7 +33,8 @@ loadjs.ready(["wrapper", "head"], function () {
             ["cooperativa_id", [fields.cooperativa_id.visible && fields.cooperativa_id.required ? ew.Validators.required(fields.cooperativa_id.caption) : null, ew.Validators.integer], fields.cooperativa_id.isInvalid],
             ["accion", [fields.accion.visible && fields.accion.required ? ew.Validators.required(fields.accion.caption) : null], fields.accion.isInvalid],
             ["detalles", [fields.detalles.visible && fields.detalles.required ? ew.Validators.required(fields.detalles.caption) : null], fields.detalles.isInvalid],
-            ["created_at", [fields.created_at.visible && fields.created_at.required ? ew.Validators.required(fields.created_at.caption) : null, ew.Validators.datetime(fields.created_at.clientFormatPattern)], fields.created_at.isInvalid]
+            ["created_at", [fields.created_at.visible && fields.created_at.required ? ew.Validators.required(fields.created_at.caption) : null, ew.Validators.datetime(fields.created_at.clientFormatPattern)], fields.created_at.isInvalid],
+            ["updated_at", [fields.updated_at.visible && fields.updated_at.required ? ew.Validators.required(fields.updated_at.caption) : null, ew.Validators.datetime(fields.updated_at.clientFormatPattern)], fields.updated_at.isInvalid]
         ])
 
         // Form_CustomValidate
@@ -171,6 +172,52 @@ loadjs.ready(["factividad_logedit", "datetimepicker"], function () {
         "x_created_at",
         ew.deepAssign({"useCurrent":false,"display":{"sideBySide":false}}, options),
         {"inputGroup":true}
+    );
+});
+</script>
+<?php } ?>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+    <div id="r_updated_at"<?= $Page->updated_at->rowAttributes() ?>>
+        <label id="elh_actividad_log_updated_at" for="x_updated_at" class="<?= $Page->LeftColumnClass ?>"><?= $Page->updated_at->caption() ?><?= $Page->updated_at->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->updated_at->cellAttributes() ?>>
+<span id="el_actividad_log_updated_at">
+<input type="<?= $Page->updated_at->getInputTextType() ?>" name="x_updated_at" id="x_updated_at" data-table="actividad_log" data-field="x_updated_at" value="<?= $Page->updated_at->getEditValue() ?>" placeholder="<?= HtmlEncode($Page->updated_at->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->updated_at->formatPattern()) ?>"<?= $Page->updated_at->editAttributes() ?> aria-describedby="x_updated_at_help">
+<?= $Page->updated_at->getCustomMessage() ?>
+<div class="invalid-feedback"><?= $Page->updated_at->getErrorMessage() ?></div>
+<?php if (!$Page->updated_at->ReadOnly && !$Page->updated_at->Disabled && !isset($Page->updated_at->EditAttrs["readonly"]) && !isset($Page->updated_at->EditAttrs["disabled"])) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready(["factividad_logedit", "datetimepicker"], function () {
+    let format = "<?= DateFormat(0) ?>",
+        options = {
+            localization: {
+                locale: ew.LANGUAGE_ID + "-u-nu-" + ew.getNumberingSystem(),
+                hourCycle: format.match(/H/) ? "h24" : "h12",
+                format,
+                ...ew.language.phrase("datetimepicker")
+            },
+            display: {
+                icons: {
+                    previous: ew.IS_RTL ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left",
+                    next: ew.IS_RTL ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right"
+                },
+                components: {
+                    clock: !!format.match(/h/i) || !!format.match(/m/) || !!format.match(/s/i),
+                    hours: !!format.match(/h/i),
+                    minutes: !!format.match(/m/),
+                    seconds: !!format.match(/s/i)
+                },
+                theme: ew.getPreferredTheme()
+            }
+        };
+    ew.createDateTimePicker(
+        "factividad_logedit",
+        "x_updated_at",
+        ew.deepAssign({"useCurrent":false,"display":{"sideBySide":false}}, options),
+        {"inputGroup":true,"minDateField":null,"maxDateField":null}
     );
 });
 </script>

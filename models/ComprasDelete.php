@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,6 +141,7 @@ class ComprasDelete extends Compras
         $this->monto->setVisibility();
         $this->saldo_pendiente->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -598,6 +599,7 @@ class ComprasDelete extends Compras
         $this->monto->setDbValue($row['monto']);
         $this->saldo_pendiente->setDbValue($row['saldo_pendiente']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -612,6 +614,7 @@ class ComprasDelete extends Compras
         $row['monto'] = $this->monto->DefaultValue;
         $row['saldo_pendiente'] = $this->saldo_pendiente->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -642,6 +645,8 @@ class ComprasDelete extends Compras
         // saldo_pendiente
 
         // created_at
+
+        // updated_at
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -695,6 +700,10 @@ class ComprasDelete extends Compras
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
@@ -726,6 +735,10 @@ class ComprasDelete extends Compras
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
 
         // Call Row Rendered event

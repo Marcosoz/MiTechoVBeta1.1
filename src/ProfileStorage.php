@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use Symfony\Component\RateLimiter\LimiterStateInterface;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;

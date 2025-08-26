@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -164,6 +164,7 @@ class UsuariosList extends Usuarios
         $this->_userlevel->setVisibility();
         $this->cooperativa_id->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -1015,6 +1016,7 @@ class UsuariosList extends Usuarios
         $filterList = Concat($filterList, $this->_userlevel->AdvancedSearch->toJson(), ","); // Field userlevel
         $filterList = Concat($filterList, $this->cooperativa_id->AdvancedSearch->toJson(), ","); // Field cooperativa_id
         $filterList = Concat($filterList, $this->created_at->AdvancedSearch->toJson(), ","); // Field created_at
+        $filterList = Concat($filterList, $this->updated_at->AdvancedSearch->toJson(), ","); // Field updated_at
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1125,6 +1127,14 @@ class UsuariosList extends Usuarios
         $this->created_at->AdvancedSearch->SearchValue2 = $filter["y_created_at"] ?? "";
         $this->created_at->AdvancedSearch->SearchOperator2 = $filter["w_created_at"] ?? "";
         $this->created_at->AdvancedSearch->save();
+
+        // Field updated_at
+        $this->updated_at->AdvancedSearch->SearchValue = $filter["x_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchOperator = $filter["z_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchCondition = $filter["v_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchValue2 = $filter["y_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchOperator2 = $filter["w_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1250,6 +1260,7 @@ class UsuariosList extends Usuarios
             $this->updateSort($this->_userlevel); // userlevel
             $this->updateSort($this->cooperativa_id); // cooperativa_id
             $this->updateSort($this->created_at); // created_at
+            $this->updateSort($this->updated_at); // updated_at
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1283,6 +1294,7 @@ class UsuariosList extends Usuarios
                 $this->_userlevel->setSort("");
                 $this->cooperativa_id->setSort("");
                 $this->created_at->setSort("");
+                $this->updated_at->setSort("");
             }
 
             // Reset start position
@@ -1509,6 +1521,7 @@ class UsuariosList extends Usuarios
             $this->createColumnOption($option, "userlevel");
             $this->createColumnOption($option, "cooperativa_id");
             $this->createColumnOption($option, "created_at");
+            $this->createColumnOption($option, "updated_at");
         }
 
         // Set up custom actions
@@ -1949,6 +1962,7 @@ class UsuariosList extends Usuarios
         $this->_userlevel->setDbValue($row['userlevel']);
         $this->cooperativa_id->setDbValue($row['cooperativa_id']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -1964,6 +1978,7 @@ class UsuariosList extends Usuarios
         $row['userlevel'] = $this->_userlevel->DefaultValue;
         $row['cooperativa_id'] = $this->cooperativa_id->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -2022,6 +2037,8 @@ class UsuariosList extends Usuarios
 
         // created_at
 
+        // updated_at
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -2053,6 +2070,10 @@ class UsuariosList extends Usuarios
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
+
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
 
             // id
             $this->id->HrefValue = "";
@@ -2089,6 +2110,10 @@ class UsuariosList extends Usuarios
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
 
         // Call Row Rendered event

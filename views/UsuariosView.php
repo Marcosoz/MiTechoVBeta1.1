@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 // Page object
 $UsuariosView = &$Page;
@@ -146,6 +146,17 @@ loadjs.ready("head", function () {
 <span id="el_usuarios_created_at">
 <span<?= $Page->created_at->viewAttributes() ?>>
 <?= $Page->created_at->getViewValue() ?></span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+    <tr id="r_updated_at"<?= $Page->updated_at->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_usuarios_updated_at"><?= $Page->updated_at->caption() ?></span></td>
+        <td data-name="updated_at"<?= $Page->updated_at->cellAttributes() ?>>
+<span id="el_usuarios_updated_at">
+<span<?= $Page->updated_at->viewAttributes() ?>>
+<?= $Page->updated_at->getViewValue() ?></span>
 </span>
 </td>
     </tr>

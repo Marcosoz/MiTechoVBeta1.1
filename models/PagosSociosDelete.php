@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,6 +141,7 @@ class PagosSociosDelete extends PagosSocios
         $this->fecha->setVisibility();
         $this->comprobante->Visible = false;
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -601,6 +602,7 @@ class PagosSociosDelete extends PagosSocios
             $this->comprobante->Upload->DbValue = stream_get_contents($this->comprobante->Upload->DbValue);
         }
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -615,6 +617,7 @@ class PagosSociosDelete extends PagosSocios
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['comprobante'] = $this->comprobante->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -645,6 +648,8 @@ class PagosSociosDelete extends PagosSocios
         // comprobante
 
         // created_at
+
+        // updated_at
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -694,6 +699,10 @@ class PagosSociosDelete extends PagosSocios
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
@@ -721,6 +730,10 @@ class PagosSociosDelete extends PagosSocios
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
 
         // Call Row Rendered event

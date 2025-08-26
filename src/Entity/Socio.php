@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Entity;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -15,17 +15,17 @@ use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedUserInterface;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AbstractEntity;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedSecurity;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserProfile;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserRepository;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Config;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\EntityManager;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\RemoveXss;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HtmlDecode;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HashPassword;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Security;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedUserInterface;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AbstractEntity;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedSecurity;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserProfile;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserRepository;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Config;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\EntityManager;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\RemoveXss;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HtmlDecode;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HashPassword;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Security;
 
 /**
  * Entity class for "socios" table
@@ -61,14 +61,17 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
     #[Column(name: "activo", type: "boolean", nullable: true)]
     private ?bool $Activo;
 
-    #[Column(name: "created_at", type: "datetime", nullable: true)]
-    private ?DateTime $CreatedAt;
+    #[Column(name: "created_at", type: "datetime")]
+    private DateTime $CreatedAt;
 
     #[Column(name: "`contraseña`", options: ["name" => "contraseña"], type: "string")]
     private string $Contraseña;
 
     #[Column(name: "nivel_usuario", type: "integer")]
     private int $NivelUsuario;
+
+    #[Column(name: "updated_at", type: "datetime")]
+    private DateTime $UpdatedAt;
 
     public function __construct()
     {
@@ -163,12 +166,12 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
         return $this;
     }
 
-    public function getCreatedAt(): ?DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->CreatedAt;
     }
 
-    public function setCreatedAt(?DateTime $value): static
+    public function setCreatedAt(DateTime $value): static
     {
         $this->CreatedAt = $value;
         return $this;
@@ -193,6 +196,17 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
     public function setNivelUsuario(int $value): static
     {
         $this->NivelUsuario = $value;
+        return $this;
+    }
+
+    public function getUpdatedAt(): DateTime
+    {
+        return $this->UpdatedAt;
+    }
+
+    public function setUpdatedAt(DateTime $value): static
+    {
+        $this->UpdatedAt = $value;
         return $this;
     }
 

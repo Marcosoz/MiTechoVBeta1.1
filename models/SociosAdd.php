@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -145,6 +145,7 @@ class SociosAdd extends Socios
         $this->created_at->setVisibility();
         $this->contrasena->setVisibility();
         $this->nivel_usuario->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -730,7 +731,7 @@ class SociosAdd extends Socios
             if (IsApi() && $val === null) {
                 $this->created_at->Visible = false; // Disable update for API request
             } else {
-                $this->created_at->setFormValue($val, true, $validate);
+                $this->created_at->setFormValue($val);
             }
             $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         }
@@ -755,6 +756,17 @@ class SociosAdd extends Socios
             }
         }
 
+        // Check field name 'updated_at' before field var 'x_updated_at'
+        $val = $this->getFormValue("updated_at", null) ?? $this->getFormValue("x_updated_at", null);
+        if (!$this->updated_at->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->updated_at->Visible = false; // Disable update for API request
+            } else {
+                $this->updated_at->setFormValue($val, true, $validate);
+            }
+            $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+        }
+
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -774,6 +786,8 @@ class SociosAdd extends Socios
         $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         $this->contrasena->CurrentValue = $this->contrasena->FormValue;
         $this->nivel_usuario->CurrentValue = $this->nivel_usuario->FormValue;
+        $this->updated_at->CurrentValue = $this->updated_at->FormValue;
+        $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
     }
 
     /**
@@ -833,6 +847,7 @@ class SociosAdd extends Socios
         $this->created_at->setDbValue($row['created_at']);
         $this->contrasena->setDbValue($row['contraseña']);
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -850,6 +865,7 @@ class SociosAdd extends Socios
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['contraseña'] = $this->contrasena->DefaultValue;
         $row['nivel_usuario'] = $this->nivel_usuario->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -917,6 +933,9 @@ class SociosAdd extends Socios
         // nivel_usuario
         $this->nivel_usuario->RowCssClass = "row";
 
+        // updated_at
+        $this->updated_at->RowCssClass = "row";
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -967,6 +986,10 @@ class SociosAdd extends Socios
                 $this->nivel_usuario->ViewValue = $this->language->phrase("PasswordMask");
             }
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // cooperativa_id
             $this->cooperativa_id->HrefValue = "";
 
@@ -996,6 +1019,10 @@ class SociosAdd extends Socios
 
             // nivel_usuario
             $this->nivel_usuario->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         } elseif ($this->RowType == RowType::ADD) {
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
@@ -1052,6 +1079,11 @@ class SociosAdd extends Socios
                 $this->nivel_usuario->PlaceHolder = RemoveHtml($this->nivel_usuario->caption());
             }
 
+            // updated_at
+            $this->updated_at->setupEditAttributes();
+            $this->updated_at->EditValue = FormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+            $this->updated_at->PlaceHolder = RemoveHtml($this->updated_at->caption());
+
             // Add refer script
 
             // cooperativa_id
@@ -1083,6 +1115,9 @@ class SociosAdd extends Socios
 
             // nivel_usuario
             $this->nivel_usuario->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1148,9 +1183,6 @@ class SociosAdd extends Socios
                     $this->created_at->addErrorMessage(str_replace("%s", $this->created_at->caption(), $this->created_at->RequiredErrorMessage));
                 }
             }
-            if (!CheckDate($this->created_at->FormValue, $this->created_at->formatPattern())) {
-                $this->created_at->addErrorMessage($this->created_at->getErrorMessage(false));
-            }
             if ($this->contrasena->Visible && $this->contrasena->Required) {
                 if (!$this->contrasena->IsDetailKey && IsEmpty($this->contrasena->FormValue)) {
                     $this->contrasena->addErrorMessage(str_replace("%s", $this->contrasena->caption(), $this->contrasena->RequiredErrorMessage));
@@ -1163,6 +1195,14 @@ class SociosAdd extends Socios
                 if ($this->security->canAdmin() && !$this->nivel_usuario->IsDetailKey && IsEmpty($this->nivel_usuario->FormValue)) {
                     $this->nivel_usuario->addErrorMessage(str_replace("%s", $this->nivel_usuario->caption(), $this->nivel_usuario->RequiredErrorMessage));
                 }
+            }
+            if ($this->updated_at->Visible && $this->updated_at->Required) {
+                if (!$this->updated_at->IsDetailKey && IsEmpty($this->updated_at->FormValue)) {
+                    $this->updated_at->addErrorMessage(str_replace("%s", $this->updated_at->caption(), $this->updated_at->RequiredErrorMessage));
+                }
+            }
+            if (!CheckDate($this->updated_at->FormValue, $this->updated_at->formatPattern())) {
+                $this->updated_at->addErrorMessage($this->updated_at->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1298,6 +1338,9 @@ class SociosAdd extends Socios
         if ($this->security->canAdmin()) { // System admin
             $this->nivel_usuario->setDbValueDef($newRow, $this->nivel_usuario->CurrentValue, false);
         }
+
+        // updated_at
+        $this->updated_at->setDbValueDef($newRow, UnFormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern()), false);
         return $newRow;
     }
 

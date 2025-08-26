@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -163,6 +163,7 @@ class ComprasList extends Compras
         $this->monto->setVisibility();
         $this->saldo_pendiente->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -1016,6 +1017,7 @@ class ComprasList extends Compras
         $filterList = Concat($filterList, $this->monto->AdvancedSearch->toJson(), ","); // Field monto
         $filterList = Concat($filterList, $this->saldo_pendiente->AdvancedSearch->toJson(), ","); // Field saldo_pendiente
         $filterList = Concat($filterList, $this->created_at->AdvancedSearch->toJson(), ","); // Field created_at
+        $filterList = Concat($filterList, $this->updated_at->AdvancedSearch->toJson(), ","); // Field updated_at
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1118,6 +1120,14 @@ class ComprasList extends Compras
         $this->created_at->AdvancedSearch->SearchValue2 = $filter["y_created_at"] ?? "";
         $this->created_at->AdvancedSearch->SearchOperator2 = $filter["w_created_at"] ?? "";
         $this->created_at->AdvancedSearch->save();
+
+        // Field updated_at
+        $this->updated_at->AdvancedSearch->SearchValue = $filter["x_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchOperator = $filter["z_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchCondition = $filter["v_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchValue2 = $filter["y_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->SearchOperator2 = $filter["w_updated_at"] ?? "";
+        $this->updated_at->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1238,6 +1248,7 @@ class ComprasList extends Compras
             $this->updateSort($this->monto); // monto
             $this->updateSort($this->saldo_pendiente); // saldo_pendiente
             $this->updateSort($this->created_at); // created_at
+            $this->updateSort($this->updated_at); // updated_at
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1270,6 +1281,7 @@ class ComprasList extends Compras
                 $this->monto->setSort("");
                 $this->saldo_pendiente->setSort("");
                 $this->created_at->setSort("");
+                $this->updated_at->setSort("");
             }
 
             // Reset start position
@@ -1495,6 +1507,7 @@ class ComprasList extends Compras
             $this->createColumnOption($option, "monto");
             $this->createColumnOption($option, "saldo_pendiente");
             $this->createColumnOption($option, "created_at");
+            $this->createColumnOption($option, "updated_at");
         }
 
         // Set up custom actions
@@ -1934,6 +1947,7 @@ class ComprasList extends Compras
         $this->monto->setDbValue($row['monto']);
         $this->saldo_pendiente->setDbValue($row['saldo_pendiente']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -1948,6 +1962,7 @@ class ComprasList extends Compras
         $row['monto'] = $this->monto->DefaultValue;
         $row['saldo_pendiente'] = $this->saldo_pendiente->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -2004,6 +2019,8 @@ class ComprasList extends Compras
 
         // created_at
 
+        // updated_at
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -2056,6 +2073,10 @@ class ComprasList extends Compras
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // id
             $this->id->HrefValue = "";
             $this->id->TooltipValue = "";
@@ -2087,6 +2108,10 @@ class ComprasList extends Compras
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
 
         // Call Row Rendered event

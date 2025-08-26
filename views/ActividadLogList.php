@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 // Page object
 $ActividadLogList = &$Page;
@@ -165,6 +165,9 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->created_at->Visible) { // created_at ?>
         <th data-name="created_at" class="<?= $Page->created_at->headerCellClass() ?>"><div id="elh_actividad_log_created_at" class="actividad_log_created_at"><?= $Page->renderFieldHeader($Page->created_at) ?></div></th>
 <?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+        <th data-name="updated_at" class="<?= $Page->updated_at->headerCellClass() ?>"><div id="elh_actividad_log_updated_at" class="actividad_log_updated_at"><?= $Page->renderFieldHeader($Page->updated_at) ?></div></th>
+<?php } ?>
 <?php
 // Render list options (header, right)
 $Page->ListOptions->render("header", "right");
@@ -238,6 +241,14 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_actividad_log_created_at" class="el_actividad_log_created_at">
 <span<?= $Page->created_at->viewAttributes() ?>>
 <?= $Page->created_at->getViewValue() ?></span>
+</span>
+</td>
+    <?php } ?>
+    <?php if ($Page->updated_at->Visible) { // updated_at ?>
+        <td data-name="updated_at"<?= $Page->updated_at->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_actividad_log_updated_at" class="el_actividad_log_updated_at">
+<span<?= $Page->updated_at->viewAttributes() ?>>
+<?= $Page->updated_at->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>

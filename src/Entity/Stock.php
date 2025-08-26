@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Entity;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedUserInterface;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AbstractEntity;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedSecurity;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserProfile;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserRepository;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Config;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\EntityManager;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\RemoveXss;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HtmlDecode;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HashPassword;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Security;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedUserInterface;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AbstractEntity;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedSecurity;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserProfile;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserRepository;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Config;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\EntityManager;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\RemoveXss;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HtmlDecode;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HashPassword;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Security;
 
 /**
  * Entity class for "stock" table

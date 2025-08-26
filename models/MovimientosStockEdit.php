@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,6 +141,7 @@ class MovimientosStockEdit extends MovimientosStock
         $this->motivo->setVisibility();
         $this->fecha->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -742,6 +743,17 @@ class MovimientosStockEdit extends MovimientosStock
             }
             $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         }
+
+        // Check field name 'updated_at' before field var 'x_updated_at'
+        $val = $this->getFormValue("updated_at", null) ?? $this->getFormValue("x_updated_at", null);
+        if (!$this->updated_at->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->updated_at->Visible = false; // Disable update for API request
+            } else {
+                $this->updated_at->setFormValue($val, true, $validate);
+            }
+            $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+        }
     }
 
     // Restore form values
@@ -756,6 +768,8 @@ class MovimientosStockEdit extends MovimientosStock
         $this->fecha->CurrentValue = UnformatDateTime($this->fecha->CurrentValue, $this->fecha->formatPattern());
         $this->created_at->CurrentValue = $this->created_at->FormValue;
         $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+        $this->updated_at->CurrentValue = $this->updated_at->FormValue;
+        $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
     }
 
     /**
@@ -802,6 +816,7 @@ class MovimientosStockEdit extends MovimientosStock
         $this->motivo->setDbValue($row['motivo']);
         $this->fecha->setDbValue($row['fecha']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -815,6 +830,7 @@ class MovimientosStockEdit extends MovimientosStock
         $row['motivo'] = $this->motivo->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -870,6 +886,9 @@ class MovimientosStockEdit extends MovimientosStock
         // created_at
         $this->created_at->RowCssClass = "row";
 
+        // updated_at
+        $this->updated_at->RowCssClass = "row";
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -921,6 +940,10 @@ class MovimientosStockEdit extends MovimientosStock
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // id
             $this->id->HrefValue = "";
 
@@ -941,6 +964,9 @@ class MovimientosStockEdit extends MovimientosStock
 
             // created_at
             $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         } elseif ($this->RowType == RowType::EDIT) {
             // id
             $this->id->setupEditAttributes();
@@ -1005,6 +1031,11 @@ class MovimientosStockEdit extends MovimientosStock
             $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
             $this->created_at->PlaceHolder = RemoveHtml($this->created_at->caption());
 
+            // updated_at
+            $this->updated_at->setupEditAttributes();
+            $this->updated_at->EditValue = FormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+            $this->updated_at->PlaceHolder = RemoveHtml($this->updated_at->caption());
+
             // Edit refer script
 
             // id
@@ -1027,6 +1058,9 @@ class MovimientosStockEdit extends MovimientosStock
 
             // created_at
             $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1089,6 +1123,14 @@ class MovimientosStockEdit extends MovimientosStock
             }
             if (!CheckDate($this->created_at->FormValue, $this->created_at->formatPattern())) {
                 $this->created_at->addErrorMessage($this->created_at->getErrorMessage(false));
+            }
+            if ($this->updated_at->Visible && $this->updated_at->Required) {
+                if (!$this->updated_at->IsDetailKey && IsEmpty($this->updated_at->FormValue)) {
+                    $this->updated_at->addErrorMessage(str_replace("%s", $this->updated_at->caption(), $this->updated_at->RequiredErrorMessage));
+                }
+            }
+            if (!CheckDate($this->updated_at->FormValue, $this->updated_at->formatPattern())) {
+                $this->updated_at->addErrorMessage($this->updated_at->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1194,6 +1236,9 @@ class MovimientosStockEdit extends MovimientosStock
 
         // created_at
         $this->created_at->setDbValueDef($newRow, UnFormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern()), $this->created_at->ReadOnly);
+
+        // updated_at
+        $this->updated_at->setDbValueDef($newRow, UnFormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern()), $this->updated_at->ReadOnly);
         return $newRow;
     }
 
@@ -1220,6 +1265,9 @@ class MovimientosStockEdit extends MovimientosStock
         }
         if (isset($row['created_at'])) { // created_at
             $this->created_at->CurrentValue = $row['created_at'];
+        }
+        if (isset($row['updated_at'])) { // updated_at
+            $this->updated_at->CurrentValue = $row['updated_at'];
         }
     }
 

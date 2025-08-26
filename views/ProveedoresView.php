@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 // Page object
 $ProveedoresView = &$Page;
@@ -124,6 +124,28 @@ loadjs.ready("head", function () {
 <span id="el_proveedores_direccion">
 <span<?= $Page->direccion->viewAttributes() ?>>
 <?= $Page->direccion->getViewValue() ?></span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->created_at->Visible) { // created_at ?>
+    <tr id="r_created_at"<?= $Page->created_at->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_proveedores_created_at"><?= $Page->created_at->caption() ?></span></td>
+        <td data-name="created_at"<?= $Page->created_at->cellAttributes() ?>>
+<span id="el_proveedores_created_at">
+<span<?= $Page->created_at->viewAttributes() ?>>
+<?= $Page->created_at->getViewValue() ?></span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+    <tr id="r_updated_at"<?= $Page->updated_at->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_proveedores_updated_at"><?= $Page->updated_at->caption() ?></span></td>
+        <td data-name="updated_at"<?= $Page->updated_at->cellAttributes() ?>>
+<span id="el_proveedores_updated_at">
+<span<?= $Page->updated_at->viewAttributes() ?>>
+<?= $Page->updated_at->getViewValue() ?></span>
 </span>
 </td>
     </tr>

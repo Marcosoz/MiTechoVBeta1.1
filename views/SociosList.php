@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 // Page object
 $SociosList = &$Page;
@@ -180,6 +180,9 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->nivel_usuario->Visible) { // nivel_usuario ?>
         <th data-name="nivel_usuario" class="<?= $Page->nivel_usuario->headerCellClass() ?>"><div id="elh_socios_nivel_usuario" class="socios_nivel_usuario"><?= $Page->renderFieldHeader($Page->nivel_usuario) ?></div></th>
 <?php } ?>
+<?php if ($Page->updated_at->Visible) { // updated_at ?>
+        <th data-name="updated_at" class="<?= $Page->updated_at->headerCellClass() ?>"><div id="elh_socios_updated_at" class="socios_updated_at"><?= $Page->renderFieldHeader($Page->updated_at) ?></div></th>
+<?php } ?>
 <?php
 // Render list options (header, right)
 $Page->ListOptions->render("header", "right");
@@ -294,6 +297,14 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_nivel_usuario" class="el_socios_nivel_usuario">
 <span<?= $Page->nivel_usuario->viewAttributes() ?>>
 <?= $Page->nivel_usuario->getViewValue() ?></span>
+</span>
+</td>
+    <?php } ?>
+    <?php if ($Page->updated_at->Visible) { // updated_at ?>
+        <td data-name="updated_at"<?= $Page->updated_at->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_updated_at" class="el_socios_updated_at">
+<span<?= $Page->updated_at->viewAttributes() ?>>
+<?= $Page->updated_at->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>

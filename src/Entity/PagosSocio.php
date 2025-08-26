@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Entity;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedUserInterface;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AbstractEntity;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\AdvancedSecurity;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserProfile;
-use PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\UserRepository;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Config;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\EntityManager;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\RemoveXss;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HtmlDecode;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\HashPassword;
-use function PHPMaker2025\project250825AsignacionAutomaticaCoopASocios\Security;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedUserInterface;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AbstractEntity;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedSecurity;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserProfile;
+use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserRepository;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Config;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\EntityManager;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\RemoveXss;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HtmlDecode;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HashPassword;
+use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Security;
 
 /**
  * Entity class for "pagos_socios" table
@@ -55,8 +55,11 @@ class PagosSocio extends AbstractEntity
     #[Column(name: "comprobante", type: "blob")]
     private mixed $Comprobante;
 
-    #[Column(name: "created_at", type: "datetime", nullable: true)]
-    private ?DateTime $CreatedAt;
+    #[Column(name: "created_at", type: "datetime")]
+    private DateTime $CreatedAt;
+
+    #[Column(name: "updated_at", type: "datetime")]
+    private DateTime $UpdatedAt;
 
     public function getId(): int
     {
@@ -135,14 +138,25 @@ class PagosSocio extends AbstractEntity
         return $this;
     }
 
-    public function getCreatedAt(): ?DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->CreatedAt;
     }
 
-    public function setCreatedAt(?DateTime $value): static
+    public function setCreatedAt(DateTime $value): static
     {
         $this->CreatedAt = $value;
+        return $this;
+    }
+
+    public function getUpdatedAt(): DateTime
+    {
+        return $this->UpdatedAt;
+    }
+
+    public function setUpdatedAt(DateTime $value): static
+    {
+        $this->UpdatedAt = $value;
         return $this;
     }
 }

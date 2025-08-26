@@ -1,7 +1,7 @@
 {
-    "name": "project250825-asignacion-automatica-coop-a-socios",
+    "name": "project250825-no-repite-c-ini-email-en-nuevos-ingresos",
     "version": "25.12.0",
-    "description": "project250825 asignacion automatica coop a socios",
+    "description": "project250825 no repite c ini email en nuevos ingresos",
     "license": "SEE LICENSE IN LICENSE.md",
     "private": true,
     "dependencies": {},

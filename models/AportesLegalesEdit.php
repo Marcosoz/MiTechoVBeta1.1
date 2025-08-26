@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,6 +141,7 @@ class AportesLegalesEdit extends AportesLegales
         $this->archivo->setVisibility();
         $this->fecha->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -471,6 +472,7 @@ class AportesLegalesEdit extends AportesLegales
         $this->View = Get(Config("VIEW"));
         $this->CurrentAction = Param("action"); // Set up current action
         $this->setVisibility();
+        $this->updated_at->Required = false;
 
         // Set lookup cache
         if (!in_array($this->PageID, Config("LOOKUP_CACHE_PAGE_IDS"))) {
@@ -729,9 +731,20 @@ class AportesLegalesEdit extends AportesLegales
             if (IsApi() && $val === null) {
                 $this->created_at->Visible = false; // Disable update for API request
             } else {
-                $this->created_at->setFormValue($val, true, $validate);
+                $this->created_at->setFormValue($val);
             }
             $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+        }
+
+        // Check field name 'updated_at' before field var 'x_updated_at'
+        $val = $this->getFormValue("updated_at", null) ?? $this->getFormValue("x_updated_at", null);
+        if (!$this->updated_at->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->updated_at->Visible = false; // Disable update for API request
+            } else {
+                $this->updated_at->setFormValue($val);
+            }
+            $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
         }
         $this->getUploadFiles(); // Get upload files
     }
@@ -747,6 +760,8 @@ class AportesLegalesEdit extends AportesLegales
         $this->fecha->CurrentValue = UnformatDateTime($this->fecha->CurrentValue, $this->fecha->formatPattern());
         $this->created_at->CurrentValue = $this->created_at->FormValue;
         $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+        $this->updated_at->CurrentValue = $this->updated_at->FormValue;
+        $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
     }
 
     /**
@@ -805,6 +820,7 @@ class AportesLegalesEdit extends AportesLegales
         }
         $this->fecha->setDbValue($row['fecha']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -818,6 +834,7 @@ class AportesLegalesEdit extends AportesLegales
         $row['archivo'] = $this->archivo->DefaultValue;
         $row['fecha'] = $this->fecha->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -873,6 +890,9 @@ class AportesLegalesEdit extends AportesLegales
         // created_at
         $this->created_at->RowCssClass = "row";
 
+        // updated_at
+        $this->updated_at->RowCssClass = "row";
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -925,6 +945,10 @@ class AportesLegalesEdit extends AportesLegales
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // id
             $this->id->HrefValue = "";
 
@@ -957,6 +981,10 @@ class AportesLegalesEdit extends AportesLegales
 
             // created_at
             $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         } elseif ($this->RowType == RowType::EDIT) {
             // id
             $this->id->setupEditAttributes();
@@ -1052,8 +1080,13 @@ class AportesLegalesEdit extends AportesLegales
 
             // created_at
             $this->created_at->setupEditAttributes();
-            $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
-            $this->created_at->PlaceHolder = RemoveHtml($this->created_at->caption());
+            $this->created_at->CurrentValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+            $this->created_at->EditValue = $this->created_at->CurrentValue;
+
+            // updated_at
+            $this->updated_at->setupEditAttributes();
+            $this->updated_at->EditValue = $this->updated_at->CurrentValue;
+            $this->updated_at->EditValue = FormatDateTime($this->updated_at->EditValue, $this->updated_at->formatPattern());
 
             // Edit refer script
 
@@ -1089,6 +1122,10 @@ class AportesLegalesEdit extends AportesLegales
 
             // created_at
             $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
+            $this->updated_at->TooltipValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1149,8 +1186,10 @@ class AportesLegalesEdit extends AportesLegales
                     $this->created_at->addErrorMessage(str_replace("%s", $this->created_at->caption(), $this->created_at->RequiredErrorMessage));
                 }
             }
-            if (!CheckDate($this->created_at->FormValue, $this->created_at->formatPattern())) {
-                $this->created_at->addErrorMessage($this->created_at->getErrorMessage(false));
+            if ($this->updated_at->Visible && $this->updated_at->Required) {
+                if (!$this->updated_at->IsDetailKey && IsEmpty($this->updated_at->FormValue)) {
+                    $this->updated_at->addErrorMessage(str_replace("%s", $this->updated_at->caption(), $this->updated_at->RequiredErrorMessage));
+                }
             }
 
         // Return validate result

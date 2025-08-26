@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -732,6 +732,7 @@ class Register extends Socios
         $this->created_at->setDbValue($row['created_at']);
         $this->contrasena->setDbValue($row['contraseña']);
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -749,6 +750,7 @@ class Register extends Socios
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['contraseña'] = $this->contrasena->DefaultValue;
         $row['nivel_usuario'] = $this->nivel_usuario->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -796,6 +798,9 @@ class Register extends Socios
 
         // nivel_usuario
         $this->nivel_usuario->RowCssClass = "row";
+
+        // updated_at
+        $this->updated_at->RowCssClass = "row";
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -846,6 +851,10 @@ class Register extends Socios
             } else {
                 $this->nivel_usuario->ViewValue = $this->language->phrase("PasswordMask");
             }
+
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
 
             // id
             $this->id->HrefValue = "";

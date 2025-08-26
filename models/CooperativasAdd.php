@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825AsignacionAutomaticaCoopASocios;
+namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -142,6 +142,7 @@ class CooperativasAdd extends Cooperativas
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->created_at->setVisibility();
+        $this->updated_at->setVisibility();
     }
 
     // Constructor
@@ -715,6 +716,17 @@ class CooperativasAdd extends Cooperativas
             $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         }
 
+        // Check field name 'updated_at' before field var 'x_updated_at'
+        $val = $this->getFormValue("updated_at", null) ?? $this->getFormValue("x_updated_at", null);
+        if (!$this->updated_at->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->updated_at->Visible = false; // Disable update for API request
+            } else {
+                $this->updated_at->setFormValue($val, true, $validate);
+            }
+            $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+        }
+
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -730,6 +742,8 @@ class CooperativasAdd extends Cooperativas
         $this->email->CurrentValue = $this->email->FormValue;
         $this->created_at->CurrentValue = $this->created_at->FormValue;
         $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
+        $this->updated_at->CurrentValue = $this->updated_at->FormValue;
+        $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
     }
 
     /**
@@ -777,6 +791,7 @@ class CooperativasAdd extends Cooperativas
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->created_at->setDbValue($row['created_at']);
+        $this->updated_at->setDbValue($row['updated_at']);
     }
 
     // Return a row with default values
@@ -791,6 +806,7 @@ class CooperativasAdd extends Cooperativas
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
+        $row['updated_at'] = $this->updated_at->DefaultValue;
         return $row;
     }
 
@@ -849,6 +865,9 @@ class CooperativasAdd extends Cooperativas
         // created_at
         $this->created_at->RowCssClass = "row";
 
+        // updated_at
+        $this->updated_at->RowCssClass = "row";
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -876,6 +895,10 @@ class CooperativasAdd extends Cooperativas
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
 
+            // updated_at
+            $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
+            $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
             // nombre
             $this->nombre->HrefValue = "";
 
@@ -896,6 +919,9 @@ class CooperativasAdd extends Cooperativas
 
             // created_at
             $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
             // nombre
             $this->nombre->setupEditAttributes();
@@ -932,6 +958,11 @@ class CooperativasAdd extends Cooperativas
             $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
             $this->created_at->PlaceHolder = RemoveHtml($this->created_at->caption());
 
+            // updated_at
+            $this->updated_at->setupEditAttributes();
+            $this->updated_at->EditValue = FormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+            $this->updated_at->PlaceHolder = RemoveHtml($this->updated_at->caption());
+
             // Add refer script
 
             // nombre
@@ -954,6 +985,9 @@ class CooperativasAdd extends Cooperativas
 
             // created_at
             $this->created_at->HrefValue = "";
+
+            // updated_at
+            $this->updated_at->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1010,6 +1044,14 @@ class CooperativasAdd extends Cooperativas
             }
             if (!CheckDate($this->created_at->FormValue, $this->created_at->formatPattern())) {
                 $this->created_at->addErrorMessage($this->created_at->getErrorMessage(false));
+            }
+            if ($this->updated_at->Visible && $this->updated_at->Required) {
+                if (!$this->updated_at->IsDetailKey && IsEmpty($this->updated_at->FormValue)) {
+                    $this->updated_at->addErrorMessage(str_replace("%s", $this->updated_at->caption(), $this->updated_at->RequiredErrorMessage));
+                }
+            }
+            if (!CheckDate($this->updated_at->FormValue, $this->updated_at->formatPattern())) {
+                $this->updated_at->addErrorMessage($this->updated_at->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1099,6 +1141,9 @@ class CooperativasAdd extends Cooperativas
 
         // created_at
         $this->created_at->setDbValueDef($newRow, UnFormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern()), false);
+
+        // updated_at
+        $this->updated_at->setDbValueDef($newRow, UnFormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern()), false);
         return $newRow;
     }
 
