@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;

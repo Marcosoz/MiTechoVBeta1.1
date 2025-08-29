@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use Doctrine\DBAL\ParameterType;
 use Doctrine\DBAL\Types\Type;

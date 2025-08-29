@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 // Page object
 $StockEdit = &$Page;

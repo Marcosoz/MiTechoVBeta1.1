@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentToken;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;

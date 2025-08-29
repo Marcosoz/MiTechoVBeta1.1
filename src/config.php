@@ -4,7 +4,7 @@
  * PHPMaker configuration file
  */
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Notifier\Channel\EmailChannel;
@@ -142,7 +142,7 @@ $CONFIG = [
 
     // General
     "UNFORMAT_YEAR" => 50, // Unformat year
-    "PROJECT_STYLESHEET_FILENAME" => "css/project250825NoRepiteCIniEmailEnNuevosIngresos.css", // Project stylesheet file name
+    "PROJECT_STYLESHEET_FILENAME" => "css/project260825TrabajosCreatedAT.css", // Project stylesheet file name
     "USE_COMPRESSED_STYLESHEET" => true, // Compressed stylesheet
     "FONT_AWESOME_STYLESHEET" => "plugins/fontawesome-free/css/all.min.css", // Font Awesome Free stylesheet
     "EXPORT_TABLE_CELL_STYLES" => ["border" => "1px solid #dddddd", "padding" => "5px"], // Export table cell CSS styles, use inline style for Gmail
@@ -369,7 +369,7 @@ $CONFIG = [
     "AUDIT_TRAIL_FIELD_NAME_NEWVALUE" => "", // New Value field name
 
     // Export Log
-    "EXPORT_PATH" => "export-c423de49-5ac5-4071-abde-3500db33a9a1", // Export folder
+    "EXPORT_PATH" => "export-97cdc652-d6cb-4559-9f2a-8aca65ba6897", // Export folder
     "EXPORT_LOG_DBID" => "DB", // DB ID
     "EXPORT_LOG_TABLE_NAME" => "", // Table name
     "EXPORT_LOG_TABLE_VAR" => "", // Table var

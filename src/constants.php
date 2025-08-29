@@ -4,7 +4,7 @@
  * PHPMaker constants
  */
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 /**
  * Constants
@@ -19,8 +19,8 @@ define(PROJECT_NAMESPACE . "PATH_DELIMITER", IS_WINDOWS ? "\\" : "/"); // Physic
 define(PROJECT_NAMESPACE . "PRODUCT_VERSION", "25.12.0");
 
 // Project
-define(PROJECT_NAMESPACE . "PROJECT_NAME", "project250825NoRepiteCIniEmailEnNuevosIngresos"); // Project name
-define(PROJECT_NAMESPACE . "PROJECT_ID", "{C423DE49-5AC5-4071-ABDE-3500DB33A9A1}"); // Project ID
+define(PROJECT_NAMESPACE . "PROJECT_NAME", "project260825TrabajosCreatedAT"); // Project name
+define(PROJECT_NAMESPACE . "PROJECT_ID", "{97CDC652-D6CB-4559-9F2A-8ACA65BA6897}"); // Project ID
 
 // Character encoding (utf-8)
 define(PROJECT_NAMESPACE . "PROJECT_CHARSET", "utf-8"); // Charset

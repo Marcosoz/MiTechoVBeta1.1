@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -386,7 +386,7 @@ class Socios extends DbTable implements LookupTableInterface
         $this->nivel_usuario->UsePleaseSelect = true; // Use PleaseSelect by default
         $this->nivel_usuario->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
         $this->nivel_usuario->Lookup = new Lookup($this->nivel_usuario, 'socios', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
-        $this->nivel_usuario->OptionCount = 5;
+        $this->nivel_usuario->OptionCount = 2;
         $this->nivel_usuario->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
         $this->nivel_usuario->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['nivel_usuario'] = &$this->nivel_usuario;

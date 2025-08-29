@@ -121,7 +121,7 @@ class ComposerStaticInitbd16047974e11023547e4c5b14c56f11
             'PhpMiddleware\\PhpDebugBar\\' => 26,
             'ParagonIE\\ConstantTime\\' => 23,
             'ParagonIE\\CSPBuilder\\' => 21,
-            'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\' => 60,
+            'PHPMaker2025\\project260825TrabajosCreatedAT\\' => 44,
         ),
         'O' => 
         array (
@@ -498,7 +498,7 @@ class ComposerStaticInitbd16047974e11023547e4c5b14c56f11
         array (
             0 => __DIR__ . '/..' . '/paragonie/csp-builder/src',
         ),
-        'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\' => 
+        'PHPMaker2025\\project260825TrabajosCreatedAT\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/models',

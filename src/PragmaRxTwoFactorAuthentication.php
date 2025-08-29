@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use PragmaRX\Google2FA\Google2FA;
 use Com\Tecnick\Barcode\Barcode;

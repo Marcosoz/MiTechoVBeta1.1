@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -142,10 +142,10 @@ class SociosAdd extends Socios
         $this->email->setVisibility();
         $this->fecha_ingreso->setVisibility();
         $this->activo->setVisibility();
-        $this->created_at->setVisibility();
+        $this->created_at->Visible = false;
         $this->contrasena->setVisibility();
         $this->nivel_usuario->setVisibility();
-        $this->updated_at->setVisibility();
+        $this->updated_at->Visible = false;
     }
 
     // Constructor
@@ -725,17 +725,6 @@ class SociosAdd extends Socios
             }
         }
 
-        // Check field name 'created_at' before field var 'x_created_at'
-        $val = $this->getFormValue("created_at", null) ?? $this->getFormValue("x_created_at", null);
-        if (!$this->created_at->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->created_at->Visible = false; // Disable update for API request
-            } else {
-                $this->created_at->setFormValue($val);
-            }
-            $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
-        }
-
         // Check field name 'contraseña' before field var 'x_contrasena'
         $val = $this->getFormValue("contraseña", null) ?? $this->getFormValue("x_contrasena", null);
         if (!$this->contrasena->IsDetailKey) {
@@ -756,17 +745,6 @@ class SociosAdd extends Socios
             }
         }
 
-        // Check field name 'updated_at' before field var 'x_updated_at'
-        $val = $this->getFormValue("updated_at", null) ?? $this->getFormValue("x_updated_at", null);
-        if (!$this->updated_at->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->updated_at->Visible = false; // Disable update for API request
-            } else {
-                $this->updated_at->setFormValue($val, true, $validate);
-            }
-            $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
-        }
-
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -782,12 +760,8 @@ class SociosAdd extends Socios
         $this->fecha_ingreso->CurrentValue = $this->fecha_ingreso->FormValue;
         $this->fecha_ingreso->CurrentValue = UnformatDateTime($this->fecha_ingreso->CurrentValue, $this->fecha_ingreso->formatPattern());
         $this->activo->CurrentValue = $this->activo->FormValue;
-        $this->created_at->CurrentValue = $this->created_at->FormValue;
-        $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         $this->contrasena->CurrentValue = $this->contrasena->FormValue;
         $this->nivel_usuario->CurrentValue = $this->nivel_usuario->FormValue;
-        $this->updated_at->CurrentValue = $this->updated_at->FormValue;
-        $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
     }
 
     /**
@@ -1011,18 +985,11 @@ class SociosAdd extends Socios
             // activo
             $this->activo->HrefValue = "";
 
-            // created_at
-            $this->created_at->HrefValue = "";
-
             // contraseña
             $this->contrasena->HrefValue = "";
 
             // nivel_usuario
             $this->nivel_usuario->HrefValue = "";
-
-            // updated_at
-            $this->updated_at->HrefValue = "";
-            $this->updated_at->TooltipValue = "";
         } elseif ($this->RowType == RowType::ADD) {
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
@@ -1061,11 +1028,6 @@ class SociosAdd extends Socios
             $this->activo->EditValue = $this->activo->options(false);
             $this->activo->PlaceHolder = RemoveHtml($this->activo->caption());
 
-            // created_at
-            $this->created_at->setupEditAttributes();
-            $this->created_at->EditValue = FormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
-            $this->created_at->PlaceHolder = RemoveHtml($this->created_at->caption());
-
             // contraseña
             $this->contrasena->setupEditAttributes();
             $this->contrasena->PlaceHolder = RemoveHtml($this->contrasena->caption());
@@ -1078,11 +1040,6 @@ class SociosAdd extends Socios
                 $this->nivel_usuario->EditValue = $this->nivel_usuario->options(true);
                 $this->nivel_usuario->PlaceHolder = RemoveHtml($this->nivel_usuario->caption());
             }
-
-            // updated_at
-            $this->updated_at->setupEditAttributes();
-            $this->updated_at->EditValue = FormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
-            $this->updated_at->PlaceHolder = RemoveHtml($this->updated_at->caption());
 
             // Add refer script
 
@@ -1107,17 +1064,11 @@ class SociosAdd extends Socios
             // activo
             $this->activo->HrefValue = "";
 
-            // created_at
-            $this->created_at->HrefValue = "";
-
             // contraseña
             $this->contrasena->HrefValue = "";
 
             // nivel_usuario
             $this->nivel_usuario->HrefValue = "";
-
-            // updated_at
-            $this->updated_at->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1178,11 +1129,6 @@ class SociosAdd extends Socios
                     $this->activo->addErrorMessage(str_replace("%s", $this->activo->caption(), $this->activo->RequiredErrorMessage));
                 }
             }
-            if ($this->created_at->Visible && $this->created_at->Required) {
-                if (!$this->created_at->IsDetailKey && IsEmpty($this->created_at->FormValue)) {
-                    $this->created_at->addErrorMessage(str_replace("%s", $this->created_at->caption(), $this->created_at->RequiredErrorMessage));
-                }
-            }
             if ($this->contrasena->Visible && $this->contrasena->Required) {
                 if (!$this->contrasena->IsDetailKey && IsEmpty($this->contrasena->FormValue)) {
                     $this->contrasena->addErrorMessage(str_replace("%s", $this->contrasena->caption(), $this->contrasena->RequiredErrorMessage));
@@ -1195,14 +1141,6 @@ class SociosAdd extends Socios
                 if ($this->security->canAdmin() && !$this->nivel_usuario->IsDetailKey && IsEmpty($this->nivel_usuario->FormValue)) {
                     $this->nivel_usuario->addErrorMessage(str_replace("%s", $this->nivel_usuario->caption(), $this->nivel_usuario->RequiredErrorMessage));
                 }
-            }
-            if ($this->updated_at->Visible && $this->updated_at->Required) {
-                if (!$this->updated_at->IsDetailKey && IsEmpty($this->updated_at->FormValue)) {
-                    $this->updated_at->addErrorMessage(str_replace("%s", $this->updated_at->caption(), $this->updated_at->RequiredErrorMessage));
-                }
-            }
-            if (!CheckDate($this->updated_at->FormValue, $this->updated_at->formatPattern())) {
-                $this->updated_at->addErrorMessage($this->updated_at->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1326,9 +1264,6 @@ class SociosAdd extends Socios
         }
         $this->activo->setDbValueDef($newRow, $tmpBool, strval($this->activo->CurrentValue) == "");
 
-        // created_at
-        $this->created_at->setDbValueDef($newRow, UnFormatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern()), false);
-
         // contraseña
         if (!IsMaskedPassword($this->contrasena->CurrentValue)) {
             $this->contrasena->setDbValueDef($newRow, $this->contrasena->CurrentValue, false);
@@ -1338,9 +1273,6 @@ class SociosAdd extends Socios
         if ($this->security->canAdmin()) { // System admin
             $this->nivel_usuario->setDbValueDef($newRow, $this->nivel_usuario->CurrentValue, false);
         }
-
-        // updated_at
-        $this->updated_at->setDbValueDef($newRow, UnFormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern()), false);
         return $newRow;
     }
 

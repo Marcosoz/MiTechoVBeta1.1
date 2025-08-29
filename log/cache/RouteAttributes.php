@@ -234,75 +234,75 @@
             ],
             'aliases' => [
                 [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController::list' => $o[70],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController::add' => $o[71],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController::view' => $o[72],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController::edit' => $o[73],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController::delete' => $o[74],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController::list' => $o[75],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController::add' => $o[76],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController::view' => $o[77],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController::edit' => $o[78],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController::delete' => $o[79],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController::list' => $o[80],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController::add' => $o[81],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController::view' => $o[82],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController::edit' => $o[83],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController::delete' => $o[84],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController::list' => $o[85],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController::add' => $o[86],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController::view' => $o[87],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController::edit' => $o[88],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController::delete' => $o[89],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController::list' => $o[90],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController::add' => $o[91],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController::view' => $o[92],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController::edit' => $o[93],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController::delete' => $o[94],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController::list' => $o[95],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController::add' => $o[96],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController::view' => $o[97],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController::edit' => $o[98],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController::delete' => $o[99],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController::list' => $o[100],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController::add' => $o[101],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController::view' => $o[102],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController::edit' => $o[103],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController::delete' => $o[104],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::personaldata' => $o[105],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::login' => $o[106],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::resetpassword' => $o[107],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::changepassword' => $o[108],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::register' => $o[109],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::loginCheck' => $o[110],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::logout' => $o[111],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::swagger' => $o[112],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController::index' => $o[113],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController::list' => $o[114],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController::add' => $o[115],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController::view' => $o[116],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController::edit' => $o[117],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController::delete' => $o[118],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController::list' => $o[119],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController::add' => $o[120],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController::view' => $o[121],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController::edit' => $o[122],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController::delete' => $o[123],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController::list' => $o[124],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController::add' => $o[125],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController::view' => $o[126],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController::edit' => $o[127],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController::delete' => $o[128],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController::list' => $o[129],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController::add' => $o[130],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController::view' => $o[131],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController::edit' => $o[132],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController::delete' => $o[133],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController::list' => $o[134],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController::add' => $o[135],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController::view' => $o[136],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController::edit' => $o[137],
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController::delete' => $o[138],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController::list' => $o[70],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController::add' => $o[71],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController::view' => $o[72],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController::edit' => $o[73],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController::delete' => $o[74],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController::list' => $o[75],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController::add' => $o[76],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController::view' => $o[77],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController::edit' => $o[78],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController::delete' => $o[79],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController::list' => $o[80],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController::add' => $o[81],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController::view' => $o[82],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController::edit' => $o[83],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController::delete' => $o[84],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController::list' => $o[85],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController::add' => $o[86],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController::view' => $o[87],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController::edit' => $o[88],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController::delete' => $o[89],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController::list' => $o[90],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController::add' => $o[91],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController::view' => $o[92],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController::edit' => $o[93],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController::delete' => $o[94],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController::list' => $o[95],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController::add' => $o[96],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController::view' => $o[97],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController::edit' => $o[98],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController::delete' => $o[99],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController::list' => $o[100],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController::add' => $o[101],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController::view' => $o[102],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController::edit' => $o[103],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController::delete' => $o[104],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::personaldata' => $o[105],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::login' => $o[106],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::resetpassword' => $o[107],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::changepassword' => $o[108],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::register' => $o[109],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::loginCheck' => $o[110],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::logout' => $o[111],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::swagger' => $o[112],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController::index' => $o[113],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController::list' => $o[114],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController::add' => $o[115],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController::view' => $o[116],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController::edit' => $o[117],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController::delete' => $o[118],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController::list' => $o[119],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController::add' => $o[120],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController::view' => $o[121],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController::edit' => $o[122],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController::delete' => $o[123],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController::list' => $o[124],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController::add' => $o[125],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController::view' => $o[126],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController::edit' => $o[127],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController::delete' => $o[128],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController::list' => $o[129],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController::add' => $o[130],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController::view' => $o[131],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController::edit' => $o[132],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController::delete' => $o[133],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController::list' => $o[134],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController::add' => $o[135],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController::view' => $o[136],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController::edit' => $o[137],
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController::delete' => $o[138],
                 ],
             ],
             'resources' => [
@@ -434,10 +434,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -457,10 +457,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -480,10 +480,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -503,10 +503,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -526,10 +526,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ActividadLogController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ActividadLogController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -549,10 +549,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -572,10 +572,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -595,10 +595,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -618,10 +618,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -641,10 +641,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AportesLegalesController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AportesLegalesController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -664,10 +664,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -687,10 +687,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -710,10 +710,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -733,10 +733,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -756,10 +756,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ComprasController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ComprasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -779,10 +779,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -802,10 +802,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -825,10 +825,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -848,10 +848,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -871,10 +871,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\CooperativasController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\CooperativasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -894,10 +894,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -917,10 +917,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -940,10 +940,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -963,10 +963,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -986,10 +986,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\HorasTrabajadasController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\HorasTrabajadasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1009,10 +1009,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1032,10 +1032,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1055,10 +1055,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1078,10 +1078,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1101,10 +1101,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\IngresosController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\IngresosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1124,10 +1124,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1147,10 +1147,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1170,10 +1170,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1193,10 +1193,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1216,10 +1216,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\MovimientosStockController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\MovimientosStockController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1239,10 +1239,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:personaldata',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:personaldata',
             ],
             'requirements' => [],
             'options' => [
@@ -1262,10 +1262,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:login',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -1285,10 +1285,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:resetpassword',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:resetpassword',
             ],
             'requirements' => [],
             'options' => [
@@ -1308,10 +1308,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:changepassword',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:changepassword',
             ],
             'requirements' => [],
             'options' => [
@@ -1331,10 +1331,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:register',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -1353,8 +1353,8 @@
             'path' => '/login_check',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:loginCheck',
+                'middlewares' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:loginCheck',
             ],
             'requirements' => [],
             'options' => [
@@ -1373,8 +1373,8 @@
             'path' => '/logout',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:logout',
+                'middlewares' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:logout',
             ],
             'requirements' => [],
             'options' => [
@@ -1393,7 +1393,7 @@
             'path' => '/swagger/swagger',
             'host' => '',
             'defaults' => [
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:swagger',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:swagger',
             ],
             'requirements' => [],
             'options' => [
@@ -1411,10 +1411,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\OthersController:index',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\OthersController:index',
             ],
             'requirements' => [],
             'options' => [
@@ -1432,10 +1432,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1455,10 +1455,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1478,10 +1478,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1501,10 +1501,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1524,10 +1524,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PagosSociosController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\PagosSociosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1547,10 +1547,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1570,10 +1570,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1593,10 +1593,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1616,10 +1616,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1639,10 +1639,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\ProveedoresController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\ProveedoresController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1662,10 +1662,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1685,10 +1685,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1708,10 +1708,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1731,10 +1731,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1754,10 +1754,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\SociosController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\SociosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1777,10 +1777,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1800,10 +1800,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1823,10 +1823,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1846,10 +1846,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1869,10 +1869,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\StockController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\StockController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1892,10 +1892,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController:list',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1915,10 +1915,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController:add',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1938,10 +1938,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController:view',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1961,10 +1961,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController:edit',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1984,10 +1984,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\PermissionMiddleware',
-                    'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\PermissionMiddleware',
+                    'PHPMaker2025\\project260825TrabajosCreatedAT\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project250825NoRepiteCIniEmailEnNuevosIngresos\\UsuariosController:delete',
+                '_controller' => 'PHPMaker2025\\project260825TrabajosCreatedAT\\UsuariosController:delete',
             ],
             'requirements' => [],
             'options' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Entity;
+namespace PHPMaker2025\project260825TrabajosCreatedAT\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedUserInterface;
-use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AbstractEntity;
-use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\AdvancedSecurity;
-use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserProfile;
-use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\UserRepository;
-use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Config;
-use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\EntityManager;
-use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\RemoveXss;
-use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HtmlDecode;
-use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\HashPassword;
-use function PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Security;
+use PHPMaker2025\project260825TrabajosCreatedAT\AdvancedUserInterface;
+use PHPMaker2025\project260825TrabajosCreatedAT\AbstractEntity;
+use PHPMaker2025\project260825TrabajosCreatedAT\AdvancedSecurity;
+use PHPMaker2025\project260825TrabajosCreatedAT\UserProfile;
+use PHPMaker2025\project260825TrabajosCreatedAT\UserRepository;
+use function PHPMaker2025\project260825TrabajosCreatedAT\Config;
+use function PHPMaker2025\project260825TrabajosCreatedAT\EntityManager;
+use function PHPMaker2025\project260825TrabajosCreatedAT\RemoveXss;
+use function PHPMaker2025\project260825TrabajosCreatedAT\HtmlDecode;
+use function PHPMaker2025\project260825TrabajosCreatedAT\HashPassword;
+use function PHPMaker2025\project260825TrabajosCreatedAT\Security;
 
 /**
  * Entity class for "horas_trabajadas" table

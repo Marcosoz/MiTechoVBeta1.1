@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos;
+namespace PHPMaker2025\project260825TrabajosCreatedAT;
 
-use PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos\Entity\Socio;
+use PHPMaker2025\project260825TrabajosCreatedAT\Entity\Socio;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

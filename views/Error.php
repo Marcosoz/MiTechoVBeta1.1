@@ -1,4 +1,4 @@
-<?php namespace PHPMaker2025\project250825NoRepiteCIniEmailEnNuevosIngresos; ?>
+<?php namespace PHPMaker2025\project260825TrabajosCreatedAT; ?>
 <div class="error-page">
     <?php if (@$Error["statusCode"] > 200) { ?>
     <h2 class="headline <?= @$Error["error"]["class"] ?>"><?= $Error["statusCode"] ?></h2>
