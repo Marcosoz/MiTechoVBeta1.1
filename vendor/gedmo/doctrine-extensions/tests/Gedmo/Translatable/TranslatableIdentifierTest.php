@@ -1,0 +1,113 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Doctrine Behavioral Extensions package.
+ * (c) Gediminas Morkevicius <gediminas.morkevicius@gmail.com> http://www.gediminasm.org
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Gedmo\Tests\Translatable;
+
+use Doctrine\Common\EventManager;
+use Gedmo\Tests\Tool\BaseTestCaseORM;
+use Gedmo\Tests\Translatable\Fixture\StringIdentifier;
+use Gedmo\Translatable\Entity\Translation;
+use Gedmo\Translatable\TranslatableListener;
+
+/**
+ * These are tests for translatable behavior
+ *
+ * @author Gediminas Morkevicius <gediminas.morkevicius@gmail.com>
+ */
+final class TranslatableIdentifierTest extends BaseTestCaseORM
+{
+    private ?string $testObjectId = null;
+
+    private TranslatableListener $translatableListener;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $evm = new EventManager();
+        $this->translatableListener = new TranslatableListener();
+        $this->translatableListener->setTranslatableLocale('en_us');
+        $this->translatableListener->setDefaultLocale('en_us');
+        $evm->addEventSubscriber($this->translatableListener);
+
+        $this->getDefaultMockSqliteEntityManager($evm);
+    }
+
+    public function testShouldHandleStringIdentifier(): void
+    {
+        $object = new StringIdentifier();
+        $object->setTitle('title in en');
+        $object->setUid(md5(StringIdentifier::class.time()));
+
+        $this->em->persist($object);
+        $this->em->flush();
+        $this->em->clear();
+        $this->testObjectId = $object->getUid();
+
+        $repo = $this->em->getRepository(Translation::class);
+        $object = $this->em->find(StringIdentifier::class, $this->testObjectId);
+
+        $translations = $repo->findTranslations($object);
+        static::assertCount(0, $translations);
+
+        $object = $this->em->find(StringIdentifier::class, $this->testObjectId);
+        $object->setTitle('title in de');
+        $object->setTranslatableLocale('de_de');
+
+        $this->em->persist($object);
+        $this->em->flush();
+        $this->em->clear();
+
+        $repo = $this->em->getRepository(Translation::class);
+
+        // test the entity load by translated title
+        $object = $repo->findObjectByTranslatedField(
+            'title',
+            'title in de',
+            StringIdentifier::class
+        );
+
+        static::assertSame($this->testObjectId, $object->getUid());
+
+        $translations = $repo->findTranslations($object);
+        static::assertCount(1, $translations);
+        static::assertArrayHasKey('de_de', $translations);
+
+        static::assertArrayHasKey('title', $translations['de_de']);
+        static::assertSame('title in de', $translations['de_de']['title']);
+
+        // dql test object hydration
+        $q = $this->em
+            ->createQuery('SELECT si FROM '.StringIdentifier::class.' si WHERE si.uid = :id')
+            ->setParameter('id', $this->testObjectId)
+            ->disableResultCache()
+        ;
+        $data = $q->getResult();
+        static::assertCount(1, $data);
+        $object = $data[0];
+        static::assertSame('title in en', $object->getTitle());
+
+        $this->em->clear(); // based on 2.3.0 it caches in identity map
+        $this->translatableListener->setTranslatableLocale('de_de');
+        $data = $q->getResult();
+        static::assertCount(1, $data);
+        $object = $data[0];
+        static::assertSame('title in de', $object->getTitle());
+    }
+
+    protected function getUsedEntityFixtures(): array
+    {
+        return [
+            StringIdentifier::class,
+            Translation::class,
+        ];
+    }
+}

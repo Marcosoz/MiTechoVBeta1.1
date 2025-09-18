@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 // Page object
 $SociosAdd = &$Page;
@@ -28,9 +28,9 @@ loadjs.ready(["wrapper", "head"], function () {
             ["telefono", [fields.telefono.visible && fields.telefono.required ? ew.Validators.required(fields.telefono.caption) : null], fields.telefono.isInvalid],
             ["email", [fields.email.visible && fields.email.required ? ew.Validators.required(fields.email.caption) : null], fields.email.isInvalid],
             ["fecha_ingreso", [fields.fecha_ingreso.visible && fields.fecha_ingreso.required ? ew.Validators.required(fields.fecha_ingreso.caption) : null, ew.Validators.datetime(fields.fecha_ingreso.clientFormatPattern)], fields.fecha_ingreso.isInvalid],
-            ["activo", [fields.activo.visible && fields.activo.required ? ew.Validators.required(fields.activo.caption) : null], fields.activo.isInvalid],
             ["contrasena", [fields.contrasena.visible && fields.contrasena.required ? ew.Validators.required(fields.contrasena.caption) : null], fields.contrasena.isInvalid],
-            ["nivel_usuario", [fields.nivel_usuario.visible && fields.nivel_usuario.required ? ew.Validators.required(fields.nivel_usuario.caption) : null], fields.nivel_usuario.isInvalid]
+            ["nivel_usuario", [fields.nivel_usuario.visible && fields.nivel_usuario.required ? ew.Validators.required(fields.nivel_usuario.caption) : null], fields.nivel_usuario.isInvalid],
+            ["sociosi", [fields.sociosi.visible && fields.sociosi.required ? ew.Validators.required(fields.sociosi.caption) : null], fields.sociosi.isInvalid]
         ])
 
         // Form_CustomValidate
@@ -46,8 +46,8 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
-            "activo": <?= $Page->activo->toClientList($Page) ?>,
             "nivel_usuario": <?= $Page->nivel_usuario->toClientList($Page) ?>,
+            "sociosi": <?= $Page->sociosi->toClientList($Page) ?>,
         })
         .build();
     window[form.id] = form;
@@ -174,20 +174,6 @@ loadjs.ready(["fsociosadd", "datetimepicker"], function () {
 </div></div>
     </div>
 <?php } ?>
-<?php if ($Page->activo->Visible) { // activo ?>
-    <div id="r_activo"<?= $Page->activo->rowAttributes() ?>>
-        <label id="elh_socios_activo" class="<?= $Page->LeftColumnClass ?>"><?= $Page->activo->caption() ?><?= $Page->activo->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->activo->cellAttributes() ?>>
-<span id="el_socios_activo">
-<div class="form-check d-inline-block">
-    <input type="checkbox" class="form-check-input<?= $Page->activo->isInvalidClass() ?>" data-table="socios" data-field="x_activo" data-boolean name="x_activo" id="x_activo" value="1"<?= ConvertToBool($Page->activo->CurrentValue) ? " checked" : "" ?><?= $Page->activo->editAttributes() ?> aria-describedby="x_activo_help">
-    <div class="invalid-feedback"><?= $Page->activo->getErrorMessage() ?></div>
-</div>
-<?= $Page->activo->getCustomMessage() ?>
-</span>
-</div></div>
-    </div>
-<?php } ?>
 <?php if ($Page->contrasena->Visible) { // contraseña ?>
     <div id="r_contrasena"<?= $Page->contrasena->rowAttributes() ?>>
         <label id="elh_socios_contrasena" for="x_contrasena" class="<?= $Page->LeftColumnClass ?>"><?= $Page->contrasena->caption() ?><?= $Page->contrasena->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
@@ -251,6 +237,20 @@ loadjs.ready("fsociosadd", function() {
 <?php } ?>
 </span>
 <?php } ?>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->sociosi->Visible) { // socio si ?>
+    <div id="r_sociosi"<?= $Page->sociosi->rowAttributes() ?>>
+        <label id="elh_socios_sociosi" class="<?= $Page->LeftColumnClass ?>"><?= $Page->sociosi->caption() ?><?= $Page->sociosi->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->sociosi->cellAttributes() ?>>
+<span id="el_socios_sociosi">
+<div class="form-check d-inline-block">
+    <input type="checkbox" class="form-check-input<?= $Page->sociosi->isInvalidClass() ?>" data-table="socios" data-field="x_sociosi" data-boolean name="x_sociosi" id="x_sociosi" value="1"<?= ConvertToBool($Page->sociosi->CurrentValue) ? " checked" : "" ?><?= $Page->sociosi->editAttributes() ?> aria-describedby="x_sociosi_help">
+    <div class="invalid-feedback"><?= $Page->sociosi->getErrorMessage() ?></div>
+</div>
+<?= $Page->sociosi->getCustomMessage() ?>
+</span>
 </div></div>
     </div>
 <?php } ?>

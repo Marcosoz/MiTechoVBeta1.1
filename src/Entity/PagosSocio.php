@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT\Entity;
+namespace PHPMaker2025\project290825TrabajosCreatedAT\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project260825TrabajosCreatedAT\AdvancedUserInterface;
-use PHPMaker2025\project260825TrabajosCreatedAT\AbstractEntity;
-use PHPMaker2025\project260825TrabajosCreatedAT\AdvancedSecurity;
-use PHPMaker2025\project260825TrabajosCreatedAT\UserProfile;
-use PHPMaker2025\project260825TrabajosCreatedAT\UserRepository;
-use function PHPMaker2025\project260825TrabajosCreatedAT\Config;
-use function PHPMaker2025\project260825TrabajosCreatedAT\EntityManager;
-use function PHPMaker2025\project260825TrabajosCreatedAT\RemoveXss;
-use function PHPMaker2025\project260825TrabajosCreatedAT\HtmlDecode;
-use function PHPMaker2025\project260825TrabajosCreatedAT\HashPassword;
-use function PHPMaker2025\project260825TrabajosCreatedAT\Security;
+use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedUserInterface;
+use PHPMaker2025\project290825TrabajosCreatedAT\AbstractEntity;
+use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedSecurity;
+use PHPMaker2025\project290825TrabajosCreatedAT\UserProfile;
+use PHPMaker2025\project290825TrabajosCreatedAT\UserRepository;
+use function PHPMaker2025\project290825TrabajosCreatedAT\Config;
+use function PHPMaker2025\project290825TrabajosCreatedAT\EntityManager;
+use function PHPMaker2025\project290825TrabajosCreatedAT\RemoveXss;
+use function PHPMaker2025\project290825TrabajosCreatedAT\HtmlDecode;
+use function PHPMaker2025\project290825TrabajosCreatedAT\HashPassword;
+use function PHPMaker2025\project290825TrabajosCreatedAT\Security;
 
 /**
  * Entity class for "pagos_socios" table

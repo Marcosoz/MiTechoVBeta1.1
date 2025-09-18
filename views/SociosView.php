@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 // Page object
 $SociosView = &$Page;
@@ -128,18 +128,6 @@ loadjs.ready("head", function () {
 </td>
     </tr>
 <?php } ?>
-<?php if ($Page->activo->Visible) { // activo ?>
-    <tr id="r_activo"<?= $Page->activo->rowAttributes() ?>>
-        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_socios_activo"><?= $Page->activo->caption() ?></span></td>
-        <td data-name="activo"<?= $Page->activo->cellAttributes() ?>>
-<span id="el_socios_activo">
-<span<?= $Page->activo->viewAttributes() ?>>
-<i class="fa-regular fa-square<?php if (ConvertToBool($Page->activo->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
-</span>
-</span>
-</td>
-    </tr>
-<?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
     <tr id="r_created_at"<?= $Page->created_at->rowAttributes() ?>>
         <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_socios_created_at"><?= $Page->created_at->caption() ?></span></td>
@@ -180,6 +168,18 @@ loadjs.ready("head", function () {
 <span id="el_socios_updated_at">
 <span<?= $Page->updated_at->viewAttributes() ?>>
 <?= $Page->updated_at->getViewValue() ?></span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->sociosi->Visible) { // socio si ?>
+    <tr id="r_sociosi"<?= $Page->sociosi->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_socios_sociosi"><?= $Page->sociosi->caption() ?></span></td>
+        <td data-name="sociosi"<?= $Page->sociosi->cellAttributes() ?>>
+<span id="el_socios_sociosi">
+<span<?= $Page->sociosi->viewAttributes() ?>>
+<i class="fa-regular fa-square<?php if (ConvertToBool($Page->sociosi->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
+</span>
 </span>
 </td>
     </tr>

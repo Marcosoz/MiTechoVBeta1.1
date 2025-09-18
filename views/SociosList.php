@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 // Page object
 $SociosList = &$Page;
@@ -168,9 +168,6 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->fecha_ingreso->Visible) { // fecha_ingreso ?>
         <th data-name="fecha_ingreso" class="<?= $Page->fecha_ingreso->headerCellClass() ?>"><div id="elh_socios_fecha_ingreso" class="socios_fecha_ingreso"><?= $Page->renderFieldHeader($Page->fecha_ingreso) ?></div></th>
 <?php } ?>
-<?php if ($Page->activo->Visible) { // activo ?>
-        <th data-name="activo" class="<?= $Page->activo->headerCellClass() ?>"><div id="elh_socios_activo" class="socios_activo"><?= $Page->renderFieldHeader($Page->activo) ?></div></th>
-<?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
         <th data-name="created_at" class="<?= $Page->created_at->headerCellClass() ?>"><div id="elh_socios_created_at" class="socios_created_at"><?= $Page->renderFieldHeader($Page->created_at) ?></div></th>
 <?php } ?>
@@ -182,6 +179,9 @@ $Page->ListOptions->render("header", "left");
 <?php } ?>
 <?php if ($Page->updated_at->Visible) { // updated_at ?>
         <th data-name="updated_at" class="<?= $Page->updated_at->headerCellClass() ?>"><div id="elh_socios_updated_at" class="socios_updated_at"><?= $Page->renderFieldHeader($Page->updated_at) ?></div></th>
+<?php } ?>
+<?php if ($Page->sociosi->Visible) { // socio si ?>
+        <th data-name="sociosi" class="<?= $Page->sociosi->headerCellClass() ?>"><div id="elh_socios_sociosi" class="socios_sociosi"><?= $Page->renderFieldHeader($Page->sociosi) ?></div></th>
 <?php } ?>
 <?php
 // Render list options (header, right)
@@ -267,15 +267,6 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 </span>
 </td>
     <?php } ?>
-    <?php if ($Page->activo->Visible) { // activo ?>
-        <td data-name="activo"<?= $Page->activo->cellAttributes() ?>>
-<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_activo" class="el_socios_activo">
-<span<?= $Page->activo->viewAttributes() ?>>
-<i class="fa-regular fa-square<?php if (ConvertToBool($Page->activo->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
-</span>
-</span>
-</td>
-    <?php } ?>
     <?php if ($Page->created_at->Visible) { // created_at ?>
         <td data-name="created_at"<?= $Page->created_at->cellAttributes() ?>>
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_created_at" class="el_socios_created_at">
@@ -305,6 +296,15 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_updated_at" class="el_socios_updated_at">
 <span<?= $Page->updated_at->viewAttributes() ?>>
 <?= $Page->updated_at->getViewValue() ?></span>
+</span>
+</td>
+    <?php } ?>
+    <?php if ($Page->sociosi->Visible) { // socio si ?>
+        <td data-name="sociosi"<?= $Page->sociosi->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_sociosi" class="el_socios_sociosi">
+<span<?= $Page->sociosi->viewAttributes() ?>>
+<i class="fa-regular fa-square<?php if (ConvertToBool($Page->sociosi->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
+</span>
 </span>
 </td>
     <?php } ?>

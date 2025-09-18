@@ -71,7 +71,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PHPMaker2025\\project260825TrabajosCreatedAT\\": [
+            "PHPMaker2025\\project290825TrabajosCreatedAT\\": [
                 "src/",
                 "models/",
                 "controllers/"
@@ -92,6 +92,6 @@
         "allow-plugins": true
     },
     "scripts": {
-        "routes": "PHPMaker2025\\project260825TrabajosCreatedAT\\RouteAttributes::dispatch"
+        "routes": "PHPMaker2025\\project290825TrabajosCreatedAT\\RouteAttributes::dispatch"
     }
 }

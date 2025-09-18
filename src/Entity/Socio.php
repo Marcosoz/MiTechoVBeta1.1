@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT\Entity;
+namespace PHPMaker2025\project290825TrabajosCreatedAT\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -15,17 +15,17 @@ use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use PHPMaker2025\project260825TrabajosCreatedAT\AdvancedUserInterface;
-use PHPMaker2025\project260825TrabajosCreatedAT\AbstractEntity;
-use PHPMaker2025\project260825TrabajosCreatedAT\AdvancedSecurity;
-use PHPMaker2025\project260825TrabajosCreatedAT\UserProfile;
-use PHPMaker2025\project260825TrabajosCreatedAT\UserRepository;
-use function PHPMaker2025\project260825TrabajosCreatedAT\Config;
-use function PHPMaker2025\project260825TrabajosCreatedAT\EntityManager;
-use function PHPMaker2025\project260825TrabajosCreatedAT\RemoveXss;
-use function PHPMaker2025\project260825TrabajosCreatedAT\HtmlDecode;
-use function PHPMaker2025\project260825TrabajosCreatedAT\HashPassword;
-use function PHPMaker2025\project260825TrabajosCreatedAT\Security;
+use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedUserInterface;
+use PHPMaker2025\project290825TrabajosCreatedAT\AbstractEntity;
+use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedSecurity;
+use PHPMaker2025\project290825TrabajosCreatedAT\UserProfile;
+use PHPMaker2025\project290825TrabajosCreatedAT\UserRepository;
+use function PHPMaker2025\project290825TrabajosCreatedAT\Config;
+use function PHPMaker2025\project290825TrabajosCreatedAT\EntityManager;
+use function PHPMaker2025\project290825TrabajosCreatedAT\RemoveXss;
+use function PHPMaker2025\project290825TrabajosCreatedAT\HtmlDecode;
+use function PHPMaker2025\project290825TrabajosCreatedAT\HashPassword;
+use function PHPMaker2025\project290825TrabajosCreatedAT\Security;
 
 /**
  * Entity class for "socios" table
@@ -58,9 +58,6 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
     #[Column(name: "fecha_ingreso", type: "date", nullable: true)]
     private ?DateTime $FechaIngreso;
 
-    #[Column(name: "activo", type: "boolean", nullable: true)]
-    private ?bool $Activo;
-
     #[Column(name: "created_at", type: "datetime")]
     private DateTime $CreatedAt;
 
@@ -73,9 +70,12 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
     #[Column(name: "updated_at", type: "datetime")]
     private DateTime $UpdatedAt;
 
+    #[Column(name: "`socio si`", options: ["name" => "socio si"], type: "boolean")]
+    private bool $SocioSi;
+
     public function __construct()
     {
-        $this->Activo = true;
+        $this->SocioSi = true;
     }
 
     public function getId(): int
@@ -155,17 +155,6 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
         return $this;
     }
 
-    public function getActivo(): ?bool
-    {
-        return $this->Activo;
-    }
-
-    public function setActivo(?bool $value): static
-    {
-        $this->Activo = $value;
-        return $this;
-    }
-
     public function getCreatedAt(): DateTime
     {
         return $this->CreatedAt;
@@ -207,6 +196,17 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
     public function setUpdatedAt(DateTime $value): static
     {
         $this->UpdatedAt = $value;
+        return $this;
+    }
+
+    public function getSocioSi(): bool
+    {
+        return $this->SocioSi;
+    }
+
+    public function setSocioSi(bool $value): static
+    {
+        $this->SocioSi = $value;
         return $this;
     }
 

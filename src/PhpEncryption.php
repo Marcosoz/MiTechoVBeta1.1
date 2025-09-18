@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use Defuse\Crypto\Key;
 use Defuse\Crypto\KeyProtectedByPassword;

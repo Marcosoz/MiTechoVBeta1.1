@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -162,11 +162,11 @@ class SociosList extends Socios
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->fecha_ingreso->setVisibility();
-        $this->activo->setVisibility();
         $this->created_at->setVisibility();
         $this->contrasena->setVisibility();
         $this->nivel_usuario->setVisibility();
         $this->updated_at->setVisibility();
+        $this->sociosi->setVisibility();
     }
 
     // Constructor
@@ -674,8 +674,8 @@ class SociosList extends Socios
         $this->setupOtherOptions();
 
         // Set up lookup cache
-        $this->setupLookupOptions($this->activo);
         $this->setupLookupOptions($this->nivel_usuario);
+        $this->setupLookupOptions($this->sociosi);
 
         // Update form name to avoid conflict
         if ($this->IsModal) {
@@ -1020,11 +1020,11 @@ class SociosList extends Socios
         $filterList = Concat($filterList, $this->telefono->AdvancedSearch->toJson(), ","); // Field telefono
         $filterList = Concat($filterList, $this->email->AdvancedSearch->toJson(), ","); // Field email
         $filterList = Concat($filterList, $this->fecha_ingreso->AdvancedSearch->toJson(), ","); // Field fecha_ingreso
-        $filterList = Concat($filterList, $this->activo->AdvancedSearch->toJson(), ","); // Field activo
         $filterList = Concat($filterList, $this->created_at->AdvancedSearch->toJson(), ","); // Field created_at
         $filterList = Concat($filterList, $this->contrasena->AdvancedSearch->toJson(), ","); // Field contraseña
         $filterList = Concat($filterList, $this->nivel_usuario->AdvancedSearch->toJson(), ","); // Field nivel_usuario
         $filterList = Concat($filterList, $this->updated_at->AdvancedSearch->toJson(), ","); // Field updated_at
+        $filterList = Concat($filterList, $this->sociosi->AdvancedSearch->toJson(), ","); // Field socio si
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1120,14 +1120,6 @@ class SociosList extends Socios
         $this->fecha_ingreso->AdvancedSearch->SearchOperator2 = $filter["w_fecha_ingreso"] ?? "";
         $this->fecha_ingreso->AdvancedSearch->save();
 
-        // Field activo
-        $this->activo->AdvancedSearch->SearchValue = $filter["x_activo"] ?? "";
-        $this->activo->AdvancedSearch->SearchOperator = $filter["z_activo"] ?? "";
-        $this->activo->AdvancedSearch->SearchCondition = $filter["v_activo"] ?? "";
-        $this->activo->AdvancedSearch->SearchValue2 = $filter["y_activo"] ?? "";
-        $this->activo->AdvancedSearch->SearchOperator2 = $filter["w_activo"] ?? "";
-        $this->activo->AdvancedSearch->save();
-
         // Field created_at
         $this->created_at->AdvancedSearch->SearchValue = $filter["x_created_at"] ?? "";
         $this->created_at->AdvancedSearch->SearchOperator = $filter["z_created_at"] ?? "";
@@ -1159,6 +1151,14 @@ class SociosList extends Socios
         $this->updated_at->AdvancedSearch->SearchValue2 = $filter["y_updated_at"] ?? "";
         $this->updated_at->AdvancedSearch->SearchOperator2 = $filter["w_updated_at"] ?? "";
         $this->updated_at->AdvancedSearch->save();
+
+        // Field socio si
+        $this->sociosi->AdvancedSearch->SearchValue = $filter["x_sociosi"] ?? "";
+        $this->sociosi->AdvancedSearch->SearchOperator = $filter["z_sociosi"] ?? "";
+        $this->sociosi->AdvancedSearch->SearchCondition = $filter["v_sociosi"] ?? "";
+        $this->sociosi->AdvancedSearch->SearchValue2 = $filter["y_sociosi"] ?? "";
+        $this->sociosi->AdvancedSearch->SearchOperator2 = $filter["w_sociosi"] ?? "";
+        $this->sociosi->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1283,11 +1283,11 @@ class SociosList extends Socios
             $this->updateSort($this->telefono); // telefono
             $this->updateSort($this->email); // email
             $this->updateSort($this->fecha_ingreso); // fecha_ingreso
-            $this->updateSort($this->activo); // activo
             $this->updateSort($this->created_at); // created_at
             $this->updateSort($this->contrasena); // contraseña
             $this->updateSort($this->nivel_usuario); // nivel_usuario
             $this->updateSort($this->updated_at); // updated_at
+            $this->updateSort($this->sociosi); // socio si
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1319,11 +1319,11 @@ class SociosList extends Socios
                 $this->telefono->setSort("");
                 $this->email->setSort("");
                 $this->fecha_ingreso->setSort("");
-                $this->activo->setSort("");
                 $this->created_at->setSort("");
                 $this->contrasena->setSort("");
                 $this->nivel_usuario->setSort("");
                 $this->updated_at->setSort("");
+                $this->sociosi->setSort("");
             }
 
             // Reset start position
@@ -1548,11 +1548,11 @@ class SociosList extends Socios
             $this->createColumnOption($option, "telefono");
             $this->createColumnOption($option, "email");
             $this->createColumnOption($option, "fecha_ingreso");
-            $this->createColumnOption($option, "activo");
             $this->createColumnOption($option, "created_at");
             $this->createColumnOption($option, "contraseña");
             $this->createColumnOption($option, "nivel_usuario");
             $this->createColumnOption($option, "updated_at");
+            $this->createColumnOption($option, "socio si");
         }
 
         // Set up custom actions
@@ -1993,11 +1993,11 @@ class SociosList extends Socios
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->fecha_ingreso->setDbValue($row['fecha_ingreso']);
-        $this->activo->setDbValue($row['activo']);
         $this->created_at->setDbValue($row['created_at']);
         $this->contrasena->setDbValue($row['contraseña']);
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->sociosi->setDbValue($row['socio si']);
     }
 
     // Return a row with default values
@@ -2011,11 +2011,11 @@ class SociosList extends Socios
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['fecha_ingreso'] = $this->fecha_ingreso->DefaultValue;
-        $row['activo'] = $this->activo->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['contraseña'] = $this->contrasena->DefaultValue;
         $row['nivel_usuario'] = $this->nivel_usuario->DefaultValue;
         $row['updated_at'] = $this->updated_at->DefaultValue;
+        $row['socio si'] = $this->sociosi->DefaultValue;
         return $row;
     }
 
@@ -2070,8 +2070,6 @@ class SociosList extends Socios
 
         // fecha_ingreso
 
-        // activo
-
         // created_at
 
         // contraseña
@@ -2079,6 +2077,8 @@ class SociosList extends Socios
         // nivel_usuario
 
         // updated_at
+
+        // socio si
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -2105,13 +2105,6 @@ class SociosList extends Socios
             $this->fecha_ingreso->ViewValue = $this->fecha_ingreso->CurrentValue;
             $this->fecha_ingreso->ViewValue = FormatDateTime($this->fecha_ingreso->ViewValue, $this->fecha_ingreso->formatPattern());
 
-            // activo
-            if (ConvertToBool($this->activo->CurrentValue)) {
-                $this->activo->ViewValue = $this->activo->tagCaption(1) != "" ? $this->activo->tagCaption(1) : "Yes";
-            } else {
-                $this->activo->ViewValue = $this->activo->tagCaption(2) != "" ? $this->activo->tagCaption(2) : "No";
-            }
-
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
@@ -2133,6 +2126,13 @@ class SociosList extends Socios
             // updated_at
             $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
             $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
+            // socio si
+            if (ConvertToBool($this->sociosi->CurrentValue)) {
+                $this->sociosi->ViewValue = $this->sociosi->tagCaption(1) != "" ? $this->sociosi->tagCaption(1) : "Yes";
+            } else {
+                $this->sociosi->ViewValue = $this->sociosi->tagCaption(2) != "" ? $this->sociosi->tagCaption(2) : "No";
+            }
 
             // id
             $this->id->HrefValue = "";
@@ -2162,10 +2162,6 @@ class SociosList extends Socios
             $this->fecha_ingreso->HrefValue = "";
             $this->fecha_ingreso->TooltipValue = "";
 
-            // activo
-            $this->activo->HrefValue = "";
-            $this->activo->TooltipValue = "";
-
             // created_at
             $this->created_at->HrefValue = "";
             $this->created_at->TooltipValue = "";
@@ -2181,6 +2177,10 @@ class SociosList extends Socios
             // updated_at
             $this->updated_at->HrefValue = "";
             $this->updated_at->TooltipValue = "";
+
+            // socio si
+            $this->sociosi->HrefValue = "";
+            $this->sociosi->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -2275,9 +2275,9 @@ class SociosList extends Socios
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
-                case "x_activo":
-                    break;
                 case "x_nivel_usuario":
+                    break;
+                case "x_sociosi":
                     break;
                 default:
                     $lookupFilter = "";

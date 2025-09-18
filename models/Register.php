@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -604,8 +604,8 @@ class Register extends Socios
     // Load default values
     protected function loadDefaultValues(): void
     {
-        $this->activo->DefaultValue = $this->activo->getDefault(); // PHP
-        $this->activo->OldValue = $this->activo->DefaultValue;
+        $this->sociosi->DefaultValue = $this->sociosi->getDefault(); // PHP
+        $this->sociosi->OldValue = $this->sociosi->DefaultValue;
     }
 
     // Load form values
@@ -728,11 +728,11 @@ class Register extends Socios
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->fecha_ingreso->setDbValue($row['fecha_ingreso']);
-        $this->activo->setDbValue($row['activo']);
         $this->created_at->setDbValue($row['created_at']);
         $this->contrasena->setDbValue($row['contraseña']);
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->sociosi->setDbValue($row['socio si']);
     }
 
     // Return a row with default values
@@ -746,11 +746,11 @@ class Register extends Socios
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['fecha_ingreso'] = $this->fecha_ingreso->DefaultValue;
-        $row['activo'] = $this->activo->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['contraseña'] = $this->contrasena->DefaultValue;
         $row['nivel_usuario'] = $this->nivel_usuario->DefaultValue;
         $row['updated_at'] = $this->updated_at->DefaultValue;
+        $row['socio si'] = $this->sociosi->DefaultValue;
         return $row;
     }
 
@@ -787,9 +787,6 @@ class Register extends Socios
         // fecha_ingreso
         $this->fecha_ingreso->RowCssClass = "row";
 
-        // activo
-        $this->activo->RowCssClass = "row";
-
         // created_at
         $this->created_at->RowCssClass = "row";
 
@@ -801,6 +798,9 @@ class Register extends Socios
 
         // updated_at
         $this->updated_at->RowCssClass = "row";
+
+        // socio si
+        $this->sociosi->RowCssClass = "row";
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -827,13 +827,6 @@ class Register extends Socios
             $this->fecha_ingreso->ViewValue = $this->fecha_ingreso->CurrentValue;
             $this->fecha_ingreso->ViewValue = FormatDateTime($this->fecha_ingreso->ViewValue, $this->fecha_ingreso->formatPattern());
 
-            // activo
-            if (ConvertToBool($this->activo->CurrentValue)) {
-                $this->activo->ViewValue = $this->activo->tagCaption(1) != "" ? $this->activo->tagCaption(1) : "Yes";
-            } else {
-                $this->activo->ViewValue = $this->activo->tagCaption(2) != "" ? $this->activo->tagCaption(2) : "No";
-            }
-
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
@@ -855,6 +848,13 @@ class Register extends Socios
             // updated_at
             $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
             $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
+            // socio si
+            if (ConvertToBool($this->sociosi->CurrentValue)) {
+                $this->sociosi->ViewValue = $this->sociosi->tagCaption(1) != "" ? $this->sociosi->tagCaption(1) : "Yes";
+            } else {
+                $this->sociosi->ViewValue = $this->sociosi->tagCaption(2) != "" ? $this->sociosi->tagCaption(2) : "No";
+            }
 
             // id
             $this->id->HrefValue = "";
@@ -1125,9 +1125,9 @@ class Register extends Socios
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
-                case "x_activo":
-                    break;
                 case "x_nivel_usuario":
+                    break;
+                case "x_sociosi":
                     break;
                 default:
                     $lookupFilter = "";

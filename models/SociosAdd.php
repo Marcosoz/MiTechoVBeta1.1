@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -141,11 +141,11 @@ class SociosAdd extends Socios
         $this->telefono->setVisibility();
         $this->email->setVisibility();
         $this->fecha_ingreso->setVisibility();
-        $this->activo->setVisibility();
         $this->created_at->Visible = false;
         $this->contrasena->setVisibility();
         $this->nivel_usuario->setVisibility();
         $this->updated_at->Visible = false;
+        $this->sociosi->setVisibility();
     }
 
     // Constructor
@@ -494,8 +494,8 @@ class SociosAdd extends Socios
         }
 
         // Set up lookup cache
-        $this->setupLookupOptions($this->activo);
         $this->setupLookupOptions($this->nivel_usuario);
+        $this->setupLookupOptions($this->sociosi);
 
         // Load default values for add
         $this->loadDefaultValues();
@@ -645,8 +645,8 @@ class SociosAdd extends Socios
     // Load default values
     protected function loadDefaultValues(): void
     {
-        $this->activo->DefaultValue = $this->activo->getDefault(); // PHP
-        $this->activo->OldValue = $this->activo->DefaultValue;
+        $this->sociosi->DefaultValue = $this->sociosi->getDefault(); // PHP
+        $this->sociosi->OldValue = $this->sociosi->DefaultValue;
     }
 
     // Load form values
@@ -715,16 +715,6 @@ class SociosAdd extends Socios
             $this->fecha_ingreso->CurrentValue = UnformatDateTime($this->fecha_ingreso->CurrentValue, $this->fecha_ingreso->formatPattern());
         }
 
-        // Check field name 'activo' before field var 'x_activo'
-        $val = $this->getFormValue("activo", null) ?? $this->getFormValue("x_activo", null);
-        if (!$this->activo->IsDetailKey) {
-            if (IsApi() && $val === null) {
-                $this->activo->Visible = false; // Disable update for API request
-            } else {
-                $this->activo->setFormValue($val);
-            }
-        }
-
         // Check field name 'contraseña' before field var 'x_contrasena'
         $val = $this->getFormValue("contraseña", null) ?? $this->getFormValue("x_contrasena", null);
         if (!$this->contrasena->IsDetailKey) {
@@ -745,6 +735,16 @@ class SociosAdd extends Socios
             }
         }
 
+        // Check field name 'socio si' before field var 'x_sociosi'
+        $val = $this->getFormValue("socio si", null) ?? $this->getFormValue("x_sociosi", null);
+        if (!$this->sociosi->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->sociosi->Visible = false; // Disable update for API request
+            } else {
+                $this->sociosi->setFormValue($val);
+            }
+        }
+
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -759,9 +759,9 @@ class SociosAdd extends Socios
         $this->email->CurrentValue = $this->email->FormValue;
         $this->fecha_ingreso->CurrentValue = $this->fecha_ingreso->FormValue;
         $this->fecha_ingreso->CurrentValue = UnformatDateTime($this->fecha_ingreso->CurrentValue, $this->fecha_ingreso->formatPattern());
-        $this->activo->CurrentValue = $this->activo->FormValue;
         $this->contrasena->CurrentValue = $this->contrasena->FormValue;
         $this->nivel_usuario->CurrentValue = $this->nivel_usuario->FormValue;
+        $this->sociosi->CurrentValue = $this->sociosi->FormValue;
     }
 
     /**
@@ -817,11 +817,11 @@ class SociosAdd extends Socios
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->fecha_ingreso->setDbValue($row['fecha_ingreso']);
-        $this->activo->setDbValue($row['activo']);
         $this->created_at->setDbValue($row['created_at']);
         $this->contrasena->setDbValue($row['contraseña']);
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->sociosi->setDbValue($row['socio si']);
     }
 
     // Return a row with default values
@@ -835,11 +835,11 @@ class SociosAdd extends Socios
         $row['telefono'] = $this->telefono->DefaultValue;
         $row['email'] = $this->email->DefaultValue;
         $row['fecha_ingreso'] = $this->fecha_ingreso->DefaultValue;
-        $row['activo'] = $this->activo->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['contraseña'] = $this->contrasena->DefaultValue;
         $row['nivel_usuario'] = $this->nivel_usuario->DefaultValue;
         $row['updated_at'] = $this->updated_at->DefaultValue;
+        $row['socio si'] = $this->sociosi->DefaultValue;
         return $row;
     }
 
@@ -895,9 +895,6 @@ class SociosAdd extends Socios
         // fecha_ingreso
         $this->fecha_ingreso->RowCssClass = "row";
 
-        // activo
-        $this->activo->RowCssClass = "row";
-
         // created_at
         $this->created_at->RowCssClass = "row";
 
@@ -909,6 +906,9 @@ class SociosAdd extends Socios
 
         // updated_at
         $this->updated_at->RowCssClass = "row";
+
+        // socio si
+        $this->sociosi->RowCssClass = "row";
 
         // View row
         if ($this->RowType == RowType::VIEW) {
@@ -935,13 +935,6 @@ class SociosAdd extends Socios
             $this->fecha_ingreso->ViewValue = $this->fecha_ingreso->CurrentValue;
             $this->fecha_ingreso->ViewValue = FormatDateTime($this->fecha_ingreso->ViewValue, $this->fecha_ingreso->formatPattern());
 
-            // activo
-            if (ConvertToBool($this->activo->CurrentValue)) {
-                $this->activo->ViewValue = $this->activo->tagCaption(1) != "" ? $this->activo->tagCaption(1) : "Yes";
-            } else {
-                $this->activo->ViewValue = $this->activo->tagCaption(2) != "" ? $this->activo->tagCaption(2) : "No";
-            }
-
             // created_at
             $this->created_at->ViewValue = $this->created_at->CurrentValue;
             $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
@@ -964,6 +957,13 @@ class SociosAdd extends Socios
             $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
             $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
 
+            // socio si
+            if (ConvertToBool($this->sociosi->CurrentValue)) {
+                $this->sociosi->ViewValue = $this->sociosi->tagCaption(1) != "" ? $this->sociosi->tagCaption(1) : "Yes";
+            } else {
+                $this->sociosi->ViewValue = $this->sociosi->tagCaption(2) != "" ? $this->sociosi->tagCaption(2) : "No";
+            }
+
             // cooperativa_id
             $this->cooperativa_id->HrefValue = "";
 
@@ -982,14 +982,14 @@ class SociosAdd extends Socios
             // fecha_ingreso
             $this->fecha_ingreso->HrefValue = "";
 
-            // activo
-            $this->activo->HrefValue = "";
-
             // contraseña
             $this->contrasena->HrefValue = "";
 
             // nivel_usuario
             $this->nivel_usuario->HrefValue = "";
+
+            // socio si
+            $this->sociosi->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
             // cooperativa_id
             $this->cooperativa_id->setupEditAttributes();
@@ -1024,10 +1024,6 @@ class SociosAdd extends Socios
             $this->fecha_ingreso->EditValue = FormatDateTime($this->fecha_ingreso->CurrentValue, $this->fecha_ingreso->formatPattern());
             $this->fecha_ingreso->PlaceHolder = RemoveHtml($this->fecha_ingreso->caption());
 
-            // activo
-            $this->activo->EditValue = $this->activo->options(false);
-            $this->activo->PlaceHolder = RemoveHtml($this->activo->caption());
-
             // contraseña
             $this->contrasena->setupEditAttributes();
             $this->contrasena->PlaceHolder = RemoveHtml($this->contrasena->caption());
@@ -1040,6 +1036,10 @@ class SociosAdd extends Socios
                 $this->nivel_usuario->EditValue = $this->nivel_usuario->options(true);
                 $this->nivel_usuario->PlaceHolder = RemoveHtml($this->nivel_usuario->caption());
             }
+
+            // socio si
+            $this->sociosi->EditValue = $this->sociosi->options(false);
+            $this->sociosi->PlaceHolder = RemoveHtml($this->sociosi->caption());
 
             // Add refer script
 
@@ -1061,14 +1061,14 @@ class SociosAdd extends Socios
             // fecha_ingreso
             $this->fecha_ingreso->HrefValue = "";
 
-            // activo
-            $this->activo->HrefValue = "";
-
             // contraseña
             $this->contrasena->HrefValue = "";
 
             // nivel_usuario
             $this->nivel_usuario->HrefValue = "";
+
+            // socio si
+            $this->sociosi->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1124,11 +1124,6 @@ class SociosAdd extends Socios
             if (!CheckDate($this->fecha_ingreso->FormValue, $this->fecha_ingreso->formatPattern())) {
                 $this->fecha_ingreso->addErrorMessage($this->fecha_ingreso->getErrorMessage(false));
             }
-            if ($this->activo->Visible && $this->activo->Required) {
-                if ($this->activo->FormValue == "") {
-                    $this->activo->addErrorMessage(str_replace("%s", $this->activo->caption(), $this->activo->RequiredErrorMessage));
-                }
-            }
             if ($this->contrasena->Visible && $this->contrasena->Required) {
                 if (!$this->contrasena->IsDetailKey && IsEmpty($this->contrasena->FormValue)) {
                     $this->contrasena->addErrorMessage(str_replace("%s", $this->contrasena->caption(), $this->contrasena->RequiredErrorMessage));
@@ -1140,6 +1135,11 @@ class SociosAdd extends Socios
             if ($this->nivel_usuario->Visible && $this->nivel_usuario->Required) {
                 if ($this->security->canAdmin() && !$this->nivel_usuario->IsDetailKey && IsEmpty($this->nivel_usuario->FormValue)) {
                     $this->nivel_usuario->addErrorMessage(str_replace("%s", $this->nivel_usuario->caption(), $this->nivel_usuario->RequiredErrorMessage));
+                }
+            }
+            if ($this->sociosi->Visible && $this->sociosi->Required) {
+                if ($this->sociosi->FormValue == "") {
+                    $this->sociosi->addErrorMessage(str_replace("%s", $this->sociosi->caption(), $this->sociosi->RequiredErrorMessage));
                 }
             }
 
@@ -1257,13 +1257,6 @@ class SociosAdd extends Socios
         // fecha_ingreso
         $this->fecha_ingreso->setDbValueDef($newRow, UnFormatDateTime($this->fecha_ingreso->CurrentValue, $this->fecha_ingreso->formatPattern()), false);
 
-        // activo
-        $tmpBool = $this->activo->CurrentValue;
-        if ($tmpBool != "1" && $tmpBool != "0") {
-            $tmpBool = !empty($tmpBool) ? "1" : "0";
-        }
-        $this->activo->setDbValueDef($newRow, $tmpBool, strval($this->activo->CurrentValue) == "");
-
         // contraseña
         if (!IsMaskedPassword($this->contrasena->CurrentValue)) {
             $this->contrasena->setDbValueDef($newRow, $this->contrasena->CurrentValue, false);
@@ -1273,6 +1266,13 @@ class SociosAdd extends Socios
         if ($this->security->canAdmin()) { // System admin
             $this->nivel_usuario->setDbValueDef($newRow, $this->nivel_usuario->CurrentValue, false);
         }
+
+        // socio si
+        $tmpBool = $this->sociosi->CurrentValue;
+        if ($tmpBool != "1" && $tmpBool != "0") {
+            $tmpBool = !empty($tmpBool) ? "1" : "0";
+        }
+        $this->sociosi->setDbValueDef($newRow, $tmpBool, strval($this->sociosi->CurrentValue) == "");
         return $newRow;
     }
 
@@ -1308,9 +1308,9 @@ class SociosAdd extends Socios
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
-                case "x_activo":
-                    break;
                 case "x_nivel_usuario":
+                    break;
+                case "x_sociosi":
                     break;
                 default:
                     $lookupFilter = "";

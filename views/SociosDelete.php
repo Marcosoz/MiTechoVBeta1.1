@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 // Page object
 $SociosDelete = &$Page;
@@ -71,9 +71,6 @@ $Page->showMessage();
 <?php if ($Page->fecha_ingreso->Visible) { // fecha_ingreso ?>
         <th class="<?= $Page->fecha_ingreso->headerCellClass() ?>"><span id="elh_socios_fecha_ingreso" class="socios_fecha_ingreso"><?= $Page->fecha_ingreso->caption() ?></span></th>
 <?php } ?>
-<?php if ($Page->activo->Visible) { // activo ?>
-        <th class="<?= $Page->activo->headerCellClass() ?>"><span id="elh_socios_activo" class="socios_activo"><?= $Page->activo->caption() ?></span></th>
-<?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
         <th class="<?= $Page->created_at->headerCellClass() ?>"><span id="elh_socios_created_at" class="socios_created_at"><?= $Page->created_at->caption() ?></span></th>
 <?php } ?>
@@ -85,6 +82,9 @@ $Page->showMessage();
 <?php } ?>
 <?php if ($Page->updated_at->Visible) { // updated_at ?>
         <th class="<?= $Page->updated_at->headerCellClass() ?>"><span id="elh_socios_updated_at" class="socios_updated_at"><?= $Page->updated_at->caption() ?></span></th>
+<?php } ?>
+<?php if ($Page->sociosi->Visible) { // socio si ?>
+        <th class="<?= $Page->sociosi->headerCellClass() ?>"><span id="elh_socios_sociosi" class="socios_sociosi"><?= $Page->sociosi->caption() ?></span></th>
 <?php } ?>
     </tr>
     </thead>
@@ -163,15 +163,6 @@ while ($Page->fetch()) {
 </span>
 </td>
 <?php } ?>
-<?php if ($Page->activo->Visible) { // activo ?>
-        <td<?= $Page->activo->cellAttributes() ?>>
-<span id="">
-<span<?= $Page->activo->viewAttributes() ?>>
-<i class="fa-regular fa-square<?php if (ConvertToBool($Page->activo->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
-</span>
-</span>
-</td>
-<?php } ?>
 <?php if ($Page->created_at->Visible) { // created_at ?>
         <td<?= $Page->created_at->cellAttributes() ?>>
 <span id="">
@@ -201,6 +192,15 @@ while ($Page->fetch()) {
 <span id="">
 <span<?= $Page->updated_at->viewAttributes() ?>>
 <?= $Page->updated_at->getViewValue() ?></span>
+</span>
+</td>
+<?php } ?>
+<?php if ($Page->sociosi->Visible) { // socio si ?>
+        <td<?= $Page->sociosi->cellAttributes() ?>>
+<span id="">
+<span<?= $Page->sociosi->viewAttributes() ?>>
+<i class="fa-regular fa-square<?php if (ConvertToBool($Page->sociosi->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
+</span>
 </span>
 </td>
 <?php } ?>

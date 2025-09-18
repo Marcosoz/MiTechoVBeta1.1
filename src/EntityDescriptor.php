@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
  */
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use LightSaml\Model\Metadata\EntityDescriptor as BaseEntityDescriptor;
 use LightSaml\Model\Context\DeserializationContext;

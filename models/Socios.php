@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -70,11 +70,11 @@ class Socios extends DbTable implements LookupTableInterface
     public DbField $telefono;
     public DbField $email;
     public DbField $fecha_ingreso;
-    public DbField $activo;
     public DbField $created_at;
     public DbField $contrasena;
     public DbField $nivel_usuario;
     public DbField $updated_at;
+    public DbField $sociosi;
 
     // Page ID
     public string $PageID = ""; // To be set by subclass
@@ -283,34 +283,6 @@ class Socios extends DbTable implements LookupTableInterface
         $this->fecha_ingreso->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
         $this->Fields['fecha_ingreso'] = &$this->fecha_ingreso;
 
-        // activo
-        $this->activo = new DbField(
-            $this, // Table
-            'x_activo', // Variable name
-            'activo', // Name
-            '`activo`', // Expression
-            '`activo`', // Basic search expression
-            16, // Type
-            1, // Size
-            -1, // Date/Time format
-            false, // Is upload field
-            '`activo`', // Virtual expression
-            false, // Is virtual
-            false, // Force selection
-            false, // Is Virtual search
-            'FORMATTED TEXT', // View Tag
-            'CHECKBOX' // Edit Tag
-        );
-        $this->activo->addMethod("getDefault", fn() => 1);
-        $this->activo->InputTextType = "text";
-        $this->activo->Raw = true;
-        $this->activo->setDataType(DataType::BOOLEAN);
-        $this->activo->Lookup = new Lookup($this->activo, 'socios', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
-        $this->activo->OptionCount = 2;
-        $this->activo->DefaultErrorMessage = $this->language->phrase("IncorrectValueRegExp");
-        $this->activo->SearchOperators = ["=", "<>", "IS NULL", "IS NOT NULL"];
-        $this->Fields['activo'] = &$this->activo;
-
         // created_at
         $this->created_at = new DbField(
             $this, // Table
@@ -416,6 +388,35 @@ class Socios extends DbTable implements LookupTableInterface
         $this->updated_at->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $this->language->phrase("IncorrectDate"));
         $this->updated_at->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['updated_at'] = &$this->updated_at;
+
+        // socio si
+        $this->sociosi = new DbField(
+            $this, // Table
+            'x_sociosi', // Variable name
+            'socio si', // Name
+            '`socio si`', // Expression
+            '`socio si`', // Basic search expression
+            16, // Type
+            1, // Size
+            -1, // Date/Time format
+            false, // Is upload field
+            '`socio si`', // Virtual expression
+            false, // Is virtual
+            false, // Force selection
+            false, // Is Virtual search
+            'FORMATTED TEXT', // View Tag
+            'CHECKBOX' // Edit Tag
+        );
+        $this->sociosi->addMethod("getDefault", fn() => 1);
+        $this->sociosi->InputTextType = "text";
+        $this->sociosi->Raw = true;
+        $this->sociosi->Nullable = false; // NOT NULL field
+        $this->sociosi->setDataType(DataType::BOOLEAN);
+        $this->sociosi->Lookup = new Lookup($this->sociosi, 'socios', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
+        $this->sociosi->OptionCount = 2;
+        $this->sociosi->DefaultErrorMessage = $this->language->phrase("IncorrectValueRegExp");
+        $this->sociosi->SearchOperators = ["=", "<>"];
+        $this->Fields['socio si'] = &$this->sociosi;
 
         // Cache profile
         $this->cacheProfile = new QueryCacheProfile(0, $this->TableVar, Container("result.cache"));
@@ -980,11 +981,11 @@ class Socios extends DbTable implements LookupTableInterface
         $this->telefono->DbValue = $row['telefono'];
         $this->email->DbValue = $row['email'];
         $this->fecha_ingreso->DbValue = $row['fecha_ingreso'];
-        $this->activo->DbValue = $row['activo'];
         $this->created_at->DbValue = $row['created_at'];
         $this->contrasena->DbValue = $row['contraseña'];
         $this->nivel_usuario->DbValue = $row['nivel_usuario'];
         $this->updated_at->DbValue = $row['updated_at'];
+        $this->sociosi->DbValue = $row['socio si'];
     }
 
     // Delete uploaded files
@@ -1347,11 +1348,11 @@ class Socios extends DbTable implements LookupTableInterface
         $this->telefono->setDbValue($row['telefono']);
         $this->email->setDbValue($row['email']);
         $this->fecha_ingreso->setDbValue($row['fecha_ingreso']);
-        $this->activo->setDbValue($row['activo']);
         $this->created_at->setDbValue($row['created_at']);
         $this->contrasena->setDbValue($row['contraseña']);
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->sociosi->setDbValue($row['socio si']);
     }
 
     // Render list content
@@ -1397,8 +1398,6 @@ class Socios extends DbTable implements LookupTableInterface
 
         // fecha_ingreso
 
-        // activo
-
         // created_at
 
         // contraseña
@@ -1406,6 +1405,8 @@ class Socios extends DbTable implements LookupTableInterface
         // nivel_usuario
 
         // updated_at
+
+        // socio si
 
         // id
         $this->id->ViewValue = $this->id->CurrentValue;
@@ -1430,13 +1431,6 @@ class Socios extends DbTable implements LookupTableInterface
         $this->fecha_ingreso->ViewValue = $this->fecha_ingreso->CurrentValue;
         $this->fecha_ingreso->ViewValue = FormatDateTime($this->fecha_ingreso->ViewValue, $this->fecha_ingreso->formatPattern());
 
-        // activo
-        if (ConvertToBool($this->activo->CurrentValue)) {
-            $this->activo->ViewValue = $this->activo->tagCaption(1) != "" ? $this->activo->tagCaption(1) : "Yes";
-        } else {
-            $this->activo->ViewValue = $this->activo->tagCaption(2) != "" ? $this->activo->tagCaption(2) : "No";
-        }
-
         // created_at
         $this->created_at->ViewValue = $this->created_at->CurrentValue;
         $this->created_at->ViewValue = FormatDateTime($this->created_at->ViewValue, $this->created_at->formatPattern());
@@ -1458,6 +1452,13 @@ class Socios extends DbTable implements LookupTableInterface
         // updated_at
         $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
         $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
+        // socio si
+        if (ConvertToBool($this->sociosi->CurrentValue)) {
+            $this->sociosi->ViewValue = $this->sociosi->tagCaption(1) != "" ? $this->sociosi->tagCaption(1) : "Yes";
+        } else {
+            $this->sociosi->ViewValue = $this->sociosi->tagCaption(2) != "" ? $this->sociosi->tagCaption(2) : "No";
+        }
 
         // id
         $this->id->HrefValue = "";
@@ -1487,10 +1488,6 @@ class Socios extends DbTable implements LookupTableInterface
         $this->fecha_ingreso->HrefValue = "";
         $this->fecha_ingreso->TooltipValue = "";
 
-        // activo
-        $this->activo->HrefValue = "";
-        $this->activo->TooltipValue = "";
-
         // created_at
         $this->created_at->HrefValue = "";
         $this->created_at->TooltipValue = "";
@@ -1506,6 +1503,10 @@ class Socios extends DbTable implements LookupTableInterface
         // updated_at
         $this->updated_at->HrefValue = "";
         $this->updated_at->TooltipValue = "";
+
+        // socio si
+        $this->sociosi->HrefValue = "";
+        $this->sociosi->TooltipValue = "";
 
         // Call Row Rendered event
         $this->rowRendered();
@@ -1545,11 +1546,11 @@ class Socios extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->telefono);
                     $doc->exportCaption($this->email);
                     $doc->exportCaption($this->fecha_ingreso);
-                    $doc->exportCaption($this->activo);
                     $doc->exportCaption($this->created_at);
                     $doc->exportCaption($this->contrasena);
                     $doc->exportCaption($this->nivel_usuario);
                     $doc->exportCaption($this->updated_at);
+                    $doc->exportCaption($this->sociosi);
                 } else {
                     $doc->exportCaption($this->id);
                     $doc->exportCaption($this->cooperativa_id);
@@ -1558,11 +1559,11 @@ class Socios extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->telefono);
                     $doc->exportCaption($this->email);
                     $doc->exportCaption($this->fecha_ingreso);
-                    $doc->exportCaption($this->activo);
                     $doc->exportCaption($this->created_at);
                     $doc->exportCaption($this->contrasena);
                     $doc->exportCaption($this->nivel_usuario);
                     $doc->exportCaption($this->updated_at);
+                    $doc->exportCaption($this->sociosi);
                 }
                 $doc->endExportRow();
             }
@@ -1596,11 +1597,11 @@ class Socios extends DbTable implements LookupTableInterface
                         $doc->exportField($this->telefono);
                         $doc->exportField($this->email);
                         $doc->exportField($this->fecha_ingreso);
-                        $doc->exportField($this->activo);
                         $doc->exportField($this->created_at);
                         $doc->exportField($this->contrasena);
                         $doc->exportField($this->nivel_usuario);
                         $doc->exportField($this->updated_at);
+                        $doc->exportField($this->sociosi);
                     } else {
                         $doc->exportField($this->id);
                         $doc->exportField($this->cooperativa_id);
@@ -1609,11 +1610,11 @@ class Socios extends DbTable implements LookupTableInterface
                         $doc->exportField($this->telefono);
                         $doc->exportField($this->email);
                         $doc->exportField($this->fecha_ingreso);
-                        $doc->exportField($this->activo);
                         $doc->exportField($this->created_at);
                         $doc->exportField($this->contrasena);
                         $doc->exportField($this->nivel_usuario);
                         $doc->exportField($this->updated_at);
+                        $doc->exportField($this->sociosi);
                     }
                     $doc->endExportRow($rowCnt);
                 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project260825TrabajosCreatedAT;
+namespace PHPMaker2025\project290825TrabajosCreatedAT;
 
 use Symfony\Component\Ldap\Entry;
 use Symfony\Component\Ldap\Exception\ExceptionInterface;
