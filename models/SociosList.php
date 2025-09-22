@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -167,6 +167,7 @@ class SociosList extends Socios
         $this->nivel_usuario->setVisibility();
         $this->updated_at->setVisibility();
         $this->sociosi->setVisibility();
+        $this->cupo->setVisibility();
     }
 
     // Constructor
@@ -674,8 +675,10 @@ class SociosList extends Socios
         $this->setupOtherOptions();
 
         // Set up lookup cache
+        $this->setupLookupOptions($this->cooperativa_id);
         $this->setupLookupOptions($this->nivel_usuario);
         $this->setupLookupOptions($this->sociosi);
+        $this->setupLookupOptions($this->cupo);
 
         // Update form name to avoid conflict
         if ($this->IsModal) {
@@ -1025,6 +1028,7 @@ class SociosList extends Socios
         $filterList = Concat($filterList, $this->nivel_usuario->AdvancedSearch->toJson(), ","); // Field nivel_usuario
         $filterList = Concat($filterList, $this->updated_at->AdvancedSearch->toJson(), ","); // Field updated_at
         $filterList = Concat($filterList, $this->sociosi->AdvancedSearch->toJson(), ","); // Field socio si
+        $filterList = Concat($filterList, $this->cupo->AdvancedSearch->toJson(), ","); // Field cupo
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1159,6 +1163,14 @@ class SociosList extends Socios
         $this->sociosi->AdvancedSearch->SearchValue2 = $filter["y_sociosi"] ?? "";
         $this->sociosi->AdvancedSearch->SearchOperator2 = $filter["w_sociosi"] ?? "";
         $this->sociosi->AdvancedSearch->save();
+
+        // Field cupo
+        $this->cupo->AdvancedSearch->SearchValue = $filter["x_cupo"] ?? "";
+        $this->cupo->AdvancedSearch->SearchOperator = $filter["z_cupo"] ?? "";
+        $this->cupo->AdvancedSearch->SearchCondition = $filter["v_cupo"] ?? "";
+        $this->cupo->AdvancedSearch->SearchValue2 = $filter["y_cupo"] ?? "";
+        $this->cupo->AdvancedSearch->SearchOperator2 = $filter["w_cupo"] ?? "";
+        $this->cupo->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1270,6 +1282,10 @@ class SociosList extends Socios
             if ($this->getSessionOrderBy() == "" && $defaultSort != "") {
                 $this->setSessionOrderBy($defaultSort);
             }
+            $defaultSortList = ""; // Set up default sort
+            if ($this->getSessionOrderByList() == "" && $defaultSortList != "") {
+                $this->setSessionOrderByList($defaultSortList);
+            }
         }
 
         // Check for "order" parameter
@@ -1288,6 +1304,7 @@ class SociosList extends Socios
             $this->updateSort($this->nivel_usuario); // nivel_usuario
             $this->updateSort($this->updated_at); // updated_at
             $this->updateSort($this->sociosi); // socio si
+            $this->updateSort($this->cupo); // cupo
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1312,6 +1329,7 @@ class SociosList extends Socios
             if ($this->Command == "resetsort") {
                 $orderBy = "";
                 $this->setSessionOrderBy($orderBy);
+                $this->setSessionOrderByList($orderBy);
                 $this->id->setSort("");
                 $this->cooperativa_id->setSort("");
                 $this->nombre_completo->setSort("");
@@ -1324,6 +1342,7 @@ class SociosList extends Socios
                 $this->nivel_usuario->setSort("");
                 $this->updated_at->setSort("");
                 $this->sociosi->setSort("");
+                $this->cupo->setSort("");
             }
 
             // Reset start position
@@ -1553,6 +1572,7 @@ class SociosList extends Socios
             $this->createColumnOption($option, "nivel_usuario");
             $this->createColumnOption($option, "updated_at");
             $this->createColumnOption($option, "socio si");
+            $this->createColumnOption($option, "cupo");
         }
 
         // Set up custom actions
@@ -1998,6 +2018,12 @@ class SociosList extends Socios
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
         $this->updated_at->setDbValue($row['updated_at']);
         $this->sociosi->setDbValue($row['socio si']);
+        $this->cupo->setDbValue($row['cupo']);
+        if (array_key_exists('EV__cupo', $row)) {
+            $this->cupo->VirtualValue = $row['EV__cupo']; // Set up virtual field value
+        } else {
+            $this->cupo->VirtualValue = ""; // Clear value
+        }
     }
 
     // Return a row with default values
@@ -2016,6 +2042,7 @@ class SociosList extends Socios
         $row['nivel_usuario'] = $this->nivel_usuario->DefaultValue;
         $row['updated_at'] = $this->updated_at->DefaultValue;
         $row['socio si'] = $this->sociosi->DefaultValue;
+        $row['cupo'] = $this->cupo->DefaultValue;
         return $row;
     }
 
@@ -2080,14 +2107,36 @@ class SociosList extends Socios
 
         // socio si
 
+        // cupo
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
             $this->id->ViewValue = $this->id->CurrentValue;
 
             // cooperativa_id
-            $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-            $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
+            $curVal = strval($this->cooperativa_id->CurrentValue);
+            if ($curVal != "") {
+                $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+                if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                    $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                    $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                    $conn = Conn();
+                    $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                    $ari = count($rswrk);
+                    if ($ari > 0) { // Lookup values found
+                        $rows = [];
+                        foreach ($rswrk as $row) {
+                            $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                        }
+                        $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                    } else {
+                        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                    }
+                }
+            } else {
+                $this->cooperativa_id->ViewValue = null;
+            }
 
             // nombre_completo
             $this->nombre_completo->ViewValue = $this->nombre_completo->CurrentValue;
@@ -2132,6 +2181,17 @@ class SociosList extends Socios
                 $this->sociosi->ViewValue = $this->sociosi->tagCaption(1) != "" ? $this->sociosi->tagCaption(1) : "Yes";
             } else {
                 $this->sociosi->ViewValue = $this->sociosi->tagCaption(2) != "" ? $this->sociosi->tagCaption(2) : "No";
+            }
+
+            // cupo
+            if ($this->cupo->VirtualValue != "") {
+                $this->cupo->ViewValue = $this->cupo->VirtualValue;
+            } else {
+                $arwrk = [];
+                $arwrk["lf"] = $this->cupo->CurrentValue;
+                $arwrk["df"] = $this->cupo->CurrentValue;
+                $arwrk = $this->cupo->Lookup->renderViewRow($arwrk);
+                $this->cupo->ViewValue = $this->cupo->displayValue($arwrk);
             }
 
             // id
@@ -2181,6 +2241,10 @@ class SociosList extends Socios
             // socio si
             $this->sociosi->HrefValue = "";
             $this->sociosi->TooltipValue = "";
+
+            // cupo
+            $this->cupo->HrefValue = "";
+            $this->cupo->TooltipValue = "";
         }
 
         // Call Row Rendered event
@@ -2275,9 +2339,13 @@ class SociosList extends Socios
 
             // Set up lookup SQL and connection
             switch ($fld->FieldVar) {
+                case "x_cooperativa_id":
+                    break;
                 case "x_nivel_usuario":
                     break;
                 case "x_sociosi":
+                    break;
+                case "x_cupo":
                     break;
                 default:
                     $lookupFilter = "";

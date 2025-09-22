@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $SociosView = &$Page;
@@ -180,6 +180,17 @@ loadjs.ready("head", function () {
 <span<?= $Page->sociosi->viewAttributes() ?>>
 <i class="fa-regular fa-square<?php if (ConvertToBool($Page->sociosi->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
 </span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->cupo->Visible) { // cupo ?>
+    <tr id="r_cupo"<?= $Page->cupo->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_socios_cupo"><?= $Page->cupo->caption() ?></span></td>
+        <td data-name="cupo"<?= $Page->cupo->cellAttributes() ?>>
+<span id="el_socios_cupo">
+<span<?= $Page->cupo->viewAttributes() ?>>
+<?= $Page->cupo->getViewValue() ?></span>
 </span>
 </td>
     </tr>

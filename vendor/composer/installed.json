@@ -2203,17 +2203,17 @@
         },
         {
             "name": "hkvstore/dompdf",
-            "version": "3.1.0",
-            "version_normalized": "3.1.0.0",
+            "version": "3.1.1",
+            "version_normalized": "3.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hkvstore/dompdf.git",
-                "reference": "b0f3c6352f48cca6f963acefbf2426c63247b9a5"
+                "reference": "4c5f8b52afcdcdf67de35f5fb02875186a739277"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hkvstore/dompdf/zipball/b0f3c6352f48cca6f963acefbf2426c63247b9a5",
-                "reference": "b0f3c6352f48cca6f963acefbf2426c63247b9a5",
+                "url": "https://api.github.com/repos/hkvstore/dompdf/zipball/4c5f8b52afcdcdf67de35f5fb02875186a739277",
+                "reference": "4c5f8b52afcdcdf67de35f5fb02875186a739277",
                 "shasum": ""
             },
             "require": {
@@ -2222,7 +2222,7 @@
                 "ext-dom": "*",
                 "ext-mbstring": "*",
                 "masterminds/html5": "^2.0",
-                "php": "^7.4 || ^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
                 "ext-gd": "*",
@@ -2239,9 +2239,9 @@
                 "ext-imagick": "Improves image processing performance",
                 "ext-zlib": "Needed for pdf stream compression"
             },
-            "time": "2025-01-17T03:06:23+00:00",
+            "time": "2025-09-22T12:02:16+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Dompdf\\": "src/"
@@ -2264,7 +2264,7 @@
             "homepage": "https://github.com/dompdf/dompdf",
             "support": {
                 "issues": "https://github.com/hkvstore/dompdf/issues",
-                "source": "https://github.com/hkvstore/dompdf/tree/3.1.0"
+                "source": "https://github.com/hkvstore/dompdf/tree/3.1.1"
             },
             "install-path": "../hkvstore/dompdf"
         },

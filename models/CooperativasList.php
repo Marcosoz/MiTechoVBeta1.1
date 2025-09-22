@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -164,6 +164,7 @@ class CooperativasList extends Cooperativas
         $this->email->setVisibility();
         $this->created_at->setVisibility();
         $this->updated_at->setVisibility();
+        $this->numero_cupos->setVisibility();
     }
 
     // Constructor
@@ -1015,6 +1016,7 @@ class CooperativasList extends Cooperativas
         $filterList = Concat($filterList, $this->email->AdvancedSearch->toJson(), ","); // Field email
         $filterList = Concat($filterList, $this->created_at->AdvancedSearch->toJson(), ","); // Field created_at
         $filterList = Concat($filterList, $this->updated_at->AdvancedSearch->toJson(), ","); // Field updated_at
+        $filterList = Concat($filterList, $this->numero_cupos->AdvancedSearch->toJson(), ","); // Field numero_cupos
         if ($this->BasicSearch->Keyword != "") {
             $wrk = "\"" . Config("TABLE_BASIC_SEARCH") . "\":\"" . JsEncode($this->BasicSearch->Keyword) . "\",\"" . Config("TABLE_BASIC_SEARCH_TYPE") . "\":\"" . JsEncode($this->BasicSearch->Type) . "\"";
             $filterList = Concat($filterList, $wrk, ",");
@@ -1125,6 +1127,14 @@ class CooperativasList extends Cooperativas
         $this->updated_at->AdvancedSearch->SearchValue2 = $filter["y_updated_at"] ?? "";
         $this->updated_at->AdvancedSearch->SearchOperator2 = $filter["w_updated_at"] ?? "";
         $this->updated_at->AdvancedSearch->save();
+
+        // Field numero_cupos
+        $this->numero_cupos->AdvancedSearch->SearchValue = $filter["x_numero_cupos"] ?? "";
+        $this->numero_cupos->AdvancedSearch->SearchOperator = $filter["z_numero_cupos"] ?? "";
+        $this->numero_cupos->AdvancedSearch->SearchCondition = $filter["v_numero_cupos"] ?? "";
+        $this->numero_cupos->AdvancedSearch->SearchValue2 = $filter["y_numero_cupos"] ?? "";
+        $this->numero_cupos->AdvancedSearch->SearchOperator2 = $filter["w_numero_cupos"] ?? "";
+        $this->numero_cupos->AdvancedSearch->save();
         $this->BasicSearch->setKeyword($filter[Config("TABLE_BASIC_SEARCH")] ?? "");
         $this->BasicSearch->setType($filter[Config("TABLE_BASIC_SEARCH_TYPE")] ?? "");
     }
@@ -1251,6 +1261,7 @@ class CooperativasList extends Cooperativas
             $this->updateSort($this->email); // email
             $this->updateSort($this->created_at); // created_at
             $this->updateSort($this->updated_at); // updated_at
+            $this->updateSort($this->numero_cupos); // numero_cupos
             $this->setStartRecordNumber(1); // Reset start position
         }
 
@@ -1284,6 +1295,7 @@ class CooperativasList extends Cooperativas
                 $this->email->setSort("");
                 $this->created_at->setSort("");
                 $this->updated_at->setSort("");
+                $this->numero_cupos->setSort("");
             }
 
             // Reset start position
@@ -1510,6 +1522,7 @@ class CooperativasList extends Cooperativas
             $this->createColumnOption($option, "email");
             $this->createColumnOption($option, "created_at");
             $this->createColumnOption($option, "updated_at");
+            $this->createColumnOption($option, "numero_cupos");
         }
 
         // Set up custom actions
@@ -1950,6 +1963,7 @@ class CooperativasList extends Cooperativas
         $this->email->setDbValue($row['email']);
         $this->created_at->setDbValue($row['created_at']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->numero_cupos->setDbValue($row['numero_cupos']);
     }
 
     // Return a row with default values
@@ -1965,6 +1979,7 @@ class CooperativasList extends Cooperativas
         $row['email'] = $this->email->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['updated_at'] = $this->updated_at->DefaultValue;
+        $row['numero_cupos'] = $this->numero_cupos->DefaultValue;
         return $row;
     }
 
@@ -2023,6 +2038,8 @@ class CooperativasList extends Cooperativas
 
         // updated_at
 
+        // numero_cupos
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -2053,6 +2070,10 @@ class CooperativasList extends Cooperativas
             // updated_at
             $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
             $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
+            // numero_cupos
+            $this->numero_cupos->ViewValue = $this->numero_cupos->CurrentValue;
+            $this->numero_cupos->ViewValue = FormatNumber($this->numero_cupos->ViewValue, $this->numero_cupos->formatPattern());
 
             // id
             $this->id->HrefValue = "";
@@ -2089,6 +2110,10 @@ class CooperativasList extends Cooperativas
             // updated_at
             $this->updated_at->HrefValue = "";
             $this->updated_at->TooltipValue = "";
+
+            // numero_cupos
+            $this->numero_cupos->HrefValue = "";
+            $this->numero_cupos->TooltipValue = "";
         }
 
         // Call Row Rendered event

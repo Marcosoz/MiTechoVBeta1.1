@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Base path
 $basePath = BasePath(true);

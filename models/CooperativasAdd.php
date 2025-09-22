@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -143,6 +143,7 @@ class CooperativasAdd extends Cooperativas
         $this->email->setVisibility();
         $this->created_at->setVisibility();
         $this->updated_at->setVisibility();
+        $this->numero_cupos->setVisibility();
     }
 
     // Constructor
@@ -638,6 +639,8 @@ class CooperativasAdd extends Cooperativas
     // Load default values
     protected function loadDefaultValues(): void
     {
+        $this->numero_cupos->DefaultValue = $this->numero_cupos->getDefault(); // PHP
+        $this->numero_cupos->OldValue = $this->numero_cupos->DefaultValue;
     }
 
     // Load form values
@@ -727,6 +730,16 @@ class CooperativasAdd extends Cooperativas
             $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
         }
 
+        // Check field name 'numero_cupos' before field var 'x_numero_cupos'
+        $val = $this->getFormValue("numero_cupos", null) ?? $this->getFormValue("x_numero_cupos", null);
+        if (!$this->numero_cupos->IsDetailKey) {
+            if (IsApi() && $val === null) {
+                $this->numero_cupos->Visible = false; // Disable update for API request
+            } else {
+                $this->numero_cupos->setFormValue($val, true, $validate);
+            }
+        }
+
         // Check field name 'id' first before field var 'x_id'
         $val = $this->hasFormValue("id") ? $this->getFormValue("id") : $this->getFormValue("x_id");
     }
@@ -744,6 +757,7 @@ class CooperativasAdd extends Cooperativas
         $this->created_at->CurrentValue = UnformatDateTime($this->created_at->CurrentValue, $this->created_at->formatPattern());
         $this->updated_at->CurrentValue = $this->updated_at->FormValue;
         $this->updated_at->CurrentValue = UnformatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
+        $this->numero_cupos->CurrentValue = $this->numero_cupos->FormValue;
     }
 
     /**
@@ -792,6 +806,7 @@ class CooperativasAdd extends Cooperativas
         $this->email->setDbValue($row['email']);
         $this->created_at->setDbValue($row['created_at']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->numero_cupos->setDbValue($row['numero_cupos']);
     }
 
     // Return a row with default values
@@ -807,6 +822,7 @@ class CooperativasAdd extends Cooperativas
         $row['email'] = $this->email->DefaultValue;
         $row['created_at'] = $this->created_at->DefaultValue;
         $row['updated_at'] = $this->updated_at->DefaultValue;
+        $row['numero_cupos'] = $this->numero_cupos->DefaultValue;
         return $row;
     }
 
@@ -868,6 +884,9 @@ class CooperativasAdd extends Cooperativas
         // updated_at
         $this->updated_at->RowCssClass = "row";
 
+        // numero_cupos
+        $this->numero_cupos->RowCssClass = "row";
+
         // View row
         if ($this->RowType == RowType::VIEW) {
             // id
@@ -899,6 +918,10 @@ class CooperativasAdd extends Cooperativas
             $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
             $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
 
+            // numero_cupos
+            $this->numero_cupos->ViewValue = $this->numero_cupos->CurrentValue;
+            $this->numero_cupos->ViewValue = FormatNumber($this->numero_cupos->ViewValue, $this->numero_cupos->formatPattern());
+
             // nombre
             $this->nombre->HrefValue = "";
 
@@ -922,6 +945,9 @@ class CooperativasAdd extends Cooperativas
 
             // updated_at
             $this->updated_at->HrefValue = "";
+
+            // numero_cupos
+            $this->numero_cupos->HrefValue = "";
         } elseif ($this->RowType == RowType::ADD) {
             // nombre
             $this->nombre->setupEditAttributes();
@@ -963,6 +989,14 @@ class CooperativasAdd extends Cooperativas
             $this->updated_at->EditValue = FormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern());
             $this->updated_at->PlaceHolder = RemoveHtml($this->updated_at->caption());
 
+            // numero_cupos
+            $this->numero_cupos->setupEditAttributes();
+            $this->numero_cupos->EditValue = $this->numero_cupos->CurrentValue;
+            $this->numero_cupos->PlaceHolder = RemoveHtml($this->numero_cupos->caption());
+            if (strval($this->numero_cupos->EditValue) != "" && is_numeric($this->numero_cupos->EditValue)) {
+                $this->numero_cupos->EditValue = FormatNumber($this->numero_cupos->EditValue, null);
+            }
+
             // Add refer script
 
             // nombre
@@ -988,6 +1022,9 @@ class CooperativasAdd extends Cooperativas
 
             // updated_at
             $this->updated_at->HrefValue = "";
+
+            // numero_cupos
+            $this->numero_cupos->HrefValue = "";
         }
         if ($this->RowType == RowType::ADD || $this->RowType == RowType::EDIT || $this->RowType == RowType::SEARCH) { // Add/Edit/Search row
             $this->setupFieldTitles();
@@ -1052,6 +1089,14 @@ class CooperativasAdd extends Cooperativas
             }
             if (!CheckDate($this->updated_at->FormValue, $this->updated_at->formatPattern())) {
                 $this->updated_at->addErrorMessage($this->updated_at->getErrorMessage(false));
+            }
+            if ($this->numero_cupos->Visible && $this->numero_cupos->Required) {
+                if (!$this->numero_cupos->IsDetailKey && IsEmpty($this->numero_cupos->FormValue)) {
+                    $this->numero_cupos->addErrorMessage(str_replace("%s", $this->numero_cupos->caption(), $this->numero_cupos->RequiredErrorMessage));
+                }
+            }
+            if (!CheckInteger($this->numero_cupos->FormValue)) {
+                $this->numero_cupos->addErrorMessage($this->numero_cupos->getErrorMessage(false));
             }
 
         // Return validate result
@@ -1144,6 +1189,9 @@ class CooperativasAdd extends Cooperativas
 
         // updated_at
         $this->updated_at->setDbValueDef($newRow, UnFormatDateTime($this->updated_at->CurrentValue, $this->updated_at->formatPattern()), false);
+
+        // numero_cupos
+        $this->numero_cupos->setDbValueDef($newRow, $this->numero_cupos->CurrentValue, strval($this->numero_cupos->CurrentValue) == "");
         return $newRow;
     }
 

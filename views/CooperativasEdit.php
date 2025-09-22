@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $CooperativasEdit = &$Page;
@@ -36,7 +36,8 @@ loadjs.ready(["wrapper", "head"], function () {
             ["telefono", [fields.telefono.visible && fields.telefono.required ? ew.Validators.required(fields.telefono.caption) : null], fields.telefono.isInvalid],
             ["email", [fields.email.visible && fields.email.required ? ew.Validators.required(fields.email.caption) : null], fields.email.isInvalid],
             ["created_at", [fields.created_at.visible && fields.created_at.required ? ew.Validators.required(fields.created_at.caption) : null, ew.Validators.datetime(fields.created_at.clientFormatPattern)], fields.created_at.isInvalid],
-            ["updated_at", [fields.updated_at.visible && fields.updated_at.required ? ew.Validators.required(fields.updated_at.caption) : null, ew.Validators.datetime(fields.updated_at.clientFormatPattern)], fields.updated_at.isInvalid]
+            ["updated_at", [fields.updated_at.visible && fields.updated_at.required ? ew.Validators.required(fields.updated_at.caption) : null, ew.Validators.datetime(fields.updated_at.clientFormatPattern)], fields.updated_at.isInvalid],
+            ["numero_cupos", [fields.numero_cupos.visible && fields.numero_cupos.required ? ew.Validators.required(fields.numero_cupos.caption) : null, ew.Validators.integer], fields.numero_cupos.isInvalid]
         ])
 
         // Form_CustomValidate
@@ -248,6 +249,18 @@ loadjs.ready(["fcooperativasedit", "datetimepicker"], function () {
 });
 </script>
 <?php } ?>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->numero_cupos->Visible) { // numero_cupos ?>
+    <div id="r_numero_cupos"<?= $Page->numero_cupos->rowAttributes() ?>>
+        <label id="elh_cooperativas_numero_cupos" for="x_numero_cupos" class="<?= $Page->LeftColumnClass ?>"><?= $Page->numero_cupos->caption() ?><?= $Page->numero_cupos->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->numero_cupos->cellAttributes() ?>>
+<span id="el_cooperativas_numero_cupos">
+<input type="<?= $Page->numero_cupos->getInputTextType() ?>" name="x_numero_cupos" id="x_numero_cupos" data-table="cooperativas" data-field="x_numero_cupos" value="<?= $Page->numero_cupos->getEditValue() ?>" size="30" placeholder="<?= HtmlEncode($Page->numero_cupos->getPlaceHolder()) ?>" data-format-pattern="<?= HtmlEncode($Page->numero_cupos->formatPattern()) ?>"<?= $Page->numero_cupos->editAttributes() ?> aria-describedby="x_numero_cupos_help">
+<?= $Page->numero_cupos->getCustomMessage() ?>
+<div class="invalid-feedback"><?= $Page->numero_cupos->getErrorMessage() ?></div>
 </span>
 </div></div>
     </div>

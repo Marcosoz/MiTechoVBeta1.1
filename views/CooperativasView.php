@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $CooperativasView = &$Page;
@@ -146,6 +146,17 @@ loadjs.ready("head", function () {
 <span id="el_cooperativas_updated_at">
 <span<?= $Page->updated_at->viewAttributes() ?>>
 <?= $Page->updated_at->getViewValue() ?></span>
+</span>
+</td>
+    </tr>
+<?php } ?>
+<?php if ($Page->numero_cupos->Visible) { // numero_cupos ?>
+    <tr id="r_numero_cupos"<?= $Page->numero_cupos->rowAttributes() ?>>
+        <td class="<?= $Page->TableLeftColumnClass ?>"><span id="elh_cooperativas_numero_cupos"><?= $Page->numero_cupos->caption() ?></span></td>
+        <td data-name="numero_cupos"<?= $Page->numero_cupos->cellAttributes() ?>>
+<span id="el_cooperativas_numero_cupos">
+<span<?= $Page->numero_cupos->viewAttributes() ?>>
+<?= $Page->numero_cupos->getViewValue() ?></span>
 </span>
 </td>
     </tr>

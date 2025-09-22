@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT\Entity;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -15,17 +15,17 @@ use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedUserInterface;
-use PHPMaker2025\project290825TrabajosCreatedAT\AbstractEntity;
-use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedSecurity;
-use PHPMaker2025\project290825TrabajosCreatedAT\UserProfile;
-use PHPMaker2025\project290825TrabajosCreatedAT\UserRepository;
-use function PHPMaker2025\project290825TrabajosCreatedAT\Config;
-use function PHPMaker2025\project290825TrabajosCreatedAT\EntityManager;
-use function PHPMaker2025\project290825TrabajosCreatedAT\RemoveXss;
-use function PHPMaker2025\project290825TrabajosCreatedAT\HtmlDecode;
-use function PHPMaker2025\project290825TrabajosCreatedAT\HashPassword;
-use function PHPMaker2025\project290825TrabajosCreatedAT\Security;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AdvancedUserInterface;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AbstractEntity;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AdvancedSecurity;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\UserProfile;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\UserRepository;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Config;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\EntityManager;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\RemoveXss;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\HtmlDecode;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\HashPassword;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Security;
 
 /**
  * Entity class for "socios" table
@@ -72,6 +72,9 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
 
     #[Column(name: "`socio si`", options: ["name" => "socio si"], type: "boolean")]
     private bool $SocioSi;
+
+    #[Column(name: "cupo", type: "integer", nullable: true)]
+    private ?int $Cupo;
 
     public function __construct()
     {
@@ -207,6 +210,17 @@ class Socio extends AbstractEntity implements AdvancedUserInterface, EquatableIn
     public function setSocioSi(bool $value): static
     {
         $this->SocioSi = $value;
+        return $this;
+    }
+
+    public function getCupo(): ?int
+    {
+        return $this->Cupo;
+    }
+
+    public function setCupo(?int $value): static
+    {
+        $this->Cupo = $value;
         return $this;
     }
 

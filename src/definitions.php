@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use Psr\Container\ContainerInterface;
 use Psr\Cache\CacheItemPoolInterface;
@@ -257,6 +257,7 @@ return [
     "stock" => \DI\autowire(Stock::class),
     "actividad_log" => \DI\autowire(ActividadLog::class),
     "usuarios" => \DI\autowire(Usuarios::class),
+    "cupos" => \DI\autowire(Cupos::class),
 
     // User table
     "usertable" => \DI\get("socios"),

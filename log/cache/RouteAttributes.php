@@ -70,7 +70,17 @@
         clone $p['Symfony\\Component\\Routing\\Route'],
         clone $p['Symfony\\Component\\Routing\\Route'],
         clone $p['Symfony\\Component\\Routing\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Route'],
+        clone $p['Symfony\\Component\\Routing\\Route'],
         clone ($p['Symfony\\Component\\Routing\\Alias'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Alias')),
+        clone $p['Symfony\\Component\\Routing\\Alias'],
+        clone $p['Symfony\\Component\\Routing\\Alias'],
+        clone $p['Symfony\\Component\\Routing\\Alias'],
+        clone $p['Symfony\\Component\\Routing\\Alias'],
+        clone $p['Symfony\\Component\\Routing\\Alias'],
         clone $p['Symfony\\Component\\Routing\\Alias'],
         clone $p['Symfony\\Component\\Routing\\Alias'],
         clone $p['Symfony\\Component\\Routing\\Alias'],
@@ -155,6 +165,7 @@
         clone $p['Symfony\\Component\\Config\\Resource\\FileResource'],
         clone $p['Symfony\\Component\\Config\\Resource\\FileResource'],
         clone $p['Symfony\\Component\\Config\\Resource\\FileResource'],
+        clone $p['Symfony\\Component\\Config\\Resource\\FileResource'],
     ],
     null,
     [
@@ -181,154 +192,165 @@
                     'view.cooperativas' => $o[18],
                     'edit.cooperativas' => $o[19],
                     'delete.cooperativas' => $o[20],
-                    'list.horas_trabajadas' => $o[21],
-                    'add.horas_trabajadas' => $o[22],
-                    'view.horas_trabajadas' => $o[23],
-                    'edit.horas_trabajadas' => $o[24],
-                    'delete.horas_trabajadas' => $o[25],
-                    'list.ingresos' => $o[26],
-                    'add.ingresos' => $o[27],
-                    'view.ingresos' => $o[28],
-                    'edit.ingresos' => $o[29],
-                    'delete.ingresos' => $o[30],
-                    'list.movimientos_stock' => $o[31],
-                    'add.movimientos_stock' => $o[32],
-                    'view.movimientos_stock' => $o[33],
-                    'edit.movimientos_stock' => $o[34],
-                    'delete.movimientos_stock' => $o[35],
-                    'personaldata' => $o[36],
-                    'login' => $o[37],
-                    'resetpassword' => $o[38],
-                    'changepassword' => $o[39],
-                    'register' => $o[40],
-                    'login_check' => $o[41],
-                    'logout' => $o[42],
-                    'swagger' => $o[43],
-                    'index' => $o[44],
-                    'list.pagos_socios' => $o[45],
-                    'add.pagos_socios' => $o[46],
-                    'view.pagos_socios' => $o[47],
-                    'edit.pagos_socios' => $o[48],
-                    'delete.pagos_socios' => $o[49],
-                    'list.proveedores' => $o[50],
-                    'add.proveedores' => $o[51],
-                    'view.proveedores' => $o[52],
-                    'edit.proveedores' => $o[53],
-                    'delete.proveedores' => $o[54],
-                    'list.socios' => $o[55],
-                    'add.socios' => $o[56],
-                    'view.socios' => $o[57],
-                    'edit.socios' => $o[58],
-                    'delete.socios' => $o[59],
-                    'list.stock' => $o[60],
-                    'add.stock' => $o[61],
-                    'view.stock' => $o[62],
-                    'edit.stock' => $o[63],
-                    'delete.stock' => $o[64],
-                    'list.usuarios' => $o[65],
-                    'add.usuarios' => $o[66],
-                    'view.usuarios' => $o[67],
-                    'edit.usuarios' => $o[68],
-                    'delete.usuarios' => $o[69],
+                    'list.cupos' => $o[21],
+                    'add.cupos' => $o[22],
+                    'view.cupos' => $o[23],
+                    'edit.cupos' => $o[24],
+                    'delete.cupos' => $o[25],
+                    'list.horas_trabajadas' => $o[26],
+                    'add.horas_trabajadas' => $o[27],
+                    'view.horas_trabajadas' => $o[28],
+                    'edit.horas_trabajadas' => $o[29],
+                    'delete.horas_trabajadas' => $o[30],
+                    'list.ingresos' => $o[31],
+                    'add.ingresos' => $o[32],
+                    'view.ingresos' => $o[33],
+                    'edit.ingresos' => $o[34],
+                    'delete.ingresos' => $o[35],
+                    'list.movimientos_stock' => $o[36],
+                    'add.movimientos_stock' => $o[37],
+                    'view.movimientos_stock' => $o[38],
+                    'edit.movimientos_stock' => $o[39],
+                    'delete.movimientos_stock' => $o[40],
+                    'personaldata' => $o[41],
+                    'login' => $o[42],
+                    'resetpassword' => $o[43],
+                    'changepassword' => $o[44],
+                    'register' => $o[45],
+                    'login_check' => $o[46],
+                    'logout' => $o[47],
+                    'swagger' => $o[48],
+                    'index' => $o[49],
+                    'list.pagos_socios' => $o[50],
+                    'add.pagos_socios' => $o[51],
+                    'view.pagos_socios' => $o[52],
+                    'edit.pagos_socios' => $o[53],
+                    'delete.pagos_socios' => $o[54],
+                    'list.proveedores' => $o[55],
+                    'add.proveedores' => $o[56],
+                    'view.proveedores' => $o[57],
+                    'edit.proveedores' => $o[58],
+                    'delete.proveedores' => $o[59],
+                    'list.socios' => $o[60],
+                    'add.socios' => $o[61],
+                    'view.socios' => $o[62],
+                    'edit.socios' => $o[63],
+                    'delete.socios' => $o[64],
+                    'list.stock' => $o[65],
+                    'add.stock' => $o[66],
+                    'view.stock' => $o[67],
+                    'edit.stock' => $o[68],
+                    'delete.stock' => $o[69],
+                    'list.usuarios' => $o[70],
+                    'add.usuarios' => $o[71],
+                    'view.usuarios' => $o[72],
+                    'edit.usuarios' => $o[73],
+                    'delete.usuarios' => $o[74],
                 ],
             ],
             'aliases' => [
                 [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController::list' => $o[70],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController::add' => $o[71],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController::view' => $o[72],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController::edit' => $o[73],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController::delete' => $o[74],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController::list' => $o[75],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController::add' => $o[76],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController::view' => $o[77],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController::edit' => $o[78],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController::delete' => $o[79],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController::list' => $o[80],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController::add' => $o[81],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController::view' => $o[82],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController::edit' => $o[83],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController::delete' => $o[84],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController::list' => $o[85],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController::add' => $o[86],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController::view' => $o[87],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController::edit' => $o[88],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController::delete' => $o[89],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController::list' => $o[90],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController::add' => $o[91],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController::view' => $o[92],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController::edit' => $o[93],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController::delete' => $o[94],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController::list' => $o[95],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController::add' => $o[96],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController::view' => $o[97],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController::edit' => $o[98],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController::delete' => $o[99],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController::list' => $o[100],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController::add' => $o[101],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController::view' => $o[102],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController::edit' => $o[103],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController::delete' => $o[104],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::personaldata' => $o[105],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::login' => $o[106],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::resetpassword' => $o[107],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::changepassword' => $o[108],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::register' => $o[109],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::loginCheck' => $o[110],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::logout' => $o[111],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::swagger' => $o[112],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController::index' => $o[113],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController::list' => $o[114],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController::add' => $o[115],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController::view' => $o[116],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController::edit' => $o[117],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController::delete' => $o[118],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController::list' => $o[119],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController::add' => $o[120],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController::view' => $o[121],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController::edit' => $o[122],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController::delete' => $o[123],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController::list' => $o[124],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController::add' => $o[125],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController::view' => $o[126],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController::edit' => $o[127],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController::delete' => $o[128],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController::list' => $o[129],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController::add' => $o[130],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController::view' => $o[131],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController::edit' => $o[132],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController::delete' => $o[133],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController::list' => $o[134],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController::add' => $o[135],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController::view' => $o[136],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController::edit' => $o[137],
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController::delete' => $o[138],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController::list' => $o[75],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController::add' => $o[76],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController::view' => $o[77],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController::edit' => $o[78],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController::delete' => $o[79],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController::list' => $o[80],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController::add' => $o[81],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController::view' => $o[82],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController::edit' => $o[83],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController::delete' => $o[84],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController::list' => $o[85],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController::add' => $o[86],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController::view' => $o[87],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController::edit' => $o[88],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController::delete' => $o[89],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController::list' => $o[90],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController::add' => $o[91],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController::view' => $o[92],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController::edit' => $o[93],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController::delete' => $o[94],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController::list' => $o[95],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController::add' => $o[96],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController::view' => $o[97],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController::edit' => $o[98],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController::delete' => $o[99],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController::list' => $o[100],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController::add' => $o[101],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController::view' => $o[102],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController::edit' => $o[103],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController::delete' => $o[104],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController::list' => $o[105],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController::add' => $o[106],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController::view' => $o[107],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController::edit' => $o[108],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController::delete' => $o[109],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController::list' => $o[110],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController::add' => $o[111],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController::view' => $o[112],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController::edit' => $o[113],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController::delete' => $o[114],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::personaldata' => $o[115],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::login' => $o[116],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::resetpassword' => $o[117],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::changepassword' => $o[118],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::register' => $o[119],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::loginCheck' => $o[120],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::logout' => $o[121],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::swagger' => $o[122],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController::index' => $o[123],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController::list' => $o[124],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController::add' => $o[125],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController::view' => $o[126],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController::edit' => $o[127],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController::delete' => $o[128],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController::list' => $o[129],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController::add' => $o[130],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController::view' => $o[131],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController::edit' => $o[132],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController::delete' => $o[133],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController::list' => $o[134],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController::add' => $o[135],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController::view' => $o[136],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController::edit' => $o[137],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController::delete' => $o[138],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController::list' => $o[139],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController::add' => $o[140],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController::view' => $o[141],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController::edit' => $o[142],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController::delete' => $o[143],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController::list' => $o[144],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController::add' => $o[145],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController::view' => $o[146],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController::edit' => $o[147],
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController::delete' => $o[148],
                 ],
             ],
             'resources' => [
                 [
-                    'd2d636e3823932353e808ed0d116f8be' => $o[139],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ActividadLogController.php' => $o[140],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ApiController.php' => $o[141],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\AportesLegalesController.php' => $o[142],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ComprasController.php' => $o[143],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ControllerBase.php' => $o[144],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\CooperativasController.php' => $o[145],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\HorasTrabajadasController.php' => $o[146],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\IngresosController.php' => $o[147],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\MovimientosStockController.php' => $o[148],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\OthersController.php' => $o[149],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\PagosSociosController.php' => $o[150],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ProveedoresController.php' => $o[151],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\SociosController.php' => $o[152],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\StockController.php' => $o[153],
-                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\UsuariosController.php' => $o[154],
+                    'd2d636e3823932353e808ed0d116f8be' => $o[149],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ActividadLogController.php' => $o[150],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ApiController.php' => $o[151],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\AportesLegalesController.php' => $o[152],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ComprasController.php' => $o[153],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ControllerBase.php' => $o[154],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\CooperativasController.php' => $o[155],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\CuposController.php' => $o[156],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\HorasTrabajadasController.php' => $o[157],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\IngresosController.php' => $o[158],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\MovimientosStockController.php' => $o[159],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\OthersController.php' => $o[160],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\PagosSociosController.php' => $o[161],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ProveedoresController.php' => $o[162],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\SociosController.php' => $o[163],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\StockController.php' => $o[164],
+                    'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\UsuariosController.php' => $o[165],
                 ],
             ],
         ],
         'Symfony\\Component\\Routing\\Alias' => [
             'id' => [
-                70 => 'list.actividad_log',
+                75 => 'list.actividad_log',
                 'add.actividad_log',
                 'view.actividad_log',
                 'edit.actividad_log',
@@ -348,6 +370,11 @@
                 'view.cooperativas',
                 'edit.cooperativas',
                 'delete.cooperativas',
+                'list.cupos',
+                'add.cupos',
+                'view.cupos',
+                'edit.cupos',
+                'delete.cupos',
                 'list.horas_trabajadas',
                 'add.horas_trabajadas',
                 'view.horas_trabajadas',
@@ -401,20 +428,21 @@
         ],
         'Symfony\\Component\\Config\\Resource\\DirectoryResource' => [
             'resource' => [
-                139 => 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers',
+                149 => 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers',
             ],
             'pattern' => [
-                139 => '/\\.php$/',
+                149 => '/\\.php$/',
             ],
         ],
         'Symfony\\Component\\Config\\Resource\\FileResource' => [
             'resource' => [
-                140 => 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ActividadLogController.php',
+                150 => 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ActividadLogController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ApiController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\AportesLegalesController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ComprasController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\ControllerBase.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\CooperativasController.php',
+                'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\CuposController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\HorasTrabajadasController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\IngresosController.php',
                 'C:\\xampp\\htdocs\\MiTechoVBeta1.1\\controllers\\MovimientosStockController.php',
@@ -434,10 +462,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -457,10 +485,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -480,10 +508,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -503,10 +531,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -526,10 +554,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ActividadLogController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ActividadLogController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -549,10 +577,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -572,10 +600,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -595,10 +623,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -618,10 +646,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -641,10 +669,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AportesLegalesController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AportesLegalesController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -664,10 +692,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -687,10 +715,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -710,10 +738,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -733,10 +761,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -756,10 +784,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ComprasController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ComprasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -779,10 +807,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -802,10 +830,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -825,10 +853,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -848,10 +876,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -871,10 +899,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\CooperativasController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CooperativasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -890,14 +918,14 @@
             'compiled' => null,
         ],
         -21 => [
-            'path' => '/HorasTrabajadasList[/{id}]',
+            'path' => '/CuposList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -913,14 +941,14 @@
             'compiled' => null,
         ],
         -22 => [
-            'path' => '/HorasTrabajadasAdd[/{id}]',
+            'path' => '/CuposAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -936,14 +964,14 @@
             'compiled' => null,
         ],
         -23 => [
-            'path' => '/HorasTrabajadasView[/{id}]',
+            'path' => '/CuposView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -959,14 +987,14 @@
             'compiled' => null,
         ],
         -24 => [
-            'path' => '/HorasTrabajadasEdit[/{id}]',
+            'path' => '/CuposEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -982,14 +1010,14 @@
             'compiled' => null,
         ],
         -25 => [
-            'path' => '/HorasTrabajadasDelete[/{id}]',
+            'path' => '/CuposDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\HorasTrabajadasController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\CuposController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1005,14 +1033,14 @@
             'compiled' => null,
         ],
         -26 => [
-            'path' => '/IngresosList[/{id}]',
+            'path' => '/HorasTrabajadasList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1028,14 +1056,14 @@
             'compiled' => null,
         ],
         -27 => [
-            'path' => '/IngresosAdd[/{id}]',
+            'path' => '/HorasTrabajadasAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1051,14 +1079,14 @@
             'compiled' => null,
         ],
         -28 => [
-            'path' => '/IngresosView[/{id}]',
+            'path' => '/HorasTrabajadasView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1074,14 +1102,14 @@
             'compiled' => null,
         ],
         -29 => [
-            'path' => '/IngresosEdit[/{id}]',
+            'path' => '/HorasTrabajadasEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1097,14 +1125,14 @@
             'compiled' => null,
         ],
         -30 => [
-            'path' => '/IngresosDelete[/{id}]',
+            'path' => '/HorasTrabajadasDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\IngresosController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\HorasTrabajadasController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1120,14 +1148,14 @@
             'compiled' => null,
         ],
         -31 => [
-            'path' => '/MovimientosStockList[/{id}]',
+            'path' => '/IngresosList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1143,14 +1171,14 @@
             'compiled' => null,
         ],
         -32 => [
-            'path' => '/MovimientosStockAdd[/{id}]',
+            'path' => '/IngresosAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1166,14 +1194,14 @@
             'compiled' => null,
         ],
         -33 => [
-            'path' => '/MovimientosStockView[/{id}]',
+            'path' => '/IngresosView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1189,14 +1217,14 @@
             'compiled' => null,
         ],
         -34 => [
-            'path' => '/MovimientosStockEdit[/{id}]',
+            'path' => '/IngresosEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1212,14 +1240,14 @@
             'compiled' => null,
         ],
         -35 => [
-            'path' => '/MovimientosStockDelete[/{id}]',
+            'path' => '/IngresosDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\MovimientosStockController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\IngresosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1235,14 +1263,14 @@
             'compiled' => null,
         ],
         -36 => [
-            'path' => '/personaldata',
+            'path' => '/MovimientosStockList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:personaldata',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1258,14 +1286,14 @@
             'compiled' => null,
         ],
         -37 => [
-            'path' => '/login[/{action}]',
+            'path' => '/MovimientosStockAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:login',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1281,14 +1309,14 @@
             'compiled' => null,
         ],
         -38 => [
-            'path' => '/resetpassword',
+            'path' => '/MovimientosStockView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:resetpassword',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1304,14 +1332,14 @@
             'compiled' => null,
         ],
         -39 => [
-            'path' => '/changepassword',
+            'path' => '/MovimientosStockEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:changepassword',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1327,14 +1355,14 @@
             'compiled' => null,
         ],
         -40 => [
-            'path' => '/register',
+            'path' => '/MovimientosStockDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:register',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\MovimientosStockController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1350,11 +1378,14 @@
             'compiled' => null,
         ],
         -41 => [
-            'path' => '/login_check',
+            'path' => '/personaldata',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:loginCheck',
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:personaldata',
             ],
             'requirements' => [],
             'options' => [
@@ -1370,11 +1401,14 @@
             'compiled' => null,
         ],
         -42 => [
-            'path' => '/logout',
+            'path' => '/login[/{action}]',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:logout',
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -1390,10 +1424,14 @@
             'compiled' => null,
         ],
         -43 => [
-            'path' => '/swagger/swagger',
+            'path' => '/resetpassword',
             'host' => '',
             'defaults' => [
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:swagger',
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:resetpassword',
             ],
             'requirements' => [],
             'options' => [
@@ -1402,19 +1440,21 @@
             'schemes' => [],
             'methods' => [
                 'GET',
+                'POST',
+                'OPTIONS',
             ],
             'condition' => '',
             'compiled' => null,
         ],
         -44 => [
-            'path' => '/[index]',
+            'path' => '/changepassword',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\OthersController:index',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:changepassword',
             ],
             'requirements' => [],
             'options' => [
@@ -1423,19 +1463,21 @@
             'schemes' => [],
             'methods' => [
                 'GET',
+                'POST',
+                'OPTIONS',
             ],
             'condition' => '',
             'compiled' => null,
         ],
         -45 => [
-            'path' => '/PagosSociosList[/{id}]',
+            'path' => '/register',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -1451,14 +1493,11 @@
             'compiled' => null,
         ],
         -46 => [
-            'path' => '/PagosSociosAdd[/{id}]',
+            'path' => '/login_check',
             'host' => '',
             'defaults' => [
-                'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
-                ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController:add',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:loginCheck',
             ],
             'requirements' => [],
             'options' => [
@@ -1474,14 +1513,11 @@
             'compiled' => null,
         ],
         -47 => [
-            'path' => '/PagosSociosView[/{id}]',
+            'path' => '/logout',
             'host' => '',
             'defaults' => [
-                'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
-                ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController:view',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:logout',
             ],
             'requirements' => [],
             'options' => [
@@ -1497,14 +1533,10 @@
             'compiled' => null,
         ],
         -48 => [
-            'path' => '/PagosSociosEdit[/{id}]',
+            'path' => '/swagger/swagger',
             'host' => '',
             'defaults' => [
-                'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
-                ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:swagger',
             ],
             'requirements' => [],
             'options' => [
@@ -1513,21 +1545,19 @@
             'schemes' => [],
             'methods' => [
                 'GET',
-                'POST',
-                'OPTIONS',
             ],
             'condition' => '',
             'compiled' => null,
         ],
         -49 => [
-            'path' => '/PagosSociosDelete[/{id}]',
+            'path' => '/[index]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\PagosSociosController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\OthersController:index',
             ],
             'requirements' => [],
             'options' => [
@@ -1536,21 +1566,19 @@
             'schemes' => [],
             'methods' => [
                 'GET',
-                'POST',
-                'OPTIONS',
             ],
             'condition' => '',
             'compiled' => null,
         ],
         -50 => [
-            'path' => '/ProveedoresList[/{id}]',
+            'path' => '/PagosSociosList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1566,14 +1594,14 @@
             'compiled' => null,
         ],
         -51 => [
-            'path' => '/ProveedoresAdd[/{id}]',
+            'path' => '/PagosSociosAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1589,14 +1617,14 @@
             'compiled' => null,
         ],
         -52 => [
-            'path' => '/ProveedoresView[/{id}]',
+            'path' => '/PagosSociosView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1612,14 +1640,14 @@
             'compiled' => null,
         ],
         -53 => [
-            'path' => '/ProveedoresEdit[/{id}]',
+            'path' => '/PagosSociosEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1635,14 +1663,14 @@
             'compiled' => null,
         ],
         -54 => [
-            'path' => '/ProveedoresDelete[/{id}]',
+            'path' => '/PagosSociosDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ProveedoresController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PagosSociosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1658,14 +1686,14 @@
             'compiled' => null,
         ],
         -55 => [
-            'path' => '/SociosList[/{id}]',
+            'path' => '/ProveedoresList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1681,14 +1709,14 @@
             'compiled' => null,
         ],
         -56 => [
-            'path' => '/SociosAdd[/{id}]',
+            'path' => '/ProveedoresAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1704,14 +1732,14 @@
             'compiled' => null,
         ],
         -57 => [
-            'path' => '/SociosView[/{id}]',
+            'path' => '/ProveedoresView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1727,14 +1755,14 @@
             'compiled' => null,
         ],
         -58 => [
-            'path' => '/SociosEdit[/{id}]',
+            'path' => '/ProveedoresEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1750,14 +1778,14 @@
             'compiled' => null,
         ],
         -59 => [
-            'path' => '/SociosDelete[/{id}]',
+            'path' => '/ProveedoresDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\SociosController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ProveedoresController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1773,14 +1801,14 @@
             'compiled' => null,
         ],
         -60 => [
-            'path' => '/StockList[/{id}]',
+            'path' => '/SociosList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1796,14 +1824,14 @@
             'compiled' => null,
         ],
         -61 => [
-            'path' => '/StockAdd[/{id}]',
+            'path' => '/SociosAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1819,14 +1847,14 @@
             'compiled' => null,
         ],
         -62 => [
-            'path' => '/StockView[/{id}]',
+            'path' => '/SociosView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1842,14 +1870,14 @@
             'compiled' => null,
         ],
         -63 => [
-            'path' => '/StockEdit[/{id}]',
+            'path' => '/SociosEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1865,14 +1893,14 @@
             'compiled' => null,
         ],
         -64 => [
-            'path' => '/StockDelete[/{id}]',
+            'path' => '/SociosDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\StockController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\SociosController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -1888,14 +1916,14 @@
             'compiled' => null,
         ],
         -65 => [
-            'path' => '/UsuariosList[/{id}]',
+            'path' => '/StockList[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -1911,14 +1939,14 @@
             'compiled' => null,
         ],
         -66 => [
-            'path' => '/UsuariosAdd[/{id}]',
+            'path' => '/StockAdd[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -1934,14 +1962,14 @@
             'compiled' => null,
         ],
         -67 => [
-            'path' => '/UsuariosView[/{id}]',
+            'path' => '/StockView[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -1957,14 +1985,14 @@
             'compiled' => null,
         ],
         -68 => [
-            'path' => '/UsuariosEdit[/{id}]',
+            'path' => '/StockEdit[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -1980,14 +2008,129 @@
             'compiled' => null,
         ],
         -69 => [
+            'path' => '/StockDelete[/{id}]',
+            'host' => '',
+            'defaults' => [
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\StockController:delete',
+            ],
+            'requirements' => [],
+            'options' => [
+                'compiler_class' => 'Symfony\\Component\\Routing\\RouteCompiler',
+            ],
+            'schemes' => [],
+            'methods' => [
+                'GET',
+                'POST',
+                'OPTIONS',
+            ],
+            'condition' => '',
+            'compiled' => null,
+        ],
+        -70 => [
+            'path' => '/UsuariosList[/{id}]',
+            'host' => '',
+            'defaults' => [
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController:list',
+            ],
+            'requirements' => [],
+            'options' => [
+                'compiler_class' => 'Symfony\\Component\\Routing\\RouteCompiler',
+            ],
+            'schemes' => [],
+            'methods' => [
+                'GET',
+                'POST',
+                'OPTIONS',
+            ],
+            'condition' => '',
+            'compiled' => null,
+        ],
+        -71 => [
+            'path' => '/UsuariosAdd[/{id}]',
+            'host' => '',
+            'defaults' => [
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController:add',
+            ],
+            'requirements' => [],
+            'options' => [
+                'compiler_class' => 'Symfony\\Component\\Routing\\RouteCompiler',
+            ],
+            'schemes' => [],
+            'methods' => [
+                'GET',
+                'POST',
+                'OPTIONS',
+            ],
+            'condition' => '',
+            'compiled' => null,
+        ],
+        -72 => [
+            'path' => '/UsuariosView[/{id}]',
+            'host' => '',
+            'defaults' => [
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController:view',
+            ],
+            'requirements' => [],
+            'options' => [
+                'compiler_class' => 'Symfony\\Component\\Routing\\RouteCompiler',
+            ],
+            'schemes' => [],
+            'methods' => [
+                'GET',
+                'POST',
+                'OPTIONS',
+            ],
+            'condition' => '',
+            'compiled' => null,
+        ],
+        -73 => [
+            'path' => '/UsuariosEdit[/{id}]',
+            'host' => '',
+            'defaults' => [
+                'middlewares' => [
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
+                ],
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController:edit',
+            ],
+            'requirements' => [],
+            'options' => [
+                'compiler_class' => 'Symfony\\Component\\Routing\\RouteCompiler',
+            ],
+            'schemes' => [],
+            'methods' => [
+                'GET',
+                'POST',
+                'OPTIONS',
+            ],
+            'condition' => '',
+            'compiled' => null,
+        ],
+        -74 => [
             'path' => '/UsuariosDelete[/{id}]',
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\PermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\AuthenticationMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\PermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\AuthenticationMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\UsuariosController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\UsuariosController:delete',
             ],
             'requirements' => [],
             'options' => [

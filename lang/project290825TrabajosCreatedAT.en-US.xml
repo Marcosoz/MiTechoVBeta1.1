@@ -1,4 +1,4 @@
-<ew-language date="2025/9/18" id="en-US" author="e.World Technology Limited">
+<ew-language date="2025/9/22" id="en-US" author="e.World Technology Limited">
   <project>
     <phrase id="footertext" value="FloridabIT. Todos los derechos reservados." />
     <menu id="1">
@@ -122,6 +122,9 @@
       </field>
       <field id="updated_at">
         <phrase id="fldcaption" value="updated at" />
+      </field>
+      <field id="numero_cupos">
+        <phrase id="fldcaption" value="numero cupos" />
       </field>
     </table>
     <table id="horas_trabajadas">
@@ -329,6 +332,9 @@
         <phrase id="fldtagcaption1" value="Yes" />
         <phrase id="fldtagvalue2" value="0" />
         <phrase id="fldtagcaption2" value="No" />
+      </field>
+      <field id="cupo">
+        <phrase id="fldcaption" value="cupo" />
       </field>
     </table>
     <table id="stock">

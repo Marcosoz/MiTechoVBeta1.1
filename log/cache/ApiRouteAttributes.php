@@ -55,8 +55,8 @@
             'path' => '/api/login',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:login',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:login',
             ],
             'requirements' => [],
             'options' => [
@@ -76,10 +76,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:list',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:list',
             ],
             'requirements' => [],
             'options' => [
@@ -98,10 +98,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:view',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:view',
             ],
             'requirements' => [],
             'options' => [
@@ -120,10 +120,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:add',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:add',
             ],
             'requirements' => [],
             'options' => [
@@ -142,10 +142,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:edit',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:edit',
             ],
             'requirements' => [],
             'options' => [
@@ -164,10 +164,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:delete',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:delete',
             ],
             'requirements' => [],
             'options' => [
@@ -187,8 +187,8 @@
             'path' => '/api/register',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:register',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:register',
             ],
             'requirements' => [],
             'options' => [
@@ -207,10 +207,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:file',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:file',
             ],
             'requirements' => [],
             'options' => [
@@ -229,10 +229,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:export',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:export',
             ],
             'requirements' => [],
             'options' => [
@@ -252,10 +252,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:upload',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:upload',
             ],
             'requirements' => [],
             'options' => [
@@ -273,8 +273,8 @@
             'path' => '/api/jupload',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:jupload',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:jupload',
             ],
             'requirements' => [],
             'options' => [
@@ -293,8 +293,8 @@
             'path' => '/api/session',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:session',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:session',
             ],
             'requirements' => [],
             'options' => [
@@ -313,10 +313,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:lookup',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:lookup',
             ],
             'requirements' => [],
             'options' => [
@@ -335,8 +335,8 @@
             'path' => '/api/chart[/{params:.*}]',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:exportchart',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:exportchart',
             ],
             'requirements' => [],
             'options' => [
@@ -355,10 +355,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:permissions',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:permissions',
             ],
             'requirements' => [],
             'options' => [
@@ -377,8 +377,8 @@
             'path' => '/api/push/{action}',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:push',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:push',
             ],
             'requirements' => [],
             'options' => [
@@ -398,10 +398,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:twofa',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:twofa',
             ],
             'requirements' => [],
             'options' => [
@@ -420,8 +420,8 @@
             'path' => '/api/metadata',
             'host' => '',
             'defaults' => [
-                'middlewares' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:metadata',
+                'middlewares' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:metadata',
             ],
             'requirements' => [],
             'options' => [
@@ -439,10 +439,10 @@
             'host' => '',
             'defaults' => [
                 'middlewares' => [
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiPermissionMiddleware',
-                    'PHPMaker2025\\project290825TrabajosCreatedAT\\JwtMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiPermissionMiddleware',
+                    'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\JwtMiddleware',
                 ],
-                '_controller' => 'PHPMaker2025\\project290825TrabajosCreatedAT\\ApiController:chat',
+                '_controller' => 'PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\ApiController:chat',
             ],
             'requirements' => [],
             'options' => [

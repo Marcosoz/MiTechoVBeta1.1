@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $SociosAdd = &$Page;
@@ -30,7 +30,8 @@ loadjs.ready(["wrapper", "head"], function () {
             ["fecha_ingreso", [fields.fecha_ingreso.visible && fields.fecha_ingreso.required ? ew.Validators.required(fields.fecha_ingreso.caption) : null, ew.Validators.datetime(fields.fecha_ingreso.clientFormatPattern)], fields.fecha_ingreso.isInvalid],
             ["contrasena", [fields.contrasena.visible && fields.contrasena.required ? ew.Validators.required(fields.contrasena.caption) : null], fields.contrasena.isInvalid],
             ["nivel_usuario", [fields.nivel_usuario.visible && fields.nivel_usuario.required ? ew.Validators.required(fields.nivel_usuario.caption) : null], fields.nivel_usuario.isInvalid],
-            ["sociosi", [fields.sociosi.visible && fields.sociosi.required ? ew.Validators.required(fields.sociosi.caption) : null], fields.sociosi.isInvalid]
+            ["sociosi", [fields.sociosi.visible && fields.sociosi.required ? ew.Validators.required(fields.sociosi.caption) : null], fields.sociosi.isInvalid],
+            ["cupo", [fields.cupo.visible && fields.cupo.required ? ew.Validators.required(fields.cupo.caption) : null], fields.cupo.isInvalid]
         ])
 
         // Form_CustomValidate
@@ -46,8 +47,10 @@ loadjs.ready(["wrapper", "head"], function () {
 
         // Dynamic selection lists
         .setLists({
+            "cooperativa_id": <?= $Page->cooperativa_id->toClientList($Page) ?>,
             "nivel_usuario": <?= $Page->nivel_usuario->toClientList($Page) ?>,
             "sociosi": <?= $Page->sociosi->toClientList($Page) ?>,
+            "cupo": <?= $Page->cupo->toClientList($Page) ?>,
         })
         .build();
     window[form.id] = form;
@@ -77,9 +80,58 @@ $Page->showMessage();
 <?php } ?>
 <input type="hidden" name="<?= $Page->getFormOldKeyName() ?>" value="<?= $Page->OldKey ?>">
 <div class="ew-add-div"><!-- page* -->
-    <span id="el_socios_cooperativa_id">
-    <input type="hidden" data-table="socios" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
-    </span>
+<?php if ($Page->cooperativa_id->Visible) { // cooperativa_id ?>
+    <div id="r_cooperativa_id"<?= $Page->cooperativa_id->rowAttributes() ?>>
+        <label id="elh_socios_cooperativa_id" for="x_cooperativa_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cooperativa_id->caption() ?><?= $Page->cooperativa_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cooperativa_id->cellAttributes() ?>>
+<?php if (!$Security->canAccess() && $Security->isLoggedIn() && !$Page->userIDAllow("add")) { // No access permission ?>
+<span<?= $Page->cooperativa_id->viewAttributes() ?>>
+<span class="form-control-plaintext"><?= $Page->cooperativa_id->getDisplayValue($Page->cooperativa_id->getEditValue()) ?></span></span>
+<input type="hidden" data-table="socios" data-field="x_cooperativa_id" data-hidden="1" name="x_cooperativa_id" id="x_cooperativa_id" value="<?= HtmlEncode($Page->cooperativa_id->CurrentValue) ?>">
+<?php } else { ?>
+<span id="el_socios_cooperativa_id">
+    <select
+        id="x_cooperativa_id"
+        name="x_cooperativa_id"
+        class="form-select ew-select<?= $Page->cooperativa_id->isInvalidClass() ?>"
+        <?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+        data-select2-id="fsociosadd_x_cooperativa_id"
+        <?php } ?>
+        data-table="socios"
+        data-field="x_cooperativa_id"
+        data-value-separator="<?= $Page->cooperativa_id->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->cooperativa_id->getPlaceHolder()) ?>"
+        <?= $Page->cooperativa_id->editAttributes() ?>>
+        <?= $Page->cooperativa_id->selectOptionListHtml("x_cooperativa_id") ?>
+    </select>
+    <?= $Page->cooperativa_id->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->cooperativa_id->getErrorMessage() ?></div>
+<?= $Page->cooperativa_id->Lookup->getParamTag($Page, "p_x_cooperativa_id") ?>
+<?php if (!$Page->cooperativa_id->IsNativeSelect) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready("fsociosadd", function() {
+    var options = { name: "x_cooperativa_id", selectId: "fsociosadd_x_cooperativa_id" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fsociosadd.lists.cooperativa_id?.lookupOptions.length) {
+        options.data = { id: "x_cooperativa_id", form: "fsociosadd" };
+    } else {
+        options.ajax = { id: "x_cooperativa_id", form: "fsociosadd", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.socios.fields.cooperativa_id.selectOptions);
+    ew.createSelect(options);
+});
+</script>
+<?php } ?>
+</span>
+<?php } ?>
+</div></div>
+    </div>
+<?php } ?>
 <?php if ($Page->nombre_completo->Visible) { // nombre_completo ?>
     <div id="r_nombre_completo"<?= $Page->nombre_completo->rowAttributes() ?>>
         <label id="elh_socios_nombre_completo" for="x_nombre_completo" class="<?= $Page->LeftColumnClass ?>"><?= $Page->nombre_completo->caption() ?><?= $Page->nombre_completo->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
@@ -250,6 +302,52 @@ loadjs.ready("fsociosadd", function() {
     <div class="invalid-feedback"><?= $Page->sociosi->getErrorMessage() ?></div>
 </div>
 <?= $Page->sociosi->getCustomMessage() ?>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->cupo->Visible) { // cupo ?>
+    <div id="r_cupo"<?= $Page->cupo->rowAttributes() ?>>
+        <label id="elh_socios_cupo" for="x_cupo" class="<?= $Page->LeftColumnClass ?>"><?= $Page->cupo->caption() ?><?= $Page->cupo->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div<?= $Page->cupo->cellAttributes() ?>>
+<span id="el_socios_cupo">
+    <select
+        id="x_cupo"
+        name="x_cupo"
+        class="form-select ew-select<?= $Page->cupo->isInvalidClass() ?>"
+        <?php if (!$Page->cupo->IsNativeSelect) { ?>
+        data-select2-id="fsociosadd_x_cupo"
+        <?php } ?>
+        data-table="socios"
+        data-field="x_cupo"
+        data-value-separator="<?= $Page->cupo->displayValueSeparatorAttribute() ?>"
+        data-placeholder="<?= HtmlEncode($Page->cupo->getPlaceHolder()) ?>"
+        <?= $Page->cupo->editAttributes() ?>>
+        <?= $Page->cupo->selectOptionListHtml("x_cupo") ?>
+    </select>
+    <?= $Page->cupo->getCustomMessage() ?>
+    <div class="invalid-feedback"><?= $Page->cupo->getErrorMessage() ?></div>
+<?= $Page->cupo->Lookup->getParamTag($Page, "p_x_cupo") ?>
+<?php if (!$Page->cupo->IsNativeSelect) { ?>
+<script<?= Nonce() ?>>
+loadjs.ready("fsociosadd", function() {
+    var options = { name: "x_cupo", selectId: "fsociosadd_x_cupo" },
+        el = document.querySelector("select[data-select2-id='" + options.selectId + "']");
+    if (!el)
+        return;
+    options.closeOnSelect = !options.multiple;
+    options.dropdownParent = el.closest("#ew-modal-dialog, #ew-add-opt-dialog");
+    if (fsociosadd.lists.cupo?.lookupOptions.length) {
+        options.data = { id: "x_cupo", form: "fsociosadd" };
+    } else {
+        options.ajax = { id: "x_cupo", form: "fsociosadd", limit: ew.LOOKUP_PAGE_SIZE };
+    }
+    options.minimumResultsForSearch = Infinity;
+    options = Object.assign({}, ew.selectOptions, options, ew.vars.tables.socios.fields.cupo.selectOptions);
+    ew.createSelect(options);
+});
+</script>
+<?php } ?>
 </span>
 </div></div>
     </div>

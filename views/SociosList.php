@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $SociosList = &$Page;
@@ -183,6 +183,9 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->sociosi->Visible) { // socio si ?>
         <th data-name="sociosi" class="<?= $Page->sociosi->headerCellClass() ?>"><div id="elh_socios_sociosi" class="socios_sociosi"><?= $Page->renderFieldHeader($Page->sociosi) ?></div></th>
 <?php } ?>
+<?php if ($Page->cupo->Visible) { // cupo ?>
+        <th data-name="cupo" class="<?= $Page->cupo->headerCellClass() ?>"><div id="elh_socios_cupo" class="socios_cupo"><?= $Page->renderFieldHeader($Page->cupo) ?></div></th>
+<?php } ?>
 <?php
 // Render list options (header, right)
 $Page->ListOptions->render("header", "right");
@@ -305,6 +308,14 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span<?= $Page->sociosi->viewAttributes() ?>>
 <i class="fa-regular fa-square<?php if (ConvertToBool($Page->sociosi->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
 </span>
+</span>
+</td>
+    <?php } ?>
+    <?php if ($Page->cupo->Visible) { // cupo ?>
+        <td data-name="cupo"<?= $Page->cupo->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_socios_cupo" class="el_socios_cupo">
+<span<?= $Page->cupo->viewAttributes() ?>>
+<?= $Page->cupo->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>

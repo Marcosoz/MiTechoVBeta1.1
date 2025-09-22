@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -75,6 +75,7 @@ class Socios extends DbTable implements LookupTableInterface
     public DbField $nivel_usuario;
     public DbField $updated_at;
     public DbField $sociosi;
+    public DbField $cupo;
 
     // Page ID
     public string $PageID = ""; // To be set by subclass
@@ -157,13 +158,18 @@ class Socios extends DbTable implements LookupTableInterface
             false, // Force selection
             false, // Is Virtual search
             'FORMATTED TEXT', // View Tag
-            'HIDDEN' // Edit Tag
+            'SELECT' // Edit Tag
         );
         $this->cooperativa_id->InputTextType = "text";
         $this->cooperativa_id->Raw = true;
         $this->cooperativa_id->Nullable = false; // NOT NULL field
+        $this->cooperativa_id->Required = true; // Required field
+        $this->cooperativa_id->setSelectMultiple(false); // Select one
+        $this->cooperativa_id->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->cooperativa_id->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        $this->cooperativa_id->Lookup = new Lookup($this->cooperativa_id, 'cooperativas', false, 'id', ["nombre","","",""], '', "", [], [], [], [], [], [], false, '', '', "`nombre`");
         $this->cooperativa_id->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
-        $this->cooperativa_id->SearchOperators = ["=", "<>"];
+        $this->cooperativa_id->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['cooperativa_id'] = &$this->cooperativa_id;
 
         // nombre_completo
@@ -358,7 +364,7 @@ class Socios extends DbTable implements LookupTableInterface
         $this->nivel_usuario->UsePleaseSelect = true; // Use PleaseSelect by default
         $this->nivel_usuario->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
         $this->nivel_usuario->Lookup = new Lookup($this->nivel_usuario, 'socios', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
-        $this->nivel_usuario->OptionCount = 2;
+        $this->nivel_usuario->OptionCount = 5;
         $this->nivel_usuario->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
         $this->nivel_usuario->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['nivel_usuario'] = &$this->nivel_usuario;
@@ -418,6 +424,34 @@ class Socios extends DbTable implements LookupTableInterface
         $this->sociosi->SearchOperators = ["=", "<>"];
         $this->Fields['socio si'] = &$this->sociosi;
 
+        // cupo
+        $this->cupo = new DbField(
+            $this, // Table
+            'x_cupo', // Variable name
+            'cupo', // Name
+            '`cupo`', // Expression
+            '`cupo`', // Basic search expression
+            3, // Type
+            100, // Size
+            -1, // Date/Time format
+            false, // Is upload field
+            '`EV__cupo`', // Virtual expression
+            true, // Is virtual
+            true, // Force selection
+            false, // Is Virtual search
+            'FORMATTED TEXT', // View Tag
+            'SELECT' // Edit Tag
+        );
+        $this->cupo->InputTextType = "text";
+        $this->cupo->Raw = true;
+        $this->cupo->setSelectMultiple(false); // Select one
+        $this->cupo->UsePleaseSelect = true; // Use PleaseSelect by default
+        $this->cupo->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
+        $this->cupo->Lookup = new Lookup($this->cupo, 'cupos', false, 'cupo', ["cupo","","",""], '', "", [], [], [], [], [], [], false, '', '', "`cupo`");
+        $this->cupo->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
+        $this->cupo->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN", "IS NULL", "IS NOT NULL"];
+        $this->Fields['cupo'] = &$this->cupo;
+
         // Cache profile
         $this->cacheProfile = new QueryCacheProfile(0, $this->TableVar, Container("result.cache"));
 
@@ -455,13 +489,16 @@ class Socios extends DbTable implements LookupTableInterface
             }
             $orderBy = in_array($curSort, ["ASC", "DESC"]) ? $sortField . " " . $curSort : "";
             $this->setSessionOrderBy($orderBy); // Save to Session
+            $sortFieldList = ($fld->VirtualExpression != "") ? $fld->VirtualExpression : $sortField;
+            $orderBy = in_array($curSort, ["ASC", "DESC"]) ? $sortFieldList . " " . $curSort : "";
+            $this->setSessionOrderByList($orderBy); // Save to Session
         }
     }
 
     // Update field sort
     public function updateFieldSort(): void
     {
-        $orderBy = $this->getSessionOrderBy(); // Get ORDER BY from Session
+        $orderBy = $this->useVirtualFields() ? $this->getSessionOrderByList() : $this->getSessionOrderBy(); // Get ORDER BY from Session
         $flds = GetSortFields($orderBy);
         foreach ($this->Fields as $field) {
             $fldSort = "";
@@ -472,6 +509,17 @@ class Socios extends DbTable implements LookupTableInterface
             }
             $field->setSort($fldSort);
         }
+    }
+
+    // Session ORDER BY for List page
+    public function getSessionOrderByList(): string
+    {
+        return Session(AddTabId(PROJECT_NAME . "_" . $this->TableVar . "_" . Config("TABLE_ORDER_BY_LIST"))) ?? "";
+    }
+
+    public function setSessionOrderByList(string $v): void
+    {
+        Session(AddTabId(PROJECT_NAME . "_" . $this->TableVar . "_" . Config("TABLE_ORDER_BY_LIST")), $v);
     }
 
     // Render X Axis for chart
@@ -533,6 +581,28 @@ class Socios extends DbTable implements LookupTableInterface
     public function setSqlSelect(QueryBuilder $v): void
     {
         $this->SqlSelect = $v;
+    }
+
+    // Get SELECT clause for List page
+    public function getSqlSelectList(): string
+    {
+        if ($this->SqlSelectList) {
+            return $this->SqlSelectList;
+        }
+        $from = "(SELECT " . $this->sqlSelectFields() . ", (SELECT `cupo` FROM cupos TMP_LOOKUPTABLE WHERE TMP_LOOKUPTABLE.cupo = socios.cupo LIMIT 1) AS `EV__cupo` FROM socios)";
+        return $from . " TMP_TABLE";
+    }
+
+    // Get SELECT clause for List page (for backward compatibility)
+    public function sqlSelectList(): string
+    {
+        return $this->getSqlSelectList();
+    }
+
+    // Set SELECT clause for List page
+    public function setSqlSelectList(string $v): void
+    {
+        $this->SqlSelectList = $v;
     }
 
     // Get default filter
@@ -729,9 +799,15 @@ class Socios extends DbTable implements LookupTableInterface
         AddFilter($filter, $this->CurrentFilter);
         $filter = $this->applyUserIDFilters($filter);
         $this->recordsSelecting($filter);
-        $select = $this->getSqlSelect();
-        $from = $this->getSqlFrom();
-        $sort = $this->UseSessionForListSql ? $this->getSessionOrderBy() : "";
+        if ($this->useVirtualFields()) {
+            $select = "*";
+            $from = $this->getSqlSelectList();
+            $sort = $this->UseSessionForListSql ? $this->getSessionOrderByList() : "";
+        } else {
+            $select = $this->getSqlSelect();
+            $from = $this->getSqlFrom();
+            $sort = $this->UseSessionForListSql ? $this->getSessionOrderBy() : "";
+        }
         $this->Sort = $sort;
         return $this->buildSelectSql(
             $select,
@@ -749,13 +825,30 @@ class Socios extends DbTable implements LookupTableInterface
     public function getOrderBy(): string
     {
         $orderBy = $this->getSqlOrderBy();
-        $sort = $this->getSessionOrderBy();
+        $sort = ($this->useVirtualFields()) ? $this->getSessionOrderByList() : $this->getSessionOrderBy();
         if ($orderBy != "" && $sort != "") {
             $orderBy .= ", " . $sort;
         } elseif ($sort != "") {
             $orderBy = $sort;
         }
         return $orderBy;
+    }
+
+    // Check if virtual fields is used in SQL
+    protected function useVirtualFields(): bool
+    {
+        $where = $this->UseSessionForListSql ? $this->getSessionWhere() : $this->CurrentFilter;
+        $orderBy = $this->UseSessionForListSql ? $this->getSessionOrderByList() : "";
+        if ($where != "") {
+            $where = " " . str_replace(["(", ")"], ["", ""], $where) . " ";
+        }
+        if ($orderBy != "") {
+            $orderBy = " " . str_replace(["(", ")"], ["", ""], $orderBy) . " ";
+        }
+        if (ContainsString($orderBy, " " . $this->cupo->VirtualExpression . " ")) {
+            return true;
+        }
+        return false;
     }
 
     // Get record count based on filter
@@ -787,7 +880,11 @@ class Socios extends DbTable implements LookupTableInterface
         $select = $isCustomView ? $this->getSqlSelect() : $this->getQueryBuilder()->select("*");
         $groupBy = $isCustomView ? $this->getSqlGroupBy() : "";
         $having = $isCustomView ? $this->getSqlHaving() : "";
-        $sql = $this->buildSelectSql($select, $this->getSqlFrom(), $this->getSqlWhere(), $groupBy, $having, "", $filter, "");
+        if ($this->useVirtualFields()) {
+            $sql = $this->buildSelectSql("*", $this->getSqlSelectList(), $this->getSqlWhere(), $groupBy, $having, "", $filter, "");
+        } else {
+            $sql = $this->buildSelectSql($select, $this->getSqlFrom(), $this->getSqlWhere(), $groupBy, $having, "", $filter, "");
+        }
         $cnt = $this->getRecordCount($sql);
         return $cnt;
     }
@@ -986,6 +1083,7 @@ class Socios extends DbTable implements LookupTableInterface
         $this->nivel_usuario->DbValue = $row['nivel_usuario'];
         $this->updated_at->DbValue = $row['updated_at'];
         $this->sociosi->DbValue = $row['socio si'];
+        $this->cupo->DbValue = $row['cupo'];
     }
 
     // Delete uploaded files
@@ -1353,6 +1451,7 @@ class Socios extends DbTable implements LookupTableInterface
         $this->nivel_usuario->setDbValue($row['nivel_usuario']);
         $this->updated_at->setDbValue($row['updated_at']);
         $this->sociosi->setDbValue($row['socio si']);
+        $this->cupo->setDbValue($row['cupo']);
     }
 
     // Render list content
@@ -1408,12 +1507,34 @@ class Socios extends DbTable implements LookupTableInterface
 
         // socio si
 
+        // cupo
+
         // id
         $this->id->ViewValue = $this->id->CurrentValue;
 
         // cooperativa_id
-        $this->cooperativa_id->ViewValue = $this->cooperativa_id->CurrentValue;
-        $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->ViewValue, $this->cooperativa_id->formatPattern());
+        $curVal = strval($this->cooperativa_id->CurrentValue);
+        if ($curVal != "") {
+            $this->cooperativa_id->ViewValue = $this->cooperativa_id->lookupCacheOption($curVal);
+            if ($this->cooperativa_id->ViewValue === null) { // Lookup from database
+                $filterWrk = SearchFilter($this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchExpression(), "=", $curVal, $this->cooperativa_id->Lookup->getTable()->Fields["id"]->searchDataType(), "DB");
+                $sqlWrk = $this->cooperativa_id->Lookup->getSql(false, $filterWrk, '', $this, true, true);
+                $conn = Conn();
+                $rswrk = $conn->executeQuery($sqlWrk)->fetchAllAssociative();
+                $ari = count($rswrk);
+                if ($ari > 0) { // Lookup values found
+                    $rows = [];
+                    foreach ($rswrk as $row) {
+                        $rows[] = $this->cooperativa_id->Lookup->renderViewRow($row);
+                    }
+                    $this->cooperativa_id->ViewValue = $this->cooperativa_id->displayValue($rows[0]);
+                } else {
+                    $this->cooperativa_id->ViewValue = FormatNumber($this->cooperativa_id->CurrentValue, $this->cooperativa_id->formatPattern());
+                }
+            }
+        } else {
+            $this->cooperativa_id->ViewValue = null;
+        }
 
         // nombre_completo
         $this->nombre_completo->ViewValue = $this->nombre_completo->CurrentValue;
@@ -1458,6 +1579,17 @@ class Socios extends DbTable implements LookupTableInterface
             $this->sociosi->ViewValue = $this->sociosi->tagCaption(1) != "" ? $this->sociosi->tagCaption(1) : "Yes";
         } else {
             $this->sociosi->ViewValue = $this->sociosi->tagCaption(2) != "" ? $this->sociosi->tagCaption(2) : "No";
+        }
+
+        // cupo
+        if ($this->cupo->VirtualValue != "") {
+            $this->cupo->ViewValue = $this->cupo->VirtualValue;
+        } else {
+            $arwrk = [];
+            $arwrk["lf"] = $this->cupo->CurrentValue;
+            $arwrk["df"] = $this->cupo->CurrentValue;
+            $arwrk = $this->cupo->Lookup->renderViewRow($arwrk);
+            $this->cupo->ViewValue = $this->cupo->displayValue($arwrk);
         }
 
         // id
@@ -1508,6 +1640,10 @@ class Socios extends DbTable implements LookupTableInterface
         $this->sociosi->HrefValue = "";
         $this->sociosi->TooltipValue = "";
 
+        // cupo
+        $this->cupo->HrefValue = "";
+        $this->cupo->TooltipValue = "";
+
         // Call Row Rendered event
         $this->rowRendered();
 
@@ -1551,6 +1687,7 @@ class Socios extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->nivel_usuario);
                     $doc->exportCaption($this->updated_at);
                     $doc->exportCaption($this->sociosi);
+                    $doc->exportCaption($this->cupo);
                 } else {
                     $doc->exportCaption($this->id);
                     $doc->exportCaption($this->cooperativa_id);
@@ -1564,6 +1701,7 @@ class Socios extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->nivel_usuario);
                     $doc->exportCaption($this->updated_at);
                     $doc->exportCaption($this->sociosi);
+                    $doc->exportCaption($this->cupo);
                 }
                 $doc->endExportRow();
             }
@@ -1602,6 +1740,7 @@ class Socios extends DbTable implements LookupTableInterface
                         $doc->exportField($this->nivel_usuario);
                         $doc->exportField($this->updated_at);
                         $doc->exportField($this->sociosi);
+                        $doc->exportField($this->cupo);
                     } else {
                         $doc->exportField($this->id);
                         $doc->exportField($this->cooperativa_id);
@@ -1615,6 +1754,7 @@ class Socios extends DbTable implements LookupTableInterface
                         $doc->exportField($this->nivel_usuario);
                         $doc->exportField($this->updated_at);
                         $doc->exportField($this->sociosi);
+                        $doc->exportField($this->cupo);
                     }
                     $doc->endExportRow($rowCnt);
                 }
@@ -1887,6 +2027,29 @@ class Socios extends DbTable implements LookupTableInterface
 
         // 5. Si no existe, permitir insertar
         return true;
+        /*
+        // Asignacion de cupos
+        // id de la cooperativa del socio
+        $cooperativa_id = $newRow['cooperativa_id'];
+        // Cupo que se intentara asignar
+        $cupo = $newRow['cupo'];
+
+        // Obtener numero de cupo de la cooperativa
+        $sqlcupo = "SELECT numero_cupos FROM cooperativas WHERE id =?";
+        $stmt = $conn->prepare($sqlcupo);
+        $stmt->bind_param("i", $cooperativa_id);
+        $stmt->execute();
+        $stmt->bind_result($numero_cupos);
+        $stmt->fetch();
+        $stmt->close();
+
+        // Validar que el cupo exista
+        if ($cupo < 1 || $cupo >$numero_cupos) {
+            $this->setFailureMesage("El cupo seleccionado no existe en esta cooperativa.");
+            return FALSE; // Cancela la insercion / actualizacion
+        }
+        return TRUE; // Todo ok
+        */
     }
 
     // Row Inserted event
@@ -1971,8 +2134,24 @@ class Socios extends DbTable implements LookupTableInterface
     // Lookup Selecting event
     public function lookupSelecting(DbField $field, string &$filter): void
     {
-        //var_dump($field->Name, $field->Lookup, $filter); // Uncomment to view the filter
-        // Enter your code here
+        if ($field->Name == "cupo") {
+            // Traer el ID de la cooperativa seleccionada
+            $coopId = $this->cooperativa_id->CurrentValue;
+            if ($coopId > 0) {
+                // Consultar número máximo de cupos de la cooperativa
+                $maxCupos = ExecuteScalar("SELECT numero_cupos FROM cooperativas WHERE id = " . intval($coopId));
+                if ($maxCupos > 0) {
+                    // Filtrar los cupos disponibles en la tabla cupos
+                    $filter = "cupo <= " . intval($maxCupos);
+                } else {
+                    // Si no tiene cupos definidos, no mostrar nada
+                    $filter = "0=1";
+                }
+            } else {
+                // Si no se eligió cooperativa, no mostrar nada
+                $filter = "0=1";
+            }
+        }
     }
 
     // Row Rendering event

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $SociosDelete = &$Page;
@@ -85,6 +85,9 @@ $Page->showMessage();
 <?php } ?>
 <?php if ($Page->sociosi->Visible) { // socio si ?>
         <th class="<?= $Page->sociosi->headerCellClass() ?>"><span id="elh_socios_sociosi" class="socios_sociosi"><?= $Page->sociosi->caption() ?></span></th>
+<?php } ?>
+<?php if ($Page->cupo->Visible) { // cupo ?>
+        <th class="<?= $Page->cupo->headerCellClass() ?>"><span id="elh_socios_cupo" class="socios_cupo"><?= $Page->cupo->caption() ?></span></th>
 <?php } ?>
     </tr>
     </thead>
@@ -201,6 +204,14 @@ while ($Page->fetch()) {
 <span<?= $Page->sociosi->viewAttributes() ?>>
 <i class="fa-regular fa-square<?php if (ConvertToBool($Page->sociosi->CurrentValue)) { ?>-check<?php } ?> ew-icon ew-boolean"></i>
 </span>
+</span>
+</td>
+<?php } ?>
+<?php if ($Page->cupo->Visible) { // cupo ?>
+        <td<?= $Page->cupo->cellAttributes() ?>>
+<span id="">
+<span<?= $Page->cupo->viewAttributes() ?>>
+<?= $Page->cupo->getViewValue() ?></span>
 </span>
 </td>
 <?php } ?>

@@ -263,9 +263,9 @@
             'dev_requirement' => false,
         ),
         'hkvstore/dompdf' => array(
-            'pretty_version' => '3.1.0',
-            'version' => '3.1.0.0',
-            'reference' => 'b0f3c6352f48cca6f963acefbf2426c63247b9a5',
+            'pretty_version' => '3.1.1',
+            'version' => '3.1.1.0',
+            'reference' => '4c5f8b52afcdcdf67de35f5fb02875186a739277',
             'type' => 'library',
             'install_path' => __DIR__ . '/../hkvstore/dompdf',
             'aliases' => array(),

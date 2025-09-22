@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -58,7 +58,7 @@ class PersonalData
     public ?string $Title = null; // Title for <title> tag
 
     // CSS class/style
-    public string $CurrentPageName = "UsuariosDelete";
+    public string $CurrentPageName = "CuposDelete";
 
     // Page headings
     public string $Heading = "";

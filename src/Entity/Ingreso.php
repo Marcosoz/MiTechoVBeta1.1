@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT\Entity;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedUserInterface;
-use PHPMaker2025\project290825TrabajosCreatedAT\AbstractEntity;
-use PHPMaker2025\project290825TrabajosCreatedAT\AdvancedSecurity;
-use PHPMaker2025\project290825TrabajosCreatedAT\UserProfile;
-use PHPMaker2025\project290825TrabajosCreatedAT\UserRepository;
-use function PHPMaker2025\project290825TrabajosCreatedAT\Config;
-use function PHPMaker2025\project290825TrabajosCreatedAT\EntityManager;
-use function PHPMaker2025\project290825TrabajosCreatedAT\RemoveXss;
-use function PHPMaker2025\project290825TrabajosCreatedAT\HtmlDecode;
-use function PHPMaker2025\project290825TrabajosCreatedAT\HashPassword;
-use function PHPMaker2025\project290825TrabajosCreatedAT\Security;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AdvancedUserInterface;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AbstractEntity;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AdvancedSecurity;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\UserProfile;
+use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\UserRepository;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Config;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\EntityManager;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\RemoveXss;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\HtmlDecode;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\HashPassword;
+use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Security;
 
 /**
  * Entity class for "ingresos" table

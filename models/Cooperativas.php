@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -72,6 +72,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
     public DbField $email;
     public DbField $created_at;
     public DbField $updated_at;
+    public DbField $numero_cupos;
 
     // Page ID
     public string $PageID = ""; // To be set by subclass
@@ -328,6 +329,32 @@ class Cooperativas extends DbTable implements LookupTableInterface
         $this->updated_at->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $this->language->phrase("IncorrectDate"));
         $this->updated_at->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['updated_at'] = &$this->updated_at;
+
+        // numero_cupos
+        $this->numero_cupos = new DbField(
+            $this, // Table
+            'x_numero_cupos', // Variable name
+            'numero_cupos', // Name
+            '`numero_cupos`', // Expression
+            '`numero_cupos`', // Basic search expression
+            3, // Type
+            100, // Size
+            -1, // Date/Time format
+            false, // Is upload field
+            '`numero_cupos`', // Virtual expression
+            false, // Is virtual
+            false, // Force selection
+            false, // Is Virtual search
+            'FORMATTED TEXT', // View Tag
+            'TEXT' // Edit Tag
+        );
+        $this->numero_cupos->addMethod("getDefault", fn() => 0);
+        $this->numero_cupos->InputTextType = "text";
+        $this->numero_cupos->Raw = true;
+        $this->numero_cupos->Nullable = false; // NOT NULL field
+        $this->numero_cupos->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
+        $this->numero_cupos->SearchOperators = ["=", "<>", "IN", "NOT IN", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
+        $this->Fields['numero_cupos'] = &$this->numero_cupos;
 
         // Cache profile
         $this->cacheProfile = new QueryCacheProfile(0, $this->TableVar, Container("result.cache"));
@@ -881,6 +908,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
         $this->email->DbValue = $row['email'];
         $this->created_at->DbValue = $row['created_at'];
         $this->updated_at->DbValue = $row['updated_at'];
+        $this->numero_cupos->DbValue = $row['numero_cupos'];
     }
 
     // Delete uploaded files
@@ -1245,6 +1273,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
         $this->email->setDbValue($row['email']);
         $this->created_at->setDbValue($row['created_at']);
         $this->updated_at->setDbValue($row['updated_at']);
+        $this->numero_cupos->setDbValue($row['numero_cupos']);
     }
 
     // Render list content
@@ -1294,6 +1323,8 @@ class Cooperativas extends DbTable implements LookupTableInterface
 
         // updated_at
 
+        // numero_cupos
+
         // id
         $this->id->ViewValue = $this->id->CurrentValue;
 
@@ -1322,6 +1353,10 @@ class Cooperativas extends DbTable implements LookupTableInterface
         // updated_at
         $this->updated_at->ViewValue = $this->updated_at->CurrentValue;
         $this->updated_at->ViewValue = FormatDateTime($this->updated_at->ViewValue, $this->updated_at->formatPattern());
+
+        // numero_cupos
+        $this->numero_cupos->ViewValue = $this->numero_cupos->CurrentValue;
+        $this->numero_cupos->ViewValue = FormatNumber($this->numero_cupos->ViewValue, $this->numero_cupos->formatPattern());
 
         // id
         $this->id->HrefValue = "";
@@ -1358,6 +1393,10 @@ class Cooperativas extends DbTable implements LookupTableInterface
         // updated_at
         $this->updated_at->HrefValue = "";
         $this->updated_at->TooltipValue = "";
+
+        // numero_cupos
+        $this->numero_cupos->HrefValue = "";
+        $this->numero_cupos->TooltipValue = "";
 
         // Call Row Rendered event
         $this->rowRendered();
@@ -1399,6 +1438,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->email);
                     $doc->exportCaption($this->created_at);
                     $doc->exportCaption($this->updated_at);
+                    $doc->exportCaption($this->numero_cupos);
                 } else {
                     $doc->exportCaption($this->id);
                     $doc->exportCaption($this->nombre);
@@ -1409,6 +1449,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
                     $doc->exportCaption($this->email);
                     $doc->exportCaption($this->created_at);
                     $doc->exportCaption($this->updated_at);
+                    $doc->exportCaption($this->numero_cupos);
                 }
                 $doc->endExportRow();
             }
@@ -1444,6 +1485,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
                         $doc->exportField($this->email);
                         $doc->exportField($this->created_at);
                         $doc->exportField($this->updated_at);
+                        $doc->exportField($this->numero_cupos);
                     } else {
                         $doc->exportField($this->id);
                         $doc->exportField($this->nombre);
@@ -1454,6 +1496,7 @@ class Cooperativas extends DbTable implements LookupTableInterface
                         $doc->exportField($this->email);
                         $doc->exportField($this->created_at);
                         $doc->exportField($this->updated_at);
+                        $doc->exportField($this->numero_cupos);
                     }
                     $doc->endExportRow($rowCnt);
                 }

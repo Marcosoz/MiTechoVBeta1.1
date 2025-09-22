@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project290825TrabajosCreatedAT;
+namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
 
 // Page object
 $CooperativasList = &$Page;
@@ -174,6 +174,9 @@ $Page->ListOptions->render("header", "left");
 <?php if ($Page->updated_at->Visible) { // updated_at ?>
         <th data-name="updated_at" class="<?= $Page->updated_at->headerCellClass() ?>"><div id="elh_cooperativas_updated_at" class="cooperativas_updated_at"><?= $Page->renderFieldHeader($Page->updated_at) ?></div></th>
 <?php } ?>
+<?php if ($Page->numero_cupos->Visible) { // numero_cupos ?>
+        <th data-name="numero_cupos" class="<?= $Page->numero_cupos->headerCellClass() ?>"><div id="elh_cooperativas_numero_cupos" class="cooperativas_numero_cupos"><?= $Page->renderFieldHeader($Page->numero_cupos) ?></div></th>
+<?php } ?>
 <?php
 // Render list options (header, right)
 $Page->ListOptions->render("header", "right");
@@ -271,6 +274,14 @@ $Page->ListOptions->render("body", "left", $Page->RowCount);
 <span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_cooperativas_updated_at" class="el_cooperativas_updated_at">
 <span<?= $Page->updated_at->viewAttributes() ?>>
 <?= $Page->updated_at->getViewValue() ?></span>
+</span>
+</td>
+    <?php } ?>
+    <?php if ($Page->numero_cupos->Visible) { // numero_cupos ?>
+        <td data-name="numero_cupos"<?= $Page->numero_cupos->cellAttributes() ?>>
+<span id="el<?= $Page->RowIndex == '$rowindex$' ? '$rowindex$' : $Page->RowCount ?>_cooperativas_numero_cupos" class="el_cooperativas_numero_cupos">
+<span<?= $Page->numero_cupos->viewAttributes() ?>>
+<?= $Page->numero_cupos->getViewValue() ?></span>
 </span>
 </td>
     <?php } ?>
