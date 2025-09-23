@@ -321,16 +321,10 @@
       </field>
       <field id="nivel_usuario">
         <phrase id="fldcaption" value="nivel usuario" />
-        <phrase id="fldtagvalue1" value="-2" />
-        <phrase id="fldtagcaption1" value="Anonymous" />
-        <phrase id="fldtagvalue2" value="-1" />
-        <phrase id="fldtagcaption2" value="Administrator" />
-        <phrase id="fldtagvalue3" value="0" />
-        <phrase id="fldtagcaption3" value="Default" />
-        <phrase id="fldtagvalue4" value="1" />
-        <phrase id="fldtagcaption4" value="Administrador Cooperativa" />
-        <phrase id="fldtagvalue5" value="2" />
-        <phrase id="fldtagcaption5" value="Socios" />
+        <phrase id="fldtagvalue1" value="1" />
+        <phrase id="fldtagcaption1" value="Administrador Cooperativa" />
+        <phrase id="fldtagvalue2" value="2" />
+        <phrase id="fldtagcaption2" value="Socios" />
       </field>
       <field id="updated_at">
         <phrase id="fldcaption" value="updated at" />

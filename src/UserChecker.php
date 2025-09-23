@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;

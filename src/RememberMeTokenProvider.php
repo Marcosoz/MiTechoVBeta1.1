@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentToken;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use DI\ContainerBuilder;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -364,7 +364,7 @@ class Socios extends DbTable implements LookupTableInterface
         $this->nivel_usuario->UsePleaseSelect = true; // Use PleaseSelect by default
         $this->nivel_usuario->PleaseSelectText = $this->language->phrase("PleaseSelect"); // "PleaseSelect" text
         $this->nivel_usuario->Lookup = new Lookup($this->nivel_usuario, 'socios', false, '', ["","","",""], '', "", [], [], [], [], [], [], false, '', '', "");
-        $this->nivel_usuario->OptionCount = 5;
+        $this->nivel_usuario->OptionCount = 2;
         $this->nivel_usuario->DefaultErrorMessage = $this->language->phrase("IncorrectInteger");
         $this->nivel_usuario->SearchOperators = ["=", "<>", "<", "<=", ">", ">=", "BETWEEN", "NOT BETWEEN"];
         $this->Fields['nivel_usuario'] = &$this->nivel_usuario;
@@ -1958,13 +1958,21 @@ class Socios extends DbTable implements LookupTableInterface
     // Row Inserting event
     public function rowInserting(?array $oldRow, array &$newRow): ?bool
     {
+        // Bloque para instertar coop_id automatico al editar.
+        $nivelUsuario = $GLOBALS["Security"]->CurrentUserLevelID();
+        // Admin de cooperativa
+        if ($nivelUsuario == 1) {
+            $rsnew["cooperativa_id"] = $GLOBALS["Security"]->currentUserInfo("cooperativa_id");
+        }
+        return true; // continuar inserción
+
         // Verifica si el usuario No es administrador gral.
         if (CurrentUserLevel() != -1) {
             $newRow["cooperativa_id"] = CurrentUserInfo("cooperativa_id");
             }
         return true;
 
-    //Verificacion de cedula, en caso de existir registro no deja ingresar el usuario.
+        //Verificacion de cedula, en caso de existir registro no deja ingresar el usuario.
         // 1. Documento ingresado
         $documento = $rsnew["cedula"];
 
@@ -1996,7 +2004,7 @@ class Socios extends DbTable implements LookupTableInterface
         // 5. Si no existe, permitir insertar
         return true;
 
-    //Verificacion de email, en caso de existir registro no deja ingresar el usuario.
+        //Verificacion de email, en caso de existir registro no deja ingresar el usuario.
         // 1. email ingresado
         $email = $rsnew["email"];
 
@@ -2061,9 +2069,10 @@ class Socios extends DbTable implements LookupTableInterface
     // Row Updating event
     public function rowUpdating(array $oldRow, array &$newRow): ?bool
     {
-        // Enter your code here
-        // To cancel, set return value to false
-        // To skip for grid insert/update, set return value to null
+        // Verifica si el usuario No es administrador gral.
+        if (CurrentUserLevel() != -1) {
+            $newRow["cooperativa_id"] = CurrentUserInfo("cooperativa_id");
+            }
         return true;
     }
 
@@ -2134,24 +2143,24 @@ class Socios extends DbTable implements LookupTableInterface
     // Lookup Selecting event
     public function lookupSelecting(DbField $field, string &$filter): void
     {
-        if ($field->Name == "cupo") {
-            // Traer el ID de la cooperativa seleccionada
+        /*if ($field->Name == "cupo") {
             $coopId = $this->cooperativa_id->CurrentValue;
-            if ($coopId > 0) {
-                // Consultar número máximo de cupos de la cooperativa
-                $maxCupos = ExecuteScalar("SELECT numero_cupos FROM cooperativas WHERE id = " . intval($coopId));
+            if (!EmptyValue($coopId)) {
+                $sql = "SELECT numero_cupos FROM cooperativas WHERE id = " . intval($coopId);
+                $maxCupos = ExecuteScalar($sql);
                 if ($maxCupos > 0) {
-                    // Filtrar los cupos disponibles en la tabla cupos
-                    $filter = "cupo <= " . intval($maxCupos);
+                    $cupos = [];
+                    for ($i = 1; $i <= $maxCupos; $i++) {
+                        $cupos[] = $i;
+                    }
+                    $filter = "`cupo` IN (" . implode(",", $cupos) . ")";
                 } else {
-                    // Si no tiene cupos definidos, no mostrar nada
                     $filter = "0=1";
                 }
             } else {
-                // Si no se eligió cooperativa, no mostrar nada
                 $filter = "0=1";
             }
-        }
+        }*/
     }
 
     // Row Rendering event
@@ -2163,8 +2172,28 @@ class Socios extends DbTable implements LookupTableInterface
     // Row Rendered event
     public function rowRendered(): void
     {
-        // To view properties of field class, use:
-        //var_dump($this-><FieldName>);
+        $nivelUsuario = $GLOBALS["Security"]->CurrentUserLevelID();
+
+        // SUPERADMIN (-1)
+        if ($nivelUsuario == -1) {
+            $this->cooperativa_id->Visible = true;
+        } 
+        // ADMIN DE COOPERATIVA (1)
+        elseif ($nivelUsuario == 1) {
+            $this->cooperativa_id->Visible = false;
+
+            // Obtener cooperativa del admin
+            $coopId = $GLOBALS["Security"]->currentUserInfo("cooperativa_id");
+
+            // Verificar que exista en cooperativas
+            $existe = ExecuteScalar("SELECT COUNT(*) FROM cooperativas WHERE id = " . intval($coopId));
+            if ($existe) {
+                $this->cooperativa_id->CurrentValue = $coopId;
+            } else {
+                $this->setFailureMessage("La cooperativa asignada al administrador no existe en el sistema.");
+                $this->cooperativa_id->CurrentValue = null;
+            }
+        }
     }
 
     // User ID Filtering event

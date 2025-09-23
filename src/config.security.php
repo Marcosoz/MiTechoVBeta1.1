@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Symfony\Component\Security\Core\User\InMemoryUser;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -40,7 +40,7 @@ return [
                 'memory' => [
                     'users' => [
                         'admin' => [
-                            'password' => '$2y$15$fDDmt0tGdXkICsM/hHzf4.OeqpVaoYEGjLeKoaQ0kzjJDv51z5sQu',
+                            'password' => '$2y$15$0H0VslAnSIYTeR/9YVQdu.rNvnfIKSW2DR6iyBHuSCiQEaQ6BlrBe',
                             'roles' => [
                                 'ROLE_SUPER_ADMIN'
                             ],

@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory as BaseHttpFoundationFactory;
 use Psr\Http\Message\ServerRequestInterface as ServerRequestInterface;

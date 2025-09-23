@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Entity;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField\Entity;
 
 use DateTime;
 use DateTimeImmutable;
@@ -12,17 +12,17 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\SequenceGenerator;
 use Doctrine\DBAL\Types\Types;
-use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AdvancedUserInterface;
-use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AbstractEntity;
-use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\AdvancedSecurity;
-use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\UserProfile;
-use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\UserRepository;
-use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Config;
-use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\EntityManager;
-use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\RemoveXss;
-use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\HtmlDecode;
-use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\HashPassword;
-use function PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Security;
+use PHPMaker2025\project22092025TrabajosCupoParentField\AdvancedUserInterface;
+use PHPMaker2025\project22092025TrabajosCupoParentField\AbstractEntity;
+use PHPMaker2025\project22092025TrabajosCupoParentField\AdvancedSecurity;
+use PHPMaker2025\project22092025TrabajosCupoParentField\UserProfile;
+use PHPMaker2025\project22092025TrabajosCupoParentField\UserRepository;
+use function PHPMaker2025\project22092025TrabajosCupoParentField\Config;
+use function PHPMaker2025\project22092025TrabajosCupoParentField\EntityManager;
+use function PHPMaker2025\project22092025TrabajosCupoParentField\RemoveXss;
+use function PHPMaker2025\project22092025TrabajosCupoParentField\HtmlDecode;
+use function PHPMaker2025\project22092025TrabajosCupoParentField\HashPassword;
+use function PHPMaker2025\project22092025TrabajosCupoParentField\Security;
 
 /**
  * Entity class for "actividad_log" table

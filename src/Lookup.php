@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Doctrine\DBAL\Query\QueryBuilder;

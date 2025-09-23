@@ -4,7 +4,7 @@
  * PHPMaker configuration file
  */
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Notifier\Channel\EmailChannel;
@@ -142,7 +142,7 @@ $CONFIG = [
 
     // General
     "UNFORMAT_YEAR" => 50, // Unformat year
-    "PROJECT_STYLESHEET_FILENAME" => "css/project22092025ReparadoAsignacionCoopAutom.css", // Project stylesheet file name
+    "PROJECT_STYLESHEET_FILENAME" => "css/project22092025TrabajosCupoParentField.css", // Project stylesheet file name
     "USE_COMPRESSED_STYLESHEET" => true, // Compressed stylesheet
     "FONT_AWESOME_STYLESHEET" => "plugins/fontawesome-free/css/all.min.css", // Font Awesome Free stylesheet
     "EXPORT_TABLE_CELL_STYLES" => ["border" => "1px solid #dddddd", "padding" => "5px"], // Export table cell CSS styles, use inline style for Gmail
@@ -369,7 +369,7 @@ $CONFIG = [
     "AUDIT_TRAIL_FIELD_NAME_NEWVALUE" => "", // New Value field name
 
     // Export Log
-    "EXPORT_PATH" => "export-f0da6626-7823-457e-805d-db554f6b0901", // Export folder
+    "EXPORT_PATH" => "export-29b1ffb6-c0ff-469b-a397-61c0adb6819e", // Export folder
     "EXPORT_LOG_DBID" => "DB", // DB ID
     "EXPORT_LOG_TABLE_NAME" => "", // Table name
     "EXPORT_LOG_TABLE_VAR" => "", // Table var

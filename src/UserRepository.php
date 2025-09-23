@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
-use PHPMaker2025\project22092025ReparadoAsignacionCoopAutom\Entity\Socio;
+use PHPMaker2025\project22092025TrabajosCupoParentField\Entity\Socio;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

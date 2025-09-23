@@ -7,9 +7,9 @@
 return [
 
     // Debug
-    "DEBUG" => false, // Enabled
-    "REPORT_ALL_ERRORS" => false, // Treat PHP warnings and notices as errors
-    "LOG_TO_FILE" => false, // Log error and SQL to file
+    "DEBUG" => true, // Enabled
+    "REPORT_ALL_ERRORS" => true, // Treat PHP warnings and notices as errors
+    "LOG_TO_FILE" => true, // Log error and SQL to file
     "DEBUG_BAR" => true, // Enabled by default
 
     // Maintenance mode

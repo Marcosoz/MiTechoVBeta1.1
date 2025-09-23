@@ -71,7 +71,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\": [
+            "PHPMaker2025\\project22092025TrabajosCupoParentField\\": [
                 "src/",
                 "models/",
                 "controllers/"
@@ -92,6 +92,6 @@
         "allow-plugins": true
     },
     "scripts": {
-        "routes": "PHPMaker2025\\project22092025ReparadoAsignacionCoopAutom\\RouteAttributes::dispatch"
+        "routes": "PHPMaker2025\\project22092025TrabajosCupoParentField\\RouteAttributes::dispatch"
     }
 }

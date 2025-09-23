@@ -5,7 +5,7 @@
  * Copyright (c) e.World Technology Limited. All rights reserved.
 */
 
-namespace PHPMaker2025\project22092025ReparadoAsignacionCoopAutom;
+namespace PHPMaker2025\project22092025TrabajosCupoParentField;
 
 use Hybridauth\Adapter\OAuth2;
 use HybridauthException\UnexpectedApiResponseException;
